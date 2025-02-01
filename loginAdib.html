@@ -1,0 +1,524 @@
+<!--------------------------- DMNTOKEN -------------------->
+<basis core="dbsource" source="trustloginapi" name="db" useragent="[##cms.request.user-agent##]" ip="[##cms.request.clientip##]">
+    <member name="dmntoken1" type="scalar" request="dmntoken" /> 
+   </basis>
+   
+   <!-------------------- TOKEN --------------------->
+   <basis core="api" url="https://api.trust-login.com/token?recaptcha={##token.recaptcha.value|()##}" method="post"
+    triggers="token.recaptcha run.token" if="{##run.token.value|(false)##}" 
+    OnProcessed="onProcessedToken" body="{ 'dmntoken': '{##db.token.value##}' }"
+   name="api.token" run="atclient">
+   </basis>
+   
+   <!---------------------------- authentication ------------------------->
+   
+   <basis core='api' url='https://api.trust-login.com/authentication?culture=fa'
+   method='post' run='atclient' name='api.authentication' body='{"token":"{##db.send.token##}",
+   "username":"{##db.send.user##}","captcha":"{##db.send.captcha##}"}' triggers='db.send' if='{##db.send##}'
+    onprocessed='onProcessedAuthenticationFn' >
+   </basis> 
+   
+   
+   <!------------------------------------ login-------------------------- -->
+   <basis core='api' name='api.login' if='{##authentication.hashid##} && {##form.login##}' run='atclient' 
+   url='https://api.trust-login.com/login?culture=fa' method='post' body='{"hashid": "{##authentication.hashid.value##}",
+   "code": "{##form.authentication.code##}"}'
+   onprocessed='onProcessedLogin' triggers='form.login'></basis>
+   
+   
+   <!------------------------------ set rKey---------------------------->
+   <basis core="cookie" run="atclient" name="rKey" value="{##user.rkeyy.value##}" path="/" triggers="user.rkeyy"
+   onrendered='onRenderedCookie'>
+   </basis>
+   <!DOCTYPE html>
+   <html>
+   
+   <head>
+       <title>ورود/ثبت نام</title>
+       <meta charset="UTF-8">
+       <meta name="author" content="BasisCore">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+       <meta name="description" content="" />
+       <link href="[##cms.cms.cdn##]/app/app/css/style_cart.css" type="text/css" rel="stylesheet" />
+       <link href="[##cms.cms.cdn##]/app/app/css/style_cart.css" type="text/css" rel="stylesheet" />
+       <script src="https://cdn.basiscore.net/academy.basiscore.com/_js/basiscore-2.23.1.min.js"></script>
+       <script src="https://cdn.basiscore.net/basispanel.ir/_js/alasql.min.js"></script>
+       <style>
+       body, html{    overflow: visible !important;}
+       .s-t--t {  
+       height: 657px;
+   }
+   .background-color_1{
+       background-color: green;
+   }
+   .disnone{display: none;}
+   .get-token.hidden{
+       display:none ;
+   }
+   .loginForm{
+       position: relative;
+   }
+   .refresh{
+       position: absolute;
+     left: 0;
+     z-index: 5;
+     transform: translateY(10px);
+   }
+   .dmntoken{
+       display: none;
+   }
+       </style>
+   </head>
+   
+   <body class="background-color-body">
+       <p class="dmntoken">[##db.dmntoken1.dmnToken##]</p>
+
+   
+       <main class="container">
+           <section class="login-content section width_35" style="margin-top: 70px;">
+               <div class="login-header text-center">
+                   <a href="/"><img src="/images/logo.png" width=" " height=" " alt="logo" /></a>
+               </div>
+               <div class="login-body">
+                   <div class="login-wrapper width_80">
+                       <p class="title font_19">ورود | ثبت نام</p>
+                       <div class="get-token form-field" name="run.token" bc-value="true" bc-triggers="click"><label
+                               class="color_1"></label><span class="font_12 field-input">جهت ورود به حساب کاربری
+                               کلیک کنید</span></div>
+                       <div class="loginForm-container">
+                           <form class="loginForm" name="form.authentication" bc-triggers="submit" bc-value="true"></form>
+                           <div class="api-message text-center font_13"></div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+   
+           <section class="login-content section width_35 change_user_info_content s-t--t" id="change_user_info" style="display: none;">
+               <div class="login-header text-center">
+                   <a href="/"><img src="/images/logo.png" width=" " height=" " alt="logo" /></a>
+               </div>
+               <div class="login-body">
+                   <div class="login-wrapper width_80">
+                       <p class="title font_19">تکمیل | تغییر اطلاعات</p>
+   
+                       <div class="loginForm-container">
+                           <form id="submitinfoForm" name="formsubmitinfo" method="post" action="save_info.bc?debug=true" bc-triggers="submit" bc-value="true">
+                               <input type="hidden" name="rkey-user-info" value="{##user.rkeyy.value##}" ></_input>
+                               <input type="hidden" id="location" name="location" value="" ></_input>
+                               <div class="name">
+                                   <div class="change-user-info">
+                                       <label> * نام : </label>
+                                       <input type="text" name="first-name-user-info" class="first-name-user-info" value="" required></_input>
+                                   </div>
+                                   <div class="alertInfo">حداقل تعداد کاراکتر 2 است!</div>
+                               </div>
+                               <div class="lname">
+                                   <div class="change-user-info">
+                                       <label>* نام خانوادگی : </label>
+                                       <input type="text" name="last-name-user-info" class="last-name-user-info" value="" required></_input>
+                                   </div>
+                                   <div class="alertInfo">حداقل تعداد کاراکتر 2 است!</div>
+                               </div>
+                               <div class="mobile">
+                                   <div class="change-user-info">
+                                       <label>* موبایل : </label>
+                                       <input type="text" name="mobile-user-info" class="mobile-user-info" value="" required></_input>
+                                   </div>
+                                   <div class="alertInfo">مثال (09121223434)</div>
+                               </div>
+                               <div class="email">
+                                   <div class="change-user-info">
+                                       <label>* ایمیل : </label>
+                                       <input type="text" name="email-user-info" class="email-user-info" value=""  ></_input>
+                                   </div>
+                                   <div class="alertInfo">مثال (test@gmail.com)</div>
+                               </div>
+                               <div class="address disnone ">
+                                   <div class="change-user-info">
+                                       <label>* آدرس : </label>
+                                       <input type="text" name="address-user-info" class="address-user-info" value=""  ></_input>
+                                   </div>
+                                   <div class="alertInfo">حداقل تعداد کاراکتر 5 است!</div>
+                               </div>
+                               <div class="gender">
+                                   <div class="change-user-info">
+                                       <label>* جنسیت : </label>
+                                       <select name="gender-user-info" class="gender-user-info" required>
+                                           <option value="666">خانم</option>
+                                           <option value="668">آقا</option>
+                                       </select>
+                                   </div>
+                               </div>
+                               <button type="submit" onclick="save_infoes(this, event)" class="background-color_1 color_white width_100 font_15 cursor-pointer btn-contained submit-form">مرحله بعد</button>
+                           </form>
+                           <div class="api-message text-center font_13"></div>
+                       </div>
+                   </div>
+               </div>
+           </section>
+
+
+
+
+           <!-- <p id="all-time"><span id="extra-min">0</span>
+            <span id="min">0</span> <span>:</span>
+             <span id="extra-sec">0</span><span id="sec">0</span></p> -->
+           <!-- <button id="start-btn">Start</button> -->
+         </body>
+           <basis core="callback" triggers="form.authentication" run="atclient"></basis>
+           <basis core="callback" triggers="authentication.hashid" run="atclient"></basis>
+           <basis core="callback" triggers="user.rkeyy" run="atclient"></basis>
+           <basis core="callback" triggers="form.authentication" method="Send" run="atclient"></basis>
+       </main>
+       <script>
+   
+   const host ={ 
+       settings: {
+           'connection.web.callcommand': '/',
+           'connection.web.basiscore': 'https://basispanel.ir/apicms',
+           'connection.web.accounting': 'https://basispanel.ir/apicms',
+           'connection.web.trust_login': 'https://basispanel.ir/apicms', 
+           'connection.web.media': 'https://basispanel.ir/apicms',
+           'default.dbsource.verb': 'post',
+           'default.call.verb': 'get',
+           "connection.web.callcommand": "/",
+           'default.viewCommand.groupColumn': 'prpid',
+           'default.dmnid': '4810',
+           'default.binding.regex': '\\{##([^#]*)##\\}'
+       }}
+       let token1 = document.querySelector('p.dmntoken').innerText
+       $bc.setSource('db.token',token1)
+       document.querySelector('.get-token').addEventListener('click',()=>{
+       document.querySelector('.get-token').classList.add('hidden') 
+       })
+       async function data(args){
+       const responseJson = await args.response.json();
+       const errorid = responseJson.errorid;
+       const captcha = responseJson.Captcha;
+       const captchaId = responseJson.Captcha_id;
+       $bc.setSource('db.recieveToken',responseJson.token)
+       console.log('data',responseJson);
+       if (captcha == true) {
+           document.querySelector('.captcha').innerHTML = `<img src="http://trust-login.com/${captchaId}" />`
+           const captchaid = document.querySelector("input[name='captchaid']"); 
+       captchaid.setAttribute('value',captchaId)
+       }
+       }
+       function refreshCaptchaa(args){
+       $bc.setSource("token.recaptcha", true);
+       }
+       function Send(args){
+         if(args.source.rows[0].code){
+           $bc.setSource('form.login',true)
+           $bc.setSource('form.password',args.source.rows[0].code)
+           
+        }
+       console.log(args.source.rows);
+       let user = args.source.rows[0].username
+       let token= args.context.tryToGetSource('db.recieveToken').rows[0].value
+       const captcha = document.querySelector("input[name='captcha']").value; 
+       $bc.setSource('db.send',{
+           'token':token,
+           'user':user,
+           'captcha':captcha,
+       }) 
+   }
+   async function onProcessedLoginFn(args){
+       const response = args.response;
+       const responseJson = await response.json();
+       const errorid = responseJson.errorid;
+       console.log(responseJson);
+       if(errorid ==55){
+        document.querySelector('.login').classList.add('active')
+        $bc.setSource('user.login',true)
+        // $bc.setSource('user.rKey', responseJson.rkey)
+       }
+   }
+   document.querySelector('.submit-form').setAttribute('type','submit')
+   const loginWrapper = document.querySelector(".login-wrapper");
+   const loginFormContainer = loginWrapper.querySelector(".loginForm-container");
+   const loginForm = loginFormContainer.querySelector(".loginForm");
+   const submitinfoForm = document.querySelector("#submitinfoForm");
+   const loginFormMessage = loginFormContainer.querySelector(".api-message");
+   const fieldTemp = document.createElement("div");
+   fieldTemp.classList.add("form-field");
+   const fieldIconTemp = document.createElement("label");
+   fieldIconTemp.classList.add("field-icon");
+   const fieldInputTemp = document.createElement("input");
+   fieldInputTemp.setAttribute("type", "text");
+   fieldInputTemp.classList.add("field-input");
+   fieldTemp.appendChild(fieldIconTemp);
+   fieldTemp.appendChild(fieldInputTemp);
+   let token;
+   let hashid;
+   let IS = false
+   async function onProcessedToken(args) {
+       const response = args.response;
+       if (response.status == 200) {
+           const responseJson = await response.json();
+           const captcha = responseJson.Captcha;
+           const captchaId = responseJson.Captcha_id;
+           const errorid = responseJson.errorid;
+           $bc.setSource('db.recieveToken',responseJson.token)
+           if (errorid) {
+               if (errorid == '10') {
+                   // invalid inputs 
+                   loginFormMessage.innerHTML = `<span class="error">ورودی های ارسال شده نامعتبر است</span>`
+               }
+                else if (errorid == '9') {
+                   token = responseJson.token;
+                   if (token) {          
+                       if(!IS){
+                           const fieldTempCopyForUsername = fieldTemp.cloneNode(true);
+                       fieldTempCopyForUsername.querySelector(".field-icon").classList.add("user");
+                       fieldTempCopyForUsername.querySelector(".field-icon").classList.add("color_1");
+                       fieldTempCopyForUsername.querySelector(".field-input").setAttribute("name", "username");
+                       fieldTempCopyForUsername.querySelector(".field-input").setAttribute("placeholder",
+                           "نام کاربری یا شماره موبایل خود را وارد کنید ");
+                       loginForm.appendChild(fieldTempCopyForUsername);
+                       if (captcha == true) {
+                           const fieldTempCopyForCaptcha = fieldTemp.cloneNode(true);
+                           let HiddenCaptcha = document.createElement('input')
+                           HiddenCaptcha.type='hidden'
+                           loginForm.appendChild(HiddenCaptcha)
+                           HiddenCaptcha.setAttribute("name", "captchaid");
+                           HiddenCaptcha.setAttribute('value',captchaId)
+                           const refreshCaptcha = document.createElement('span')
+                           refreshCaptcha.classList.add('refresh')
+                           loginForm.appendChild(refreshCaptcha)
+                           refreshCaptcha.innerHTML=`<svg width="30" height="20" class="refressh" onclick="refreshCaptchaa()" 
+     viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 10px;cursor:pointer">
+     <path d="M13.6498 3.34999C12.0198 1.71999 9.70978 0.779992 7.16978 1.03999C3.49978 1.40999 0.479777 4.38999 0.0697772 8.05999C-0.480223 12.91 3.26978 17 7.99978 17C11.1898 17 13.9298 15.13 15.2098 12.44C15.5298 11.77 15.0498 11 14.3098 11C13.9398 11 13.5898 11.2 13.4298 11.53C12.2998 13.96 9.58978 15.5 6.62978 14.84C4.40978 14.35 2.61978 12.54 2.14978 10.32C1.30978 6.43999 4.25978 2.99999 7.99978 2.99999C9.65978 2.99999 11.1398 3.68999 12.2198 4.77999L10.7098 6.28999C10.0798 6.91999 10.5198 7.99999 11.4098 7.99999H14.9998C15.5498 7.99999 15.9998 7.54999 15.9998 6.99999V3.40999C15.9998 2.51999 14.9198 2.06999 14.2898 2.69999L13.6498 3.34999Z" fill="#323232"/>
+     </svg>`
+                            refreshCaptcha.setAttribute('onClick','refreshCaptchaa()')
+                           fieldTempCopyForCaptcha.querySelector(".field-icon").innerHTML =
+                               `<img src="http://trust-login.com/${captchaId}" class="load-captcha" width="70" height="42" />`;
+                               fieldTempCopyForCaptcha.querySelector(".field-input").setAttribute('name','captcha')
+                           fieldTempCopyForCaptcha.querySelector(".field-input").setAttribute("placeholder",
+                               "کد امنیتی را وارد کنید ");
+                           loginForm.appendChild(fieldTempCopyForCaptcha);
+                           const fieldTempCopyForSubmitBtn = fieldTemp.cloneNode(true);
+                       fieldTempCopyForSubmitBtn.classList.add("no-border")
+                       fieldTempCopyForSubmitBtn.innerHTML =
+                           `<div class="countdown color_2 dir-ltr font_14"></div>
+                        <div class="resendSMS disabled font_13"></div>
+                        <div class="clr"></div>
+                       <button type="submit" class="background-color_1 color_white width_100 font_15 cursor-pointer btn-contained submit-form">مرحله بعد</button><div class="clr"></div>`;
+                       loginForm.appendChild(fieldTempCopyForSubmitBtn);
+                       }    
+                      else if (captcha == false) {
+     const fieldTempCopyForSubmitBtn = fieldTemp.cloneNode(true);
+                       fieldTempCopyForSubmitBtn.classList.add("no-border")
+                       fieldTempCopyForSubmitBtn.innerHTML =
+                           `<div class="countdown color_2 dir-ltr font_14"></div>
+                        <div class="resendSMS disabled font_13"></div>
+                        <div class="clr"></div>
+                       <button type="submit" class="background-color_1 color_white width_100 font_15 cursor-pointer btn-contained submit-form">مرحله بعد</button><div class="clr"></div>`;
+                       loginForm.appendChild(fieldTempCopyForSubmitBtn);
+                       }       
+                    else {
+                       loginFormMessage.innerHTML = `<span class="error">خطا در انجام عملیات</span>`;
+                       setTimeout(function () {
+                           loginFormMessage.innerHTML = "";
+                       }, 5000);
+                   }
+                   IS=true
+                       }
+                       else{
+                           $bc.setSource("token.token", token);
+                           let HiddenCaptcha = document.querySelector('input[name="captchaid"]')
+                           HiddenCaptcha.setAttribute('value',captchaId)
+                           let refreshCaptcha = document.querySelector('.refresh')
+                           refreshCaptcha.innerHTML=`<svg width="30" height="20" class="refressh" onclick="refreshCaptchaa()" 
+                           viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 10px;cursor:pointer">
+                           <path d="M13.6498 3.34999C12.0198 1.71999 9.70978 0.779992 7.16978 1.03999C3.49978 1.40999 0.479777 4.38999 0.0697772 8.05999C-0.480223 12.91 3.26978 17 7.99978 17C11.1898 17 13.9298 15.13 15.2098 12.44C15.5298 11.77 15.0498 11 14.3098 11C13.9398 11 13.5898 11.2 13.4298 11.53C12.2998 13.96 9.58978 15.5 6.62978 14.84C4.40978 14.35 2.61978 12.54 2.14978 10.32C1.30978 6.43999 4.25978 2.99999 7.99978 2.99999C9.65978 2.99999 11.1398 3.68999 12.2198 4.77999L10.7098 6.28999C10.0798 6.91999 10.5198 7.99999 11.4098 7.99999H14.9998C15.5498 7.99999 15.9998 7.54999 15.9998 6.99999V3.40999C15.9998 2.51999 14.9198 2.06999 14.2898 2.69999L13.6498 3.34999Z" fill="#323232"/>
+                           </svg>`
+                          const captchaIMG = document.querySelector('.load-captcha')
+                          captchaIMG.setAttribute('src',`http://trust-login.com/${captchaId}`)
+                       }
+                   }
+           }
+       }
+   };
+   }
+   let IsLog= false
+   async function onProcessedAuthenticationFn(args){
+       const response = args.response;
+       if (response.status == 200) {
+           const responseJson = await response.json();
+           const errorid = responseJson.errorid;
+           if (errorid) {
+               if (errorid == '1') {
+                    // token is expired
+                    loginFormMessage.innerHTML = `<span class="error">توکن ارسال شده نامعتبر است</span>`;
+               }
+               else if (errorid == '3') {
+                   // remaintime - less than 60 seconds
+                   loginFormMessage.innerHTML =
+                       `<span class="error">از زمان اعتبار کلید قبلی ${responseJson.remain_time} ثانیه باقی مانده است</div>`;
+               } 
+               else if (errorid == '2' || errorid == '9') {
+               if(!IsLog){
+             const fieldTempCopyForCode = fieldTemp.cloneNode(true);
+             fieldTempCopyForCode.querySelector(".field-icon").classList.add("password");
+             fieldTempCopyForCode.querySelector(".field-icon").classList.add("color_1");
+             fieldTempCopyForCode.querySelector(".field-input").setAttribute("name", "code");
+             fieldTempCopyForCode.querySelector(".field-input").setAttribute("type", "password");
+             fieldTempCopyForCode.querySelector(".field-input").setAttribute("placeholder", "رمز عبور ");
+             loginForm.lastChild.before(fieldTempCopyForCode);   
+            $bc.setSource('form.login',true)
+            hashid = responseJson.hashid;
+            $bc.setSource("authentication.hashid", hashid);
+             IsLog = true
+               }
+             // authentication by username
+           $bc.setSource('form.login',true)
+           hashid = responseJson.hashid;
+           $bc.setSource("authentication.hashid", hashid);
+         } 
+         else if (errorid == '10') {
+   
+             // invalid inputs
+   
+             loginFormMessage.innerHTML = `<span class="error">ورودی های ارسال شده نامعتبر است</span>`;
+   
+         } 
+         else if (errorid == '17') {
+   
+             // invalid captcha
+   
+             loginFormMessage.innerHTML = `<span class="error">کد امنیتی وارد شده نامعتبر است</span>`;
+   
+         } 
+         else if (errorid == '8') {
+   
+             // authentication by username taken email
+   
+             loginFormMessage.innerHTML = `<span class="error">این ایمیل قبلا ثبت شده است</span>`;
+   
+         }
+           }
+       }
+       else {
+           loginFormMessage.innerHTML = `<span class="error">خطا در انجام عملیات</span>`;
+       }
+       setTimeout(function () {
+           loginFormMessage.innerHTML = "";
+       }, 5000);
+   }
+   async function onProcessedLogin(args) {
+       const response = args.response;
+       if (response.status == 200) {
+           const responseJson = await response.json();
+           const errorid = responseJson.errorid;
+           if (errorid) {
+            if(errorid ==11){
+                 // successful
+                 const rkey = responseJson.rkey;
+                   loginFormMessage.innerHTML = `<span class="success">با موفقیت وارد شدید</div>`;
+                   $bc.setSource("user.rkeyy", rkey)
+                   console.log(responseJson);
+                   window.location.href='/'
+           
+              
+
+            }
+               if (errorid == 55) {
+                   // successful
+                   const rkey = responseJson.rkey;
+                   loginFormMessage.innerHTML = `<span class="success">با موفقیت وارد شدید</div>`;
+                   $bc.setSource("user.rkeyy", rkey)
+                   console.log(responseJson);
+                   window.location.href='/'
+                   //    remove rkey after 15 min
+                        let secVal = 0;
+                        let minVal = 0;
+                        let counter = 0;
+                    function myStopFunction() {
+                    //   clearInterval(timer);
+                
+                      window.location.href="/login.bc?refresh=true"
+                    }
+
+                    // Main function
+                    function timeHandler() {
+                    if (counter == 900){
+                        myStopFunction();  
+                        return;
+                    }
+                    // update counter each second
+                    counter++;
+                    secVal++;
+                    // console.log(secVal);
+                    // Resets the seconds display an value each minute
+                    if (secVal == 60) {
+                        minVal++;
+                        secVal = 0;
+                    }
+                     }
+                    // Calls the function every second
+                    let timer = function() {
+                    setInterval(timeHandler, 1000);
+                    }
+                    // Event handler
+                    timer()
+      
+               } 
+               else if (errorid == '10') {
+                   // invalid inputs
+                   loginFormMessage.innerHTML = `<span class="error">ورودی ها نامعتبر است</span>`;
+               } else if (errorid == '12') {
+                   // send activation email
+                   loginFormMessage.innerHTML = `<span class="success">ایمیل فعالسازی ارسال شد</span>`;
+               } else if (errorid == '13') {
+                   // incorrect Password
+                   loginFormMessage.innerHTML = `<span class="error">رمز عبور اشتباه است</span>`;
+               } else if (errorid == '14') {
+                   // Password and the repetition are not match
+                   loginFormMessage.innerHTML = `<span class="error">رمز عبور و تکرار آن مطابقت ندارد</span>`;
+               } else if (errorid == '16') {
+                   // invalid code
+                   loginFormMessage.innerHTML = `<span class="error">کد ارسال شده اشتباه است</span>`;
+               } else if (errorid == '19') {
+                   // invalid email format
+                   loginFormMessage.innerHTML = `<span class="error">فرمت ایمیل وارد شده اشتباه است</span>`;
+               } else if (errorid == '18') {
+                   // taken username
+                   loginFormMessage.innerHTML = `<span class="error">این نام کاربری برای کاربر دیگری ثبت شده است</span>`;
+               } else if (errorid == '8') {
+                   // taken email
+                   loginFormMessage.innerHTML = `<span class="error">این ایمیل قبلا ثبت شده است</span>`;
+               }
+           } else {
+               loginFormMessage.innerHTML = `<span class="error">خطا در انجام عملیات</span>`;
+           }
+           setTimeout(function () {
+               loginFormMessage.innerHTML = "";
+           }, 5000);
+   
+       }
+   };
+
+async function onRenderedCookie(args){
+    console.log('cook',args.response);
+}
+
+
+
+
+
+
+
+
+
+// let time =100
+//     function changeCookie(){
+//     $bc.setSource( 'db.num',time)
+//     time++         
+//     if(time==200) clearInterval                  
+//     }    
+//     setInterval(changeCookie,1000)
+      </script>
+   </body>
+   
+   </html>

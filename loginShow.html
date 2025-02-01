@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="css/loginDesk.css">
+    <link rel="stylesheet" href="css/popLogin.css">
+    <script src="http://basiscore.net/_js/basiscore-2.36.2.min.js"></script>
+<script src="http://cdn.basiscore.net/_js/alasql.min.js"></script>
+</head>
+<body>
+  
+    <div id="login">
+      
+        <div class="login-container popupLoginContainer">
+          
+            <div class="login-bold-title">
+                ورود / ثبت نام
+            </div>
+            <div class="login-subtext">
+                ایمیل، شماره تلفن خود را وارد کنید.
+            </div>
+            <div class="loginBox">
+                <!-- <div class="loginboxDowner"> -->
+                <div class="log-inp">
+                    <div class="timerwarrning"></div>
+                    <div class="apiMessage">
+                    </div>
+                    <form class="loginForm" name="form.authentication" bc-triggers="submit" bc-value="true">
+                        <!-- <fieldset id="firstUSernameLegend"> -->
+                            <!-- <legend>نام کاربری یا شماره موبایل</legend> -->
+    
+                            <input type="text" class="logInp itemInput" name="username" id="firstUSernameInput" />
+    
+                            <!-- <div class="clr"></div> -->
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="logBtn">
+           
+                </div>
+                   <p class="registerText">
+                    برای مشاهده
+                   <span class="openRegister">
+                    راهنمای ثبت نام
+                   </span>
+                   کلیک کنید
+                   </p>
+    
+            </div>
+    
+        </div>
+        <basis core="dbsource" source="trustlogintestapi" name="db"
+        useragent="[##cms.request.user-agent##]" ip="[##cms.request.clientip##]">
+        <member name="dmntoken" type="scalar" request="dmntoken" preview="true" />
+    </basis>
+    
+        <basis name="api.token" core="api" url="http://trust.basiscore.net/token?recaptcha={##token.recaptcha.value|()##}" method="post" body='{"dmntoken": "[##db.dmntoken.dmntoken##]"}'
+            content-type="application/json" run="atclient"  OnProcessed="onProcessedTokenFn" triggers="run.token db.login db.runTokenCommand"
+            if="{##db.login.value|(true)##}"></basis>
+            
+        <basis name="api.authentication" core="api" url="http://trust.basiscore.net/authentication?culture=fa" method="post"
+            body='{"token": "{##token.token.value##}", "username": "{##form.authentication.username##}", "captcha": "{##form.authentication.captchaid##}"}' content-type="application/json" run="atclient"
+            OnProcessed="onProcessedAuthenticationFn" triggers="form.authentication" if="{##token.token##} && {##form.authentication##}"></basis>
+    
+        <basis name="api.login" core="api" url="http://trust.basiscore.net/login?culture=fa" method="post"
+            body='{"hashid": "{##authentication.hashid.value##}", "code": "{##form.login.code##}", "recode": "{##form.login.recode##}", "email": "{##form.login.email##}", "mobile": "{##form.login.mobile##}"}'
+            content-type="application/json" run="atclient" OnProcessed="onProcessedLoginFn" triggers="form.login" if="{##token.token##} && {##authentication.hashid##} && {##form.login##}"></basis>
+    
+        <basis name="api.selectuser" core="api" url="http://trust.basiscore.net/server1/selectuser" method="post"
+            body="token={##token.token.value##}&hashid={##authentication.hashid.value##}&userid={##form.selectuser.userid##}" content-type="application/json" run="atclient"
+            OnProcessed="onProcessedSelectUserFn" triggers="form.selectuser" if="{##token.token##} && {##authentication.hashid##} && {##form.selectuser##}"></basis>
+    
+        <!-- http://trust-login.com/server1/forgetpassword -->
+        <basis name="api.forgetpassword" core="api" url="http://trust.basiscore.net/forgetpassword?culture=fa" method="post"
+            body='{"token":"{##token.token.value##}","username":"{##form.forgetPassword.username##}"}' run="atclient" OnProcessed="onProcessedForgetPasswordFn" triggers="form.forgetPassword"
+            if="{##token.token##} && {##form.forgetPassword##}"></basis>
+    
+    
+        <!-- http://trust-login.com/server1/selectchangepassmethod -->
+        <!-- لینک تغییر رمز عبور از طریق پیامک ارسال شد  -->
+        <basis name="api.selectchangepassmethod" core="api" url="http://trust.basiscore.net/selectchangepassmethod?culture=fa" method="post"
+            body='{"token":"{##token.token.value##}","userid":{##forgetpassword.userid.value##},"user":"{##form.selectchangepassmethod.user##}","ismobile":{##form.selectchangepassmethod.ismobile##},"lid":1}'
+            run="atclient" OnProcessed="onProcessedSelectChangePassMethodFn" triggers="form.selectchangepassmethod" if="{##token.token##} && {##form.selectchangepassmethod##}"></basis>
+    
+        <basis core="cookie" name="rkey" path="/" value="{##user.rkey.value##}" triggers="user.rkey" run="atclient" OnRendered="onRenderedCookie"></basis>
+    
+    </div>
+
+   
+    <div class="fixOverlay"></div>
+    <basis core="callback" run="atClient" triggers="form.login"></basis>
+    <basis core="callback" run="atClient" triggers="formm.login"></basis>
+
+<script>
+     const host ={ 
+       settings: {
+           'connection.web.callcommand': '/',
+           'connection.web.basiscore': 'https://basispanel.ir/apicms',
+           'connection.web.accounting': 'https://basispanel.ir/apicms',
+           'connection.web.trust_login': 'https://basispanel.ir/apicms', 
+           'connection.web.media': 'https://basispanel.ir/apicms',
+           'default.dbsource.verb': 'post',
+           'default.call.verb': 'get',
+           "connection.web.callcommand": "/",
+           'default.viewCommand.groupColumn': 'prpid',
+           'default.dmnid': '35',
+           'default.binding.regex': '\\{##([^#]*)##\\}'
+       }}
+
+//     function eraseCookie(name) {
+//  document.cookie = name + "=;path=/";
+//  window.location.href='/'
+// console.log(document.cookie);
+
+//  }
+//  eraseCookie("rkey")
+    function mainfunc() {
+        const forminput = `
+        <div class="timerwarrning"></div>
+                <div class="apiMessage">
+                </div>
+                <form class="loginForm" name="form.authentication" bc-triggers="submit" bc-value="true">
+                    <fieldset id="firstUSernameLegend">
+                        <legend>نام کاربری یا شماره موبایل</legend>
+
+                        <input type="text" class="logInp itemInput" name="username" id="firstUSernameInput" />
+
+                        <div class="clr"></div>
+                    </fieldset>
+                </form>`
+            const formtest = `
+            <fieldset id="firstUSernameLegend">
+                        <legend>نام کاربری یا شماره موبایل</legend>
+
+                        <input type="text" class="logInp itemInput" name="username" id="firstUSernameInput" />
+
+                        <div class="clr"></div>
+                    </fieldset>
+                    `
+        // document.querySelector(".log-inp").innerHTML = forminput
+        //  $bc
+        //     .new()
+        //     .addFragment('#login1')
+        //     .setOptions(host)
+        //     .run();
+
+        const ownerEl = document.querySelector(".login-container");
+        const loginFormContainer = ownerEl.querySelector(".log-inp");
+        const loginForm = loginFormContainer.querySelector(".loginForm");
+        const loginFormMessage = loginFormContainer.querySelector(".apiMessage");
+        let token;
+        let hashid;
+        var hasCaptcha = false;
+        const itemTemp = document.createElement("div");
+        itemTemp.classList.add("item_wrapper");
+
+
+        const itemTempContainer = document.createElement("div");
+        itemTempContainer.classList.add("item_wrapper");
+        const itemField = document.createElement("fieldset");
+        const itemLegend = document.createElement("legend");
+        itemLegend.classList.add("legendtype");
+
+        itemTempContainer.appendChild(itemField);
+        // itemField.appendChild(itemLegend);
+        // captchaErrorBox
+        // captchaErrorBoxThis
+        const captchaErrorBox = document.createElement("div");
+        captchaErrorBox.classList.add("captchaErrorBox")
+        // captchaErrorBoxThis
+
+        // captchaErrorBox
+        const itemIconTemp = document.createElement("span");
+        itemTemp.classList.add("captcha_resize")
+        itemIconTemp.classList.add("itemIcon");
+        const itemInputTemp = document.createElement("input");
+        itemInputTemp.setAttribute("type", "text");
+        itemInputTemp.classList.add("itemInput");
+        itemInputTemp.classList.add("itemInputBox");
+        const itemInputTemp2 = document.createElement("input");
+        itemInputTemp2.setAttribute("type", "text");
+        itemInputTemp2.classList.add("itemInput");
+        itemInputTemp2.classList.add("logInp");
+        itemTemp.appendChild(itemIconTemp);
+        itemTemp.appendChild(itemInputTemp);
+
+        itemField.appendChild(itemLegend);
+        itemField.appendChild(itemInputTemp2);
+        const loginBox = document.getElementById("loginBox")
+
+
+        return { ownerEl, loginFormContainer, loginForm, loginFormMessage, token, hashid, captchaErrorBox, hasCaptcha, itemTemp, itemTempContainer, itemField, itemLegend, itemIconTemp, itemInputTemp, itemInputTemp2, loginBox }
+    }
+
+
+    async function onProcessedTokenFn(args) {
+        const vars = mainfunc()
+        console.log(vars)
+
+        console.log("this is test ")
+        const response = args.response;
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+            const captcha = responseJson.Captcha;
+            const captchaId = responseJson.Captcha_id;
+            vars.token = responseJson.token;
+            // console.log("captcha", captcha)
+            console.log(errorid);
+
+            if (errorid == '9') {
+                if (vars.token) {
+                    $bc.setSource("token.token", vars.token);
+                    $bc.setSource("authentication.token", vars.token);
+                    vars.ownerEl.querySelector(".getToken")?.remove();
+                    const username = vars.loginForm.querySelector("input[name='username']")?.value;
+                    const itemWrappers = vars.loginForm.querySelectorAll(".item_wrapper")
+                    itemWrappers?.forEach(e => {
+                        e.remove()
+                    })
+                    // loginForm.querySelector(".item_wrapper")?.remove()
+                    // loginForm.querySelector(".item_wrapper")?.remove()
+
+                    // loginForm.innerHTML = "";
+                    vars.loginForm.setAttribute("name", "form.authentication");
+
+                    // const itemTempCopyForUsername = itemTemp.cloneNode(true);
+                    // itemTempCopyForUsername.querySelector(".itemInput").setAttribute("name", "username");
+                    // itemTempCopyForUsername.querySelector(".itemInput").setAttribute("placeholder", "نام کاربری یا شماره موبایل");
+                    if (username != undefined && username != "") {
+                        document.querySelector(".itemInput").setAttribute("value", username);
+                    }
+                    // loginForm.appendChild(itemTempCopyForUsername);
+
+
+                    if (captcha == true) {
+
+                        const itemTempCopyForCaptcha = vars.itemTemp.cloneNode(true);
+                    
+                        itemTempCopyForCaptcha.querySelector(".itemIcon").innerHTML = `<img src="http://trust-login.com/${captchaId}" />`;
+                        itemTempCopyForCaptcha.querySelector(".itemInput").setAttribute("name", "captchaid");
+                        itemTempCopyForCaptcha.querySelector(".itemInput").setAttribute("placeholder", "کد در تصویر را وارد کنید");
+                        vars.hasCaptcha = true;
+                        itemTempCopyForCaptcha.classList.add('captchaBox')
+                        const tempRefresh = document.createElement("div");
+                        tempRefresh.classList.add("refreshCaptcha");
+                        tempRefresh.classList.add("loginRefreshCaptcha");
+                        tempRefresh.setAttribute("onclick", "refreshCaptcha(this)");
+                        tempRefresh.innerHTML = `<i class="lni lni-reload"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="5 5 30 30" fill="none"> 
+                                            <path d="M28.64 18.35C27.19 16.9 25.2 16 22.99 16C18.57 16 15 19.58 15 24C15 28.42 18.57 32 22.99 32C26.72 32 29.83 29.45 30.72 26H28.64C27.82 28.33 25.6 30 22.99 30C19.68 30 16.99 27.31 16.99 24C16.99 20.69 19.68 18 22.99 18C24.65 18 26.13 18.69 27.21 19.78L23.99 23H30.99V16L28.64 18.35Z" fill="#898989"></path>
+                                            </svg></i>`;
+
+                        itemTempCopyForCaptcha.appendChild(tempRefresh);
+
+                        vars.loginForm.appendChild(itemTempCopyForCaptcha);
+
+                        vars.loginForm.appendChild(vars.captchaErrorBox)
+
+
+
+                    }
+
+                    const itemTempCopyForSubmitBtn = vars.itemTemp.cloneNode(true);
+                    itemTempCopyForSubmitBtn.classList.add("data-interToPanel")
+                    itemTempCopyForSubmitBtn.innerHTML =
+                        `<div id="errorMessageID" class="errorMessage"></div>
+                        <div class="SMSBox">
+                            <div class="resendSMS disabled"></div>
+                            <div class="countdown"></div>    
+                        </div>
+                        <div class="forgetPassword"></div>
+                        
+                        <button type="submit" class="schemaBtn submitForm"> ورود</button>`;                        
+
+                    vars.loginForm.appendChild(itemTempCopyForSubmitBtn);
+                    // document.getElementById("showCaptcha").style.display = "none"
+                } else {
+                    vars.loginFormMessage.innerHTML = `<span class="error">خطا در انجام عملیات</span>`;
+                    document.querySelector('.fixOverlay').classList.add('show')
+                  
+                    vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                    setTimeout(function () {
+                        vars.loginFormMessage.innerHTML = "";
+                    }, 5000);
+                }
+            } else if (errorid == '10') {
+                vars.loginFormMessage.innerHTML = `<span class="error">خطا در انجام عملیات</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+       
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                setTimeout(function () {
+                    vars.loginFormMessage.innerHTML = "";
+                }, 5000);
+            }
+        }
+    };
+
+
+    async function onProcessedAuthenticationFn(args) {
+        const vars = mainfunc()
+        console.log("This");
+        const response = args.response;
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+            const errorMessageID = document.getElementById("errorMessageID")
+            console.log(errorid);
+            if (errorid == '1') {
+                // token is expired
+                vars.captchaErrorBox.innerHTML = `<span class="error">توکن ارسال شده نامعتبر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                vars.itemInputTemp.classList.add("redBox")
+            } 
+            else if (errorid == "2") {
+                // document.querySelector(".captcha_resize").style.display = "none"
+                let type = responseJson.type;
+                let newUser = responseJson.newUser;
+                if (type == "mobile") {
+                    if (newUser == true) {
+
+
+                        // ------------------------- new changes -------------------------
+                        firstUSernameInputValue = document.getElementById("firstUSernameInput").value
+                        firstUSernameLegend = document.getElementById("firstUSernameLegend")
+                        usernameBox = document.createElement("div")
+                        usernameBox.setAttribute("id", "usernameBoxID")
+                        usernameSpan = document.createElement("span")
+                        usernameBox.appendChild(usernameSpan)
+                        usernameSpan.innerHTML = firstUSernameInputValue
+                        firstUSernameLegend.appendChild(usernameBox)
+                        usernameBox.classList.add("usernameBox")
+                        usernameBox.innerHTML += `
+                                                <div class="userBoxLeftSide">
+                                                <span class="newUserSpanTag" id="numbernewUserSpanTag">کاربر جدید </span>
+                                                <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.32539 0.953389C5.53505 1.1331 5.55933 1.44875 5.37962 1.65841L1.65853 5.99968L5.37962 10.341C5.55933 10.5506 5.53505 10.8663 5.32539 11.046C5.11572 11.2257 4.80007 11.2014 4.62036 10.9917L0.620363 6.32508C0.459867 6.13783 0.459867 5.86153 0.620363 5.67429L4.62036 1.00762C4.80007 0.797958 5.11572 0.773678 5.32539 0.953389Z" fill="#1C274C"/>
+                                                </svg>
+                                                </div>
+                                                `
+                        usernameBox.setAttribute("onclick", "turnBackNumber()")
+                 
+
+                        const sentCodeBox = document.createElement("div")
+                        const sentCodeContainer = document.createElement("div")
+                        sentCodeContainer.appendChild(sentCodeBox)
+                        sentCodeContainer.classList.add("sentCodeContainerClass")
+                        sentCodeBox.setAttribute("id", "sentCodeBoxID")
+                        vars.loginForm.lastChild.before(sentCodeContainer);
+                        setTimeout(() => {
+                            sentCodeBox.style.left = "0%"
+                        }, 100);
+                        // newmobile
+                        vars.loginFormMessage.innerHTML = `<span class="success" id="error5" >کد احراز هویت از طریق پیامک ارسال شد (کاربر جدید)</span>`;
+                        document.querySelector('.fixOverlay').classList.add('show')
+                        vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                        setTimeout(() => {
+                            vars.loginFormMessage.querySelector(".success").style.height = "50px";
+                        }, 50);
+                        setTimeout(function () {
+                            vars.loginFormMessage.querySelector(".success").style.height = "0"
+                        }, 3000);
+                        vars.loginForm.setAttribute("name", "form.login");
+                  
+                        vars.hashid = responseJson.hashid;
+                        $bc.setSource("authentication.hashid", vars.hashid);
+                        document.querySelector('.captchaBox').classList.add('goLeft')
+                        const itemTempCopyForCode = vars.itemTempContainer.cloneNode(true);
+                        itemTempCopyForCode.querySelector(".legendtype").innerHTML =
+                            "کد ارسالی";
+                   
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "code");
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("placeholder", "کد ارسال شده را وارد کنید...");
+                
+                        sentCodeBox.appendChild(itemTempCopyForCode)
+
+                        const resendSMS = vars.loginForm.querySelector(".resendSMS");
+                        resendSMS.innerHTML = `<div class="codeContainerRe">
+                                                <div id="resendCodeSMS resendCodeSMSNew" class="resendCodeSMSNewC">
+                                            
+                                                </div>
+                                                <span class="tooltiptext">ارسال مجدد کد</span>
+                                                </div>`;
+                        setTimeout(() => {
+                            resendCodeSMSVar = document.getElementById("resendCodeSMS")
+                            if (resendCodeSMSVar) {
+                                resendCodeSMSVar.style.right = "0"
+
+                            }
+                        }, 100);
+
+                        countDownContainer = document.getElementById("countDownContainer")
+                        setTimeout(() => {
+                            countDownContainer.style.display = "flex"
+                        }, 150);
+
+             
+                        let seconds = 60;
+                        let countdown = setInterval(function () {
+                            seconds--;
+                            seconds = seconds.toLocaleString(undefined, {
+                                minimumIntegerDigits: 2,
+                            });
+                            vars.loginForm.querySelector(
+                                ".countdown"
+                            ).textContent = ` 00 : ${seconds} `;
+                            if (seconds < 1) {
+                                clearInterval(countdown);
+                                resendSMS.classList.remove("disabled");
+                                resendSMS.setAttribute("onclick", "resendSMS2(this, 1)");
+                                vars.loginForm.querySelector(".countdown").textContent = "";
+                                countDownContainer.style.display = "none"
+                            }
+                        }, 1000);
+                    } else {
+                        // authentication by mobile – single user
+                        // ----------------new ------------------
+                        firstUSernameInputValue = document.getElementById("firstUSernameInput").value
+                        firstUSernameLegend = document.getElementById("firstUSernameLegend")
+                        usernameBox = document.createElement("div")
+                        usernameBox.setAttribute("id", "usernameBoxID")
+                        usernameSpan = document.createElement("span")
+                        usernameBox.appendChild(usernameSpan)
+                        usernameSpan.innerHTML = firstUSernameInputValue
+                     
+                        usernameBox.classList.add("usernameBox")
+                        usernameBox.innerHTML += `
+                                            <div class="userBoxLeftSide">
+                                            <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M5.32539 0.953389C5.53505 1.1331 5.55933 1.44875 5.37962 1.65841L1.65853 5.99968L5.37962 10.341C5.55933 10.5506 5.53505 10.8663 5.32539 11.046C5.11572 11.2257 4.80007 11.2014 4.62036 10.9917L0.620363 6.32508C0.459867 6.13783 0.459867 5.86153 0.620363 5.67429L4.62036 1.00762C4.80007 0.797958 5.11572 0.773678 5.32539 0.953389Z" fill="#1C274C"/>
+                                            </svg>
+                                            </div>
+                                            `
+                        usernameBox.setAttribute("onclick", "turnbackUserNo()")
+                  
+                        setTimeout(() => {
+                            usernameBox.style.left = "-17%"
+                      
+                        }, 100);
+
+                        if (document.getElementById("captchaChild")) {
+                            document.getElementById("captchaChild").style.right = "105%"
+                        }
+
+                        const userNo = document.createElement("div")
+                        const mailsSelecContainer = document.createElement("div")
+                        mailsSelecContainer.appendChild(userNo)
+                        vars.loginForm.lastChild.before(mailsSelecContainer);
+                        userNo.setAttribute("id", "userNoID")
+                        mailsSelecContainer.classList.add("mailsSelecContainerClass")
+                        setTimeout(() => {
+                            userNo.style.left = "0%"
+                        }, 100);
+
+
+                        vars.loginFormMessage.innerHTML = `<span class="success"> کد احراز هویت از طریق پیامک ارسال شد </span>`;
+                        document.querySelector('.fixOverlay').classList.add('show')
+                        vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                        setTimeout(() => {
+                            vars.loginFormMessage.querySelector(".success").style.height = "50px";
+                        }, 50);
+                        setTimeout(function () {
+                            vars.loginFormMessage.querySelector(".success").style.height = "0"
+                        }, 3000);
+                        vars.loginForm.setAttribute("name", "form.login");
+                  
+                        vars.hashid = responseJson.hashid;
+             
+                        $bc.setSource("authentication.hashid", vars.hashid);
+                        document.querySelector('.captchaBox').classList.add('goLeft')
+                        const itemTempCopyForCode = vars.itemTempContainer.cloneNode(true);
+                        itemTempCopyForCode.querySelector(".legendtype").innerHTML =
+                            "کد ارسالی";
+                  
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "code");
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                       
+                        userNo.appendChild(itemTempCopyForCode)
+
+                        const resendSMS = vars.loginForm.querySelector(".resendSMS");
+                        resendSMS.setAttribute("id", "resendsms3");
+                        resendSMS.innerHTML = `<div class="codeContainerRe">
+                                        <div id="resendCodeSMS">
+                                      
+                                        </div>
+                                        <span class="tooltiptext">ارسال مجدد کد</span>
+                                        </div>`;
+                        setTimeout(() => {
+                            document.getElementById("resendCodeSMS").style.right = "0"
+                        }, 100);
+
+                     
+                        let seconds = 60;
+                        let countdown = setInterval(function () {
+                            seconds--;
+                            seconds = seconds.toLocaleString(undefined, {
+                                minimumIntegerDigits: 2,
+                            });
+                            // add now
+                            if (vars.loginForm.querySelector(".countdown") != null) {
+                                vars.loginForm.querySelector(".countdown").textContent = ` 00 : ${seconds} `;
+                            }
+                            if (seconds < 1) {
+                                clearInterval(countdown);
+                                resendSMS.classList.remove("disabled");
+                                resendSMS.setAttribute("onclick", "resendSMS(this, 1)");
+                                vars.loginForm.querySelector(".countdown").textContent = "";
+                           
+                            }
+                        }, 1000);
+        
+                    }
+                } 
+                 if (type == "username" || type == "email") {
+                    if (newUser == true) {
+                        console.log('newUser');
+                        let passNumber = '' 
+                        let pass2Number=''
+                        let phoneNumber=''
+                        const newUserFormContainer = document.createElement("div")
+                        newUserFormContainer.classList.add("newUserFormContainerClass")
+                        const newUserFormCBox = document.createElement("div")
+                        newUserFormCBox.setAttribute("id", "newUserFormCBox")
+                        newUserFormContainer.appendChild(newUserFormCBox);
+                        vars.loginForm.lastChild.before(newUserFormContainer);
+                       const registerBtn = document.createElement('button')
+                       registerBtn.setAttribute('type','button')
+                       registerBtn.setAttribute('name','isRegister')
+                       registerBtn.innerHTML = 'ثبت نام'
+                       registerBtn.classList.add('submitForm')
+                       newUserFormContainer.appendChild(registerBtn)
+                       registerBtn.addEventListener('click',()=>{
+                        console.log('registerbtn click');
+                        passNumber = document.querySelector('.newUserFormContainerClass .item_wrapper:nth-child(1) input[type="password"]').value 
+                        pass2Number = document.querySelector('.newUserFormContainerClass .item_wrapper:nth-child(2) input[type="password"]').value 
+                        phoneNumber = document.querySelector('.newUserFormContainerClass .item_wrapper:nth-child(3) input[type="text"]').value 
+                       if(passNumber=='' || pass2Number=='' || phoneNumber==''){
+                        console.log('emptyy')
+                        document.querySelector('.fixOverlay').classList.add('show')
+                        vars.loginFormMessage.innerHTML=`
+                       <span class="error">
+        لطفا فیلد هارا پر کنید
+      </span>     `
+                        vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                       }
+                       else if (passNumber != pass2Number){
+                        vars.loginFormMessage.innerHTML=`
+             <span class="error">
+           رمز عبور قبلی و رمز عبور جدید باهم تطابق ندارد
+          </span>     `
+                        vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                       }
+                       else if(passNumber == pass2Number){
+                        console.log(passNumber,'passNumber');
+                        console.log(pass2Number,'pass2Number');
+                        console.log(phoneNumber,'phoneNumber');
+                        $bc.setSource('form.login',{
+                            code:passNumber,
+                            recode:pass2Number,
+                            email:document.querySelector('#firstUSernameInput').value,
+                            mobile:phoneNumber,
+                        }
+
+                        )
+                       }
+                    //    else if(){
+                        
+                    // }
+                         
+                          
+                       })
+                    
+                       document.querySelector('.captcha_resize > button').style.display='none'
+                        // newusername
+               
+                        vars.loginForm.setAttribute("name", "form.login");
+                        // token = responseJson.token;
+                        vars.hashid = responseJson.hashid;
+                        // $bc.setSource("authentication.token", token);
+                        $bc.setSource("authentication.hashid", vars.hashid);
+                       
+                        document.querySelector('input.logInp.itemInput').classList.add('goLeft')
+                        document.querySelector('.captchaBox').classList.add('goLeft')
+                       document.querySelector('.login-subtext').classList.add('goLeft')
+                       document.querySelector('.login-bold-title').innerHTML='اطلاعات کاربری'
+                        // رمز عبور
+                        const itemTempCopyForCode = vars.itemTempContainer.cloneNode(true);
+                        // itemField.appendChild(itemLegend);
+                        itemTempCopyForCode.querySelector(".legendtype").innerHTML =
+                            " رمز عبور خود را وارد نمایید.";
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "code");
+
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("type", "password");
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("placeholder", "لطفا رمز عبور خود را وارد کنید..");
+    
+                        newUserFormCBox.appendChild(itemTempCopyForCode);
+
+                        // تکرار رمز عبور
+                        const itemTempCopyForReCode = vars.itemTempContainer.cloneNode(true);
+                        itemTempCopyForReCode.querySelector(".legendtype").innerHTML =
+                            "تکرار رمز عبور";
+                        itemTempCopyForReCode
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "recode");
+                        itemTempCopyForReCode
+                            .querySelector(".itemInput")
+                            .setAttribute("type", "password");
+                        itemTempCopyForReCode
+                            .querySelector(".itemInput")
+                            .setAttribute("placeholder", " رمز عبور را تکرار کنید..");
+                  
+                        newUserFormCBox.appendChild(itemTempCopyForReCode);
+
+
+                        if (type == "username") {
+                            // ایمیل
+                            const itemTempCopyForEmail = vars.itemTempContainer.cloneNode(true);
+                            itemTempCopyForEmail.querySelector(".legendtype").innerHTML =
+                                "ایمیل (الزامی)";
+                            itemTempCopyForEmail
+                                .querySelector(".itemInput")
+                                .setAttribute("name", "email");
+                            itemTempCopyForEmail
+                                .querySelector(".itemInput")
+                                .setAttribute("required", true);
+                            itemTempCopyForEmail
+                                .querySelector(".itemInput")
+                                .setAttribute("placeholder", "لطفا ایمیل خود را وارد کنید...");
+                            // loginForm.lastChild.before(itemTempCopyForEmail);
+                            newUserFormCBox.appendChild(itemTempCopyForEmail);
+                        }
+
+
+                    //     // موبایل
+                        const itemTempCopyForMobile = vars.itemTempContainer.cloneNode(true);
+                        itemTempCopyForMobile.querySelector(".legendtype").innerHTML =
+                            "موبایل";
+                        itemTempCopyForMobile
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "mobile");
+                        itemTempCopyForMobile
+                            .querySelector(".itemInput")
+                            .setAttribute(
+                                "placeholder",
+                                "لطفا شماره موبایل خود را وارد کنید..."
+                            );
+                        // loginForm.lastChild.before(itemTempCopyForMobile);
+                        newUserFormCBox.appendChild(itemTempCopyForMobile);
+
+            
+                    } 
+                    else {
+                   
+
+                        // authentication by username
+                        vars.loginForm.setAttribute("name", "form.login");
+                        // token = responseJson.token;
+                        vars.hashid = responseJson.hashid;
+                        // $bc.setSource("authentication.token", token);
+                        $bc.setSource("authentication.hashid", vars.hashid);
+                        document.querySelector('.captchaBox').classList.add('goLeft')
+                        const itemTempCopyForCode = vars.itemTempContainer.cloneNode(true);
+                        itemTempCopyForCode.setAttribute("id", "enterpasswordField")
+                        itemTempCopyForCode.querySelector(".legendtype").innerHTML =
+                            "رمز عبور خود را وارد نمایید";
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("name", "code");
+                        console.log("aaaa")
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("type", "password");
+
+                        itemTempCopyForCode
+                            .querySelector(".itemInput").autofocus;
+                        console.log(itemTempCopyForCode
+                            .querySelector(".itemInput"))
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            // .setAttribute("placeholder", "رمز عبور (حساس به حروف کوچک و بزرگ)");
+                        // .setAttribute("placeholder", "لطفا رمز عبور خود (حساس به حروف کوچک و بزرگ) را وارد کنید...");
+                        // ---new changes ------------------
+                        itemTempCopyForCode
+                            .querySelector(".itemInput")
+                            .setAttribute("id", "enterpassword");
+                        setTimeout(() => {
+                            itemTempCopyForCode.style.left = "3%"
+                        }, 100);
+                        const forgetPassword = vars.loginForm.querySelector(".forgetPassword");
+                        forgetPassword.innerHTML = `<div class=" codeContainerReForget">
+                                    <div id="resendCodeSMS">
+                                   
+                                    </div>
+                                    <span class="tooltiptext">رمز عبور را فراموش کردم  </span>
+                                    </div>`;
+                        setTimeout(() => {
+                            document.querySelector(".codeContainerReForget").style.left = "8%"
+                        }, 100);
+                        forgetPassword.setAttribute("onclick", "forgetPassword(this)");
+                        if (vars.hasCaptcha != true) {
+                            // comment
+                            // loginFormMessage.innerHTML = `<span class="success"> کد امنیتی معتبر است </span>`;
+                            // setTimeout(() => {
+                            // loginFormMessage.querySelector(".success").style.height = "50px";
+                            // }, 50);
+
+                            // setTimeout(function () {
+                            // loginFormMessage.querySelector(".success").style.height = "0"
+                            // }, 3000);
+                        }
+
+                     
+                        vars.loginForm.lastChild.before(itemTempCopyForCode);
+                       
+                    }
+                }
+            }
+             else if (errorid == '3') {
+                // remaintime - less than 60 seconds
+                vars.loginFormMessage.innerHTML = `<div class="apiMessage2 redBox"><span class="error">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6.75 9.75H8.25V11.25H6.75V9.75ZM6.75 3.75H8.25V8.25H6.75V3.75ZM7.4925 0C3.3525 0 0 3.36 0 7.5C0 11.64 3.3525 15 7.4925 15C11.64 15 15 11.64 15 7.5C15 3.36 11.64 0 7.4925 0ZM7.5 13.5C4.185 13.5 1.5 10.815 1.5 7.5C1.5 4.185 4.185 1.5 7.5 1.5C10.815 1.5 13.5 4.185 13.5 7.5C13.5 10.815 10.815 13.5 7.5 13.5Z" fill="#EE273A"/>
+                    </svg>
+                    از زمان اعتبار کلید قبلی ${responseJson.remain_time} ثانیه باقی مانده است</span></div>`;
+            } else if (errorid == '4') {
+                // authentication by mobile – multi user
+                const users = responseJson.users;
+                vars.loginForm.setAttribute("name", "form.selectuser");
+                // token = responseJson.token;
+                vars.hashid = responseJson.hashid;
+                // $bc.setSource("authentication.token", token);
+                $bc.setSource("authentication.hashid", vars.hashid);
+
+                const emailListBox = document.createElement("div");
+                emailListBox.classList.add("input-title");
+                emailListBox.innerText = "ایمیل مورد نظر را انتخاب کنید :";
+                vars.loginForm.lastChild.before(emailListBox);
+
+                users.forEach((element, index, array) => {
+                    const emailListLabel = document.createElement("label");
+                    emailListLabel.classList.add("email-item");
+
+                    const emailListRadio = document.createElement("input");
+                    emailListRadio.setAttribute("type", "radio");
+                    emailListRadio.setAttribute("name", "userid");
+                    emailListRadio.setAttribute("value", `${users[index].userid}`);
+                    if (index == 0) {
+                        emailListRadio.setAttribute("required", true);
+                    }
+
+                    const emailListSpan = document.createElement("span");
+                    emailListSpan.classList.add("email-label");
+                    emailListSpan.innerText = `${users[index].username}`;
+
+                    emailListLabel.appendChild(emailListRadio);
+                    emailListLabel.appendChild(emailListSpan);
+
+                    vars.loginForm.lastChild.before(emailListLabel);
+                });
+            } 
+            else if (errorid == "4") {
+                // authentication by mobile – multi user
+                const users = responseJson.users;
+                vars.loginForm.setAttribute("name", "form.selectuser");
+                // token = responseJson.token;
+                vars.hashid = responseJson.hashid;
+                // $bc.setSource("authentication.token", token);
+                $bc.setSource("authentication.hashid", vars.hashid);
+
+                // ------------------new changes ----------------
+
+                document.getElementById("selectTheEmail").style.right = "15%"
+                //  document.getElementById("pleaseLoginTitle").style.right = "102%"
+
+
+                firstUSernameInputValue = document.getElementById("firstUSernameInput").value
+                firstUSernameLegend = document.getElementById("firstUSernameLegend")
+                usernameBox = document.createElement("div")
+                usernameBox.setAttribute("id", "usernameBoxID")
+                usernameSpan = document.createElement("span")
+                usernameBox.appendChild(usernameSpan)
+                usernameSpan.innerHTML = firstUSernameInputValue
+                firstUSernameLegend.appendChild(usernameBox)
+                usernameBox.classList.add("usernameBox")
+                usernameBox.innerHTML += `
+                                    <div class="userBoxLeftSide">
+                                    <svg width="6" height="12" viewBox="0 0 6 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.32539 0.953389C5.53505 1.1331 5.55933 1.44875 5.37962 1.65841L1.65853 5.99968L5.37962 10.341C5.55933 10.5506 5.53505 10.8663 5.32539 11.046C5.11572 11.2257 4.80007 11.2014 4.62036 10.9917L0.620363 6.32508C0.459867 6.13783 0.459867 5.86153 0.620363 5.67429L4.62036 1.00762C4.80007 0.797958 5.11572 0.773678 5.32539 0.953389Z" fill="#1C274C"/>
+                                    </svg>
+                                    </div>
+                                    `
+                usernameBox.setAttribute("onclick", "turnbackUserForEmailNo()")
+                // comment now
+                // document.getElementById("firstUsernameContainer").style.left = "-120%"
+                setTimeout(() => {
+                    usernameBox.style.left = "-17%"
+                    // commnet now
+                    // document.getElementById("captchaContainerBox").style.height = "0"
+                }, 100);
+
+                if (document.getElementById("captchaChild")) {
+                    document.getElementById("captchaChild").style.right = "105%"
+                }
+
+                const mailsSelectBox = document.createElement("div")
+                const mailsSelecContainer = document.createElement("div")
+                mailsSelecContainer.appendChild(mailsSelectBox)
+                vars.loginForm.lastChild.before(mailsSelecContainer);
+                mailsSelectBox.setAttribute("id", "mailsSelectBoxID")
+                mailsSelecContainer.classList.add("mailsSelecContainerClass")
+                setTimeout(() => {
+                    mailsSelectBox.style.left = "0%"
+                }, 100);
+
+                users.forEach((element, index, array) => {
+                    const emailListLabel = document.createElement("label");
+                    emailListLabel.classList.add("email-item");
+
+                    const emailListRadio = document.createElement("input");
+                    emailListRadio.setAttribute("type", "radio");
+                    emailListRadio.setAttribute("name", "userid");
+                    emailListRadio.setAttribute("value", `${users[index].userid}`);
+                    if (index == 0) {
+                        emailListRadio.setAttribute("required", true);
+                    }
+                    const emailListSpan = document.createElement("span");
+                    emailListSpan.classList.add("email-label");
+                    emailListSpan.innerText = `${users[index].username}`;
+                    emailListLabel.appendChild(emailListRadio);
+                    emailListLabel.appendChild(emailListSpan);
+                    // loginForm.lastChild.before(emailListLabel);
+                    mailsSelectBox.appendChild(emailListLabel)
+                });
+                var offsetHeight = mailsSelectBox.offsetHeight;
+                mailsSelecContainer.style.height = offsetHeight + "px";
+            } else if (errorid == "8") {
+                // loginFormMessage.innerHTML = `<span class="error"> این ایمیل توسط کاربر دیگری ثبت گردیده است </span>`;
+                vars.loginFormMessage.innerHTML = `<span class="success"> این ایمیل برای نام کاربری دیگری ثبت گردیده‌است. ایمیل بازیابی نام کاربری برای شما ارسال شد. </span>`;
+                setTimeout(() => {
+                    vars.loginFormMessage.querySelector(".success").style.height = "50px";
+                }, 50);
+
+                setTimeout(function () {
+                    vars.loginFormMessage.querySelector(".success").style.height = "0"
+                }, 3000);
+                vars.loginForm.querySelector(".submitForm").textContent = "ارسال مجدد ایمیل";
+            } else if (errorid == "10") {
+                // invalid inputs
+                vars.loginFormMessage.innerHTML = `
+                        <div class="apiMessage2 redBox">
+                            <span class="success">
+                                <span>ورودی های ارسال شده نامعتبر است</span>
+                            </div>
+                        </div>`;
+                        document.querySelector('.fixOverlay').classList.add('show')
+                        vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="error"> ورودی های ارسال شده نامعتبر است </span>`;
+                // setTimeout(() => {
+                // loginFormMessage.querySelector(".error").style.height = "50px";
+                // }, 50);
+
+                // setTimeout(function () {
+                //     loginFormMessage.querySelector(".error").style.height = "0"
+                // }, 3000);
+            } else if (errorid == "17") {
+                // invalid captcha
+                vars.loginFormMessage.innerHTML = `
+                                <div class="apiMessage2 redBox">
+                                    <span class="success">
+                                        <span>کد امنیتی وارد شده نامعتبر است</span>
+                                    </div>
+                                </div>`;
+                                document.querySelector('.fixOverlay').classList.add('show')
+                                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="error"> کد امنیتی وارد شده نامعتبر است </span>`;
+                // کد امنیتی وارد شده نامعتبر است
+                // setTimeout(() => {
+                //     loginFormMessage.querySelector(".error").style.height = "50px";
+                // }, 50);
+
+                // setTimeout(function () {
+                //     loginFormMessage.querySelector(".error").style.height = "0"
+                // }, 3000);
+                //  document.getElementById("captchaCode").value = "";
+            } else if (errorid == "53") {
+                vars.loginFormMessage.innerHTML = `<span class="success"> ایمیل فعالسازی مجددا برای شما ارسال شد </span>`;
+                setTimeout(() => {
+                    vars.loginFormMessage.querySelector(".success").style.height = "50px";
+                }, 50);
+
+                setTimeout(function () {
+                    vars.loginFormMessage.querySelector(".success").style.height = "0"
+                }, 3000);
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                vars.loginForm.querySelector(".submitForm").textContent = "ارسال مجدد ایمیل";
+            } else if (errorid == "54") {
+                // token is expired
+                vars.loginFormMessage.innerHTML = `<span class="error"> useragent نامعتبر است </span>`;
+                setTimeout(() => {
+                    vars.loginFormMessage.querySelector(".error").style.height = "50px";
+                }, 50);
+                setTimeout(function () {
+                    vars.loginFormMessage.querySelector(".error").style.height = "0"
+                }, 3000);
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == "58") {
+                // token is expired
+                vars.loginFormMessage.innerHTML = `<span class="error"> کاربر غیرفعال است </span>`;
+                setTimeout(() => {
+                    vars.loginFormMessage.querySelector(".error").style.height = "50px";
+                }, 50);
+                setTimeout(function () {
+                    vars.loginFormMessage.querySelector(".error").style.height = "0"
+                }, 3000);
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            }
+
+            setTimeout(function () {
+                //         document.querySelector("[name='captchaid']").classList.remove("wrongCode")
+
+                vars.captchaErrorBox.innerHTML = "";
+                vars.loginFormMessage.innerHTML = "";
+                // document.querySelector("[name='email']").closest("fieldset").classList.remove("wrongCode")
+            }, 5000);
+        }
+    };
+
+    async function onProcessedLoginFn(args) {
+        const vars = mainfunc()
+        const response = args.response;
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+            console.log(errorid)
+
+            const errorMessageID = document.getElementById("errorMessageID")
+            if (errorid == '8') {
+                // taken email
+                errorMessageID.innerHTML = `<span class="error">این ایمیل توسط کاربر دیگری ثبت گردیده است</span>`;
+                document.querySelector("[name='email']").closest("fieldset").classList.add("wrongCode")
+            } else if (errorid == '10') {
+                // invalid inputs
+                vars.loginFormMessage.innerHTML = `<div class="apiMessage2 redBox">
+                    <span class="success">
+                            <span>ورودی ها نامعتبر است</span>
+                    </div>
+                  </div>`;
+                  document.querySelector('.fixOverlay').classList.add('show')
+                  vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="error">ورودی ها نامعتبر است</span>`;
+
+            } if (errorid == '3') {
+                console.log("This test")
+                // document.querySelector(".timerwarrning").innerHTML = `<div class="apiMessage2 redBox"><span class="error">
+                //     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                //         <path d="M6.75 9.75H8.25V11.25H6.75V9.75ZM6.75 3.75H8.25V8.25H6.75V3.75ZM7.4925 0C3.3525 0 0 3.36 0 7.5C0 11.64 3.3525 15 7.4925 15C11.64 15 15 11.64 15 7.5C15 3.36 11.64 0 7.4925 0ZM7.5 13.5C4.185 13.5 1.5 10.815 1.5 7.5C1.5 4.185 4.185 1.5 7.5 1.5C10.815 1.5 13.5 4.185 13.5 7.5C13.5 10.815 10.815 13.5 7.5 13.5Z" fill="#EE273A"/>
+                //     </svg>
+                //     از زمان اعتبار کلید قبلی ${responseJson.remain_time} ثانیه باقی مانده است</span></div>`;
+
+                // console.log(responseJson.remain_time)
+                // setTimeout(() => {
+
+                //     console.log("This Test" ,responseJson.remain_time)
+                // }, );
+                // remaintime - less than 60 seconds
+                // loginFormMessage.innerHTML = `<div class="apiMessage2 redBox"><span class="error">
+                //     <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                //         <path d="M6.75 9.75H8.25V11.25H6.75V9.75ZM6.75 3.75H8.25V8.25H6.75V3.75ZM7.4925 0C3.3525 0 0 3.36 0 7.5C0 11.64 3.3525 15 7.4925 15C11.64 15 15 11.64 15 7.5C15 3.36 11.64 0 7.4925 0ZM7.5 13.5C4.185 13.5 1.5 10.815 1.5 7.5C1.5 4.185 4.185 1.5 7.5 1.5C10.815 1.5 13.5 4.185 13.5 7.5C13.5 10.815 10.815 13.5 7.5 13.5Z" fill="#EE273A"/>
+                //     </svg>
+                //     از زمان اعتبار کلید قبلی ${responseJson.remain_time} ثانیه باقی مانده است</span></div>`;
+            }
+
+            else if (errorid == '11' || errorid == '55') {
+                // successful
+                $bc.setSource("db.status", true)
+                const rkey = responseJson.rkey;
+
+                vars.loginFormMessage.innerHTML = `                
+                <div class="apiMessage2 greenBox">
+                    <span class="success">
+
+                           ورود شما با موفقیت انجام شد.</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('GoFirstPage')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                  window.location.href ='/'
+                }, 5000);
+                // setTimeout(() => {
+                //     // loginBox.style.display = "none"
+                //     modal.style.display = "none"
+                // }, 5000);
+                // loginFormMessage.innerHTML = `<span class="success">با موفقیت وارد شدید</span>`;
+                $bc.setSource("user.rkey", rkey);
+            } else if (errorid == '12') {
+                // send activation email
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 greenBox">
+                    <span class="success">ایمیل فعالسازی ارسال شد</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+
+            } else if (errorid == '13') {
+                // incorrect Password
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 redBox">
+                    <span class="success">
+                            <span>رمز عبور اشتباه است</span>
+                    </div>
+                  </div>`;
+                  document.querySelector('.fixOverlay').classList.add('show')
+                  vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // errorMessageID.innerHTML = `<span class="error">رمز عبور اشتباه است</span>`;
+                document.querySelector("[type='password']").closest("fieldset").classList.add("wrongCode")
+            } else if (errorid == '14') {
+                // Password and the repetition are not match
+                errorMessageID.innerHTML = `<span class="error">رمز عبور و تکرار آن مطابقت ندارد</span>`;
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                }, 500);
+                document.querySelector("[type='password']").closest("fieldset").classList.add("wrongCode")
+            } else if (errorid == '16') {
+                // invalid code
+                document.querySelector("[name='code']").closest("fieldset").classList.add("wrongCode")
+                errorMessageID.innerHTML = `<span class="error">کد ارسال شده اشتباه است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '18') {
+                // taken username
+                document.querySelector("[name='username']").closest("fieldset").classList.add("wrongCode")
+                errorMessageID.innerHTML = `<span class="error">این نام کاربری توسط کاربر دیگری انتخاب گردیده است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '19') {
+                // invalid email format
+                errorMessageID.innerHTML = `<span class="error">فرمت ایمیل وارد شده صحیح نیست</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+
+                document.querySelector("[name='email']").closest("fieldset").classList.add("wrongCode")
+            }
+
+            setTimeout(function () {
+                
+                errorMessageID.innerHTML = ""
+                vars.loginFormMessage.innerHTML = "";
+                document.querySelector("[name='code']").closest("fieldset").classList.remove("wrongCode")
+                // document.querySelector("[name='email']").closest("fieldset").classList.remove("wrongCode")
+                // document.querySelectorAll("[type='password']").closest("fieldset").classList.remove("wrongCode")
+                // document.querySelector("[name='email']").closest("fieldset").classList.remove("wrongCode")
+                // document.querySelector("[name='username']").closest("fieldset").classList.add("wrongCode")
+            }, 5000);
+        }
+    };
+
+    async function onProcessedSelectUserFn(args) {
+        const response = args.response;
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+
+            if (errorid == '10') {
+                // invalid inputs
+                vars.loginFormMessage.innerHTML = `<span class="error">ورودی ها نامعتبر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '15') {
+                // invalid username
+                vars.loginFormMessage.innerHTML = `<span class="error">کاربر نامعتبر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '2') {
+                // ok
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 greenBox">
+                    <span class="success">
+                        
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.75 9.75H8.25V11.25H6.75V9.75ZM6.75 3.75H8.25V8.25H6.75V3.75ZM7.4925 0C3.3525 0 0 3.36 0 7.5C0 11.64 3.3525 15 7.4925 15C11.64 15 15 11.64 15 7.5C15 3.36 11.64 0 7.4925 0ZM7.5 13.5C4.185 13.5 1.5 10.815 1.5 7.5C1.5 4.185 4.185 1.5 7.5 1.5C10.815 1.5 13.5 4.185 13.5 7.5C13.5 10.815 10.815 13.5 7.5 13.5Z" fill="#00A693"/>
+                        </svg>
+                        کد احراز هویت از طریق پیامک ارسال شد</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                vars.loginForm.setAttribute("name", "form.login");
+                // token = responseJson.token;
+                vars.hashid = responseJson.hashid;
+                // $bc.setSource("authentication.token", token);
+                $bc.setSource("authentication.hashid", vars.hashid);
+                document.querySelector('.captchaBox').classList.add('goLeft')
+                const itemTempCopyForCode = vars.itemTempContainer.cloneNode(true);
+                itemTempCopyForCode.querySelector(".legendtype").innerHTML = "کد ارسالی";
+                // console.log("ssss")
+                // itemTempCopyForCode.querySelector(".itemIcon").innerHTML = `<i class="lni lni-lock"></i>`;
+                itemTempCopyForCode.querySelector(".itemInput").setAttribute("name", "code");
+                vars.loginForm.lastChild.before(itemTempCopyForCode);
+
+                const resendSMS = vars.loginForm.querySelector(".resendSMS");
+                resendSMS.innerHTML = "ارسال مجدد کد";
+
+                let seconds = responseJson.remain_time;
+                let countdown = setInterval(function () {
+                    seconds--;
+                    seconds = seconds.toLocaleString(undefined, {
+                        minimumIntegerDigits: 2
+                    })
+                    vars.loginForm.querySelector(".countdown").textContent = `00 : ${seconds}`;
+                    if (seconds < 1) {
+                        clearInterval(countdown);
+                        resendSMS.classList.remove("disabled");
+                        resendSMS.setAttribute("onclick", "resendSMS(this, 2)");
+                        vars.loginForm.querySelector(".countdown").textContent = "";
+                    }
+                }, 5000);
+            }
+
+            setTimeout(function () {
+                vars.loginFormMessage.innerHTML = "";
+            }, 5000);
+        }
+    };
+
+    function resendSMS(e, mode) {
+        vars = mainfunc()
+        vars.loginForm.querySelector("input[name='code']").closest(".item_wrapper").remove();
+        if (mode == 1) {
+            vars.loginForm.setAttribute("name", "form.authentication");
+        } else if (mode == 2) {
+            vars.loginForm.setAttribute("name", "form.selectuser");
+        }
+        // loginForm.submit();
+        vars.loginForm.querySelector(".submitForm").click();
+        vars.loginForm.querySelector(".resendSMS").removeAttribute("onclick");
+        vars.loginForm.querySelector(".resendSMS").classList.add("disabled");
+    };
+
+    function refreshCaptcha(e) {
+        $bc.setSource("run.token", true);
+    };
+
+    function onRenderedCookie() {
+        console.log('cook',args.response);
+        // const vars = mainfunc()
+
+        // vars.loginForm.querySelector(".data-interToPanel").innerHTML = ""
+        // const enterToPanel = document.createElement("a")
+        // const enterToShop = document.createElement("a")
+        // enterToPanel.classList.add("schemaBtn")
+        // enterToPanel.classList.add("panelLog")
+        // enterToPanel.textContent = `ورود به پنل کاربری`;
+        // enterToShop.textContent = "ورود به فروشگاه"
+        // enterToShop.setAttribute("href", "/features")
+        // enterToShop.classList.add("shop-btn")
+        // enterToShop.classList.add("schemaBtn")
+        // enterToPanel.classList.add('animate__animated', 'animate__headShake')
+        // enterToPanel.setAttribute("href", "/panel")
+        // vars.loginForm.querySelector(".data-interToPanel").classList.add("interToPanel-wrapper")
+        // // loginForm.querySelector(".data-interToPanel").appendChild(enterToPanel)
+        // // loginForm.querySelector(".data-interToPanel").appendChild(enterToShop)
+        $bc.setSource("db.loadHeader", true)
+        // window.location.href = '/panel';
+    };
+
+    function forgetPassword(e) {
+        const vars = mainfunc()
+
+        vars.loginForm.querySelector("input[name='code']").closest(".item_wrapper").remove();
+        vars.loginForm.querySelector("input[name='captchaid']")?.closest(".item_wrapper").remove();
+        vars.loginForm.setAttribute("name", "form.forgetpassword");
+        // loginForm.submit();
+        vars.loginForm.querySelector(".submitForm").click();
+        vars.loginForm.querySelector(".forgetPassword").remove();
+    };
+
+    async function onProcessedForgetPasswordFn(args) {
+        const vars = mainfunc()
+
+        const response = args.response;
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+              document.querySelector('input.logInp.itemInput').classList.add('goLeft')
+              document.querySelector('.login-subtext').classList.add('goLeft')
+              document.querySelector('.loginBox').classList.add('gapInner')
+
+              document.querySelector('.login-bold-title').innerHTML = 'فراموشی رمز عبور'
+            if (errorid == '1') {
+                // token is expired
+                // loginFormMessage
+                vars.loginFormMessage.innerHTML = `<span class="error">توکن ارسال شده نامعتبر است</span>`;
+            } else if (errorid == '10') {
+                // invalid inputs
+                vars.loginFormMessage.innerHTML = `<div class="apiMessage2 redBox">
+                    <span class="success">
+                            <span>ورودی های ارسال شده نامعتبر است</span>
+                    </div>
+                  </div>`;
+                  document.querySelector('.fixOverlay').classList.add('show')
+                  vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="error">ورودی های ارسال شده نامعتبر است</span>`;
+                // loginFormMessage.innerHTML = `<span class="error">ورودی های ارسال شده نامعتبر است</span>`;
+            } else if (errorid == '15') {
+                // invalid username
+                vars.loginFormMessage.innerHTML = `<span class="error">کاربر نامعتبر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '35') {
+                // username format is mobile
+                vars.loginFormMessage.innerHTML = `<span class="error">استفاده از فراموشی رمز عبور فقط برای نام کاربری یا ایمیل امکان پذیر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '36') {
+                // ok with multi connection way
+                const users = responseJson.data;
+                vars.loginForm.setAttribute("name", "form.selectchangepassmethod");
+                userid = responseJson.userid;
+                $bc.setSource("forgetpassword.userid", userid);
+
+                const emailListBox = document.createElement("div");
+                emailListBox.classList.add("input-title");
+                emailListBox.innerText = "نحوه ی تغییر رمز عبور";
+                vars.loginForm.lastChild.before(emailListBox);
+
+                const inputHidden = document.createElement("input");
+                inputHidden.setAttribute("type", "hidden");
+                inputHidden.setAttribute("name", "user");
+                vars.loginForm.lastChild.before(inputHidden);
+
+                users.forEach((element, index, array) => {
+                    const emailListLabel = document.createElement("label");
+                    emailListLabel.classList.add("email-item");
+
+                    const emailListRadio = document.createElement("input");
+                    emailListRadio.setAttribute("type", "radio");
+                    emailListRadio.setAttribute("name", "ismobile");
+                    emailListRadio.setAttribute("value", `${users[index].ismobile}`);
+                    if (index == 0) {
+                        emailListRadio.setAttribute("required", true);
+                        emailListRadio.classList.add('active')
+                    }
+             
+                    emailListRadio.addEventListener('click',(e)=>{
+                        selectUserForForgetPass(e)
+                    })
+                    const emailListSpan = document.createElement("span");
+                    emailListSpan.classList.add("email-label");
+                    if (element.ismobile) {
+                        emailListRadio.setAttribute("data-user", `${users[index].mobile}`);
+                        emailListSpan.innerText = `${users[index].mobile}`;
+                    } else {
+                        emailListRadio.setAttribute("data-user", `${users[index].email}`);
+                        emailListSpan.innerText = `${users[index].email}`;
+                    }
+
+                    emailListLabel.appendChild(emailListRadio);
+                    emailListLabel.appendChild(emailListSpan);
+
+                    vars.loginForm.lastChild.before(emailListLabel);
+                });
+            } else if (errorid == '42') {
+                // ok with one connection way
+                // The password change link sent to email
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 greenBox">
+                    <span class="success">                                                                                              
+                        لینک تغییر رمز عبور از طریق ایمیل ارسال شد</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="success">لینک تغییر رمز عبور از طریق ایمیل ارسال شد</span>`;
+            } else if (errorid == '43') {
+                // error in sending email
+                vars.loginFormMessage.innerHTML = `<span class="error">خطا در ارسال ایمیل</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            }
+
+            setTimeout(function () {
+                vars.loginFormMessage.innerHTML = "";
+            }, 5000);
+        }
+    };
+
+    function selectUserForForgetPass(e) {
+        const vars = mainfunc()
+        vars.loginForm.querySelector("input[name='user']").value = e.currentTarget.getAttribute("data-user");
+        document.querySelectorAll('input[type="radio"]').forEach(i=>{
+        i.classList.remove('active')
+        })
+        e.currentTarget.classList.add('active')
+        console.log(e.currentTarget);
+        
+    };
+
+    async function onProcessedSelectChangePassMethodFn(args) {
+        const vars = mainfunc()
+        const response = args.response;
+
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            const errorid = responseJson.errorid;
+            console.log(">>>>>>>>>>", responseJson);
+            console.log(">>>>>>>>>>", errorid);
+            if (errorid == '1') {
+                // token is expired
+                
+                vars.loginFormMessage.innerHTML = `<span class="error">توکن ارسال شده نامعتبر است</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '10') {
+                // invalid inputs
+                vars.loginFormMessage.innerHTML = `<div class="apiMessage2 redBox">
+                    <span class="success">
+                            <span>ورودی های ارسال شده نامعتبر است</span>
+                    </div>
+                  </div>`;
+                  document.querySelector('.fixOverlay').classList.add('show')
+                  vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="error">ورودی های ارسال شده نامعتبر است</span>`;
+            } else if (errorid == '40') {
+                // invalid user
+                vars.loginFormMessage.innerHTML = `<span class="error">ایمیل یا موبایل انتخاب شده متعلق به شما نیست</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '41') {
+                // The password change link sent to mobile
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 greenBox">
+                    <span class="success">
+                        لینک تغییر رمز عبور از طریق پیامک ارسال شد</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="success">لینک تغییر رمز عبور از طریق پیامک ارسال شد</span>`;
+            } else if (errorid == '42') {
+                // The password change link sent to email
+                vars.loginFormMessage.innerHTML = `
+                <div class="apiMessage2 greenBox">
+                    <span class="success">
+                        لینک تغییر رمز عبور از طریق ایمیل ارسال شد</span>
+                </div>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+                // loginFormMessage.innerHTML = `<span class="success">لینک تغییر رمز عبور از طریق ایمیل ارسال شد</span>`;
+            } else if (errorid == '43') {
+                // error in sending email
+                vars.loginFormMessage.innerHTML = `<span class="error">خطا در ارسال ایمیل</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            } else if (errorid == '44') {
+                // error in sending sms
+                vars.loginFormMessage.innerHTML = `<span class="error">خطا در ارسال پیامک</span>`;
+                document.querySelector('.fixOverlay').classList.add('show')
+                vars.loginFormMessage.classList.add('show')
+                setTimeout(() => {
+                    vars.loginFormMessage.classList.remove('show')
+                    document.querySelector('.fixOverlay').classList.remove('show')
+                }, 5000);
+            }
+
+            setTimeout(function () {
+                vars.loginFormMessage.innerHTML = "";
+            }, 5000);
+        }
+    };
+
+
+    function getToken(el, event) {
+        $bc.setSource("db.runLogin", true);
+    }
+    </script>
+</body>
+</html>

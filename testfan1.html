@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html class="abt-h no-touch">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <basis core="print" datamembername="cms.seo">
+        <face>
+            <title>@title</title>
+            <meta name="description" content="@description" />
+        </face>
+    </basis>
+    <basis core="call" file="analytics.inc"></basis>
+    <!-- <link rel="stylesheet" href="style.css"  /> -->
+    <!-- <link rel="stylesheet" href="/css/catalog-en.css"> -->
+    <link rel="stylesheet" href="/assest/css/en/catalog-en.css">
+    <!-- <link rel="stylesheet" href="/assest/css/en/style.css"> -->
+    <link rel="stylesheet" href="/assest/css/en/style-mobile.css"> 
+
+
+    <script type='text/javascript' src='/ai-uncode.min.js'></script>
+    <script type='text/javascript'>
+
+        var SiteParameters = {
+            "days": "days",
+            "hours": "hours",
+            "minutes": "minutes",
+            "seconds": "seconds",
+            "constant_scroll": "on",
+            "scroll_speed": "2",
+            "parallax_factor": "0.25",
+            "loading": "Loading\u2026",
+            "slide_name": "slide",
+            "slide_footer": "footer",
+            "ajax_url": "",
+            "nonce_adaptive_images": "0b6b4a48d7",
+            "enable_debug": "",
+            "block_mobile_videos": "",
+            "is_frontend_editor": "",
+            "mobile_parallax_allowed": "",
+            "wireframes_plugin_active": ""
+        }; /* ]]> */
+    </script>
+    <script type='text/javascript' src='/init.min.js'></script>
+
+    <noscript>
+        <style>
+            .wpb_animate_when_almost_visible {
+                opacity: 1
+            }
+
+        </style>
+    </noscript>
+    <script>
+        /*! loadCSS rel=preload polyfill. [c]2017 Filament Group, Inc. MIT License */
+        (function (w) {
+            "use strict";
+            if (!w.loadCSS) {
+                w.loadCSS = function () { }
+            }
+            var rp = loadCSS.relpreload = {};
+            rp.support = (function () {
+                var ret;
+                try {
+                    ret = w.document.createElement("link").relList.supports("preload")
+                } catch (e) {
+                    ret = !1
+                }
+                return function () {
+                    return ret
+                }
+            })();
+            rp.bindMediaToggle = function (link) {
+                var finalMedia = link.media || "all";
+
+                function enableStylesheet() {
+                    link.media = finalMedia
+                }
+                if (link.addEventListener) {
+                    link.addEventListener("load", enableStylesheet)
+                } else if (link.attachEvent) {
+                    link.attachEvent("onload", enableStylesheet)
+                }
+                setTimeout(function () {
+                    link.rel = "stylesheet";
+                    link.media = "only x"
+                });
+                setTimeout(enableStylesheet, 3000)
+            };
+            rp.poly = function () {
+                if (rp.support()) {
+                    return
+                }
+                var links = w.document.getElementsByTagName("link");
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute(
+                        "data-loadcss")) {
+                        link.setAttribute("data-loadcss", !0);
+                        rp.bindMediaToggle(link)
+                    }
+                }
+            };
+            if (!rp.support()) {
+                rp.poly();
+                var run = w.setInterval(rp.poly, 500);
+                if (w.addEventListener) {
+                    w.addEventListener("load", function () {
+                        rp.poly();
+                        w.clearInterval(run)
+                    })
+                } else if (w.attachEvent) {
+                    w.attachEvent("onload", function () {
+                        rp.poly();
+                        w.clearInterval(run)
+                    })
+                }
+            }
+            if (typeof exports !== "undefined") {
+                exports.loadCSS = loadCSS
+            } else {
+                w.loadCSS = loadCSS
+            }
+        }(typeof global !== "undefined" ? global : this))
+    </script>
+    <!-- <link rel="stylesheet" href="css/sana-style.css"> -->
+    <!-- <link rel="stylesheet" href="css/slick.css"> -->
+    <!-- <link rel="stylesheet" href="css/slick-theme.css"> -->
+<style>
+    header{
+        background-color: transparent !important;
+    }
+</style>
+</head>
+
+
+<basis core="dbsource" source="basiscore" mid="1" lid="2" name="text" usedforid="1418269">
+    <member name="about" type="view" />
+    <member type="view" name="data1-about" request="rdfa" />
+
+</basis>
+
+
+
+
+
+
+<basis core="dbsource" source="basiscore" mid="1" lid="2" name="title" usedforid="1418270">
+    <member name="showroom" type="view" />
+</basis>
+<basis core="dbsource" source="basiscore" mid="1" lid="2" name="title" usedforid="1418271">
+    <member name="daftar" type="view" />
+</basis>
+
+
+<basis core="dbsource" source="basiscore" mid="1" lid="2" name="title" usedforid="1418272">
+    <member name="anbar" type="view" />
+</basis>
+
+
+
+<basis core="dbsource" source="media" name="image" lid="2" usedforid="1418270" sourcemid="1">
+    <member name="showroom" type="list" format="4" size="960x640" />
+</basis>
+
+<basis core="dbsource" source="media" name="image" lid="2" usedforid="1418271" sourcemid="article">
+    <member name="daftar" type="list" format="4" size="960x640" />
+
+</basis>
+
+<basis core="dbsource" source="media" name="image" lid="2" usedforid="1418272" sourcemid="article">
+    <member name="anbar" type="list" format="4" size="960x640" />
+</basis>
+
+<body class="about-us-page page-template-default page abt-h" data-border="0" data-additional-padding="0">
+
+    <ul class="onepage-pagination">
+        <!-- <li><a class="one-dot-link is-selected" data-index="0" href="#About-Us">
+                <span class="cd-dot-cont"><span class="cd-dot"></span></span>
+                <span class="cd-label style-accent-bg border-accent-color">About Us</span>
+            </a></li> -->
+        <li><a class="one-dot-link" data-index="1" href="#Showroom"><span class="cd-dot-cont"><span
+                        class="cd-dot"></span></span><span
+                    class="cd-label style-accent-bg border-accent-color">Showroom</span></a></li>
+
+        <li><a class="one-dot-link" data-index="2" href="#Office"><span class="cd-dot-cont"><span
+                        class="cd-dot"></span></span><span
+                    class="cd-label style-accent-bg border-accent-color">Office</span></a></li>
+        <li><a class="one-dot-link" data-index="3" href="#Warehouse"><span class="cd-dot-cont"><span
+                        class="cd-dot"></span></span><span
+                    class="cd-label style-accent-bg border-accent-color">Warehouse</span></a></li>
+        <li><a class="one-dot-link" data-index="4" href="#contact"><span class="cd-dot-cont"><span
+                        class="cd-dot"></span></span><span
+                    class="cd-label style-accent-bg border-accent-color">Contact</span></a></li>
+    </ul>
+
+    <div class="body-borders" data-border="0">
+        <div class="top-border body-border-shadow"></div>
+        <div class="right-border body-border-shadow"></div>
+        <div class="bottom-border body-border-shadow"></div>
+        <div class="left-border body-border-shadow"></div>
+        <div class="top-border style-light-bg"></div>
+        <div class="right-border style-light-bg"></div>
+        <div class="bottom-border style-light-bg"></div>
+        <div class="left-border style-light-bg"></div>
+    </div>
+    <div class="box-wrapper">
+        <div class="box-container">
+            <script type="text/javascript">
+                UNCODE.initBox();
+            </script>
+            <a href="/en/default.bc">
+                <div class="menu-wrapper menu-sticky">
+                    <div id="masthead"
+                        class="navbar menu-primary menu-light submenu-light style-light-original menu-with-logo">
+                        <div class="menu-container style-color-xsdn-bg menu-no-borders">
+                            <div class="row-menu row-offcanvas">
+                                <div class="row-menu-inner row-brand menu-horizontal-inner">
+                                    <div id="logo-container-mobile" class="col-lg-0 logo-container middle">
+                                        <div id="main-logo" class="navbar-header style-light">
+                                            <a href="/" class="navbar-brand" data-minheight="20">
+                                                <div class="logo-image main-logo logo-skinnable" data-maxheight="1"
+                                                    style="height: 1px;"><img src="/logo.png" alt="logo" width="1"
+                                                        height="1" class="img-responsive adaptive-async"
+                                                        data-uniqueid="20-158427" data-guid="logo.png"
+                                                        data-path="2018/12/logo.png" data-width="1" data-height="1"
+                                                        data-singlew="null" data-singleh="null" data-crop=""
+                                                        data-fixed="height" /></div>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <div class="main-header">
+
+                <basis core="call" file="en/header1.inc" />
+                <div id="scrollarrow" @click="scrolldown">
+                    <span></span>
+                </div>
+        
+                <div id="page-title-holder">
+                    <span class=""></span> <span class="page-title"><span>Fantonicollection</span></span> <span
+                        class="line"></span>
+                </div>
+        
+            </div>
+            <script type="text/javascript">
+                UNCODE.fixMenuHeight();
+            </script>
+            <div class="main-wrapper">
+                <div class="main-container">
+                    <div class="page-wrapper">
+                        <div class="sections-container">
+                            <script type="text/javascript">
+                                UNCODE.initHeader();
+                            </script>
+                            <article id="post-10"
+                                class="page-body style-color-prif-bg post-10 page type-page status-publish has-post-thumbnail hentry">
+                                <div class="post-wrapper">
+                                    <div class="post-body">
+
+                                        <div class="post-content un-no-sidebar-layout">
+                                            <a href="/en/default.bc">
+                                                <div class="uncont">
+                                                    <!-- <div class="vc_row ap-logo row-internal row-container">
+                                                        <div class="row col-no-gutter row-child">
+                                                               <div class="wpb_row row-inner">
+                                                                <div
+                                                                    class="wpb_column pos-middle pos-right align_rightcolumn_parent col-lg-12 no-internal-gutter">
+                                                                    <div class="uncol style-light">
+                                                                        <div class="uncoltable">
+                                                                            <div class="uncell no-block-padding">
+                                                                                <div class="uncont">
+                                                                                    <div
+                                                                                        class="vc_custom_heading_wrap ap-logo-title">
+                                                                                        <div
+                                                                                            class="heading-text el-text">
+                                                                                            <h3><a href="/"><img
+                                                                                                        src="images/logo-header.png"
+                                                                                                        alt="" /></a>
+                                                                                            </h3>
+                                                                                        </div>
+                                                                                        <div class="clear"></div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+
+
+                                                </div>
+                                            </a>
+                                            <div data-parent="true"
+                                                class="vc_row ap-product main about-scroll-res style-color-white-bg row-container onepage-section"
+                                                data-label="About Us" data-name="About Us">
+                                                <div
+                                                    class="row aboutC  unequal col-half-gutter quad-top-padding quad-bottom-padding quad-h-padding full-width row-parent">
+                                                    <div class="wpb_row row-inner drtl blck-row">
+                                                        <div
+                                                            class="wpb_column pos-middle pos-right align_right column_parent col-lg-12 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div class="uncell no-block-padding" itemscope
+                                                                        itemtype="[##text.data1-about.link##]">
+                                                                        <div class="uncont">
+                                                                            <basis core="print"
+                                                                                datamembername="text.about">
+                                                                                <face filter="typeid=150">
+                                                                                    <blockquote class="mar-top-res">
+                                                                                        <span
+                                                                                            class="font-en-title black-color">@answer</span>
+                                                                                    </blockquote>
+                                                                                </face>
+                                                                            </basis>
+
+
+                                                                            <basis core="print"
+                                                                                datamembername="text.about">
+                                                                                <face filter="typeid=129">
+
+
+                                                                                    <div itemprop="@vocabulary"
+                                                                                        class="abtext column-count">
+                                                                                        @answer
+                                                                                    </div>
+                                                                                </face>
+                                                                            </basis>
+
+
+
+                                                                            <div class="uncode_text_column ap-subtitle">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <script id="script-827584" data-row="script-827584"
+                                                            type="text/javascript" class="vc_controls">
+                                                                UNCODE.initRow(document.getElementById("script-827584"));
+                                                            </script>
+                                                    </div>
+                                                </div>
+                                                <img class="image-about-text" src="/images/about-bg.png" alt="">
+                                            </div>
+                                            <div data-parent="true"
+                                                class="vc_row ap-product rtl row-container onepage-section border-bottomg"
+                                                data-label="Showroom" data-name="Showroom">
+                                                <div
+                                                    class="row unequal col-no-gutter no-top-padding no-bottom-padding no-h-padding full-width row-parent">
+                                                    <div class="wpb_row row-inner flex-res blck-row Showroom-container-m">
+                                                        <div
+                                                            class="Showroom-m1 wpb_column pos-bottom pos-right align_right column_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div class="uncell  ">
+                                                                        <div class=" background-element">
+                                                                            <div class="">
+                                                                                <div
+                                                                                    class="background-inner adaptive-async">
+
+                                                                                    <div class="showroom-slider">
+                                                                                        <basis core="print"
+                                                                                            datamembername="image.showroom">
+                                                                                            <face>
+                                                                                                <div>
+
+                                                                                                    <img src="/@00960x00640mda"
+                                                                                                        alt="@description">
+
+                                                                                                </div>
+                                                                                            </face>
+                                                                                        </basis>
+                                                                                    </div>
+
+
+
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="uncont">
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="Showroom-m2 wpb_column height-auto-res pos-middle pos-right align_right column_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div
+                                                                        class="uncell quad-block-padding style-color-prif-bg">
+                                                                        <div class="uncont text-title-box">
+
+                                                                            <div class="uncode_text_column">
+                                                                                </p>
+                                                                                <blockquote class=" uncol style-light">
+
+                                                                                    <basis core="print"
+                                                                                        datamembername="title.showroom">
+                                                                                        <face filter="typeid=150">
+
+
+                                                                                            <span
+                                                                                                class="font-en-title colortest">@answer
+                                                                                            </span>
+
+
+
+                                                                                        </face>
+                                                                                    </basis>
+                                                                                </blockquote>
+                                                                                <p>
+                                                                            </div>
+                                                                            <span class="btn-container"
+                                                                                style="display: none !important;"><a
+                                                                                    href="#Warehouse"
+                                                                                    class="custom-link btn btn-sm border-width-0 btn-color-prif btn-square btn-outline btn-icon-left">
+                                                                                </a></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-parent="true"
+                                                class="vc_row ap-product row-container onepage-section border-bottomg"
+                                                data-label="Office" data-name="Office">
+                                                <div
+                                                    class="row unequal col-no-gutter no-top-padding no-bottom-padding no-h-padding full-width row-parent">
+                                                    <div class="wpb_row row-inner flex-res-rev blck-row Office-container-m">
+
+                                                        <div
+                                                            class="Office-m1 wpb_column height-auto-res pos-middle pos-right align_right  column_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div
+                                                                        class="uncell quad-block-padding style-color-prif-bg">
+                                                                        <div class="uncont text-title-box">
+
+                                                                            <div class="uncode_text_column">
+                                                                                </p>
+                                                                                <blockquote class=" uncol style-light officblaq">
+                                                                                    <basis core="print"
+                                                                                        datamembername="title.daftar">
+                                                                                        <face filter="typeid=150">
+                                                                                            <span
+                                                                                                class="font-en-title colortest">@answer
+                                                                                            </span>
+                                                                                        </face>
+                                                                                    </basis>
+
+
+
+                                                                                </blockquote>
+                                                                                <p>
+                                                                            </div>
+                                                                            <span class="btn-container"
+                                                                                style="display: none !important;"><a
+                                                                                    href="#Showroom"
+                                                                                    class="custom-link btn btn-sm border-width-0 btn-color-prif btn-square btn-outline btn-icon-left">
+                                                                                </a></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="Office-m2 wpb_column pos-bottom pos-right align_rightcolumn_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div class="uncell  ">
+                                                                        <div class=" background-element">
+                                                                            <div class="">
+                                                                                <div
+                                                                                    class="background-inner adaptive-async">
+
+                                                                                    <div class="daftar-slider">
+                                                                                        <basis core="print"
+                                                                                            datamembername="image.daftar">
+                                                                                            <face>
+                                                                                                <div>
+
+                                                                                                    <img src="/@00960x00640mda"
+                                                                                                        alt="@description">
+
+                                                                                                </div>
+                                                                                            </face>
+                                                                                        </basis>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div data-parent="true"
+                                                class="vc_row ap-product rtl row-container onepage-section"
+                                                data-label="Warehouse" data-name="Warehouse">
+                                                <div
+                                                    class="row unequal col-no-gutter no-top-padding no-bottom-padding no-h-padding full-width row-parent">
+                                                    <div class="wpb_row row-inner flex-res blck-row Warehouse-container-m">
+                                                        <div
+                                                            class="Warehouse-m1 wpb_column pos-bottom pos-right align_right column_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div class="uncell  ">
+                                                                        <div class=" background-element">
+                                                                            <div class="">
+                                                                                <div
+                                                                                    class="background-inner adaptive-async">
+
+                                                                                    <div class="anbar-slider">
+
+
+                                                                                        <basis core="print"
+                                                                                            datamembername="image.anbar">
+                                                                                            <face>
+                                                                                                <div>
+
+                                                                                                    <img src="/@00960x00640mda"
+                                                                                                        alt="@description">
+
+                                                                                                </div>
+                                                                                            </face>
+                                                                                        </basis>
+
+
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="Warehouse-m2 wpb_column height-auto-res pos-middle pos-right align_right column_parent col-lg-6 ap-column no-internal-gutter">
+                                                            <div class="uncol style-light">
+                                                                <div class="uncoltable">
+                                                                    <div
+                                                                        class="uncell quad-block-padding style-color-prif-bg">
+                                                                        <div class="uncont text-title-box">
+
+                                                                            <div class="uncode_text_column">
+
+                                                                                <blockquote class=" uncol style-light">
+                                                                                    <basis core="print"
+                                                                                        datamembername="title.anbar">
+                                                                                        <face filter="typeid=150">
+                                                                                            <span
+                                                                                                class="font-en-title colortest">@answer</span>
+
+
+
+
+                                                                                        </face>
+                                                                                    </basis>
+
+
+                                                                                </blockquote>
+
+
+                                                                            </div>
+
+                                                                            <span class="btn-container"
+                                                                                style="display: none !important;"><a
+                                                                                    href="#Catalogues"
+                                                                                    class="custom-link btn btn-sm border-width-0 btn-color-prif btn-square btn-outline btn-icon-left">
+                                                                                </a></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <basis core="dbsource" source="basiscore" mid="1" lid="1" name="text"
+                                                usedforid="1418355">
+                                                <member name="footer" type="view" />
+                                                <member type="view" name="data1-footer" request="rdfa" />
+
+                                            </basis>
+
+
+                                            <basis core="dbsource" source="media" name="footer" lid="1"
+                                                usedforid="1418355" sourcemid="article">
+                                                <member name="gallery" type="list" format="4" />
+                                            </basis>
+                                            <!-- <div data-parent="true"
+                                                class="footer-def vc_row ap-contact style-color-prif-bg row-container onepage-section"
+                                                data-label="Contact" data-name="contact"> -->
+                                                <basis core="call" file="en/footer.inc"></basis>
+
+                                            <!-- </div> -->
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function opentab(evt, tabName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+            console.log("This is Test sss");
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+
+    <script src="/63a47d86c029faa8967e95d034faf137.js" data-minify="1"></script>
+    <script src="/assest/js/vendor0030.js"></script>
+    <script src="/assest/js/app073e.js"></script>
+
+    <script type="text/javascript" src="/js/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+
+
+            var $slider = $('.showroom-slider');
+
+            if ($slider.length) {
+                var currentSlide;
+                var slidesCount;
+                var sliderCounter = document.createElement('div');
+                sliderCounter.classList.add('slider__counter');
+
+                var updateSliderCounter = function (slick, currentIndex) {
+                    currentSlide = slick.slickCurrentSlide() + 1;
+                    slidesCount = slick.slideCount;
+                    $(sliderCounter).text(currentSlide + '/' + slidesCount)
+                };
+
+                $slider.on('init', function (event, slick) {
+                    $slider.append(sliderCounter);
+                    updateSliderCounter(slick);
+                });
+
+                $slider.on('afterChange', function (event, slick, currentSlide) {
+                    updateSliderCounter(slick, currentSlide);
+                });
+
+                $slider.slick();
+            }
+
+
+
+
+
+
+        });
+        $(document).ready(function () {
+            var $slider = $('.daftar-slider');
+            if ($slider.length) {
+                var currentSlide;
+                var slidesCount;
+                var sliderCounter = document.createElement('div');
+                sliderCounter.classList.add('slider__counter');
+
+                var updateSliderCounter = function (slick, currentIndex) {
+                    currentSlide = slick.slickCurrentSlide() + 1;
+                    slidesCount = slick.slideCount;
+                    $(sliderCounter).text(currentSlide + '/' + slidesCount)
+                };
+
+                $slider.on('init', function (event, slick) {
+                    $slider.append(sliderCounter);
+                    updateSliderCounter(slick);
+                });
+
+                $slider.on('afterChange', function (event, slick, currentSlide) {
+                    updateSliderCounter(slick, currentSlide);
+                });
+
+                $slider.slick();
+            }
+        });
+        $(document).ready(function () {
+
+
+            var $slider = $('.anbar-slider');
+
+            if ($slider.length) {
+                var currentSlide;
+                var slidesCount;
+                var sliderCounter = document.createElement('div');
+                sliderCounter.classList.add('slider__counter');
+
+                var updateSliderCounter = function (slick, currentIndex) {
+                    currentSlide = slick.slickCurrentSlide() + 1;
+                    slidesCount = slick.slideCount;
+                    $(sliderCounter).text(currentSlide + '/' + slidesCount)
+                };
+
+                $slider.on('init', function (event, slick) {
+                    $slider.append(sliderCounter);
+                    updateSliderCounter(slick);
+                });
+
+                $slider.on('afterChange', function (event, slick, currentSlide) {
+                    updateSliderCounter(slick, currentSlide);
+                });
+
+                $slider.slick();
+            }
+
+        });
+    </script>
+
+
+</body>
+
+</html>
