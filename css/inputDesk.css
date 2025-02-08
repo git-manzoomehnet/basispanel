@@ -185,16 +185,56 @@ a {
   line-height: 24px;
 }
 
-.Home-BasisPanel .Bg-gray-sec{
-    background-image: url('../images/Clip\ path\ group\ \(1\).png');
+.Home-BasisPanel .Bg-gray-sec,
+.ReleaseNote-Show .Bg-gray-sec,
+.CrmServices .Bg-gray-sec {
+    background-image: url('../../images/bg-light-v3.png');
+    /* background-image: url('../../images/groupv3.png'); */
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
+    background-size: cover;
+}
+.Home-BasisPanel .Bg-gray-sec::after,
+.CrmServices .Bg-gray-sec::after{
+  position: absolute;
+  bottom: 0;
+  content: '';
+  left: 0;
+  width: 100%;
+  height: 65%;
+  background: rgb(255 255 255 / 59%);
+  opacity: .9;
+  pointer-events: none;
+}
+.CrmServices .Bg-gray-sec{
+  clip-path: ellipse(76% 45% at 50% 33%);
+    transform: rotate(180deg);
+    background-size: contain;
+    background-repeat: repeat;
+}
+.CrmServices .Bg-gray-sec::after{
+  height: 100%;
+}
+.ReleaseNote-Show .section-2,
+.CrmServices .section-8 {
+  background-image: url('../../images/bg-show-v3.png');
+  background-position: center;
 }
 .Home-BasisPanel .section-1{
     clip-path: ellipse(54% 66% at 50% 33%);
 }
 .Home-BasisPanel .help-Boxes .IMG-ov img{
     filter: drop-shadow( 0px 0px 50px 5px #00000033);
+
+}
+.ReleaseNote-Show .Bg-gray-sec::before{
+  /* clip-path: ellipse(54% 55% at 50% 40%); */
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+
+}
+.ReleaseNote-Show .section-1 .Box{
+  box-shadow: 0px 0px 40px 0px #0000001A;
 
 }
   #animations-example-1 {
@@ -207,9 +247,9 @@ a {
   #animations-example-1 .column {
     --aspect-ratio: 4 / 3;
   }
-  #animations-example-1 .column td {
+  #animations-example-1.appear .column td {
     transform-origin: bottom;
-    animation: revealing-bars 2s linear infinite;
+    animation: revealing-bars 2s linear;
   }
   #animations-example-1 th{
     font-size: 11.08px;
@@ -247,7 +287,7 @@ background-color: #F9461C;
     border: transparent !important;
  }
  .Home-BasisPanel .section-4{
-    background-image: url('../images/Clip\ path\ group\ \(2\).png');
+    background-image: url('../../images/bg-2-v3.png');
     background-position: center;
     background-repeat: no-repeat;
     background-position: bottom;
@@ -270,7 +310,8 @@ background-color: #F9461C;
  .Home-BasisPanel .help-Boxes .helpBox .rightSec h4,
  .Home-BasisPanel .help-Boxes .helpBox .rightSec p,
  .Home-BasisPanel .help-Boxes .helpBox .rightSec .IMG,
- .Home-BasisPanel .help-Boxes .helpBox .rightSec .IMG-ov{
+ .Home-BasisPanel .help-Boxes .helpBox .rightSec .IMG-ov,
+ .Home-BasisPanel .help-Boxes .helpBox .SalesSec{
   transform: translateX(-100%);
   opacity: 0;
   transition: all 500ms;
@@ -278,7 +319,7 @@ background-color: #F9461C;
  .Home-BasisPanel .help-Boxes .helpBox .leftSec .spd,
  .Home-BasisPanel .help-Boxes .helpBox .leftSec h4,
  .Home-BasisPanel .help-Boxes .helpBox .leftSec p,
- .Home-BasisPanel .help-Boxes .helpBox .leftSec .IMG{
+ .Home-BasisPanel .help-Boxes .helpBox .leftSec .IMG {
   transform: translateX(100%);
   opacity: 0;
   transition: all 500ms;
@@ -287,7 +328,8 @@ background-color: #F9461C;
  .Home-BasisPanel .help-Boxes .helpBox.appear h4,
  .Home-BasisPanel .help-Boxes .helpBox.appear p,
  .Home-BasisPanel .help-Boxes .helpBox.appear .SalesSec,
- .Home-BasisPanel .help-Boxes .helpBox.appear .IMG{
+ .Home-BasisPanel .help-Boxes .helpBox.appear .IMG,
+ .Home-BasisPanel .help-Boxes .helpBox.appear .SalesSec{
   transform: translateX(0);
   opacity: 1;
  }
@@ -361,7 +403,7 @@ font-family: "IRANSansWeb400";
   animation: line 3s ease-in-out 2.5s forwards infinite;
 }
 main.ReleaseNote-C .section-3 {
-background-image: url('/images/Group.png');
+background-image: url('../../images/Group.png');
 background-size: cover;
 }
 .w-80p{
@@ -489,8 +531,7 @@ height: 50px;
   object-fit: cover;
 }
  .SelectBoxes .select_wrap.active .default_option:before {
-  top: 25px;
-  transform: rotate(-225deg);
+  transform: rotate(-180deg);
 }
 .SelectBoxes .select_wrap .option {
   display: flex;
@@ -501,6 +542,7 @@ height: 50px;
   font-size: 8px;
   font-weight: 400;
   line-height: 8px;
+  margin: auto;
   color: #8E8E8E;
 }
 .SelectBoxes .select_wrap .option .icon {
@@ -516,6 +558,9 @@ height: 50px;
   position: absolute;
   top: 100%;
   left: 0;
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 100%;
   right: 0;
   width: 90%;
@@ -562,13 +607,12 @@ height: 50px;
 .SelectBoxes .default_option::before {
   content: "";
   position: absolute;
-  top: 18px;
+  top: 21px;
   left: 45px;
   width: 6px;
   height: 6px;
-  border: 2px solid;
-  border-color: transparent transparent #555555 #555555;
-  transform: rotate(-45deg);
+  border-width: 5px 5px 0 5px;
+  border-color: #555555 transparent transparent transparent
 }
 .SelectBoxes .default_option > li {
   min-height: 44px;
@@ -687,4 +731,166 @@ header{
 }
 header.bgWhite{
   background-color: white;
+}
+ .customer img{
+  filter: grayscale(1);
+  transition: all .4s ease;
+  opacity: .6;
+}
+ .customer:hover img{
+  filter: unset;
+  opacity: 1;
+}
+.customer:hover{
+  cursor: pointer;
+}
+input:focus::placeholder{
+  color: transparent;
+}
+input.nonePadding{
+  padding:0 .5em !important;
+}
+.passwordBox input{
+  padding-left: 65px;
+}
+.emailListBox {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15.65px;
+  color: #222222;
+  font-family: "IRANSansWeb400";
+}
+.mailsSelectBox{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #E6EDF3;
+  border-radius: 5px;
+
+}
+.mailsSelectBox .email-item{
+  width: 95%;
+  display: flex;
+  padding: .5em 0 ;
+  justify-content: flex-start;
+  align-items: center;
+  gap: .5em;
+  margin: auto;
+}
+.mailsSelectBox .email-item:not(:last-child){
+  border-bottom: 1px solid #E6EDF3;
+}
+.mailsSelectBox input[type="radio"]{
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #C8CCCF;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: all .4s ease;
+}
+.mailsSelectBox input[type="radio"]:checked{
+border-color:#004B85 ;
+
+}
+.mailsSelectBox input[type="radio"]:checked::before,
+.mailsSelectBox input[type="radio"].active::before{
+  position: absolute;
+  content: '';
+  width: 13px;
+height: 13px;
+background-color:#004B85 ;
+border-radius: 50%;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+  }
+.mailsSelectBox input[type="radio"].active{
+  border-color:#004B85 ;
+}
+.mailsSelectBox .userSpan ,
+.email-label{
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 15.65px;
+  color: #222222;
+  font-family: "IRANSansWeb400";
+}
+.passwordBox-email input[type="password"]:focus,
+ .passwordBox-email input[type="text"]:focus,
+ .passwordBox-email input[type="password"],
+ .passwordBox-email input[type="text"],
+ .captchabox input[type="text"]{
+  direction: ltr !important;
+}
+.NewuserInput input{
+  padding-left: 60px;
+}
+.logoOut:hover{
+  cursor: pointer;
+}
+.video-js .vjs-big-play-button{
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  border: none;
+  background-color: #494949;
+  align-items: center;
+  box-shadow: 0px 0px 8px 8px #004B8533;
+}
+.vjs-modal-dialog .vjs-modal-dialog-content,
+ .video-js .vjs-modal-dialog,
+  .vjs-button > .vjs-icon-placeholder:before,
+   .video-js .vjs-big-play-button .vjs-icon-placeholder:before{
+  top: 15px;
+  left: 3px;
+}
+.vjs-controls-disabled .vjs-big-play-button,
+ .vjs-has-started .vjs-big-play-button,
+  .vjs-using-native-controls .vjs-big-play-button,
+   .vjs-error .vjs-big-play-button {
+  display: none;
+}
+.vjs-icon-play:before,
+ .video-js .vjs-play-control .vjs-icon-placeholder:before,
+  .video-js .vjs-big-play-button .vjs-icon-placeholder:before{
+  content: url('../images/Vector\ \(5\).png');
+
+}
+.video-js .vjs-tech{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-js .vjs-control-bar{
+  height: 6em;
+}
+.Proccess-container .PurposeBox .IMG{
+  box-shadow: 0px 0px 8px 8px #00000008;
+
+}
+.module-slider .swiper-pagination {
+right: 0;
+left: unset !important;
+display: flex;
+justify-content: flex-start;
+}
+.module-slider .swiper-pagination-bullet{
+  width: 20px;
+  height: 20px;
+  opacity: 1 !important;
+  background-color: #D9D9D9;
+}
+.module-slider .swiper-pagination-bullet-active{
+  background-color: #004B85;
+}
+.Login-popup{
+  overflow: visible !important;
 }

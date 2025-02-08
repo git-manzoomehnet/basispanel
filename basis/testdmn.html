@@ -1,0 +1,245 @@
+<basis core="dbsource" name="check" source="trustloginapi" rkey="[##cms.cookie.rkey##]" request="checkrkey">
+    <member name="rkey" type="view" preview="" />
+</basis>
+<basis core="dbsource" source="trustloginapi" name="db" useragent="[##cms.request.user-agent##]"
+    ip="[##cms.request.clientip##]">
+    <member name="dmntoken" type="scalar" request="dmntoken" />
+</basis>
+
+<basis core="api" url="https://api.trust-login.com/logout/[##cms.cookie.rKey##]" method="post" run="atclient"
+    name="api.logout" onprocessed="onprocessedlogoutfn" if="{##query.flag.value|(false)##}"
+    body='{"dmntoken":"[##db.dmntoken.dmntoken##]"}' triggers="db.logout"></basis>
+
+
+
+<basis core="api" url="https://api.trust-login.com/schema/[##cms.cookie.rkey##]/fa" method="get" name="db.userinfo"
+    run="AtClient" OnProcessed="onProcessedInfoFn"></basis>
+
+
+<!-- <basis name="api.information" core="api" url="https://trust-login.com/api/information" method="post"
+    body="rkey=[##cms.cookie.rkey##]&dmnid=4709" content-type="application/x-www-form-urlencoded" run="atclient"
+    OnProcessed="onProcessedInfoFn" triggers="run.information"></basis> -->
+    <style>
+        /* From Uiverse.io by Nawsome */
+        .loaderUserHeader {
+            position: relative;
+            width: 150px;
+            height: 50px;
+            overflow: hidden;
+        }
+    
+        .loaderUserHeader:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(110deg, rgba(227, 227, 227, 0) 0%, rgba(227, 227, 227, 0) 40%, rgba(227, 227, 227, 0.5) 50%, rgba(227, 227, 227, 0) 60%, rgba(227, 227, 227, 0) 100%);
+            animation: gradient-animation_2 1.2s linear infinite;
+        }
+    
+        .loaderUserHeader .wrapperUserHeader {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+    
+        .loaderUserHeader .wrapperUserHeader>div {
+            background-color: #cacaca;
+        }
+    
+        .loaderUserHeader .circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+    
+        .loaderUserHeader .button {
+            display: inline-block;
+            height: 32px;
+            width: 75px;
+        }
+    
+        .loaderUserHeader .line-1 {
+            position: absolute;
+            top: 20px;
+            left: 28px;
+            height: 10px;
+            width: 60px;
+        }
+    
+        .loaderUserHeader .line-2 {
+            position: absolute;
+            top: 34px;
+            left: 58px;
+            height: 10px;
+            width: 150px;
+        }
+    
+        @keyframes gradient-animation_2 {
+            0% {
+                transform: translateX(100%);
+            }
+    
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+
+
+<div class="w-full  h-[100px] py-[20px] z-[100] px-[40px] fixed left-0 right-0 bg-bghead">
+    <div class="w-full h-full flex flex-row items-center justify-between">
+        <div class="flex flex-row items-center justify-center">
+            <button class="logoutBtnn" name="db.logout" bc-triggers="click">
+                <svg width="17" height="24" viewBox="0 0 17 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_362_438)">
+                        <path
+                            d="M15.1325 12.5947H7.65693C7.33522 12.5947 7.0744 12.3283 7.0744 11.9998C7.0744 11.6711 7.33522 11.4048 7.65693 11.4048H15.1321L12.6907 8.57752C12.4786 8.33232 12.501 7.95778 12.7409 7.74103C12.981 7.5241 13.3477 7.54693 13.56 7.79213L16.8545 11.6073C17.0516 11.8349 17.0465 12.1743 16.8525 12.3953L13.5598 16.2077C13.3477 16.4531 12.9808 16.4759 12.7407 16.2588C12.5008 16.042 12.4784 15.6673 12.6905 15.4221L15.1325 12.5947ZM13.1131 19.148C13.1131 18.8193 13.3765 18.553 13.7014 18.553C14.0264 18.553 14.2899 18.8193 14.2899 19.148V21.8137C14.2899 22.277 14.1016 22.6989 13.7997 23.0042C13.4974 23.3096 13.0802 23.4998 12.6224 23.4998H1.66762C1.20949 23.4998 0.792071 23.31 0.489792 23.0046C0.188068 22.6995 0 22.2781 0 21.8137V2.18625C0 1.72206 0.187513 1.30036 0.489422 0.994889C0.791331 0.689608 1.20838 0.5 1.66762 0.5H12.6222C13.0811 0.5 13.498 0.690169 13.7999 0.995264C14.1022 1.30092 14.2897 1.72319 14.2897 2.18625V4.85181C14.2897 5.1803 14.0263 5.44665 13.7012 5.44665C13.3764 5.44665 13.1129 5.1803 13.1129 4.85181V2.18625C13.1129 2.05112 13.0572 1.92702 12.9676 1.83643C12.8784 1.74621 12.7559 1.68987 12.622 1.68987H1.66762C1.53324 1.68987 1.41051 1.74602 1.32148 1.83624C1.23207 1.92627 1.17672 2.05037 1.17672 2.18625V21.8137C1.17672 21.9493 1.23244 22.073 1.32166 22.1632C1.41125 22.2538 1.53398 22.3101 1.66762 22.3101H12.6222C12.7555 22.3101 12.8779 22.2536 12.9675 22.163C13.0572 22.0724 13.1131 21.9485 13.1131 21.8137V19.148Z"
+                            fill="black" />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_362_438">
+                            <rect width="17" height="23" fill="white" transform="translate(0 0.5)" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </button>
+            <!-- ######################## -->
+            <div class="flex showprofileheader  flex-row items-center justify-center">
+                <div class="showloading mx-[10px]">
+                    <div class="loaderUserHeader">
+                        <div class="wrapperUserHeader">
+                            <div class="circle"></div>
+                            <div class="line-1"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showuser hidden flex flex-row items-center justify-center ">
+                    <div class="w-[50px] h-[50px] mx-[10px]  rounded-full">
+                        <img src="http://i113v121.undertest.ir/panel/images/img/avatar111111.png"
+                            class="avataruser rounded-full w-[50px] h-[50px]" alt="avatar">
+
+                    </div>
+
+                    <div>
+                        <h4 class="nameuser text-text text-[14px] fobnt-[400] leading-[22px]"></h4>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!-- ######################## -->
+
+            <div>
+                <h4 class="nameuser text-text text-[14px] fobnt-[400] leading-[22px]"></h4>
+            </div>
+
+        </div>
+
+        <div class="">
+
+            <a href="http://i113v121.undertest.ir" class="w-[57px] h-[57px]">
+                <img src="http://i113v121.undertest.ir/panel/images/img/logo.png" class=" w-[57px] h-[57px]"
+                    alt="logo">
+
+            </a>
+
+        </div>
+    </div>
+</div>
+
+</head>
+<script>
+    async function onprocessedlogoutfn(args) {
+        const response = args.response;
+        const json = await response.json();
+        if (json.errorid == 20) {
+            // incorrect inputs
+            console.log("err not login");
+        }
+        else if (json.errorid == 30 || json.errorid == 20) {
+            // successful
+
+            window.location.href = "http://i113v121.undertest.ir";
+            function getAndDeleteCookie(name) {
+                let cookieArr = document.cookie.split(";");
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split("=");
+                    if (name === cookiePair[0].trim()) {
+                        let cookieValue = decodeURIComponent(cookiePair[1]);
+                        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        return cookieValue;
+                    }
+                }
+                return null;
+            }
+            let myCookie = getAndDeleteCookie("rkey");
+
+
+
+        }
+        else {
+            console.log("So :|")
+
+        }
+
+    }
+
+    const logoutBtnn = document.querySelector(".logoutBtnn")
+    logoutBtnn.addEventListener("click", () => {
+        $bc.setSource("query.flag", true)
+
+    })
+
+
+
+    async function onProcessedInfoFn(args) {
+        const showdf = document.querySelector(".showuser")    
+        document.querySelector(".showloading").remove()
+        showdf.style.display = "flex"
+        const response = args.response;
+
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            if (responseJson.sources) {
+                console.log(responseJson.sources[0].data[0].properties);
+                responseJson.sources[0].data[0].properties.forEach((e) => { console.log(e) })
+                //  get name
+                const findName = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 1;
+                });
+                const nameusr = findName ? findName.answers[0].parts[0].values[0].value : null;
+                // get lastname
+                const findLastname = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 2;
+                });
+                const lastname = findLastname ? findLastname.answers[0].parts[0].values[0].value : null;
+
+                // get avatar
+                const findAvatar = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 94;
+                });
+                const avatar = findAvatar ? findAvatar.answers[0].parts[2].values[0].value : null;
+                console.log(findAvatar);
+
+                document.querySelector(".nameuser").innerText = `${nameusr} ${lastname}`
+                // document.querySelector(".phoneuser").innerHTML = phonenumber[0].answer
+                if (avatar == undefined || avatar == null || avatar.length == 0) {
+                    document.querySelector(".avataruser").src = "http://a4tech.webisaz.ir/images/m-avatar.png"
+                } else {
+                    console.log("sss" , avatar)
+                    console.log("sss" , avatar[1].answer)
+                    document.querySelector(".avataruser").src = `https://basiserp.ir/panel/[##cms.cookie.rkey##]/users/${avatar}`
+                }
+
+            }
+
+        }
+    }
+    const getbtnsiderbarlogout = document.querySelector(".logoutSidebar")
+    console.log(getbtnsiderbarlogout);
+</script>

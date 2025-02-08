@@ -33,6 +33,7 @@ const RunAnimation = (elem)=>{
 let counterStart = false
 let counter =document.getElementById('counter')
 let Boxes = document.querySelectorAll('.help-Boxes .fadeIN')
+let Chart = document.querySelector(' #animations-example-1')
 lenis.on('scroll',()=>{
     RunAnimation(counter)
     TitlesSec3.forEach(i=>{
@@ -41,6 +42,7 @@ lenis.on('scroll',()=>{
     Boxes.forEach(b=>{
         RunAnimation(b)
     })
+    RunAnimation(Chart)
 })
 
 let tabBtns = [...document.querySelectorAll('.tabs .Tab')]
@@ -76,4 +78,36 @@ btn.addEventListener('click',(e)=>{
     e.currentTarget.classList.add('active')
     Slides[index].classList.add('activeSlide')
 })
+})
+// logo slider one
+let SwiperOne= new Swiper ('.swiper-one', {
+    slidesPerView: 8,
+    spaceBetween: 30,
+    effect:'slide' ,
+    speed:5000,
+    loop:true,
+    autoplay:{
+        delay:0,
+        disableOnInteraction:false
+    },
+    allowTouchMove:false,
+    freeMode:true,
+    feeModeMoment:false
+  
+})
+let SwiperTwo= new Swiper ('.swiper-Two', {
+    slidesPerView: 8,
+    spaceBetween: 30,
+    effect:'slide' ,
+    speed:5000,
+    loop:true,
+    autoplay:{
+        delay:0,
+        disableOnInteraction:false,
+        reverseDirection:true,
+    },
+    allowTouchMove:false,
+    freeMode:true,
+    feeModeMomentum:false
+  
 })

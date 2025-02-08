@@ -51,6 +51,7 @@ module.exports = {
        'white1':'#FEFEFE',
        'dark':'#252733',
        'dark2':'#1A1C24',
+       'dark3':'#212121',
        'placeholder':'#222222'
         
     },

@@ -1,0 +1,1 @@
+notes=document.querySelectorAll(".Note");const RunAnimation=n=>{n.getBoundingClientRect().top+300<window.innerHeight&&n.classList.add("appear")};lenis.on("scroll",(()=>{notes.forEach((n=>{var e;(e=n).getBoundingClientRect().top+300<window.innerHeight&&e.classList.add("appear")}))}));

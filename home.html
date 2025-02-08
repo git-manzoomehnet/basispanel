@@ -10,7 +10,7 @@
 </head>
 <body>
    <main class="Home-BasisPanel w-full overflow-hidden" dir="rtl">
-    <header class="DesktopHeader fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
+    <!-- <header class="DesktopHeader fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
         <div class="InnerHeader w-80p grid grid-cols-2">
             <div class="RightSec w-full flex justify-start gap-9">
                 <div class="Logo w-auto flex justify-center items-center">
@@ -108,6 +108,140 @@
                             ورود / ثبت‌نام
                         </button>
                     </span>
+                </div>
+            </div>
+     
+        </div>
+    </header> -->
+    <header class="DesktopHeader inLogin fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
+        <div class="InnerHeader w-80p grid grid-cols-2">
+            <div class="RightSec w-full flex justify-start gap-9">
+                <div class="Logo w-auto flex justify-center items-center">
+                  <a href="">
+                      <img src="images/logo.png" alt="">
+                  </a>
+                </div>
+                <nav class="Menu-header w-auto flex justify-start items-center gap-6">
+                  <ul class="w-auto flex gap-6 justify-start items-center">
+                      <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                          <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                           font-normal text-sm text-textGray">
+                              خانه
+                          </a>
+                      </li>
+                      <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal text-sm text-textGray">
+                              آخرین تغییرات
+                          </a>
+                      </li>
+                      <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal text-sm text-textGray">
+                              درباره ما
+                          </a>
+                      </li>
+                      <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal text-sm text-textGray">
+                              تماس با ما
+                          </a>
+                      </li>
+                  </ul>
+                  <div class="lang w-auto flex justify-start items-center relative z-2">
+                          <div class="langC w-auto flex justify-center items-center">
+                            <span class="langs hover:cursor-pointer w-auto flex gap-1 justify-center items-center">
+                                <span class="langIcon">
+                                    <img src="images/Group 35649.png" alt="">
+                                </span>
+                                
+                                <span class="langText font-IRANSansWeb400 font-normal text-[13px] text-textGray">
+                                    انگلیسی
+                                </span>
+                              
+                              </span>
+                              <span class="icon w-auto flex justify-center items-center mr-2 translate-y-[3px]">
+                                <svg class="[&.rotate]:rotate-[180deg] duration-200"  width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 1H3H2L4.5 4L7 1Z" fill="#494949" stroke="#494949"/>
+                                </svg>
+                                </span>
+                          </div>
+                      
+                     
+                      <div class="langs-content absolute top-[2em] bg-primary left-[10%] flex flex-col  w-[70px] bg-white opacity-0
+                 duration-[.3s] [&.openLang]:opacity-[1]   [&.openLang]:pointer-events-auto pointer-events-none">
+                          <ul class="w-full flex flex-col">
+                              <li class="w-auto flex justify-center group/langs duration-100 py-[.5em] hover:text-textGray
+                              hover:bg-White ">
+                                  <a href="" class="w-auto flex">
+                                    <span class="langText font-IRANSansWeb400 font-normal duration-100 text-[13px] group-hover/langs:text-textGray
+                                     text-White">
+                                        انگلیسی
+                                    </span>
+                                  </a>
+                                
+      
+                              </li>
+                              <li class="w-auto flex justify-center group/langs  duration-100 py-[.5em] hover:text-textGray
+                              hover:bg-White ">
+                                <a href="" class="w-auto flex">
+                                    <span class="langText font-IRANSansWeb400 font-normal duration-100 group-hover/langs:text-textGray text-[13px] text-White">
+                                        فارسی
+                                    </span>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+                </nav>
+              </div>
+            <div class="LeftSec w-full flex justify-end">
+                <div class="Btns w-auto flex gap-5">
+                    <a href="" class="button w-max px-[1.7em] hover:bg-hoverBtnDprimary duration-200
+                     py-[.8em] bg-primary flex justify-center items-center rounded-5">
+                        <button type="button " class="w-auto flex justify-center
+                         text-White items-center font-IRANSansWeb400 font-normal text-sm rounded-5">
+                            درخواست دمو
+                        </button>
+                    </a>
+                   <div class="UserProfile-box relative w-auto flex gap-4 flex-col">
+                  <div class="User w-auto flex gap-4 hover:cursor-pointer">
+                    <span class="Icon w-auto flex justify-center items-center my-auto">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"/>
+                            </svg>
+                            
+                    </span>
+                    <span class="User-Image w-[47px] h-[47px] rounded-full flex justify-center items-center">
+                        <img src="images/ava300000000001 1.png" alt="" class="w-full h-full object-cover">
+                    </span>
+            
+                  </div>
+                  <div class="UserDropdown absolute top-[4em] opacity-0 translate-y-[-2em] duration-500 [&.openProf]:opacity-[1]
+                  [&.openProf]:translate-y-[0]   min-w-[140px] left-0 right-0 mx-auto w-auto px-[.5em] py-[.5em] flex">
+                    <div class="Box w-auto flex flex-col gap-2 min-w-[140px]">
+                        <div class="title w-full flex justify-start items-start leading-[15.65px]
+                         text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
+                            نام کاربری
+                        </div>
+                        <span class="Username leading-[20.35px] border-b-[1px] border-mainGray
+                        text-black font-IRANSansWeb400 font-normal text-[13px]">
+                            غدیره مرادی
+                        </span>
+                        <span class="logOut w-full flex justify-between items-center">
+                            <div class="text leading-[21.91px]
+                            text-black font-IRANSansWeb400 font-normal text-sm">
+                                خارج شدن
+                            </div>
+                            <div class="logoOut w-auto my-auto">
+                                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.54167 12.875C1.15208 12.875 0.818576 12.7363 0.541146 12.4589C0.263715 12.1814 0.125 11.8479 0.125 11.4583V1.54167C0.125 1.15208 0.263715 0.818576 0.541146 0.541146C0.818576 0.263715 1.15208 0.125 1.54167 0.125H6.5V1.54167H1.54167V11.4583H6.5V12.875H1.54167ZM9.33333 10.0417L8.35938 9.01458L10.1656 7.20833H4.375V5.79167H10.1656L8.35938 3.98542L9.33333 2.95833L12.875 6.5L9.33333 10.0417Z" fill="#5F6368"/>
+                                    </svg>                                    
+                            </div>
+                        </span>
+                    </div>
+                  </div>
+                   </div>
                 </div>
             </div>
      
@@ -867,8 +1001,8 @@
            group-[&.Error]/Alert:bg-red rounded-5"></span>
       </div>
   </div>
-   <script src="js/lenisScroll.js"></script>
-   <script src="js/configDesk.js"></script>
-   <script src="js/home.js"></script>
+   <script src="/js/lenisScroll.js"></script>
+   <script src="/js/configDesk.js"></script>
+   <script src="/js/home.js"></script>
 </body>
 </html>
