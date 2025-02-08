@@ -1,3 +1,6 @@
+<basis core="dbsource" source="media" name="db" lid="1" catid="2305" >
+    <member type="list" name="customers" perpage="100" pageno="1" /> 
+   </basis>
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -157,7 +160,7 @@
                                 سیستم مالی
                             </span>
                         </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                        <a href="/solutions/crm" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
           flex flex-col gap-1">
                             <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
               h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -167,7 +170,7 @@
                                 class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                                 CRM
                             </span>
-                        </div>
+                        </a>
                         <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
           flex flex-col gap-1">
                             <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
@@ -380,38 +383,20 @@
                     شرکت‌هایی که به ما اعتماد کردند
                 </h5>
             </div>
-            <div class="Customers w-80p mx-auto grid grid-cols-6 gap-y-14">
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/edco.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/makesh-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/g-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/dika_logo_hq_edited 1.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/alijenab-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/remedy-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
+            <div class="Customers w-80p mx-auto grid grid-cols-8 gap-y-14">
+                <basis core="print" datamembername="db.customers">
+                    <layout>
+                        @child
+                    </layout>
+                    <face>
+                        <div class="customer w-full flex justify-center items-center">
+                            <div class="IMG max-w-[124px]">
+                                <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" title="@name" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+            
             </div>
             <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
                 <h5 class="font-IRANSansWeb700 font-bold text-[30px] leading-[67.3px] text-textGray text-center">

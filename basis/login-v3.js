@@ -811,7 +811,7 @@ const CreateSelectBox = (countryCode, responseJson,OBJ) => {
     responseJson.filter(data=>{
         if(data.code == countryCode){
             console.log('data.code');
-            img.setAttribute('src', data.image)
+            img.setAttribute('src',`/${data.image}`)
         }
     })
     pfirst.appendChild(img)
@@ -830,7 +830,7 @@ const CreateSelectBox = (countryCode, responseJson,OBJ) => {
         op.setAttribute('data-id', data.countryid)
         op.setAttribute('data-title', data.title)
         let img = document.createElement('img')
-        img.setAttribute('src', data.image)
+        img.setAttribute('src',`/${data.image}`)
         p.appendChild(img)
     })
     document.querySelector('.mobileInput').appendChild(selectBox)
