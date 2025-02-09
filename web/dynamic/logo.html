@@ -1,0 +1,27 @@
+<basis core="dbsource" source="media" name="db" lid="1" catid="2305" >
+    <member type="list" name="customers" perpage="100" pageno="1" /> 
+   </basis>
+  <section id="logos" class=" w-full flex flex-col pb-[3em] mt-[2em]  ">
+            <div class="title w-full flex justify-center items-center py-[3em]">
+                <h5 class="font-IRANSansWeb700 font-bold text-lg leading-28.17 text-textGray text-center">
+                    شرکت‌هایی که به ما اعتماد کردند
+                </h5>
+            </div>
+            <div class="Customers w-80p mx-auto grid grid-cols-9 gap-y-4">
+                <basis core="print" datamembername="db.customers">
+                    <layout>
+                        @child
+                    </layout>
+                    <face>
+                        <div class="customer w-full flex justify-center items-center">
+                            <div class="IMG max-w-[124px]">
+                                <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" title="@name" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+            
+            </div>
+          
+        </section>
+        <basis core="call" file="cta.inc" />

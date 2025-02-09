@@ -1,6 +1,9 @@
 <basis core="dbsource" source="media" name="db" lid="1" catid="2305" >
     <member type="list" name="customers" perpage="100" pageno="1" /> 
    </basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="2374080" >
+    <member type="view" name="qa" preview="" />
+</basis>
 <!DOCTYPE html>
 <html lang="fa">
 <head>
@@ -12,7 +15,7 @@
     <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/videoJS.css">
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
 </head>
-<body>
+<body class="white">
     <main class="CrmServices w-full overflow-hidden" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
         <div class="Title-C mt-[10em] relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
@@ -33,7 +36,8 @@
             before:w-full  pointer-events-none before:bg-White before:z-0 ">
             </div>
             <div class="Vidoe-vontainer  relative z-2 w-[76%] max-w-[1300px] mx-auto flex">
-                <video 
+                <img src="[##cms.cms.cdn##]/images/crm_section1-1 1.png" class="rounded-lg gshadow" />
+                <!-- <video 
                     id="my-video"
                     controls
                     preload="auto"
@@ -43,7 +47,7 @@
                     data-setup="{}"
                     class="w-full h-[809px] bg-[transparent] object-cover video-js " >
                     <source src="" type="video/mp4" />
-                </video>
+                </video> -->
             </div>
        </section>
        <section class="section-2 mt-[3em] z-1 w-full flex flex-col">
@@ -114,16 +118,16 @@
         <div class="Purpose-conrainer gap-[3em] w-80p mx-auto flex flex-col justify-center items-center">
             <div class="Purpose w-full flex flex-col gap-7">
                 <span class="title w-full flex gap-2 justify-start items-center">
-                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center rounded-md">
                         <img src="[##cms.cms.cdn##]/images/crm1-v3.png" alt="basis" title="basis">
                     </span>
-                    <span class="text font-IRANSansWeb700 font-semibold text-2xl leading-[33.6px] text-textGray">
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
                         جامعیت سیستم
                     </span>
                 
                 </span>
                 <div class="Text-c w-full flex flex-col justify-start">
-                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
                         ماژول CRM تمامی نیازهای سازمان در زمینه مدیریت ارتباط با مشتریان را در یک پلتفرم یکپارچه و منسجم برآورده می‌کند. این سیستم، مدیریت سرنخ‌ها (Leads) و فرصت‌های فروش را تسهیل می‌بخشد و به واسطه آن، امکان پیگیری معاملات و تماس‌ها، صدور پیش‌فاکتور و فاکتورهای مشتریان به‌راحتی فراهم می‌شود. ماژول CRM در بیسیس پنل، یک پروفایل کامل از هر مشتری، همراه با تاریخچه تعاملات و طبقه‌بندی دقیق، در دسترس شما قرار می‌دهد و سازمان شما را به سطح جدیدی از بهره‌وری در ارتباطات و مدیریت مشتریان ارتقا می‌دهد.
 
                     </p>
@@ -134,13 +138,13 @@
                     <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
                         <img src="[##cms.cms.cdn##]/images/crm2-v3.png" alt="basis" title="basis">
                     </span>
-                    <span class="text font-IRANSansWeb700 font-semibold text-2xl leading-[33.6px] text-textGray">
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
                         دید ۳۶۰ درجه‌ای از مشتری
                     </span>
                 
                 </span>
                 <div class="Text-c w-full flex flex-col justify-start">
-                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
                         ماژول CRM، با تمرکز بر بهبود دسترسی‌پذیری، به شما این مزیت را می‌دهد که اطلاعات حیاتی سازمان را در هر زمان و هر مکان، در اختیار داشته باشید. این سیستم به‌صورت تحت‌وب و در قالب SaaS پیاده‌سازی شده است؛ از این رو، دسترسی سریع و آسان به داده‌ها را در هر شرایطی برای شما فراهم خواهد کرد.
                     </p>
                 </div>
@@ -150,13 +154,13 @@
                     <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
                         <img src="[##cms.cms.cdn##]/images/crm3-v3.png" alt="basis" title="basis">
                     </span>
-                    <span class="text font-IRANSansWeb700 font-semibold text-2xl leading-[33.6px] text-textGray">
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
                         یکپارچگی واقعی اطلاعات
                     </span>
                 
                 </span>
                 <div class="Text-c w-full flex flex-col justify-start">
-                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
                         یکپارچگی «واقعی» اطلاعات در ماژول CRM، سازمان را از پراکندگی داده‌ها رها ساخته و تمامی اطلاعات را به‌صورت متمرکز مدیریت می‌کند. حذف داده‌های تکراری، به‌روزرسانی خودکار و همگام‌سازی مداوم، به ارتقای کیفیت داده‌ها و ایجاد ارتباط موثر بین بخش‌های مختلف سازمان منجر می‌شود. در این ماژول، به دلیل امکان به‌اشتراک‌گذاری اطلاعات و هماهنگی تیم‌ها، گردش‌های کاری یکپارچه ایجاد می‌شوند و اخذ تصمیمات مبتنی بر داده‌های به‌روز و دقیق میسر خواهد شد.
                     </p>
                 </div>
@@ -166,13 +170,13 @@
                     <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
                         <img src="[##cms.cms.cdn##]/images/crm4-v3.png" alt="basis" title="basis">
                     </span>
-                    <span class="text font-IRANSansWeb700 font-semibold text-2xl leading-[33.6px] text-textGray">
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
                         دسترسی‌پذیری بالا
                     </span>
                 
                 </span>
                 <div class="Text-c w-full flex flex-col justify-start">
-                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
                         ماژول CRM، با تمرکز بر بهبود دسترسی‌پذیری، به شما این مزیت را می‌دهد که اطلاعات حیاتی سازمان را در هر زمان و هر مکان، در اختیار داشته باشید. این سیستم به‌صورت تحت‌وب و در قالب SaaS پیاده‌سازی شده است؛ از این رو، دسترسی سریع و آسان به داده‌ها را در هر شرایطی برای شما فراهم خواهد کرد. </p>
                 </div>
             </div>
@@ -181,7 +185,7 @@
        <section class="section-4 mt-[8em] pb-6 z-1 w-full flex flex-col">
         <div class="Proccess-container w-80p mx-auto flex flex-col gap-7">
             <div class="title w-full flex justify-center items-center">
-                <h2 class="font-IRANSansWeb700 font-semibold text-2xl leading-[40.7px] text-textGray">
+                <h2 class="font-IRANSansWeb700 font-semibold text-lg leading-[40.7px] text-textGray">
                     یکپارچه‌سازی شده با :
                 </h2>
             </div>
@@ -192,7 +196,7 @@
                     h-[60px] py-[.3em] px-[.3em] rounded-5">
                         <img src="[##cms.cms.cdn##]/images/managementProj-v3.png" alt="basis" title="basis" class="w-full object-cover">
                     </span>
-                    <span class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                    <span class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                         مدیریت پروژه
                  </span>
                  </div>
@@ -203,7 +207,7 @@
                         <img src="[##cms.cms.cdn##]/images/financialSystem-v3.png" alt="basis" title="basis" class="w-full object-cover">
                     </span>
                      <span
-                        class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                        class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                         سیستم مالی
                      </span>
                 </div>
@@ -214,7 +218,7 @@
                      <img src="[##cms.cms.cdn##]/images/domailManage-v3.png" alt="basis" title="basis" class="w-full object-cover">
                  </span>
                 <span
-                 class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                 class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                      مدیریت دامنه
                 </span>
             </div>
@@ -225,7 +229,7 @@
                         <img src="[##cms.cms.cdn##]/images/folderShare-v3.png" alt="basis" title="basis" class="w-full object-cover">
                     </span>
                     <span
-                        class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                        class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                         پوشه اشتراکی
                     </span>
                 </div>
@@ -236,7 +240,7 @@
                               <img src="[##cms.cms.cdn##]/images/ticket-v3.png" alt="basis" title="basis" class="w-full object-cover">
                           </span>
                           <span
-                              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                               سیستم تیکتینگ
                           </span>
                       </div>
@@ -247,7 +251,7 @@
                                       <img src="[##cms.cms.cdn##]/images/processMaker-v3.png" alt="basis" title="basis"  class="w-full object-cover">
                                   </span>
                                   <span
-                                      class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                                      class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                                       فرآیندساز
                                   </span>
                               </div>
@@ -258,7 +262,7 @@
        <section class="section-5 mt-[8em] pb-6 z-1 w-full flex flex-col">
         <div class="Modules-container w-80p mx-auto flex flex-col">
             <div class="title w-full flex justify-center items-center">
-                <h3 class="font-IRANSansWeb700 font-semibold text-2xl leading-[50px] text-textGray">             
+                <h3 class="font-IRANSansWeb700 font-semibold text-lg leading-[50px] text-textGray">             
                     سایر ویژگی‌های ماژول CRM
                 </h3>
             </div>
@@ -335,200 +339,49 @@
                 سوالات متداول
             </h4>
            </div>
-           <div class="Questions-boxes mt-[3em] pb-[4em]  w-full flex  gap-[2em] flex-col">
-                <div class="Question group/question bg-White w-full rounded-5 flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                    <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
-                     px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
-                    border-l-mainGray  border-r-mainGray
-                     rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
-                        <span class="icon relative w-[20px] h-[20px]">
-                            <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
-                             </svg>  
-                             <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
-                                <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
-                                </svg>
-                                
-                        </span>
-                        <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                        group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
-                        group-[&.active]/question:leading-[24px]
-                         font-normal text-base leading-[24px] text-textGray">
-                            چه کسی می تواند از بیسیس پنل استفاده کند؟
-                        </p>
-                    </div>
-                    <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
-                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
-                    flex-col">
-                        <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px]">
-                            در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرS.در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرس…
-                        </p>
-                    </div>
-                </div>
-                <div class="Question group/question bg-White w-full rounded-5 flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                    <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
-                     px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
-                    border-l-mainGray  border-r-mainGray
-                     rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
-                        <span class="icon relative w-[20px] h-[20px]">
-                            <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
-                             </svg>  
-                             <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
-                                <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
-                                </svg>
-                                
-                        </span>
-                        <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                        group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
-                        group-[&.active]/question:leading-[24px]
-                         font-normal text-base leading-[24px] text-textGray">
-                         آیا می‌توانم قبل از خرید یک نسخه آزمایشی رایگان دریافت کنم؟
-                        </p>
-                    </div>
-                    <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
-                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
-                    flex-col">
-                        <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px]">
-                            در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرS.در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرس…
-                        </p>
-                    </div>
-                </div>
-                <div class="Question group/question bg-White w-full rounded-5 flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                    <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
-                     px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
-                    border-l-mainGray  border-r-mainGray
-                     rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
-                        <span class="icon relative w-[20px] h-[20px]">
-                            <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
-                             </svg>  
-                             <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
-                                <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
-                                </svg>
-                                
-                        </span>
-                        <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                        group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
-                        group-[&.active]/question:leading-[24px]
-                         font-normal text-base leading-[24px] text-textGray">
-                         آیا برای راه‌اندازی یک فروشگاه باید کدنویسی یا طراحی رابط کاربری را بلد باشم؟
-                        </p>
-                    </div>
-                    <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
-                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
-                    flex-col">
-                        <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px]">
-                            در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرS.در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرس…
-                        </p>
-                    </div>
-                </div>
-                <div class="Question group/question bg-White w-full rounded-5 flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                    <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
-                     px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
-                    border-l-mainGray  border-r-mainGray
-                     rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
-                        <span class="icon relative w-[20px] h-[20px]">
-                            <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
-                             </svg>  
-                             <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
-                                <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
-                                </svg>
-                                
-                        </span>
-                        <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                        group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
-                        group-[&.active]/question:leading-[24px]
-                         font-normal text-base leading-[24px] text-textGray">
-                         چگونه می‌توانم با سیستم شما به صورت آنلاین درآمد کسب کنم؟
-                        </p>
-                    </div>
-                    <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
-                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
-                    flex-col">
-                        <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px]">
-                            در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرS.در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرس…
-                        </p>
-                    </div>
-                </div>
-                <div class="Question group/question bg-White w-full rounded-5 flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                    <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
-                     px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
-                    border-l-mainGray  border-r-mainGray
-                     rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
-                        <span class="icon relative w-[20px] h-[20px]">
-                            <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
-                             </svg>  
-                             <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
-                                <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
-                                </svg>
-                                
-                        </span>
-                        <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                        group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
-                        group-[&.active]/question:leading-[24px]
-                         font-normal text-base leading-[24px] text-textGray">
-                         اشتراک هیولای وردپرس شامل چه مواردی است؟
-                        </p>
-                    </div>
-                    <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
-                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
-                    flex-col">
-                        <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px]">
-                            در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرS.در تئوری اقتصاد یا در اقتصاد کلان، سرمایه‌گذاری مقدار خریداری شده از کالاها در واحد زمان است که مصرف نمی‌شوند اما برای تولید در آینده استفاده می‌شوند برای نمونه شامل راه‌آهن یا کارخانه هیولای وردپرس…
-                        </p>
-                    </div>
-                </div>
-           </div>
-        </div>
-       </section>
-       <section class="section-7 w-full flex flex-col pb-[3em]  bg-White ">
-        <div class="title w-full flex justify-center items-center py-[3em]">
-            <h5 class="font-IRANSansWeb700 font-bold text-lg leading-28.17 text-textGray text-center">
-                شرکت‌هایی که به ما اعتماد کردند
-            </h5>
-        </div>
+           <div class="Questions-boxes mt-[3em] pb-[4em]  w-[1100px] flex  gap-[1em] flex-col my-0 mx-auto">
 
-        <div class="Customers w-80p mx-auto grid grid-cols-8 gap-y-14">
-            <basis core="print" datamembername="db.customers">
-                <layout>
-                    @child
-                </layout>
-                <face>
-                    <div class="customer w-full flex justify-center items-center">
-                        <div class="IMG max-w-[124px]">
-                            <img src="[##cms.cms.cdn##]/@largeIMG" alt="@name" title="@name" class="w-full h-full object-cover">
+            <basis core="print" datamembername="db.qa">
+                <face filter="typeid <> 150">
+                    <div class="Question group/question bg-White w-full rounded-lg flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
+                        <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
+                         px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
+                        border-l-mainGray  border-r-mainGray
+                         rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
+                            <span class="icon relative w-[20px] h-[20px]">
+                                <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
+                                 </svg>  
+                                 <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
+                                    <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
+                                    </svg>
+                                    
+                            </span>
+                            <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
+                            group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
+                            group-[&.active]/question:leading-[24px]
+                             font-normal text-base leading-[24px] text-textGray">
+                                @text
+                            </p>
+                        </div>
+                        <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
+                        mx-auto group-[&.active]/question:flex justify-start items-center gap-2
+                        flex-col">
+                            <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px] answer">
+                                @largetext
+                            </p>
                         </div>
                     </div>
                 </face>
             </basis>
-        
+
+             
+           </div>
         </div>
- 
-    </section>
-    <section class="section-8  w-full flex flex-col pb-[3em]  bg-lightBG ">
-        <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
-            <h5 class="font-IRANSansWeb700 font-bold text-[40px] leading-[67.3px] text-textGray text-center">
-                برای شروع آماده‌اید ؟
-            </h5>
-            <p class="font-IRANSansWeb700 font-bold text-lg leading-[30.52px] text-textGray text-center">
-                زمان خود را از دست ندهید و درخواست دهید !
-            </p>
-            <a href="demo" class="button w-max mt-4 px-[4em] py-[1em] hover:bg-hoverBtnDprimary duration-200 bg-primary flex justify-center items-center rounded-5">
-                <button type="button " class="w-auto flex justify-center
-                 text-White items-center font-IRANSansWeb700 font-normal text-2xl leading-[40.17px] rounded-5">
-                    درخواست دمو
-                </button>
-            </a>
-        </div>
-    </section>
+       </section>
+     <basis core="call" file="logo.inc" />
+    
     <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
     <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
       <script src="[##cms.cms.cdn##]/asset/js/videoJS.js"></script>

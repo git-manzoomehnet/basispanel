@@ -215,8 +215,8 @@ a {
 .CrmServices .Bg-gray-sec::after{
   height: 100%;
 }
-.ReleaseNote-Show .section-2,
-.CrmServices .section-8 {
+
+ .section-8 {
   background-image: url('../../images/bg-show-v3.png');
   background-position: center;
 }
@@ -893,4 +893,16 @@ justify-content: flex-start;
 }
 .Login-popup{
   overflow: visible !important;
+}
+.gray #logos{
+  background-color: #FAFAFA
+}
+.white  #logos{
+  background-color: #fff
+}
+.gshadow{
+  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+.answer p{
+  color: #fff;
 }
