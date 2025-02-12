@@ -52,7 +52,15 @@ module.exports = {
        'dark':'#252733',
        'dark2':'#1A1C24',
        'dark3':'#212121',
-       'placeholder':'#222222'
+       'placeholder':'#222222',
+       'color1':'#FFE6DB',
+       'color2':'#F7EEFF',
+       'color3':'#E7F3E7',
+       'blue4':'#70A0EC',
+       'orange':'#DE633D',
+       'pink':'#E01172',
+       'light3':'#F9F9F9',
+       'orange':'#FFB238'
         
     },
 

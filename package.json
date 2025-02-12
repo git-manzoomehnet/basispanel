@@ -3,7 +3,7 @@
     "tailwindcss": "^3.4.17"
   },
   "scripts": {
-    "watch:web": "npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/inputDesk.css -o ./web/assets/css/outputDesk-v3.css --watch"
-    
+    "watch:web": "npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/inputDesk.css -o ./web/assets/css/outputDesk-v3.css --watch",
+    "build":"npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/inputDesk.css -o ./web/assets/css/outputDesk-v3.css --watch"
   }
 }

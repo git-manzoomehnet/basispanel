@@ -1,0 +1,406 @@
+<basis core="dbsource" source="media" name="db" lid="1" catid="2305" >
+    <member type="list" name="customers" perpage="100" pageno="1" /> 
+   </basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="2374080" >
+    <member type="view" name="qa" preview="" />
+</basis>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسک منیجر</title>
+    <meta name="description" content="تسک منیجر">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/videoJS.css">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<body>
+    <main class="TaskManager-C  w-full overflow-hidden" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <div class="Title-C mt-[10em] relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb700 w-max font-bold text-[40px] leading-[29.18px] text-textGray text-center
+            flex gap-1">
+            پیگیری پیشرفت تیم و دستیابی به‌نتایج با  حرفه‌ای<span class="color font-IRANSansWeb700 font-bold text-[40px] leading-[29.18px] text-primary">
+                مدیریت پروژه
+                </span> در بیسیس پنل   
+            </h1>
+            <div class="text w-full mt-[2em] flex flex-col justify-center items-center max-w-[1140px]">
+                <p class="font-IRANSansWeb700 font-bold text-[21px] leading-[40px] text-text text-center">
+                   
+                    این ماژول مدیریت پروژه در سطح حرفه‌ای طراحی شده است و بهره‌وری تیمی را ارتقا می‌دهد. به واسطه پلتفرم جامع مدیریت پروژه در بیسیس پنل، امکان پیگیری پیشرفت پروژه‌های مختلف، غلبه بر چالش‌ها و دست‌یابی به اهداف سازمانی فراهم خواهد شد. تمامی فرآیندهای مشارکتی، از برنامه‌ریزی اسپرینت تا هماهنگی یکپارچه تیم، همگی ساده‌سازی می‌شوند و کارایی بهبود می‌یابد.
+                </p>        </div>
+        </div>
+        <section class="section-1 mt-8 pb-[10em] z-1 relative w-full flex flex-col  bg-White">
+            <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute 
+            before:left-0 before:bottom-0-
+            before:w-full  pointer-events-none before:bg-White before:z-0 ">
+            </div>
+            <div class="Vidoe-vontainer  relative z-2 w-[76%] max-w-[1300px] mx-auto flex">
+                <video 
+                    id="my-video"
+                    controls
+                    preload="auto"
+                    width="640"
+                    height="264"
+                    poster="[##cms.cms.cdn##]/images/active sprint 1.png"
+                    data-setup="{}"
+                    class="w-full h-[809px] bg-[transparent] object-cover video-js " >
+                    <source src="[##cms.cms.cdn##]/images/ssstwitter.com_1707122752489.mp4" type="video/mp4" />
+                </video>
+            </div>
+       </section>
+       <section class="section-2 mt-8  z-1 relative w-full flex flex-col ">
+            <div class="Task-Tables relative py-[8em] w-80p mx-auto flex">
+                <button type="button" class="btn-1 absolute flash rounded-5 translate-x-[50%]
+                w-max px-[1em] py-[.8em] top-0 left-0 right-0 mx-auto
+                 font-IRANSansWeb700 font-bold text-base text-White translate-y-[73%]
+               bg-secondary">
+               نظارت بلادرنگ روی پروژه‌ها
+               </button>
+                <div class="column w-auto flex flex-col justify-between">
+                    <div class="button">
+                        <span class="line">
+                            <img src="[##cms.cms.cdn##]/images/arrow-r-1.png" alt="basis" title="basis">
+                        </span>
+                        <button type="button" class="btn-2 flash rounded-5 w-max px-[1em] py-[.8em] font-IRANSansWeb700 font-bold text-base text-White
+                        bg-secondary">
+                            مدیریت اپیک‌ها
+                        </button>
+                    </div>
+                    <span class="line translate-x-[-50%] translate-y-[29%]">
+                        <img src="[##cms.cms.cdn##]/images/arrow-r-2.png"  alt="basis" title="basis">
+                    </span>
+                    <button type="button" class="flash btn-3 absolute bottom-0 right-0
+                     rounded-5 w-max px-[1em] translate-x-[10%] py-[.8em] font-IRANSansWeb700 font-bold text-base text-White
+                    bg-secondary">
+                    امکان استفاده از متولودوژی‌های اسکرام و کانبان
+                    </button>
+                </div>
+                <div class="kanban mr-[2em] w-full flex gap-8 justify-center items-center">
+                    <div class="column todo gap-4 max-w-[308px] w-full h-[578px] flex flex-col border-[1px] border-[#C8CCCF] rounded-5">
+                        <h2 class="w-full flex bg-color1 pr-[1.2em] py-[1.2em]">TO DO</h2>
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    جلسه با همکاران
+                                </span>
+                                <span class="label ml-4  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-blue4 font-IRANSansWeb400 font-normal
+                                text-xs text-White">جلسه گروهی</span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان پیش‌بینی : 2 ساعت
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : علی احمدی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    برقراری تماس با مشتری
+                                </span>
+                                <span class="label ml-4 call  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-orange font-IRANSansWeb400 font-normal
+                                text-xs text-White">پیگیری </span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان انجام : 30 دقیقه
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : زهرا صوفی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>
+                      
+                    </div>
+                    <div class="column relative doing gap-4 max-w-[308px] w-full h-[578px] flex flex-col border-[1px] border-[#C8CCCF] rounded-5">
+                        <h2 class="w-full flex bg-color2 pr-[1.2em] py-[1.2em]">DOING</h2>
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    بررسی پرونده مالی
+                                </span>
+                                <span class="label finance ml-4  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-pink font-IRANSansWeb400 font-normal
+                                text-xs text-White">مالی </span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان پیش‌بینی : 4 ساعت
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : سارا یوسفی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>
+               <span class="line absolute top-0 left-0 translate-x-[-21%] translate-y-[-50%]">
+                <img src="[##cms.cms.cdn##]/images/top-arrow.png"  alt="basis" title="basis">
+               </span>
+                    </div>
+                    <div class="column done gap-4 max-w-[308px] w-full h-[578px] flex flex-col border-[1px] border-[#C8CCCF] rounded-5">
+                        <h2 class="w-full flex bg-color3 pr-[1.2em] py-[1.2em]"> DONE</h2>
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    جلسه با همکاران
+                                </span>
+                                <span class="label ml-4  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-blue4 font-IRANSansWeb400 font-normal
+                                text-xs text-White">جلسه گروهی</span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان پیش‌بینی : 2 ساعت
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : علی احمدی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    برقراری تماس با مشتری
+                                </span>
+                                <span class="label ml-4 call  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-orange font-IRANSansWeb400 font-normal
+                                text-xs text-White">پیگیری </span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان انجام : 30 دقیقه
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : زهرا صوفی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>                     
+                        <div class="task rounded-5 w-90p mx-auto flex flex-col bg-[#E5E5E530]">
+                            <div class="title w-full items-center flex justify-between">
+                                <span class="title-task mr-4 font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black">
+                                    برقراری تماس با مشتری
+                                </span>
+                                <span class="label ml-4 call  group w-max leading-3 h-fit rounded-5
+                                px-[.5em] py-[.4em] bg-orange font-IRANSansWeb400 font-normal
+                                text-xs text-White">پیگیری </span>
+                             
+                            </div>
+                            <div class="text-task w-full mr-4 flex flex-col justify-start items-start">
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    مدت زمان انجام : 30 دقیقه
+                                </p>
+                                <p class="font-IRANSansWeb400 font-normal text-xs leading-8 text-black">  
+                                    اجرا کننده : زهرا صوفی
+                                </p>
+                            </div>
+                           <div class="date-task w-full flex  justify-end items-start">
+                            <span class="date ml-4  font-IRANSansWeb400 font-normal text-xs leading-8 text-black">
+                                1403/05/08
+                            </span>
+                           </div>
+                        </div>                     
+                    </div>
+                </div>
+                <div class="column w-auto flex flex-col justify-end">
+                    <div class="button">
+                        <button type="button" class="btn-4 flash rounded-5 translate-x-[-50%]
+                         w-max px-[1em] py-[.8em] font-IRANSansWeb700 font-bold text-base text-White
+                        bg-secondary">
+                        برنامه‌ریزی اسپرینت
+                        </button>
+                        <span class="line">
+                            <img src="[##cms.cms.cdn##]/images/arrow-l-1.png"  alt="basis" title="basis"">
+                        </span>
+                    
+                    </div>
+                    <span class="line translate-x-[64%] translate-y-[52%]">
+                        <img src="[##cms.cms.cdn##]/images/arrow-l-2.png" alt="basis" title="basis">
+                    </span>
+                    <button type="button" class="btn-5 flash absolute translate-x-[30%] bottom-0 left-0
+                     rounded-5 w-max px-[1em] py-[.8em] font-IRANSansWeb700 font-bold text-base text-White
+                    bg-secondary">
+                    قابلیت پیگیری مسائل و رفع مشکلات
+                    </button>
+                </div>
+            </div>
+       </section>
+       <section class="section-3 mt-[8em] pb-6 z-1 w-full flex flex-col">
+        <div class="Purpose-conrainer gap-[3em] w-80p mx-auto flex flex-col justify-center items-center">
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
+                        <img src="[##cms.cms.cdn##]/images/ts-1-v3.png" alt="basis" title="basis">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.02px] text-textGray">
+                        امکان استفاده از اسکرام و کانبان
+                    </span>
+                
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-sm leading-[28px] text-text text-right">
+                        Basis Panel با پشتیبانی از متدولوژی‌های اسکرام و کانبان، انعطاف‌پذیری بالایی را در مدیریت پروژه‌های چابک (Agile) فراهم می‌کند. تیم‌ها می‌توانند از رویکرد اسکرام به هدف بهره‌مندی از اسپرینت‌های ساختار‌یافته و گام‌به‌گام استفاده کنند. به‌علاوه اینکه بکارگیری کانبان، امکان مدیریت بصری فرآیندها و در نتیجه، تسهیل پیگیری و اولویت‌بندی وظایف را به‌همراه دارد. این انعطاف‌پذیری به تیم‌ها کمک می‌کند تا متدولوژی متناسب با نیازهای پروژه خود را انتخاب کرده و در روند کار، به عملیات بهینه‌تر و شفافیت بیشتری دست یابند.
+
+                    </p>
+                </div>
+            </div>
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
+                        <img src="[##cms.cms.cdn##]/images/ts-2-v3.png" alt="basis" title="basis">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.02px] text-textGray">
+                        امکان مدیریت اپیک‌ها
+                    </span>
+                
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-sm leading-[28px] text-text text-right">
+                        قابلیت مدیریت اپیک‌ها این امکان را به تیم‌ها می‌دهد که در بستر بیسیس پنل، پروژه‌های پیچیده و بزرگ را به بخش‌های کوچک و قابل‌مدیریت تقسیم‌بندی کنند. این ساختار به شما کمک می‌کند تا نمای کلی از پیشرفت پروژه و هم‌ترازی آن با اهداف تجاری را حفظ کنید. ضمن اینکه به‌واسطه این سلسله‌مراتب، ذی‌نفعان امکان پیگیری روند پیشرفت پروژه را دارند و می‌توانند درک کنند که چگونه هر یک از وظایف در دستیابی به اهداف کلان موثر واقع می‌شوند.
+                    </p>
+                </div>
+            </div>
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
+                        <img src="[##cms.cms.cdn##]/images/ts-3-v3.png"  alt="basis" title="basis">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.02px] text-textGray">
+                        برنامه‌ریزی اسپرینت
+                    </span>
+                
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-sm leading-[28px] text-text text-right">
+                        تیم‌ها می‌توانند از قابلیت برنامه‌ریزی اسپرینت این ماژول به‌منظور پیش‌بینی کارها، تخصیص منابع، تعیین زمانبندی‌های قابل‌تحقق استفاده کنند. این ویژگی از چرخه تحویل (Delivery Cycle) منظم پشتیبانی می‌کند، از تعهدات بیش از حد توان جلوگیری کرده و تیم را در مسیر اهداف نگه خواهد داشت. با برنامه‌ریزی موثر اسپرینت‌ها در Basis Panel، تیم‌ها گردش کاری متعادل و پایداری خواهند داشت و رضایت ذی‌نفعان از روند پیشرفت تیم حفظ می‌شود.
+                    </p>
+                </div>
+            </div>
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue flex justify-center items-center">
+                        <img src="[##cms.cms.cdn##]/images/ts-4-v3.png"  alt="basis" title="basis">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.02px] text-textGray">
+                        پیگیری مشکلات
+                    </span>
+                
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-sm leading-[28px] text-text text-right">
+                        ماژول مدیریت پروژه به دلیل امکان ردیابی مسائل به صورت متمرکز، یک منبع قابل‌اعتماد برای پیگیری مشکلات، وظایف تیم و دیگر نیازمندی‌ها فراهم کرده است. با کمک این سیستم پیگیری، تیم‌ها می‌توانند به‌سرعت به مشکلات پاسخ دهند، اولویت‌ها را مشخص کنند و به پیگیری وضعیت رفع مشکلات بپردازند. این ویژگی، به بهبود کیفیت محصول و کنترل هرچه بهتر تحویل پروژه کمک می‌کند.
+                    </p>
+                </div>
+            </div>
+        </div>
+       </section>
+       <section class="section-4 mt-[8em] pb-6 z-1 w-full flex flex-col bg-[#E5E5E530]">
+        <div class="Questions-container flex w-80p mx-auto flex-col">
+           <div class="title pt-[3em] w-full flex justify-center">
+            <h4 class="font-IRANSansWeb700 font-semibold text-[28px] leading-[32px] text-textGray text-center">
+                سوالات متداول
+            </h4>
+           </div>
+           <div class="Questions-boxes mt-[3em] pb-[4em]  w-full flex  gap-[2em] flex-col">
+            <basis core="print" datamembername="db.qa">
+                <face filter="typeid <> 150">
+                    <div class="Question group/question bg-White w-full rounded-lg flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
+                        <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
+                         px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
+                        border-l-mainGray  border-r-mainGray
+                         rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
+                            <span class="icon relative w-[20px] h-[20px]">
+                                <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
+                                 </svg>  
+                                 <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
+                                    <line x1="8" y1="16" x2="8" y2="4.37114e-08" stroke="#494949" stroke-width="2"/>
+                                    </svg>
+                                    
+                            </span>
+                            <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
+                            group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
+                            group-[&.active]/question:leading-[24px]
+                             font-normal text-base leading-[24px] text-textGray">
+                                @text
+                            </p>
+                        </div>
+                        <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
+                        mx-auto group-[&.active]/question:flex justify-start items-center gap-2
+                        flex-col">
+                            <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px] answer">
+                                @largetext
+                            </p>
+                        </div>
+                    </div>
+                </face>
+            </basis>
+           </div>
+        </div>
+       </section>
+
+       <section class="section-5 mt-[8em] pb-6 z-1 w-full flex flex-col">
+        <div class="detaileSec w-80p mx-auto grid grid-cols-2 gap-8">
+            <div class="right bg-lightBlue flex flex-col px-[1em] py-[1em] justify-center items-center rounded-5">
+                <p class="font-IRANSansWeb400 font-normal text-sm leading-[50px] text-black">
+                    قابلیت نظارت آنی، این مزیت را به شما می‌دهد که یک نمای فوری و در دسترس از سلامت پروژه و عملکرد تیم داشته باشید.، مدیران پروژه می‌توانند با دسترسی به داده‌های به‌روز، به‌موقع تصمیم‌گیری کنند، مشکلات احتمالی را زود تشخیص دهند و منابع را به‌درستی تخصیص دهند تا پروژه‌ها در مسیر صحیح باقی بمانند. این سطح نظارت، تضمین می‌کند که تیم‌ها به نیازهای پروژه پاسخگو باشند، چابک باقی بمانند و مدیریت بهینه‌شده‌ای را تجربه کنند.
+                </p>
+                            </div>
+            <div class="left relative w-full flex justify-center items-center rounded-5">
+                <div class="IMG h-full w-full flex rounded-5">
+                    <img src="[##cms.cms.cdn##]/images/task-img-v3.png" alt="basis" title="basis" class="h-full w-full object-cover rounded-5">
+                </div>
+                <div class="ov absolute top-0 left-0 z-1 w-full flex justify-center items-center rounded-5 h-full ">
+                    <p class="font-IRANSansWeb700 font-bold text-[28px] leading-[50px] text-White">
+                        نظارت لحظه‌ای
+                    </p>
+                </div>
+            </div>
+          
+        </div>
+       </section>
+       <basis core="call" file="logo.inc" />
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+  
+    </main>
+
+    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script src="[##cms.cms.cdn##]/asset/js/videoJS.js"></script>
+    <script src="[##cms.cms.cdn##]/asset/js/taskManager-v3.js"></script>
+</body>
+</html>

@@ -1,11 +1,11 @@
-<basis core="dbsource" source="trustlogintestapi" name="db" useragent="[##cms.request.user-agent##]"
+<basis core="dbsource" source="trustloginapi" name="db" useragent="[##cms.request.user-agent##]"
     ip="[##cms.request.clientip##]">
     <member name="dmntoken" type="scalar" request="dmntoken" />
 
 </basis>
 <p class="dmntoken" style="display: none;">[##db.dmntoken.dmntoken##]</p>
 <header class="DesktopHeader fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
-    <div class="InnerHeader w-80p grid grid-cols-2">
+    <div class="InnerHeader w-80p grid grid-cols-[2fr,1fr]">
         <div class="RightSec w-full flex justify-start gap-9">
             <div class="Logo w-auto flex justify-center items-center">
                 <a href="/" alt="basis" title="basis">
@@ -21,9 +21,15 @@
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
-                        <a href="#" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                     font-normal text-sm text-textGray">
-                            آخرین تغییرات
+                        <a href="#" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                       font-normal text-sm text-textGray">
+                       راهکارها
+                        </a>
+                    </li>
+                    <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                        <a href="#" alt="بلاگ" title="بلاگ" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                       font-normal text-sm text-textGray">
+                       بلاگ
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
@@ -38,6 +44,13 @@
                             تماس با ما
                         </a>
                     </li>
+                    <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                        <a href="/versions" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                     font-normal text-sm text-textGray">
+                            آخرین تغییرات
+                        </a>
+                    </li>
+                 
                 </ul>
                 <div class="lang w-auto flex justify-start items-center relative z-2">
                     <div class="langC w-auto flex justify-center items-center">
@@ -125,7 +138,7 @@ rounded-5 bg-White w-max px-[1em] pt-[2em] pb-1 flex flex-col relative justify-c
         </span>
         <div class="Logo w-auto mb-8 flex justify-center items-center mx-auto">
             <a href="" class="w-auto flex justify-center items-center">
-                <img src="images/logo-v3.png" alt="">
+                <img src="/images/logo-v3.png" alt="">
             </a>
         </div>
 
@@ -153,7 +166,7 @@ rounded-5 bg-White w-max px-[1em] pt-[2em] pb-1 flex flex-col relative justify-c
             </div>
         </form>
         <span class="copyRight my-3 w-full justify-end items-end">
-            <img src="images/trust-logo-v3.png" alt="">
+            <img src="/images/trust-logo-v3.png" alt="">
         </span>
     </div>
 
@@ -247,3 +260,4 @@ right-0 mx-auto z-[999] flex justify-center items-center">
 <basis core="callback" triggers="form.forgetPassword" run="atClient"></basis>
 <basis core="callback" triggers="authentication.hashid" run="atClient"></basis>
 <basis core="callback" triggers="db.captchaId" run="atClient"></basis>
+<script src="[##cms.cms.cdn##]/asset/js/login-v3.js"></script>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMS</title>
+    <meta name="description" content="BPMS">
+    <link href="https://vjs.zencdn.net/8.16.1/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/outputDesk-v3.css">
+</head>
+<body>
+    <main class="BPMS-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden" dir="rtl">
+        <header class="DesktopHeader fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
+            <div class="InnerHeader w-80p grid grid-cols-2">
+                <div class="RightSec w-full flex justify-start gap-9">
+                    <div class="Logo w-auto flex justify-center items-center">
+                      <a href="">
+                          <img src="../assets/images/logo.png" alt="">
+                      </a>
+                    </div>
+                    <nav class="Menu-header w-auto flex justify-start items-center gap-6">
+                      <ul class="w-auto flex gap-6 justify-start items-center">
+                          <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                              <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                               font-normal text-sm text-textGray">
+                                  خانه
+                              </a>
+                          </li>
+                          <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                            <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                             font-normal text-sm text-textGray">
+                                  آخرین تغییرات
+                              </a>
+                          </li>
+                          <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                            <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                             font-normal text-sm text-textGray">
+                                  درباره ما
+                              </a>
+                          </li>
+                          <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                            <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                             font-normal text-sm text-textGray">
+                                  تماس با ما
+                              </a>
+                          </li>
+                      </ul>
+                      <div class="lang w-auto flex justify-start items-center relative z-2">
+                              <div class="langC w-auto flex justify-center items-center">
+                                <span class="langs hover:cursor-pointer w-auto flex gap-1 justify-center items-center">
+                                    <span class="langIcon">
+                                        <img src="../assets/images/Group 35649.png" alt="">
+                                    </span>
+                                    
+                                    <span class="langText font-IRANSansWeb400 font-normal text-[13px] text-textGray">
+                                        انگلیسی
+                                    </span>
+                                  
+                                  </span>
+                                  <span class="icon w-auto flex justify-center items-center mr-2 translate-y-[3px]">
+                                    <svg class="[&.rotate]:rotate-[180deg] duration-200"  width="9" height="5" viewBox="0 0 9 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7 1H3H2L4.5 4L7 1Z" fill="#494949" stroke="#494949"/>
+                                    </svg>
+                                    </span>
+                              </div>
+                          
+                         
+                          <div class="langs-content absolute top-[2em] bg-primary left-[10%] flex flex-col  w-[70px] bg-white opacity-0
+                     duration-[.3s] [&.openLang]:opacity-[1]   [&.openLang]:pointer-events-auto pointer-events-none">
+                              <ul class="w-full flex flex-col">
+                                  <li class="w-auto flex justify-center group/langs duration-100 py-[.5em] hover:text-textGray
+                                  hover:bg-White ">
+                                      <a href="" class="w-auto flex">
+                                        <span class="langText font-IRANSansWeb400 font-normal duration-100 text-[13px] group-hover/langs:text-textGray
+                                         text-White">
+                                            انگلیسی
+                                        </span>
+                                      </a>
+                                    
+          
+                                  </li>
+                                  <li class="w-auto flex justify-center group/langs  duration-100 py-[.5em] hover:text-textGray
+                                  hover:bg-White ">
+                                    <a href="" class="w-auto flex">
+                                        <span class="langText font-IRANSansWeb400 font-normal duration-100 group-hover/langs:text-textGray text-[13px] text-White">
+                                            فارسی
+                                        </span>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                    </nav>
+                  </div>
+                <div class="LeftSec w-full flex justify-end">
+                    <div class="Btns w-auto flex gap-5">
+                        <a href="" class="button w-max px-[1.7em] hover:bg-hoverBtnDprimary duration-200
+                         py-[.8em] bg-primary flex justify-center items-center rounded-5">
+                            <button type="button " class="w-auto flex justify-center
+                             text-White items-center font-IRANSansWeb400 font-normal text-sm rounded-5">
+                                درخواست دمو
+                            </button>
+                        </a>
+                        <span class="login-button  w-max px-[1.7em] hover:bg-hoverBtlightBlue duration-200 
+                         py-[.8em] bg-lightBlue flex justify-center items-center rounded-5">
+                            <button type="button " class="w-auto flex justify-center
+                             text-primary items-center font-IRANSansWeb400 font-normal text-sm rounded-5">
+                                ورود / ثبت‌نام
+                            </button>
+                        </span>
+                    </div>
+                </div>
+         
+            </div>
+        </header>
+        <div class="Title-C mt-[10em] relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb800 font-extrabold text-[40.8px] leading-[61.2px] text-textGray text-center
+            flex gap-1">
+            تسهیل فرآیندهای پیچیده سازمان با ماژول 
+            <span class="color font-IRANSansWeb800 font-extrabold text-[40.8px] leading-[61.2px] text-primary">
+                مدیریت فرآیندها
+                </span>    
+            </h1>
+            <div class="text w-full flex flex-col justify-center items-center max-w-[1140px]">
+                <p class="font-IRANSansWeb600 font-semibold text-[21px] leading-[40px] text-text text-center">
+                    استفاده از ماژول مدیریت فرآیندها در بستر یک راهکار SaaS، به کسب‌وکارها این امکان را می‌دهد که بدون نیاز به سرمایه‌گذاری روی زیرساخت‌های فنی و نگهداری سیستم، از مزایای یک سیستم مدیریت فرآیند حرفه‌ای و کارآمد بهره‌مند شوند. ماژول مدیریت فرآیند با ایجاد چارچوب‌های منظم و استاندارد برای انجام فعالیت‌ها، نقشی کلیدی در تامین امنیت سازمانی ایفا می‌کند؛ به‌طوری که با تعریف دقیق گردش کار، کنترل دسترسی‌ها و ثبت منظم فعالیت‌ها، احتمال بروز خطاهای انسانی و نفوذهای غیرمجاز را کاهش می‌دهد.
+                </p>
+                </div>
+        </div>
+        <section class="section-1 mt-8 pb-[10em] z-1 relative w-full flex flex-col  bg-White">
+            <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute 
+            before:left-0 before:bottom-0-
+            before:w-full  pointer-events-none before:bg-White before:z-0 ">
+            </div>
+            <div class="Vidoe-vontainer  relative z-2 w-[76%] max-w-[1300px] mx-auto flex">
+                <video 
+                    id="my-video"
+                    controls
+                    preload="auto"
+                    width="640"
+                    height="264"
+                    poster="/web/assets/images/crm_section1-1 1.png"
+                    data-setup="{}"
+                    class="w-full h-[809px] bg-[transparent] object-cover video-js " >
+                    <source src="images/ssstwitter.com_1707122752489.mp4" type="video/mp4" />
+                </video>
+            </div>
+       </section>
+       <section class="section-2 mt-8 pb-[10em] z-1 relative w-full flex flex-col">
+        <div class="Chart-container w-80p mx-auto flex justify-center flex-col">
+            <div class="topChart relative w-auto mx-auto flex flex-col">
+                <span class="highlight translate-y-[2px] w-max px-[1em] py-[.8em] bg-orange rounded-5 
+                 font-IRANSansWeb700 font-bold text-sm  text-White">
+                    واحد فروش
+                </span>
+                <div class="chart relative w-max flex gap-[6em] bg-light3 py-[2em] px-[2em]">
+                    <svg class="line-container x-line w-80p mx-auto right-0 left-0 absolute top-[100%] z-0 bottom-0 my-auto" width="100%" height="100%">
+                        <line x1="100%" y1="0" x2="0" y2="0" class="dashed-line"></line>                
+                    </svg>
+                     <span class="box relative z-1 w-max flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                      items-center py-[1em] px-[2em] bg-White rounded-5" >
+                        مذاکره اولیه
+                     </span>
+                     <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                     items-center py-[1em] px-[2em] bg-White rounded-5" >
+                     جلسه بررسی نیازمندی‌ها
+                    </span>
+                    <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                    items-center py-[1em] px-[2em] bg-White rounded-5" >
+                    ثبت صورت‌جلسه
+                   </span>
+                
+                  
+                </div>
+                <svg class="line-container y-line w-80p mx-auto right-0 left-0 absolute z-0 bottom-[-119px] my-auto" width="100%" height="100%">
+                    <line x1="50%" y1="35%" x2="50%" y2="70%" class="dashed-line"></line>           
+                </svg>
+            </div>
+        </div>
+       </section>
+    </main>
+    <script src="https://vjs.zencdn.net/8.16.1/video.min.js"></script>
+    <script src="js/lenisScroll.js"></script>
+    <script src="js/configDesk.js"></script>
+    <script src="js/swiper.js"></script>
+</body>
+</html>

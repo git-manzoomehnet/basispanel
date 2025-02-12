@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت</title>
+    <meta name="description" content="چت">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<body>
+    <main class="chat-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <section class="section-1 mt-[9em] w-full flex mb-[4em] min-h-[80vh]">
+            <div class="container-chat w-80p mx-auto my-auto min-h-[80vh]
+            grid grid-cols-[1fr,3fr] gap-9 ">
+                <div class="chatBoxesSection
+                 w-full flex flex-col border-[1px]
+                  bg-White border-[#E8ECEF] rounded-5">
+                  <div class="topSec w-90p mx-auto py-[1em] border-b-[1px] border-[#E8ECEF]">
+                    <div class="Searchbox  relative w-full h-[44px]">
+                        <input type="text" id="conversationSearch"
+                        placeholder="جستجو" class="w-full pr-[40px] h-full outline-none border-[1px]
+                        border-[#C8CCCF] rounded-5">
+                        <span class="searchIcon absolute right-[10px] top-[15px]">
+                            <img src="[##cms.cms.cdn##]/images/searchicon.svg" alt="basis" title="basis">
+                        </span>
+                      </div>
+                  </div>
+                  <div class="DropDowns overflow-y-auto w-90p mx-auto flex flex-col">
+                    <div class="Drop overflow-hidden hover:cursor-pointer duration-1000 
+                     group/drop py-[.5em] w-full flex flex-col">
+                        <div class="title-dropdown duration-300 px-[.5em] rounded-5 py-[.5em]
+                        border-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                                درخواست دمو
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="/web/assets/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-sm text-text">
+                                    نسبت به رقبا
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-sm text-text">
+                                    نسبت به رقبا
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop overflow-hidden hover:cursor-pointer duration-1000 
+                     group/drop py-[.5em] w-full flex flex-col">
+                        <div class="title-dropdown duration-300 px-[.5em] rounded-5 py-[.5em]
+                        border-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                                درخواست دمو
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="/web/assets/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-sm text-text">
+                                    نسبت به رقبا
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-sm text-text">
+                                    نسبت به رقبا
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+           
+                <button class="newConversation-btn mt-auto mb-3 bg-lightBlue w-90p mx-auto rounded-5
+                 flex justify-center items-center gap-2 py-[.5em]">
+                 <span class="icon w-auto flex justify-center ">
+                    <img src="[##cms.cms.cdn##]/images/conver-v3.svg" alt="">
+                 </span>
+                    <span class="text w-auto flex justify-center font-IRANSansWeb700 font-bold text-sm leading-21.91
+                    text-primary">
+                        گفت و گوی جدید
+                    </span>
+                   
+                </button>
+                </div>
+                <div class="chatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
+                  <div class="chats w-[95%] mx-auto gap-10 flex flex-col mt-9">
+                    <div class="ME w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+                            <img src="[##cms.cms.cdn##]/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+                        </span> 
+                        <span class="userDetail w-auto flex flex-col justify-start items-start">
+                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+                            leading-[22px] text-text">
+                                شما
+                            </div>
+                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                                crm چه ویژگی هایی داره ؟
+
+                            </div>
+                        </span>
+                    </div>
+                    <div class="YOU w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
+                        </span> 
+                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
+                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
+                            1. مدیریت اطلاعات مشتریان
+                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
+                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
+                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
+                            2. مدیریت فروش
+                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
+                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
+                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
+                            3. مدیریت بازاریابی
+                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
+                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
+                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
+                            4. مدیریت خدمات مشتریان
+                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
+                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
+                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
+                            5. گزارشگیری و تحلیل دادهها
+                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
+                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
+                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
+                            6. یکپارچهسازی با سایر سیستمها
+                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
+                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
+                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
+                            7. اتوماسیون فرآیندها
+                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
+                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
+                            8. دسترسی چندپلتفرمی
+                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
+                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
+                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
+                            9. امنیت دادهها
+                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
+                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
+                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
+                            10. شخصیسازی
+                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
+                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
+                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
+                            11. مدیریت تیم
+                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
+                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
+                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
+                            12. پشتیبانی از چند زبانه
+                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
+                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
+                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
+                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
+                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
+                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
+                            14. مقیاسپذیری
+                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
+                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
+                            15. قابلیتهای اجتماعی
+                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
+                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
+                            نتیجهگیری
+                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
+                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
+                            </div>
+                            <div class="contact-c w-full flex justify-end items-center gap-2">
+                                <span class="CopyText hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="disLike hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="like hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="ME w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+                            <img src="[##cms.cms.cdn##]/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+                        </span> 
+                        <span class="userDetail w-auto flex flex-col justify-start items-start">
+                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+                            leading-[22px] text-text">
+                                شما
+                            </div>
+                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                                crm چه ویژگی هایی داره ؟
+
+                            </div>
+                        </span>
+                    </div>
+                    <div class="YOU w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
+                        </span> 
+                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
+                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
+                            1. مدیریت اطلاعات مشتریان
+                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
+                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
+                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
+                            2. مدیریت فروش
+                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
+                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
+                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
+                            3. مدیریت بازاریابی
+                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
+                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
+                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
+                            4. مدیریت خدمات مشتریان
+                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
+                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
+                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
+                            5. گزارشگیری و تحلیل دادهها
+                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
+                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
+                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
+                            6. یکپارچهسازی با سایر سیستمها
+                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
+                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
+                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
+                            7. اتوماسیون فرآیندها
+                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
+                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
+                            8. دسترسی چندپلتفرمی
+                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
+                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
+                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
+                            9. امنیت دادهها
+                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
+                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
+                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
+                            10. شخصیسازی
+                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
+                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
+                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
+                            11. مدیریت تیم
+                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
+                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
+                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
+                            12. پشتیبانی از چند زبانه
+                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
+                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
+                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
+                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
+                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
+                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
+                            14. مقیاسپذیری
+                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
+                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
+                            15. قابلیتهای اجتماعی
+                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
+                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
+                            نتیجهگیری
+                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
+                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
+                            </div>
+                            <div class="contact-c w-full flex justify-end items-center gap-2">
+                                <span class="CopyText hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="disLike hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="like hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                  </div>
+                  <div class="chatInputBox sticky bottom-[1em] left-0 right-0 z-2 w-95p mx-auto h-[95px] rounded-5">
+                    <input type="text" id="chat" placeholder="پیام را اینجا تایپ کنید"
+                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5">
+                    <span class="Icon SendMessage absolute hover:cursor-pointer z-3 left-4 top-2">
+                        <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                    </span>
+                  </div>
+                </div>
+              
+            </div>
+        </section>
+        <div id="footer-manzoomeh-negaran">
+            <style>
+                #footer-manzoomeh-negaran{
+                    width: 100%;
+                    height: 70px;           
+                    font-size: 12px;
+                    font-family:Arial, Helvetica, sans-serif;
+                }
+                #footer-manzoomeh-negaran span{
+                    margin: 0 5px;
+                    margin-top: -10px;
+                }
+                #footer-manzoomeh-negaran a{
+                    display: flex;
+                    text-decoration: none;
+                    align-items: center;
+                    direction: ltr;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light{
+                    color: #FFFFFF;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light a{
+                    color: #FFFFFF;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark #manzoomeh_footer_logo{
+                    width: 60px;
+                    height: 35px;
+                    background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_dark.png);
+                    
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light #manzoomeh_footer_logo{
+                    width: 60px;
+                    height: 35px;
+                    background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_light.png);
+                    
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark{
+                    color: #000;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark a{
+                    color: #000;
+                }
+              
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-black{
+                    background-color: #000;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-blue{
+                    background-color: #004B85;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-red{
+                    background-color: #B40020;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-green{
+                    background-color: #00A693;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-gray{
+                    background-color: #D0D0D0;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-white{
+                    background-color: #FFFFFF;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-palegreen{
+                    background-color: #CDFFCD;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-paleblue{
+                    background-color: #BAE1FF;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+               
+            </style>
+            <div class="footer-manzoomeh-negaran-black footer-manzoomeh-light" >
+                <a href="https://manzoomeh.ir/" target="_blank">
+                Powered By
+               <span id="manzoomeh_footer_logo"></span>
+                    
+                MANZOOMEH NEGARAN
+            </a>
+            </div>
+        </div>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
+    <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script>
+</body>
+</html>
