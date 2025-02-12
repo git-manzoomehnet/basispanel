@@ -1,17 +1,31 @@
 
+let userMessage = document.querySelectorAll('.YOU')
+userMessage.forEach(y=>{
+    let message = y.querySelector('.message').innerHTML
+    y.querySelector('.CopyText').addEventListener('click',()=>{
+        console.log(message,'message');
+        copyToClipboard(message)
+        
+    })
+})
+function copyToClipboard(message) {
+    const text = message;
+    navigator.clipboard.writeText(text)
+        .then(() =>  console.log('copy text'))
+        .catch(err => console.error("error in copy:", err));
+}
+
+
+
+
 
 let langIcon = document.querySelector(".langC"),
     langSVG = document.querySelector(".langC svg"),
     langContent = document.querySelector(".langs-content");
-    let langIconFooter = document.querySelector("footer .langC"),
-    langSVGFooter = document.querySelector("footer .langC svg"),
-    langContentFooter = document.querySelector("footer .langs-content");
     langIcon.addEventListener('click',(e)=>{
         e.stopPropagation()
         langContent.classList.toggle("openLang")
         langSVG.classList.toggle("rotate")
-        langContentFooter.classList.remove("openLang")
-        langSVGFooter.classList.remove("rotate")
         if(document.querySelector('.UserProfile-box .User ')){
             let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
             let userProfile = document.querySelector('.UserProfile-box .Icon ')
@@ -20,19 +34,7 @@ let langIcon = document.querySelector(".langC"),
         }
 
     })
-    langIconFooter.addEventListener('click',(e)=>{
-        e.stopPropagation()
-        langContentFooter.classList.toggle("openLang")
-        langSVGFooter.classList.toggle("rotate")
-        langContent.classList.remove("openLang")
-        langSVG.classList.remove("rotate")
-        if(document.querySelector('.UserProfile-box .User ')){
-        let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
-        let userProfile = document.querySelector('.UserProfile-box .Icon ')
-        dropBox.classList.remove('openProf')
-        userProfile.classList.remove('openProf')
-        }
-    })
+
     if(document.querySelector('.UserProfile-box .User ')){
         let userProfile = document.querySelector('.UserProfile-box .Icon ')
         let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
@@ -43,8 +45,6 @@ let langIcon = document.querySelector(".langC"),
             userProfile.classList.toggle('openProf')
             langContent.classList.remove("openLang")
             langSVG.classList.remove("rotate")
-            langContentFooter.classList.remove("openLang")
-            langSVGFooter.classList.remove("rotate")
         })
         logoutBtnn.addEventListener("click", (e) => {
             e.stopPropagation()
@@ -53,21 +53,29 @@ let langIcon = document.querySelector(".langC"),
             $bc.setSource("db.logout", true)
             langContent.classList.remove("openLang")
             langSVG.classList.remove("rotate")
-            langContentFooter.classList.remove("openLang")
-            langSVGFooter.classList.remove("rotate")
         })
     }
+
+
+    let drops = document.querySelectorAll('.DropDowns .Drop')
+    drops.forEach(drop=>{
+        drop.querySelector('.title-dropdown').addEventListener('click',(e)=>{
+            console.log( e.currentTarget);
+            drop.classList.toggle('open')
+        })
+    })
 document.addEventListener("click", (e) => {
     console.log('click') 
     langContent.classList.remove("openLang")
     langSVG.classList.remove("rotate")
-    langContentFooter.classList.remove("openLang")
-    langSVGFooter.classList.remove("rotate")
     if(document.querySelector('.UserProfile-box .User ')){
         let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
         let userProfile = document.querySelector('.UserProfile-box .Icon ')
         dropBox.classList.remove('openProf')
         userProfile.classList.remove('openProf')
+    }
+    if(drops){
+        
     }
 });
 if(document.querySelector('.Popup-container')){
@@ -168,7 +176,7 @@ function raf(e) {
 }
 requestAnimationFrame(raf)
 lenis.on('scroll',(e)=>{
-
+    console.log(e);
     
 if(e.scroll==0){
     document.querySelector('header').classList.remove('bgWhite')

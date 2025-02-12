@@ -111,3 +111,121 @@ let SwiperTwo= new Swiper ('.swiper-Two', {
     feeModeMomentum:false
   
 })
+const texts = ['مدیرفروش هستم ،','با افتخار پاسخگوی شما ','بفرمایید'];
+const inputt = document.querySelector('#myInput');
+const animationWorker = function (input, texts) {
+  this.inputt = input;
+  this.defaultPlaceholder = this.inputt.getAttribute('placeholder');
+  this.texts = texts;
+  this.curTextNum = 0;
+  this.curPlaceholder = '';
+  this.blinkCounter = 0;
+  this.animationFrameId = 0;
+  this.animationActive = false;
+  this.inputt.setAttribute('placeholder',this.curPlaceholder);
+
+  this.switch = (timeout) => {
+    this.inputt.classList.add('imitatefocus');
+    setTimeout(
+      () => { 
+        this.inputt.classList.remove('imitatefocus');
+          this.inputt.setAttribute('placeholder',this.curPlaceholder);
+
+        setTimeout(
+          () => { 
+            this.inputt.setAttribute('placeholder',this.curPlaceholder);
+            if(this.animationActive) 
+              this.animationFrameId = window.requestAnimationFrame(this.animate)}, 
+          timeout);
+      }, 
+      timeout);
+  }
+
+  this.animate = () => {
+    if(!this.animationActive) return;
+    let curPlaceholderFullText = this.texts[this.curTextNum];
+    let timeout = 200;
+
+    if (this.curPlaceholder == curPlaceholderFullText+'_' && this.blinkCounter==3) {
+      this.blinkCounter = 0;
+      this.curTextNum = (this.curTextNum >= this.texts.length-1)? 0 : this.curTextNum+1;
+      this.curPlaceholder = '_';
+   
+      this.switch(1000);
+
+      return;
+    }
+    else if (this.curPlaceholder == curPlaceholderFullText+'_' && this.blinkCounter<3) {
+      this.curPlaceholder = curPlaceholderFullText;
+      this.blinkCounter++;
+
+    }
+    else if (this.curPlaceholder == curPlaceholderFullText && this.blinkCounter<3) {
+      this.curPlaceholder = this.curPlaceholder+'_';
+    }
+    else {
+      this.curPlaceholder = curPlaceholderFullText
+        .split('')
+        .slice(0,this.curPlaceholder.length+1)
+        .join('') + '_';
+      timeout = 150;
+    }
+
+
+    this.inputt.setAttribute('placeholder',this.curPlaceholder);
+    setTimeout(
+      () => { if(this.animationActive) this.animationFrameId = window.requestAnimationFrame(this.animate)}, 
+      timeout);
+  }
+
+  this.stop = () => {
+    this.animationActive = false;
+    window.cancelAnimationFrame(this.animationFrameId);
+  }
+
+  this.start = () => {
+    this.animationActive = true;
+    this.animationFrameId = window.requestAnimationFrame(this.animate);
+    return this;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  let aw = new animationWorker(inputt, texts).start();
+  inputt.addEventListener("focus", (e) => aw.stop());
+  inputt.addEventListener("blur", (e) => {
+    aw = new animationWorker(inputt, texts);
+    if(e.target.value == '') setTimeout( aw.start, 2000);
+  });
+});
+let btnInput = document.querySelector('.Overlay-input')
+btnInput.addEventListener('click',()=>{
+        let input = document.querySelector('#myInput')
+        console.log('val',input.value);
+        if(input.value == ''){
+            return
+        }
+        else{
+               console.log('val',input.value);
+               setTimeout(()=>{
+              window.location.href = `/chat.bc?q=${input.value}`
+        },1000)}
+})
+inputt.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+      // Cancel the default action, if needed
+      if(inputt.value != ''){
+        event.preventDefault();
+        console.log('clicked');
+        console.log('val',inputt );
+        console.log('val',inputt.value);
+        window.location.href = `/chat.bc?q=${inputt.value}`
+        setTimeout(() => {
+        
+        }, 1000);
+      }
+  
+  
+    }
+  });

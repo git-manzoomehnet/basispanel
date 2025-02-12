@@ -1,0 +1,1 @@
+let questions=[...document.querySelectorAll(".Questions-boxes .Question")];questions.forEach((e=>{e.addEventListener("click",(e=>{let t=e.currentTarget.classList.contains("active");questions.map((e=>e.classList.remove("active"))),t||e.currentTarget.classList.add("active")}))}));

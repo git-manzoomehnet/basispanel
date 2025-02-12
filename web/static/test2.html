@@ -3,758 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بیسیس پنل</title>
-    <meta name="description" content="بیسیس پنل">
-    <meta name="description" content="home">
-    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
- </head>
+    <title>نمودار سازمانی</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f8f8;
+            position: relative;
+        }
+        .chart {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 80px;
+            text-align: center;
+            position: relative;
+        }
+        .box {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 180px;
+        }
+        .diamond {
+            background: purple;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        .highlight {
+            background: orange;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        /* خطوط چین متحرک */
+        .line-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+        .dashed-line {
+            stroke: black;
+            stroke-width: 2;
+            stroke-dasharray: 5, 5;
+            animation: dash 1.5s linear infinite;
+        }
+        @keyframes dash {
+            from { stroke-dashoffset: 10; }
+            to { stroke-dashoffset: 0; }
+        }
+    </style>
+</head>
 <body>
-    <main class="Home-BasisPanel w-full overflow-hidden" dir="rtl">
-        <basis core="call" file="header.inc" pageindex="[##cms.cms.pageindex##]" />
-        <div class="Bg-gray-sec relative before:content-[''] before:absolute before:left-0 before:top-0
-    before:w-full before:h-[20%] before:bg-White before:z-0 bg-bgGray ">
-            <section class="section-1  w-full flex flex-col mt-[8em] bg-White">
-                <div class="Titles w-full flex flex-col justify-center items-center gap-6">
-                    <h1 class="font-IRANSansWeb700 font-bold text-[50px] text-center leading-55 text-blue">
-                        راهکارهای یکپارچه نرم افزاری برای <span
-                            class="color text-blue2 font-IRANSansWeb700 font-bold text-[50px]">
-                            مدیریت
-                        </span> کسب و کار
-                    </h1>
-                    <h2 class="font-IRANSansWeb600 font-semibold text-[21px] text-center text-textGray">
-                        بیسیس پنل مجموعه‌ای از ابزارهای یکپارچه ابری است که تمام نیازهای سازمانی شما را پوشش می‌دهد.
-                    </h2>
-                </div>
-                <div class="Banner w-full flex justify-center items-center">
-                    <img src="[##cms.cms.cdn##]/images/basispanel-v3.png" alt="basis" title="basis">
-                </div>
-            </section>
-            <section class="section-2 w-full flex flex-col py-[3em]">
-                <div class="Purpose-sec w-80p flex mx-auto flex-col mb-[2em]">
-                    <div class="purpose-boxes w-full grid grid-cols-7 gap-y-20">
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                     flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                         h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/user-group-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                مدیریت اعضا
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                    flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                        h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/folderShare-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                پوشه اشتراکی
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                   flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                       h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/reports-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                گزارشات
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                  flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                      h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/ticket-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                سیستم تیکتینگ
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                 flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                     h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/gallery-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                گالری تصاویر
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-                flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                    h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/processMaker-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                فرآیندساز
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-               flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                   h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/uploadContent-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                بارگزاری محتوا
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-              flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                  h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/work-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                میزکار
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-             flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                 h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/message-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                دبیرخانه
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-            flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-                h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/managementProj-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                مدیریت پروژه
-                            </span>
-                        </div>
 
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-           flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-               h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/financialSystem-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                سیستم مالی
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-          flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-              h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/crm-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                CRM
-                            </span>
-                        </div>
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-          flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-              h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/domailManage-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                مدیریت دامنه
-                            </span>
-                        </div>
+<div class="chart">
+    <div class="box">
+        <div class="highlight">واحد فروش</div>
+        <p>مذاکره اولیه</p>
+        <p>جلسه بررسی نیازمندی‌ها</p>
+        <p>ثبت صورت‌جلسه</p>
+    </div>
+    
+    <div class="diamond">مدیریت خرید مشتری؟</div>
+    
+    <div class="box">
+        <div class="highlight">واحد مالی</div>
+        <p>صدور قرارداد اولیه</p>
+        <p>ارسال برای مشتری</p>
+        <p>ارسال به واحد تولید</p>
+    </div>
+    
+    <div class="box" style="grid-column: 2; grid-row: 2;">
+        <div class="highlight">واحد پشتیبانی</div>
+        <p>پیگیری از مشتری</p>
+    </div>
+</div>
 
-                        <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
-         flex flex-col gap-1">
-                            <span class="IMG bg-White flex w-[60px] group-hover/purpose:bg-lightBlue duration-200
-             h-[60px] py-[.3em] px-[.3em] rounded-5">
-                                <img src="images/websiteManage-v3.png" alt="" class="w-full object-cover">
-                            </span>
-                            <span
-                                class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                                مدیریت وب‌سایت
-                            </span>
-                        </div>
-                    </div>
-                </div>
+<!-- خطوط چین -->
+<svg class="line-container" width="100%" height="100%">
+    <!-- خط از واحد فروش به مدیریت -->
+    <line x1="20%" y1="20%" x2="50%" y2="35%" class="dashed-line"></line>
+    
+    <!-- خط از مدیریت به واحد مالی -->
+    <line x1="50%" y1="35%" x2="80%" y2="20%" class="dashed-line"></line>
+    
+    <!-- خط از مدیریت به پشتیبانی -->
+    <line x1="50%" y1="35%" x2="50%" y2="65%" class="dashed-line"></line>
+</svg>
 
-            </section>
-        </div>
-        <section class="section-3 w-full flex flex-col mt-[2em]">
-            <div class="title w-full flex flex-col gap-3 fadeIN">
-
-                <h4
-                    class="font-IRANSansWeb600 font-semibold text-base text-blue3 text-center duration-500 translate-x-100 opacity-0">
-                    مزایای بیسیس پنل
-                </h4>
-                <h3
-                    class="font-IRANSansWeb700 font-extrabold text-[28px]  text-textGray text-center duration-500 translate-x-100 opacity-0">
-                    بیسیس پنل چطور به کسب و کار من کمک می‌کند؟
-                </h3>
-            </div>
-            <div class="help-Boxes w-80p mx-auto flex flex-col">
-                <div class="helpBox w-full gap-5 grid grid-cols-2 mt-7 py-[4em] fadeIN">
-                    <div class="leftSec w-full flex flex-col justify-start items-start">
-                        <div class="title w-full flex justify-start flex-col items-start gap-1">
-                            <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
-                     text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
-                     text-text leading-[14px]">
-                                مزیت اول
-                            </span>
-                            <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                تحلیل فروش در یک نگاه؛ موفقیت در یک قدم!
-                            </h4>
-                        </div>
-                        <div class="text w-full flex flex-col mt-7">
-                            <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من فرهاد، مدیر فروش یک کسب‌وکار متوسط هستم؛ با ماژول CRM در بیسیس پنل می‌توانم
-                                پایپ‌لاین‌های مختلف فروش را تعریف کرده و در یک نگاه و کسری از ثانیه، نقاط قوت و ضعف تیم
-                                خود را تحلیل کنم. به واسطه این راه‌کار، ما به‌طور مداوم به اهداف تیمی مدنظر خود
-                                رسیده‌ایم و تصمیمات کلان سازمانی را بر مبنای داده اخذ کردیم.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="rightSec  w-full flex">
-
-                        <div class="SalesSec relative before:content-[''] before:absolute before:w-[100px] before:h-full before:bg-White
-                  before:right-0 before:top-0 before:z-0
-                   w-full flex flex-col"
-                            style="background-image: url(/images/CRM_ContactProfile_Customer_Natural-v3.png);">
-                            <div class="PopSale relative z-1 w-auto flex flex-col">
-                                <div
-                                    class="title w-max flex justify-start items-start gap-2 border-b-[1px] berder-blue pb-[.5em] mb-[.5em]">
-                                    <span id="counter"
-                                        class="percent font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
-
-                                    </span>
-                                    <span
-                                        class="text font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
-                                        رشد فروش
-                                    </span>
-                                </div>
-                                <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
-                                    در مقایسه با هفته گذشته
-                                </p>
-                            </div>
-                            <div id="chart" class="relative z-1" dir="ltr">
-                                <div id="animations-example-1">
-                                    <table
-                                        class="charts-css column hide-data show-labels show-primary-axis data-spacing-6">
-                                        <caption> Animation Example #1 </caption>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"> Year </th>
-                                                <th scope="col"> Progress </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row"> شکست خورده </th>
-                                                <td style="--size: 0.2;">
-                                                    <span class="data"> 20 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> در حال مذاکره </th>
-                                                <td style="--size: 0.4;">
-                                                    <span class="data"> 40 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> فروش خارجی </th>
-                                                <td style="--size: 0.6;">
-                                                    <span class="data"> 60 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> فروش داخلی </th>
-                                                <td style="--size: 0.8;">
-                                                    <span class="data"> 80 </span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row"> فروش بهمن </th>
-                                                <td style="--size: 1.0;">
-                                                    <span class="data"> 100 </span>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
-                    <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
-                        <div class="title w-full flex justify-start flex-col items-start gap-1">
-                            <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
-                        text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
-                        text-text leading-[14px]">
-                                مزیت دوم
-                            </span>
-                            <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                پیش‌بینی چالش‌های کسب‌وکار؛ فتح فرصت‌هـــا برای رشـــــد سازمان
-                            </h4>
-                        </div>
-                        <div class="text w-full flex flex-col mt-7">
-                            <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من سینا، مدیرعامل یک شرکت در حال رشد هستم؛ داشبورد مدیریتی بیسیس پنل و قابلیت‌های
-                                کاربردی آن، نمای جامع و لحظه‌ای مناسبی از تمامی عملیات کسب‌وکار در اختیار من قرار
-                                می‌دهد. به کمک این داشبورد می‌توانم تصمیمات استراتژیک سازمان را به شکل آگاهانه اتخاذ
-                                کنم، فرصت‌های رشد را شناسایی کرده و چالش‌ها را پیش از تاثیرگذاری آن‌ها بر سودآوری سازمان
-                                حل کنم.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="leftSec  group-odd/help:justify-end group-odd/help:order-1 w-full relative flex justify-start items-center">
-                        <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
-                            <img src="images/psd_blank_smartphone_template 1-v3.png" alt=""
-                                class=" w-full object-cover">
-                        </div>
-
-                        <div class="IMG-ov  absolute right-0 top-0 z-1 max-w-[445px]
-                max-h-[299px] translate-y-[50%] translate-x-[-30%]">
-                            <img src="images/ov-v3.png" class=" w-full object-cover">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
-                    <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
-                        <div class="title w-full flex justify-start flex-col items-start gap-1">
-                            <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
-                     text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
-                     text-text leading-[14px]">
-                                مزیت سوم
-                            </span>
-                            <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                بیسیس پنــل؛ واسطی بـــــرای ورود کسب‌وکار به جهـــــان هوش مصنوعی
-                            </h4>
-                        </div>
-                        <div class="text w-full flex flex-col mt-7">
-                            <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من شروین، مدیر توسعه کسب‌و‌کار هستم؛ با بیسیس پنل، ما تمام داده‌های کسب و کار خود - از
-                                فروش و بازاریابی گرفته تا عملیات و امور مالی - را در یک مرکز هوشمند، قابل‌اکتفا و منسجم،
-                                یکپارچه کرده‌ایم. این یکپارچگی نه تنها امروز به ما بینش‌های اجرایی مختلفی می‌دهد، بلکه
-                                ما را برای پیاده‌سازی راه‌کارهای هوش مصنوعی در آینده نیز آماده می‌کند. با کمک بیسیس پنل،
-                                علاوه بر سازماندهی داده‌ها، کسب‌وکار ما برای تحولات آینده نیز آماده می‌شود.
-
-                            </p>
-                        </div>
-                    </div>
-                    <div
-                        class="rightSec  group-even/help:order-1  group-odd/help:justify-end w-full relative flex justify-start items-center">
-                        <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
-                            <img src="images/Untitled-v3.png" alt="" class=" w-full object-cover">
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section-4 w-full flex flex-col pb-[3em] mt-[2em] bg-lightBG ">
-            <div class="title w-full flex justify-center items-center py-[3em]">
-                <h5 class="font-IRANSansWeb700 font-bold text-lg leading-28.17 text-textGray text-center">
-                    شرکت‌هایی که به ما اعتماد کردند
-                </h5>
-            </div>
-            <div class="Customers w-80p mx-auto grid grid-cols-6 gap-y-14">
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/edco.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/makesh-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/g-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/dika_logo_hq_edited 1.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/alijenab-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <div class="customer w-full flex justify-center items-center">
-                    <div class="IMG max-w-[124px]">
-                        <img src="images/remedy-v3.png" alt="" class="w-full h-full object-cover">
-                    </div>
-                </div>
-
-            </div>
-            <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
-                <h5 class="font-IRANSansWeb700 font-bold text-[30px] leading-[67.3px] text-textGray text-center">
-                    برای شروع آماده‌اید ؟
-                </h5>
-                <p class="font-IRANSansWeb700 font-bold text-lg leading-[30.52px] text-textGray text-center">
-                    زمان خود را از دست ندهید و درخواست دهید !
-                </p>
-                <a href=""
-                    class="button w-max mt-4 hover:bg-hoverBtnDprimary duration-200 px-[4em] py-[.4em] bg-primary flex justify-center items-center rounded-5">
-                    <button type="button " class="w-auto flex justify-center
-                 text-White items-center font-IRANSansWeb700 font-normal text-lg leading-[40.17px] rounded-5">
-                        درخواست دمو
-                    </button>
-                </a>
-            </div>
-        </section>
-        <section class="section-5 w-full flex flex-col ">
-            <div class="MethodsSec w-80p mx-auto flex flex-col">
-                <div class="title w-full flex justify-center items-center py-[2em]">
-                    <h5 class="font-IRANSansWeb800 font-extrabold text-[28px] leading-[50px] text-textGray text-center">
-                        راهکارهای بیسیس پنل
-                    </h5>
-                </div>
-                <div class="Methods w-full flex flex-col">
-                    <div
-                        class="tabs mb-[2em] w-full flex justify-between relative before:content-[''] before:w-full before:h-[1px]
-            before:border-t-[2px] before:z-0 before:border-mainGray before:absolute before:left-0 before:top-[50%] before:border-dashed">
-                        <div data-position="left"
-                            class="Tab relative z-1 hover:cursor-pointer
-                [&.active]:bg-primary
-                 hover:bg-primary group/tab duration-200
-                 bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
-                            <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-200
-                    font-semibold text-base leading-[27px] text-center text-text">
-                                برای کسب‌وکارهای کوچک
-                            </p>
-                        </div>
-                        <div data-position="center"
-                            class="Tab relative z-1 hover:cursor-pointer
-                [&.active]:bg-primary
-                 hover:bg-primary group/tab duration-200
-                 bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
-                            <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-200
-                    font-semibold text-base leading-[27px] text-center text-text">
-                                برای تجارت الکترونیک
-                            </p>
-                        </div>
-                        <div data-position="right"
-                            class="Tab relative z-1 hover:cursor-pointer
-                [&.active]:bg-primary
-                 hover:bg-primary group/tab duration-200
-                 bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
-                            <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-200
-                    font-semibold text-base leading-[27px] text-center text-text">
-                                برای تیم‌های بازاریابی
-                            </p>
-                        </div>
-
-                    </div>
-                    <div class="Tab-Contents relative w-full flex flex-col">
-                        <div class="Signs w-full flex justify-between">
-                            <span
-                                class="sign opacity-0 relative right-0 activeSign [&.activeSign]:opacity-[1] duration-300 w-[21%] flex flex-col justify-center items-center z-0">
-                                <span class="circle w-[23px] h-[23px] bg-primary rounded-full"></span>
-                                <span class="line w-[2px] h-[45px] bg-primary"></span>
-                            </span>
-                        </div>
-                        <div class="tabContents relative w-full flex rounded-5 h-[421px] mb-[4.5em]">
-                            <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
-                    [&.activeSlide]:pointer-events-auto
-                     bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
-                                <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
-
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
-                                        <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
-                                        </div>
-                                    </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
-                                        <div
-                                            class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
-                                            <p class="font-normal font-NotoSans400 text-[15px] 
-                                  leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
-                                            </p>
-                                        </div>
-                                        <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-200 px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                   text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
-                      [&.activeSlide]:pointer-events-auto
-                       bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
-                                <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
-
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
-                                        <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
-                                        </div>
-                                    </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
-                                        <div
-                                            class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
-                                            <p class="font-normal font-NotoSans400 text-[15px] 
-                                    leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
-                                            </p>
-                                        </div>
-                                        <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-200 px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
-                        [&.activeSlide]:pointer-events-auto
-                         bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
-                                <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
-
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
-                                        <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
-                                        </div>
-                                    </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
-                                        <div
-                                            class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
-                                            <p class="font-normal font-NotoSans400 text-[15px] 
-                                      leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
-                                            </p>
-                                        </div>
-                                        <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-200 px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
-
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
-    </main>
-   <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
 </body>
-<div class="Popup-container fixed z-[999] opacity-0 group/pop
-duration-500 pointer-events-none [&.open]:opacity-[1] [&.open]:pointer-events-auto
-top-0 left-0 bg-[#0000004D] w-screen h-screen flex justify-center items-center">
-     <div class="Login-popup overflow-hidden  group-[&.open]/pop:translate-y-[0] group-[&.open]/pop:opacity-[1]
- delay-100 translate-y-100 duration-500 opacity-0
-rounded-5 bg-White w-max px-[1em] pt-[2em] pb-1 flex flex-col relative justify-center items-center">
-         <span class="ClosePop absolute top-[1em] left-[1em] hover:cursor-pointer">
-             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path
-                     d="M6.9998 8.40005L2.0998 13.3C1.91647 13.4834 1.68314 13.575 1.3998 13.575C1.11647 13.575 0.883138 13.4834 0.699805 13.3C0.516471 13.1167 0.424805 12.8834 0.424805 12.6C0.424805 12.3167 0.516471 12.0834 0.699805 11.9L5.5998 7.00005L0.699805 2.10005C0.516471 1.91672 0.424805 1.68338 0.424805 1.40005C0.424805 1.11672 0.516471 0.883382 0.699805 0.700049C0.883138 0.516715 1.11647 0.425049 1.3998 0.425049C1.68314 0.425049 1.91647 0.516715 2.0998 0.700049L6.9998 5.60005L11.8998 0.700049C12.0831 0.516715 12.3165 0.425049 12.5998 0.425049C12.8831 0.425049 13.1165 0.516715 13.2998 0.700049C13.4831 0.883382 13.5748 1.11672 13.5748 1.40005C13.5748 1.68338 13.4831 1.91672 13.2998 2.10005L8.3998 7.00005L13.2998 11.9C13.4831 12.0834 13.5748 12.3167 13.5748 12.6C13.5748 12.8834 13.4831 13.1167 13.2998 13.3C13.1165 13.4834 12.8831 13.575 12.5998 13.575C12.3165 13.575 12.0831 13.4834 11.8998 13.3L6.9998 8.40005Z"
-                     fill="#68737C" />
-             </svg>
-         </span>
-         <div class="Logo w-auto mb-8 flex justify-center items-center mx-auto">
-             <a href="" class="w-auto flex justify-center items-center">
-                 <img src="images/logo-v3.png" alt="">
-             </a>
-         </div>
-
-
-         <!----------------------------- DMNTOKEN ---------------------------->
-         <basis core="dbsource" source="trustlogintestapi" name="db" useragent="[##cms.request.user-agent##]"
-             ip="[##cms.request.clientip##]">
-             <member name="dmntoken" type="scalar" request="dmntoken" />
-         </basis>
-         <!---------------------------- TOKEN -------------------------------->
-         <basis core="api" url="http://trust.basiscore.net/token?recaptcha={##token.recaptcha.value|()##}"
-             method="post" triggers="token.recaptcha run.token" if="{##run.token|(false)##}"
-             content-type='application/json' OnProcessed="onProcessedToken"
-             body='{ "dmntoken": "{##db.token.value##}" }' name="api.token" run="atclient">
-         </basis>
-
-         <!---------------------------- authentication -------------------------------->
-         <basis name="api.authentication" core="api" url="http://trust.basiscore.net/authentication?culture=fa"
-             method="post"
-             body='{"token": "{##token.token.value##}", "username": "{##db.userlogin.UserName##}", "captcha": "{##db.userlogin.captchaid##}"}'
-             content-type="application/json" run="atclient" OnProcessed="onProcessedAuthenticationFn"
-             triggers="db.userlogin db.AuthenticateNoneCaptcha resend.sms resend.email" if="{##token.token##} && {##db.userlogin##}">
-         </basis>
-         <!---------------------------- countryCode -------------------------------->
-         <basis name="api.countryCode" core="api" url="https://trust.basiscore.net/countrycodes?culture=fa"
-         method="get" content-type="application/json" run="atclient" OnProcessed="onProcessedGetCountryCode"
-         triggers="run.countryCode" if="{##run.countryCode##}">
-         </basis>
-
-         <!---------------------------- login -------------------------------->
-         <basis name="api.login" core="api" url="http://trust.basiscore.net/login?culture=fa" method="post"
-         body='{"hashid": "{##authentication.hashid.value##}", "code": "{##form.login.code##}", "recode": "{##form.login.recode##}", "email": "{##form.login.email##}", "mobile": "{##form.login.mobile##}"}'
-         content-type="application/json" run="atclient" OnProcessed="onProcessedLoginFn" triggers="form.login" if="{##token.token##} && {##authentication.hashid##} && {##form.login##}"></basis>
- 
-         <!---------------------------- forgetpassword -------------------------------->
-         <basis name="api.forgetpassword" core="api" url="http://trust.basiscore.net/forgetpassword?culture=fa" method="post"
-         body='{"token":"{##token.token.value##}","username":"{##form.forgetPassword.UserName##}"}' run="atclient" OnProcessed="onProcessedForgetPasswordFn" triggers="form.forgetPassword"
-         if="{##token.token##} && {##form.forgetPassword##}"></basis>
-
-          <!---------------------------- selectuser -------------------------------->
-         <basis name="api.selectuser" core="api" url="http://trust.basiscore.net/server1/selectuser" method="post"
-         body="token={##token.token.value##}&hashid={##authentication.hashid.value##}&userid={##form.selectuser.userid##}" content-type="application/json" run="atclient"
-         OnProcessed="onProcessedSelectUserFn" triggers="form.selectuser" if="{##token.token##} && {##authentication.hashid##} && {##form.selectuser##}"></basis>
- 
-          <!---------------------------- selectchangepassmethod -------------------------------->
-         <basis name="api.selectchangepassmethod" core="api" url="http://trust.basiscore.net/selectchangepassmethod?culture=fa" method="post"
-         body='{"token":"{##token.token.value##}","userid":{##forgetpassword.userid.value##},"user":"{##form.selectchangepassmethod.user##}","ismobile":{##form.selectchangepassmethod.ismobile##},"lid":1}'
-         run="atclient" OnProcessed="onProcessedSelectChangePassMethodFn" triggers="form.selectchangepassmethod" if="{##token.token##} && {##form.selectchangepassmethod##}"></basis>
- 
-         <!---------------------------- cookie -------------------------------->
-        <basis core="cookie" name="rkey" path="/" value="{##user.rkey.value##}" 
-        triggers="user.rkey" run="atclient" OnRendered="onRenderedCookie">
-       </basis>
- 
-
-         <p class="dmntoken" style="display: none;">[##db.dmntoken.dmntoken##]</p>
-         <p style="display: none;">{##db.userLogin.runtoken|()##}</p>
-         <form class="userLogin overflow-hidden min-w-[320px] w-full flex flex-col gap-[1em] pb-[2.8em]"
-             name="db.userLogin" bc-triggers="submit">
-             <div class="Input-Row w-full flex" dir="rtl">
-                 <input type="text" name="UserName" placeholder="ایمیل، شماره موبایل یا نام کاربری را وارد کنید"
-                     class="w-full border-[1px] border-lightBlue rounded-5 bg-White outline-none placeholder:font-IRANSansWeb400
-        placeholder:font-normal placeholder:text-xs h-[50px] placeholder:leading-14.06 font-ABeeZee400
-         placeholder:text-placeholder pr-[1em]">
-             </div>
-
-             <div class="BTN w-full flex justify-center items-center">
-                 <button type="submit" class="submit-btn firstBtn min-w-[320px] w-90p absolute bottom-[3.5em] left-0 right-0 mx-auto
-           [&.goLeft]:translate-x-[115%] hover:bg-hoverBtnDprimary duration-200
-        py-[.8em] bg-primary flex justify-center items-center rounded-5 
-        text-White  font-IRANSansWeb400 font-normal text-sm ">
-                     مرحله بعد
-                 </button>
-             </div>
-         </form>
-         <span class="copyRight my-3 w-full justify-end items-end">
-             <img src="images/trust-logo-v3.png" alt="">
-         </span>
-     </div>
-
- </div>
- <div class="Alert-container group/Alert fixed top-[3em] left-0 opacity-0 translate-x-100 
-[&.Show]:opacity-[1] [&.Show]:translate-x-[0]
-right-0 mx-auto z-[999] flex justify-center items-center">
-     <div class="Message relative w-max px-[2em] py-[1.6em]
-   rounded-5 flex gap-3 group-[&.Error]/Alert:bg-redBG group-[&.Success]/Alert:bg-secondaryBG">
-         <p class="error font-IRANSansWeb700 font-bold
-       leading-25.04 group-[&.Success]/Alert:text-secondary group-[&.Error]/Alert:text-red
-        text-center">شما با موفقیت وارد شدید، بعد از گذشت چند ثانیه به پنل کاربری هدایت می‌شوید </p>
-         <span class="icon ml-3 relative w-auto flex justify-center items-center">
-             <svg class="suc absolute opacity-0 duration-150 group-[&.Error]/Alert:opacity-0
-           group-[&.Success]/Alert:opacity-[1]" width="18" height="13" viewBox="0 0 18 13" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-                 <path class="group-[&.Error]/Alert:fill-red"
-                     d="M6.55 13L0.85 7.3L2.275 5.875L6.55 10.15L15.725 0.974999L17.15 2.4L6.55 13Z"
-                     fill="#00A693" />
-             </svg>
-             <svg class="er absolute opacity-0 duration-150 
-          group-[&.Error]/Alert:opacity-[1] 
-          group-[&.Success]/Alert:opacity-0" width="25" height="25" viewBox="0 0 25 25" fill="none"
-                 xmlns="http://www.w3.org/2000/svg">
-                 <path
-                     d="M12.5 17.5C12.7833 17.5 13.0167 17.4083 13.2 17.225C13.4 17.025 13.5 16.7833 13.5 16.5C13.5 16.2167 13.4 15.9833 13.2 15.8C13.0167 15.6 12.7833 15.5 12.5 15.5C12.2167 15.5 11.975 15.6 11.775 15.8C11.5917 15.9833 11.5 16.2167 11.5 16.5C11.5 16.7833 11.5917 17.025 11.775 17.225C11.975 17.4083 12.2167 17.5 12.5 17.5ZM11.5 13.5H13.5V7.5H11.5V13.5ZM12.5 22.5C11.1167 22.5 9.81667 22.2417 8.6 21.725C7.38333 21.1917 6.325 20.475 5.425 19.575C4.525 18.675 3.80833 17.6167 3.275 16.4C2.75833 15.1833 2.5 13.8833 2.5 12.5C2.5 11.1167 2.75833 9.81667 3.275 8.6C3.80833 7.38333 4.525 6.325 5.425 5.425C6.325 4.525 7.38333 3.81667 8.6 3.3C9.81667 2.76667 11.1167 2.5 12.5 2.5C13.8833 2.5 15.1833 2.76667 16.4 3.3C17.6167 3.81667 18.675 4.525 19.575 5.425C20.475 6.325 21.1833 7.38333 21.7 8.6C22.2333 9.81667 22.5 11.1167 22.5 12.5C22.5 13.8833 22.2333 15.1833 21.7 16.4C21.1833 17.6167 20.475 18.675 19.575 19.575C18.675 20.475 17.6167 21.1917 16.4 21.725C15.1833 22.2417 13.8833 22.5 12.5 22.5ZM12.5 20.5C14.7333 20.5 16.625 19.725 18.175 18.175C19.725 16.625 20.5 14.7333 20.5 12.5C20.5 10.2667 19.725 8.375 18.175 6.825C16.625 5.275 14.7333 4.5 12.5 4.5C10.2667 4.5 8.375 5.275 6.825 6.825C5.275 8.375 4.5 10.2667 4.5 12.5C4.5 14.7333 5.275 16.625 6.825 18.175C8.375 19.725 10.2667 20.5 12.5 20.5Z"
-                     fill="#F9461C" />
-             </svg>
-
-         </span>
-         <span class="Line absolute bottom-0 right-0 h-[4px] w-0 group-[&.Success]/Alert:bg-secondary
-       group-[&.Error]/Alert:bg-red rounded-5"></span>
-     </div>
- </div>
- <basis core="callback" triggers="db.token" run="atClient"></basis>
- <basis core="callback" triggers="db.userLogin" run="atClient"></basis>
- <basis core="callback" triggers="run.token" run="atClient"></basis>
- <basis core="callback" triggers="token.token" run="atClient"></basis>
- <basis core="callback" triggers="db.countrycode" run="atClient"></basis>
- <basis core="callback" triggers="form.login" run="atClient"></basis>
- <basis core="callback" triggers="form.forgetPassword" run="atClient"></basis>
- <basis core="callback" triggers="authentication.hashid" run="atClient"></basis>
- <basis core="callback" triggers="db.captchaId" run="atClient"></basis>
- <script src="[##cms.cms.cdn##]/asset/js/login-v3.js"></script>
 </html>
