@@ -26,6 +26,7 @@ module.exports = {
       md: '768px',
       lg: '976px',
       xl: '1440px',
+      xxl:'1500px',
     },
     colors: {
       'White':'#fff',
@@ -60,7 +61,9 @@ module.exports = {
        'orange':'#DE633D',
        'pink':'#E01172',
        'light3':'#F9F9F9',
-       'orange':'#FFB238'
+       'orange':'#FFB238',
+       'purple':'#5F39DD',
+       'gray3':'#FBFBFB'
         
     },
 
