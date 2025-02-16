@@ -1,3 +1,9 @@
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="5" usedforid="30" >
+    <member type="view" name="social" postsql="select * from [db.social] where TypeID=245"/>
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="5" usedforid="30" >
+   <member type="view" name="footer"/>
+</basis>
 <footer class="DesktopFooter w-full flex flex-col bg-dark pt-[2em]">
     <div class="Top-footer w-full flex justify-center items-center">
         <div class="logo">
@@ -6,7 +12,7 @@
             </a>
         </div>
     </div>
-    <div class="InnerFooter w-80p mx-auto grid grid-cols-3 mt-[3em] py-[2em] gap-5">
+    <div class="InnerFooter w-80p mx-auto grid grid-cols-3 mt-[3em] py-[1em] gap-5">
         <div class="Right w-full flex flex-col justify-start items-center">
              <div class="Box w-full flex flex-col">
                 <div class="lang w-full border-b-[1px] border-[#FFFFFF80]
@@ -56,57 +62,106 @@
                 </div>
                </div>
                <div class="text w-full flex flex-col flex-wrap mt-[1.5em]">
-                <p class="font-IRANSansWeb400 font-normal text-base leading-[23.48px] text-White">
-                    یک نرم افزار یکپارچه و قابل دسترس مبتنی بر  SaaS است که برای مدیریت  راحت مسائل شخصی، شرکتی و تجارت الکترونیکی شما استفاده می شود. بیسیس پنل  توسط گروه منظومه نگاران ساخته و تولید شده است.
-                </p>
+                <basis core="print" datamembername="db.footer">
+                    <layout>
+                        @child
+                    </layout>
+                    <face filter="TypeID=144">
+                <p class="font-IRANSansWeb400 font-normal text-sm leading-[23.48px] text-White">
+                    @Answer  </p>
+                    </face>
+                </basis>
                </div>
                <div class="Socials w-auto flex justify-start items-start gap-3 mt-3">
-                <span class="social linkdin">
-                    <a href="#" target="_blank">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M3.37008 4.65527H0.250627C0.112181 4.65527 0 4.76561 0 4.90167V14.754C0 14.8901 0.112181 15.0004 0.250627 15.0004H3.37008C3.50852 15.0004 3.6207 14.8901 3.6207 14.754V4.90167C3.6207 4.76561 3.50852 4.65527 3.37008 4.65527Z" fill="white"/>
-                            <path d="M2.06981 0C0.928505 0 0 0.927972 0 2.0686C0 3.20973 0.928505 4.13805 2.06981 4.13805C3.2102 4.13805 4.13795 3.20968 4.13795 2.0686C4.138 0.927972 3.2102 0 2.06981 0Z" fill="white"/>
-                            <path d="M11.1646 4.65527C9.95942 4.65527 9.06852 5.17253 8.52816 5.76027V5.13518C8.52816 5.00226 8.42026 4.89448 8.28708 4.89448H5.41344C5.28027 4.89448 5.17236 5.00226 5.17236 5.13518V14.7597C5.17236 14.8926 5.28027 15.0004 5.41344 15.0004H8.40753C8.5407 15.0004 8.64861 14.8926 8.64861 14.7597V9.99777C8.64861 8.39313 9.08516 7.76799 10.2055 7.76799C11.4257 7.76799 11.5226 8.77016 11.5226 10.0803V14.7597C11.5226 14.8927 11.6305 15.0004 11.7637 15.0004H14.7589C14.8921 15.0004 15 14.8927 15 14.7597V9.48051C15 7.09446 14.5443 4.65527 11.1646 4.65527Z" fill="white"/>
-                            </svg>
-                            
-                    </a>
-                </span>
-                <span class="social github">
-                    <a href="#" target="_blank">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_30_501)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0C11.6423 0 15 3.44244 15 7.68969C15 11.0864 12.8535 13.968 9.87525 14.9857C9.495 15.0615 9.36 14.8213 9.36 14.6166C9.36 14.3631 9.369 13.5351 9.369 12.5061C9.369 11.7891 9.129 11.3211 8.85975 11.0826C10.53 10.8921 12.285 10.2418 12.285 7.28832C12.285 6.44832 11.994 5.76286 11.5125 5.22436C11.5905 5.03011 11.8477 4.24796 11.439 3.18896C11.439 3.18896 10.8105 2.98291 9.37875 3.97741C8.7795 3.80716 8.1375 3.7215 7.5 3.7185C6.8625 3.7215 6.22125 3.80716 5.62275 3.97741C4.1895 2.98291 3.5595 3.18896 3.5595 3.18896C3.15225 4.24796 3.4095 5.03011 3.48675 5.22436C3.0075 5.76286 2.71425 6.44832 2.71425 7.28832C2.71425 10.2343 4.4655 10.8946 6.13125 11.0889C5.91675 11.2809 5.7225 11.6196 5.655 12.1168C5.2275 12.3133 4.1415 12.6534 3.4725 11.4781C3.4725 11.4781 3.07575 10.7393 2.32275 10.6853C2.32275 10.6853 1.5915 10.6756 2.27175 11.1526C2.27175 11.1526 2.763 11.3888 3.10425 12.2776C3.10425 12.2776 3.5445 13.65 5.631 13.185C5.63475 13.8278 5.6415 14.4336 5.6415 14.6166C5.6415 14.8198 5.5035 15.0577 5.12925 14.9864C2.14875 13.9702 0 11.0872 0 7.68969C0 3.44244 3.3585 0 7.5 0Z" fill="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_30_501">
-                            <rect width="15" height="15" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-                            
-                    </a>
-                </span>
-                <span class="social npm">
-                    <a href="#" target="_blank">
-                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g clip-path="url(#clip0_34_493)">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 4H15V11H7V13H4V11H0V4ZM4 10V5H1V10H2V6H3V10H4ZM5 5V12H6V10H8V5H5ZM9 5V10H10V6H11V10H12V6H13V10H14V5H9ZM6 9V6H7V9H6Z" fill="white"/>
-                            </g>
-                            <defs>
-                            <clipPath id="clip0_34_493">
-                            <rect width="15" height="15" fill="white"/>
-                            </clipPath>
-                            </defs>
-                            </svg>
-                            
-                    </a>
-                </span>
+                <basis core="print" datamembername="db.social">
+                    <layout>
+                        @child
+                    </layout>
+                    <else-layout>
+                        
+                    </else-layout>
+                    <face filter="rownumber=1">
+                        <span class="social linkdin">
+                            <a href="@largetext" target="_blank">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M3.37008 4.65527H0.250627C0.112181 4.65527 0 4.76561 0 4.90167V14.754C0 14.8901 0.112181 15.0004 0.250627 15.0004H3.37008C3.50852 15.0004 3.6207 14.8901 3.6207 14.754V4.90167C3.6207 4.76561 3.50852 4.65527 3.37008 4.65527Z"
+                                        fill="white" />
+                                    <path
+                                        d="M2.06981 0C0.928505 0 0 0.927972 0 2.0686C0 3.20973 0.928505 4.13805 2.06981 4.13805C3.2102 4.13805 4.13795 3.20968 4.13795 2.0686C4.138 0.927972 3.2102 0 2.06981 0Z"
+                                        fill="white" />
+                                    <path
+                                        d="M11.1646 4.65527C9.95942 4.65527 9.06852 5.17253 8.52816 5.76027V5.13518C8.52816 5.00226 8.42026 4.89448 8.28708 4.89448H5.41344C5.28027 4.89448 5.17236 5.00226 5.17236 5.13518V14.7597C5.17236 14.8926 5.28027 15.0004 5.41344 15.0004H8.40753C8.5407 15.0004 8.64861 14.8926 8.64861 14.7597V9.99777C8.64861 8.39313 9.08516 7.76799 10.2055 7.76799C11.4257 7.76799 11.5226 8.77016 11.5226 10.0803V14.7597C11.5226 14.8927 11.6305 15.0004 11.7637 15.0004H14.7589C14.8921 15.0004 15 14.8927 15 14.7597V9.48051C15 7.09446 14.5443 4.65527 11.1646 4.65527Z"
+                                        fill="white" />
+                                </svg>
+
+                            </a>
+                        </span>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.social">
+                    <layout>
+                        @child
+                    </layout>
+                    <else-layout>
+                        
+                    </else-layout>
+                    <face filter="rownumber=2">
+                        <span class="social github">
+                            <a href="@largetext" target="_blank">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_30_501)">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M7.5 0C11.6423 0 15 3.44244 15 7.68969C15 11.0864 12.8535 13.968 9.87525 14.9857C9.495 15.0615 9.36 14.8213 9.36 14.6166C9.36 14.3631 9.369 13.5351 9.369 12.5061C9.369 11.7891 9.129 11.3211 8.85975 11.0826C10.53 10.8921 12.285 10.2418 12.285 7.28832C12.285 6.44832 11.994 5.76286 11.5125 5.22436C11.5905 5.03011 11.8477 4.24796 11.439 3.18896C11.439 3.18896 10.8105 2.98291 9.37875 3.97741C8.7795 3.80716 8.1375 3.7215 7.5 3.7185C6.8625 3.7215 6.22125 3.80716 5.62275 3.97741C4.1895 2.98291 3.5595 3.18896 3.5595 3.18896C3.15225 4.24796 3.4095 5.03011 3.48675 5.22436C3.0075 5.76286 2.71425 6.44832 2.71425 7.28832C2.71425 10.2343 4.4655 10.8946 6.13125 11.0889C5.91675 11.2809 5.7225 11.6196 5.655 12.1168C5.2275 12.3133 4.1415 12.6534 3.4725 11.4781C3.4725 11.4781 3.07575 10.7393 2.32275 10.6853C2.32275 10.6853 1.5915 10.6756 2.27175 11.1526C2.27175 11.1526 2.763 11.3888 3.10425 12.2776C3.10425 12.2776 3.5445 13.65 5.631 13.185C5.63475 13.8278 5.6415 14.4336 5.6415 14.6166C5.6415 14.8198 5.5035 15.0577 5.12925 14.9864C2.14875 13.9702 0 11.0872 0 7.68969C0 3.44244 3.3585 0 7.5 0Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_30_501">
+                                            <rect width="15" height="15" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                            </a>
+                        </span>
+                    </face>
+                </basis>
+                <basis core="print" datamembername="db.social">
+                    <layout>
+                        @child
+                    </layout>
+                    <else-layout>
+                        
+                    </else-layout>
+                    <face filter="rownumber=3">
+                        <span class="social npm">
+                            <a href="@largetext" target="_blank">
+                                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_34_493)">
+                                        <path fill-rule="evenodd" clip-rule="evenodd"
+                                            d="M0 4H15V11H7V13H4V11H0V4ZM4 10V5H1V10H2V6H3V10H4ZM5 5V12H6V10H8V5H5ZM9 5V10H10V6H11V10H12V6H13V10H14V5H9ZM6 9V6H7V9H6Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_34_493">
+                                            <rect width="15" height="15" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+
+                            </a>
+                        </span>
+                    </face>
+                </basis>
                </div>
              </div>
         </div>
         <div class="Middle w-[280px] mx-auto flex flex-col gap-4 justify-start items-start">
            <div class="title w-[72%] flex justify-start items-start">
-            <p class="font-IRANSansWeb700 font-bold text-[22px] leading-37.57 text-White text-right">
+            <p class="font-IRANSansWeb700 font-bold text-18 leading-37.57 text-White text-right">
                 خدمات
             </p>
            </div>
@@ -165,7 +220,7 @@
         </div>
         <div class="Left w-max mr-auto flex flex-col gap-4 justify-start items-star">
             <div class="title w-[72%] flex justify-start items-start">
-                <p class="font-IRANSansWeb700 font-bold text-[22px] leading-37.57 text-White text-right">
+                <p class="font-IRANSansWeb700 font-bold text-[18px] leading-37.57 text-White text-right">
                     اطلاعات تماس
                 </p>
                </div>
@@ -174,30 +229,163 @@
                     <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
                         شماره تماس
                     </span>
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=240">
                     <span class="Answer font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
-                        :  2255555 (021)
+                        : @Answer
                     </span>
+                        </face>
+                    </basis>
                 </div>
                 <div class="row w-full flex justify-start items-start">
                     <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
                          پست الکترونیک:
                     </span>
-                    <span class="Answer font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
-                          : info[at]manzoomeh.ir
-                    </span>
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=132">
+                    <a href="mailto:@Answer" title="email" class=" email Answer font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                          : @Answer
+                    </a>
+                        </face>
+                    </basis>
                 </div>
                 <div class="row w-full flex justify-start items-start">
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=244">
                     <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
-                        آدرس : پاسداران - خیابان گل‌نبی - خیابان ناطق نوری - نبش بن‌بست رامین - پلاک 2/1 - ساختمان ماکا - واحد 1
+                        @Answer
                     </span>
-                 
+                        </face>
+                    </basis>
                 </div>
                </div>
         </div>
     </div>
-        <div class="Bottom-footer w-full flex py-[1.2em] bg-dark2 justify-center items-center">
-   <a href="https://manzoomeh.ir" target="_blank" alt="basis" title="basis" >
-                <img src="[##cms.cms.cdn##]/images/copyRight-v3.png" alt="basis" title="basis">
-             </a>
+    <div id="footer-manzoomeh-negaran">
+        <style>
+            #footer-manzoomeh-negaran{
+                width: 100%;
+                height: 70px;           
+                font-size: 12px;
+                font-family:Arial, Helvetica, sans-serif;
+            }
+            #footer-manzoomeh-negaran span{
+                margin: 0 5px;
+                margin-top: -10px;
+            }
+            #footer-manzoomeh-negaran a{
+                display: flex;
+                text-decoration: none;
+                align-items: center;
+                direction: ltr;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-light{
+                color: #FFFFFF;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-light a{
+                color: #FFFFFF;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-dark #manzoomeh_footer_logo{
+                width: 60px;
+                height: 35px;
+                background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_dark.png);
+                
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-light #manzoomeh_footer_logo{
+                width: 60px;
+                height: 35px;
+                background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_light.png);
+                
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-dark{
+                color: #000;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-dark a{
+                color: #000;
+            }
+          
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-black{
+                background-color: #000;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-blue{
+                background-color: #004B85;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-red{
+                background-color: #B40020;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-green{
+                background-color: #00A693;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-gray{
+                background-color: #D0D0D0;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-white{
+                background-color: #FFFFFF;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-palegreen{
+                background-color: #CDFFCD;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            #footer-manzoomeh-negaran .footer-manzoomeh-negaran-paleblue{
+                background-color: #BAE1FF;
+                width: 100%;
+                height: 70px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+           
+        </style>
+        <div class="footer-manzoomeh-negaran-black footer-manzoomeh-light" >
+            <a href="https://manzoomeh.ir/" target="_blank">
+            Powered By
+           <span id="manzoomeh_footer_logo"></span>
+                
+            MANZOOMEH NEGARAN
+        </a>
         </div>
+    </div>
   </footer>

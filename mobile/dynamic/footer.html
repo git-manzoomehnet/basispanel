@@ -1,6 +1,9 @@
 <basis core="dbsource" source="basiscore" name="db" lid="1" mid="5" usedforid="30" >
      <member type="view" name="social" postsql="select * from [db.social] where TypeID=245"/>
 </basis>
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="5" usedforid="30" >
+    <member type="view" name="footer"/>
+</basis>
 <footer class="MobileFooter w-full flex flex-col bg-dark pt-[2em]">
     <div class="Top-footer w-full flex justify-center items-center">
         <div class="logo w-[183px] h-[41px]">
@@ -118,11 +121,16 @@
                     </div>
                 </div>
                 <div class="text w-full flex flex-col flex-wrap mt-[1.5em]">
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=144">
                     <p class="font-IRANSansWeb400 font-normal text-sm leading-21.91 text-White">
-                        یک نرم افزار یکپارچه و قابل دسترس مبتنی بر SaaS است که برای مدیریت راحت مسائل شخصی،
-                        شرکتی و تجارت الکترونیکی شما استفاده می شود. بیسیس پنل توسط گروه منظومه نگاران ساخته و
-                        تولید شده است.
+                        @Answer
                     </p>
+                        </face>
+                    </basis>
                 </div>
 
             </div>
@@ -139,23 +147,44 @@
                     <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
                         شماره تماس
                     </span>
-                    <span class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
-                        : 2255555 (021)
-                    </span>
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=240">
+                            <a href="tel:@Answer" title="phone" class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                                : @Answer
+                            </a>
+                        </face>
+                    </basis>
+                  
                 </div>
                 <div class="row w-full flex justify-start items-start">
                     <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
-                        پست الکترونیک:
+                        پست الکترونیک
                     </span>
-                    <span class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
-                        : info[at]manzoomeh.ir
-                    </span>
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=132">
+                    <a href="mailto:@Answer" title="phone" class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                        : @Answer
+                    </a>
+                        </face>
+                    </basis>
                 </div>
                 <div class="row w-full flex justify-start items-start">
+                    <basis core="print" datamembername="db.footer">
+                        <layout>
+                            @child
+                        </layout>
+                        <face filter="TypeID=244">
                     <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
-                        آدرس : پاسداران - خیابان گل‌نبی - خیابان ناطق نوری - نبش بن‌بست رامین - پلاک 2/1 -
-                        ساختمان ماکا - واحد 1
+                        @Answer
                     </span>
+                        </face>
+                    </basis>
 
                 </div>
             </div>
