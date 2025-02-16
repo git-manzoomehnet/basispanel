@@ -1,16 +1,19 @@
-function startCounter(targetNumber,duration){
-const counterElem = document.getElementById('counter')
-let currentNumber = 1
-const increment = targetNumber / (duration / 100)
-const interval = setInterval(()=>{
-    currentNumber += increment;
-    if(currentNumber >= targetNumber){
-        currentNumber = targetNumber;
-        clearInterval(interval)
-    }
-    counterElem.textContent = `%${Math.floor(currentNumber)}`
-},100) 
-}
+// service slider
+let SwiperService= new Swiper ('.purpose-boxes', {
+  slidesPerView: 2.7,
+  spaceBetween: 30,
+  effect:'slide' ,
+  centeredSlides:true,
+  loop:true,
+ speed:700,
+ pagination: {
+  el: '.purpose-boxes .swiper-pagination',
+        clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + '<span class="line"></span>' + '</span>';
+    },
+},
+})
 let TitlesSec3 = document.querySelectorAll('.section-3 > .title.fadeIN h3,.section-3 > .title.fadeIN h4')
 console.log(TitlesSec3);
 const RunAnimation = (elem)=>{
@@ -33,16 +36,14 @@ const RunAnimation = (elem)=>{
 let counterStart = false
 let counter =document.getElementById('counter')
 let Boxes = document.querySelectorAll('.help-Boxes .fadeIN')
-let Chart = document.querySelector(' #animations-example-1')
 lenis.on('scroll',()=>{
-    RunAnimation(counter)
+
     TitlesSec3.forEach(i=>{
         RunAnimation(i)
     })
     Boxes.forEach(b=>{
         RunAnimation(b)
     })
-    RunAnimation(Chart)
 })
 
 let tabBtns = [...document.querySelectorAll('.tabs .Tab')]
@@ -80,37 +81,12 @@ btn.addEventListener('click',(e)=>{
 })
 })
 // logo slider one
-let SwiperOne= new Swiper ('.swiper-one', {
-    slidesPerView: 8,
-    spaceBetween: 30,
-    effect:'slide' ,
-    speed:5000,
-    loop:true,
-    autoplay:{
-        delay:0,
-        disableOnInteraction:false
-    },
-    allowTouchMove:false,
-    freeMode:true,
-    feeModeMoment:false
-  
-})
-let SwiperTwo= new Swiper ('.swiper-Two', {
-    slidesPerView: 8,
-    spaceBetween: 30,
-    effect:'slide' ,
-    speed:5000,
-    loop:true,
-    autoplay:{
-        delay:0,
-        disableOnInteraction:false,
-        reverseDirection:true,
-    },
-    allowTouchMove:false,
-    freeMode:true,
-    feeModeMomentum:false
-  
-})
+let SwiperLOGO = new Swiper(".Customers", {
+  slidesPerView: "auto",  // عرض خودکار
+  freeMode: true,         // اسکرول آزاد
+  spaceBetween: 10,       // فاصله بین اسلایدها
+  grabCursor: true,       // تغییر نشانگر ماوس به دست برای حس طبیعی‌تر
+});
 const texts = ['مدیرفروش هستم ،','با افتخار پاسخگوی شما ','بفرمایید'];
 const inputt = document.querySelector('#myInput');
 const animationWorker = function (input, texts) {
