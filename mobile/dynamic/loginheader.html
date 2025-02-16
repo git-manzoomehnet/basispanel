@@ -1,0 +1,223 @@
+<basis core="api" url="https://api.trust-login.com/schema/[##cms.cookie.rkey##]/fa" method="get" name="db.userinfo"
+    run="AtClient" OnProcessed="onProcessedInfoFn">
+</basis>
+<basis core="dbsource" source="trustloginapi" name="db" useragent="[##cms.request.user-agent##]"
+    ip="[##cms.request.clientip##]">
+    <member name="dmntoken" type="scalar" request="dmntoken" />
+</basis>
+<basis core="api" url="https://api.trust-login.com/logout/[##cms.cookie.rKey##]" method="post" run="atclient"
+    name="api.logout" onprocessed="onprocessedlogoutfn" if="{##query.flag.value|(false)##}"
+    body='{"dmntoken":"[##db.dmntoken.dmntoken##]"}' triggers="db.logout query.flag">
+</basis>
+<header class="MobileHeader [&.bgWhite]:bg-White duration-500 flex-col fixed top-0 left-0 z-50 w-full py-[1em] flex justify-center items-center">
+    <div class="InnerHeader w-90p grid grid-cols-2">
+        <div class="RightSec w-full flex justify-start gap-2 items-center">
+            <div class="Logo w-auto flex justify-center items-center">
+                <a href="/" alt="basis" title="basis">
+                    <img src="[##cms.cms.cdn##]/images/logo-mobile-v3.png" alt="basis" title="basis">
+                </a>
+            </div>
+            <div
+                class="burger-container group/burger relative flex w-[50px] cursor-pointer rotate-0 duration-[.3s]">
+                <div id="burger" class="w-[18px] gap-1 relative flex flex-col top-[50%] mx-[4px]">
+                    <div class="bar topBar group-[&.menu-opened]/burger:translate-y-[5px] group-[&.menu-opened]/burger:rotate-[-45deg]
+                   w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                    <div
+                        class="bar mdlBar w-full h-[2px] rounded-5 group-[&.menu-opened]/burger:translate-x-[-100px] group-[&.menu-opened]/burger:opacity-0 bg-textGray block  duration-[.3s] delay-0">
+                    </div>
+                    <div class="bar btmBar group-[&.menu-opened]/burger:translate-y-[-7px] group-[&.menu-opened]/burger:rotate-45
+                   w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                </div>
+            </div>
+        </div>
+        <div class="LeftSec w-full flex justify-end">
+            <div class="Btns w-auto flex gap-5">
+                <div class="UserProfile-box relative w-auto flex gap-4 flex-col">
+                    <div class="User w-auto flex gap-4 hover:cursor-pointer">
+                      <span class="Icon [&.openProf]:rotate-180 duration-150 w-auto flex justify-center items-center my-auto">
+                          <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"/>
+                              </svg>
+                              
+                      </span>
+                      <span class="User-Image w-[32px] h-[32px] rounded-full flex justify-center items-center">
+                          <img src="http://a4tech.webisaz.ir/images/m-avatar.png" alt="" class="rounded-full w-full h-full object-cover">
+                      </span>
+              
+                    </div>
+                    <div class="UserDropdown bg-White absolute top-[4em] opacity-0 translate-y-[-2em] duration-500 [&.openProf]:opacity-[1]
+                    [&.openProf]:translate-y-[0]   min-w-[140px] left-[-6px] right-[inherit] mx-auto w-auto  py-[.5em] flex">
+                      <div class="Box w-auto px-[.7em] py-[.7em] flex flex-col gap-2 min-w-[140px]">
+                          <div class="title w-full flex justify-start items-start leading-[15.65px]
+                           text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
+                              نام کاربری
+                          </div>
+                          <span class="Username pb-[.5em] leading-[20.35px] border-b-[1px] border-mainGray
+                          text-black font-IRANSansWeb400 font-normal text-[13px]">
+                              غدیره مرادی
+                          </span>
+                          <span class="logOut w-full flex justify-between items-center">
+                              <div class="text leading-[21.91px]
+                              text-black font-IRANSansWeb400 font-normal text-sm">
+                                  خارج شدن
+                              </div>
+                              <div class="logoOut w-auto my-auto">
+                                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M1.54167 12.875C1.15208 12.875 0.818576 12.7363 0.541146 12.4589C0.263715 12.1814 0.125 11.8479 0.125 11.4583V1.54167C0.125 1.15208 0.263715 0.818576 0.541146 0.541146C0.818576 0.263715 1.15208 0.125 1.54167 0.125H6.5V1.54167H1.54167V11.4583H6.5V12.875H1.54167ZM9.33333 10.0417L8.35938 9.01458L10.1656 7.20833H4.375V5.79167H10.1656L8.35938 3.98542L9.33333 2.95833L12.875 6.5L9.33333 10.0417Z" fill="#5F6368"/>
+                                      </svg>                                    
+                              </div>
+                          </span>
+                      </div>
+                    </div>
+                     </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="Menu-container absolute left-0 top-0 flex h-[50px] bg-[transparent] w-full
+    overflow-hidden delay-[.2s] z-1 group/menu pointer-events-none [&.menu-opened]:pointer-events-[all] [&.menu-opened]:h-svh
+     [&.menu-opened]:bg-White">
+        <ul class="menu w-90p mx-auto flex flex-col my-auto">
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+            w-full flex justify-start items-center group/itemMenu">
+                <a href="/" alt="خانه" title="خانه"  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                 font-normal text-lg text-textGray">
+                    خانه
+                </a>
+            </li>
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="#" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+           font-normal text-lg text-textGray">
+           راهکارها
+                </a>
+            </li>
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="#" alt="بلاگ" title="بلاگ" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+           font-normal text-lg text-textGray">
+           بلاگ
+                </a>
+            </li>
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="#" alt=" درباره ما" title=" درباره ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+           font-normal text-lg text-textGray">
+           درباره ما
+                </a>
+            </li>
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="#" alt="تماس با ما" title="تماس با ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+           font-normal text-lg text-textGray">
+           تماس با ما
+                </a>
+            </li>
+            <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="/versions" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+           font-normal text-lg text-textGray">
+           آخرین تغییرات
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</header>
+<script>
+    const host = {
+    settings: {
+        'connection.web.callcommand': '/',
+        'connection.web.basiscore': 'https://basispanel.ir/apicms',
+        'connection.web.accounting': 'https://basispanel.ir/apicms',
+        'connection.web.trust_login': 'https://basispanel.ir/apicms',
+        'connection.web.media': 'https://basispanel.ir/apicms',
+        'default.dbsource.verb': 'post',
+        'default.call.verb': 'get',
+        "connection.web.callcommand": "/",
+        'default.viewCommand.groupColumn': 'prpid',
+        'default.dmnid': '35',
+        'default.binding.regex': '\\{##([^#]*)##\\}'
+    }
+}
+     const logoutBtnn = document.querySelector(".logoOut ")
+     async function onProcessedInfoFn(args) {
+        const response = args.response;
+
+        if (response.status == 200) {
+            const responseJson = await response.json();
+            if (responseJson.sources) {
+                console.log(responseJson.sources[0].data[0].properties);
+                responseJson.sources[0].data[0].properties.forEach((e) => { console.log(e) })
+                //  get name
+                const findName = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 1;
+                });
+                const nameusr = findName ? findName.answers[0].parts[0].values[0].value : null;
+                // get lastname
+                const findLastname = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 2;
+                });
+                const lastname = findLastname ? findLastname.answers[0].parts[0].values[0].value : null;
+
+                // get avatar
+                const findAvatar = responseJson.sources[0].data[0].properties.find((e) => {
+                    return e.prpId == 94;
+                });
+                const avatar = findAvatar ? findAvatar.answers[0].parts[2].values[0].value : null;
+                console.log(findAvatar);
+
+                document.querySelector(".UserDropdown .Username").innerText = `${nameusr} ${lastname}`
+                // document.querySelector(".phoneuser").innerHTML = phonenumber[0].answer
+                if (avatar == undefined || avatar == null || avatar.length == 0) {
+                    document.querySelector(".UserProfile-box .User-Image img").src = "http://a4tech.webisaz.ir/images/m-avatar.png"
+                } else {
+                    console.log("sss" , avatar)
+                    console.log("sss" , avatar[1].answer)
+                    document.querySelector(".UserProfile-box .User-Image img").src = `https://basiserp.ir/panel/[##cms.cookie.rkey##]/users/${avatar}`
+                }
+
+            }
+
+        }
+    }
+    async function onprocessedlogoutfn(args) {
+        const response = args.response;
+        const json = await response.json();
+        if (json.errorid == 20) {
+            // incorrect inputs
+            console.log("err not login");
+        }
+        else if (json.errorid == 30 || json.errorid == 20) {
+            // successful
+            window.location.href = window.location.href;
+            function getAndDeleteCookie(name) {
+                let cookieArr = document.cookie.split(";");
+                for (let i = 0; i < cookieArr.length; i++) {
+                    let cookiePair = cookieArr[i].split("=");
+                    if (name === cookiePair[0].trim()) {
+                        let cookieValue = decodeURIComponent(cookiePair[1]);
+                        document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                        return cookieValue;
+                    }
+                }
+                return null;
+            }
+            let myCookie = getAndDeleteCookie("rkey");
+
+
+
+        }
+        else {
+            console.log("So :|")
+
+        }
+
+    }
+</script>

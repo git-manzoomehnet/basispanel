@@ -1,48 +1,18 @@
 
-(function(){
-    var burger = document.querySelector('.burger-container'),
+
+    let burger = document.querySelector('.burger-container'),
         header = document.querySelector('.Menu-container');
         innerheader = document.querySelector('.InnerHeader');
+        console.log(burger);
     
     burger.onclick = function() {
+        console.log('click burger');
+        
         header.classList.toggle('menu-opened');
         innerheader.classList.toggle('menu-opened');
         burger.classList.toggle('menu-opened');
     }
-}());
-// let langIcon = document.querySelector(".langC"),
-//     langSVG = document.querySelector(".langC svg"),
-//     langContent = document.querySelector(".langs-content");
-//     let langIconFooter = document.querySelector("footer .langC"),
-//     langSVGFooter = document.querySelector("footer .langC svg"),
-//     langContentFooter = document.querySelector("footer .langs-content");
-//     langIcon.addEventListener('click',(e)=>{
-//         e.stopPropagation()
-//         langContent.classList.toggle("openLang")
-//         langSVG.classList.toggle("rotate")
-//         langContentFooter.classList.remove("openLang")
-//         langSVGFooter.classList.remove("rotate")
-//         if(document.querySelector('.UserProfile-box .User ')){
-//             let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
-//             let userProfile = document.querySelector('.UserProfile-box .Icon ')
-//             dropBox.classList.remove('openProf')
-//             userProfile.classList.remove('openProf')
-//         }
 
-//     })
-//     langIconFooter.addEventListener('click',(e)=>{
-//         e.stopPropagation()
-//         langContentFooter.classList.toggle("openLang")
-//         langSVGFooter.classList.toggle("rotate")
-//         langContent.classList.remove("openLang")
-//         langSVG.classList.remove("rotate")
-//         if(document.querySelector('.UserProfile-box .User ')){
-//         let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
-//         let userProfile = document.querySelector('.UserProfile-box .Icon ')
-//         dropBox.classList.remove('openProf')
-//         userProfile.classList.remove('openProf')
-//         }
-//     })
     if(document.querySelector('.UserProfile-box .User ')){
         let userProfile = document.querySelector('.UserProfile-box .Icon ')
         let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
@@ -51,35 +21,23 @@
             e.stopPropagation()
             dropBox.classList.toggle('openProf')
             userProfile.classList.toggle('openProf')
-            langContent.classList.remove("openLang")
-            langSVG.classList.remove("rotate")
-            langContentFooter.classList.remove("openLang")
-            langSVGFooter.classList.remove("rotate")
         })
         logoutBtnn.addEventListener("click", (e) => {
             e.stopPropagation()
             console.log('logoOut');
             $bc.setSource("query.flag", true)
             $bc.setSource("db.logout", true)
-            langContent.classList.remove("openLang")
-            langSVG.classList.remove("rotate")
-            langContentFooter.classList.remove("openLang")
-            langSVGFooter.classList.remove("rotate")
         })
     }
-// document.addEventListener("click", (e) => {
-//     console.log('click') 
-//     langContent.classList.remove("openLang")
-//     langSVG.classList.remove("rotate")
-//     langContentFooter.classList.remove("openLang")
-//     langSVGFooter.classList.remove("rotate")
-//     if(document.querySelector('.UserProfile-box .User ')){
-//         let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
-//         let userProfile = document.querySelector('.UserProfile-box .Icon ')
-//         dropBox.classList.remove('openProf')
-//         userProfile.classList.remove('openProf')
-//     }
-// });
+document.addEventListener("click", (e) => {
+
+    if(document.querySelector('.UserProfile-box .User ')){
+        let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
+        let userProfile = document.querySelector('.UserProfile-box .Icon ')
+        dropBox.classList.remove('openProf')
+        userProfile.classList.remove('openProf')
+    }
+});
 if(document.querySelector('.Popup-container')){
     let PopUp = document.querySelector('.Popup-container')
     let popBTN = document.querySelector('.login-button')

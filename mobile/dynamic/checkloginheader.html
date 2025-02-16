@@ -1,0 +1,10 @@
+<basis core="dbsource" name="check" source="trustloginapi" rkey="[##cms.cookie.rkey##]" 
+request="checkrkey" > 
+    <member name="rkey" type="view" /> 
+</basis> 
+ <basis core="group" if="'[##check.rkey.checked##]' = true">
+            <basis core="call" file="headerLogin-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+  </basis>
+ <basis core="group" if="'[##check.rkey.checked##]' = false">
+          <basis core="call" file="header-moblie-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+  </basis>
