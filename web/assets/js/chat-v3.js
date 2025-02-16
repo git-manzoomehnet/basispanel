@@ -176,8 +176,7 @@ function raf(e) {
 }
 requestAnimationFrame(raf)
 lenis.on('scroll',(e)=>{
-    console.log(e);
-    
+
 if(e.scroll==0){
     document.querySelector('header').classList.remove('bgWhite')
 }
