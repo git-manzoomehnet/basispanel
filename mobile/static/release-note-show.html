@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>release note</title>
+    <link rel="stylesheet" href="/mobile/assets/css/outputMobile-v3.css">
+</head>
+<body>
+    <main class="ReleaseNote-Show-mobile w-full overflow-hidden" dir="rtl">
+        <header class="MobileHeader [&.bgWhite]:bg-White duration-500 flex-col fixed top-0 left-0 z-50 w-full py-[1em] flex justify-center items-center">
+            <div class="InnerHeader w-90p grid grid-cols-2">
+                <div class="RightSec w-full flex justify-start gap-2 items-center">
+                    <div class="Logo w-auto flex justify-center items-center">
+                        <a href="">
+                            <img src="/mobile/assets/images/logo-mobile-v3.png" alt="">
+                        </a>
+                    </div>
+                    <div
+                        class="burger-container group/burger relative flex w-[50px] cursor-pointer rotate-0 duration-[.3s]">
+                        <div id="burger" class="w-[18px] gap-1 relative flex flex-col top-[50%] mx-[4px]">
+                            <div class="bar topBar group-[&.menu-opened]/burger:translate-y-[5px] group-[&.menu-opened]/burger:rotate-[-45deg]
+                           w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                            <div
+                                class="bar mdlBar w-full h-[2px] rounded-5 group-[&.menu-opened]/burger:translate-x-[-100px] group-[&.menu-opened]/burger:opacity-0 bg-textGray block  duration-[.3s] delay-0">
+                            </div>
+                            <div class="bar btmBar group-[&.menu-opened]/burger:translate-y-[-7px] group-[&.menu-opened]/burger:rotate-45
+                           w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="LeftSec w-full flex justify-end">
+                    <div class="Btns w-auto flex gap-5">
+                        <!-- <span class="login-button  w-max px-[.7em] hover:bg-hoverBtlightBlue duration-200 
+                         py-[.2em] bg-lightBlue flex justify-center items-center rounded-5">
+                            <button type="button "
+                                class="w-auto flex justify-center
+                             text-primary items-center font-IRANSansWeb400 font-normal text-xs leading-18.78 rounded-5">
+                                ورود / ثبت‌نام
+                            </button>
+                        </span> -->
+                        <div class="UserProfile-box relative w-auto flex gap-4 flex-col">
+                            <div class="User w-auto flex gap-4 hover:cursor-pointer">
+                              <span class="Icon [&.openProf]:rotate-180 duration-150 w-auto flex justify-center items-center my-auto">
+                                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"/>
+                                      </svg>
+                                      
+                              </span>
+                              <span class="User-Image w-[32px] h-[32px] rounded-full flex justify-center items-center">
+                                  <img src="http://a4tech.webisaz.ir/images/m-avatar.png" alt="" class="rounded-full w-full h-full object-cover">
+                              </span>
+                      
+                            </div>
+                            <div class="UserDropdown bg-White absolute top-[4em] opacity-0 translate-y-[-2em] duration-500 [&.openProf]:opacity-[1]
+                            [&.openProf]:translate-y-[0]   min-w-[140px] left-[-6px] right-[inherit] mx-auto w-auto  py-[.5em] flex">
+                              <div class="Box w-auto px-[.7em] py-[.7em] flex flex-col gap-2 min-w-[140px]">
+                                  <div class="title w-full flex justify-start items-start leading-[15.65px]
+                                   text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
+                                      نام کاربری
+                                  </div>
+                                  <span class="Username pb-[.5em] leading-[20.35px] border-b-[1px] border-mainGray
+                                  text-black font-IRANSansWeb400 font-normal text-[13px]">
+                                      غدیره مرادی
+                                  </span>
+                                  <span class="logOut w-full flex justify-between items-center">
+                                      <div class="text leading-[21.91px]
+                                      text-black font-IRANSansWeb400 font-normal text-sm">
+                                          خارج شدن
+                                      </div>
+                                      <div class="logoOut w-auto my-auto">
+                                          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M1.54167 12.875C1.15208 12.875 0.818576 12.7363 0.541146 12.4589C0.263715 12.1814 0.125 11.8479 0.125 11.4583V1.54167C0.125 1.15208 0.263715 0.818576 0.541146 0.541146C0.818576 0.263715 1.15208 0.125 1.54167 0.125H6.5V1.54167H1.54167V11.4583H6.5V12.875H1.54167ZM9.33333 10.0417L8.35938 9.01458L10.1656 7.20833H4.375V5.79167H10.1656L8.35938 3.98542L9.33333 2.95833L12.875 6.5L9.33333 10.0417Z" fill="#5F6368"/>
+                                              </svg>                                    
+                                      </div>
+                                  </span>
+                              </div>
+                            </div>
+                             </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="Menu-container absolute left-0 top-0 flex h-[50px] bg-[transparent] w-full
+            overflow-hidden delay-[.2s] z-1 group/menu pointer-events-none [&.menu-opened]:pointer-events-[all] [&.menu-opened]:h-svh
+             [&.menu-opened]:bg-White">
+                <ul class="menu w-90p mx-auto flex flex-col my-auto">
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                     scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                    w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal text-lg text-textGray">
+                            خانه
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            آخرین تغییرات
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            درباره ما
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            تماس با ما
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <div class="Title-C mt-[6em] w-90p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb800 font-extrabold text-base leading-24 text-textGray text-center
+            flex gap-1">
+            اسپرینت 73
+           
+            </h1>
+            <div class="text w-full flex flex-col justify-center items-center">
+                <p class="font-IRANSansWeb400 font-normal text-sm leading-[30px] text-textGray text-center">
+                    تغییرات در اسپرینت 64 شامل مواردی در زیر سیستم‌های مدیریت پروژه و CRM و ... است.
+                </p>
+            </div>
+        </div>
+        <section class="section-1 z-1 mb-[5em] mt-5 relative w-full flex flex-col  bg-White">
+            <div class="Box bg-White rounded-5 w-90p flex relative z-[2] mx-[auto] flex-col justify-center items-center gap-6">
+                <div class="Inner w-90p mx-auto py-[5%] flex flex-col gap-[1.3em]">
+                    <div class="Row w-full flex flex-col justify-start items-start gap-[.2em]">
+                        <span class="title font-IRANSansWeb700 font-bold text-sm leading-[35px] text-textGray ">
+                            ماژول crm
+                        </span>
+                        <div class="text mr-[1.5em] font-IRANSansWeb400 font-normal text-sm leading-[35px] text-text">
+                        نمایش نام و نام خانوادگی
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+         
+       </section>
+       <section class="section-3 cta w-full flex flex-col pb-[3em] mt-[3em] bg-lightBG ">
+        <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
+            <h5 class="font-IRANSansWeb700 font-bold text-lg leading-[28.17px] text-textGray text-center">
+                برای شروع آماده‌اید ؟
+            </h5>
+            <p class="font-IRANSansWeb700 font-bold text-sm leading-21.91 text-textGray text-center">
+                زمان خود را از دست ندهید و درخواست دهید !
+            </p>
+            <a href=""
+                class="button w-max mt-4 px-[2em] py-[1em] hover:bg-hoverBtnDprimary duration-200 bg-primary flex justify-center items-center rounded-5">
+                <button type="button " class="w-auto flex justify-center
+                 text-White items-center font-IRANSansWeb400 font-normal text-xs leading-18.78 rounded-5">
+                    درخواست دمو
+                </button>
+            </a>
+        </div>
+    </section>
+    <footer class="MobileFooter w-full flex flex-col bg-dark pt-[2em]">
+        <div class="Top-footer w-full flex justify-center items-center">
+            <div class="logo w-[183px] h-[41px]">
+                <a href="" class="w-full h-full">
+                    <img src="/mobile/assets/images/logoWhite-v3.png" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="InnerFooter w-90p mx-auto flex flex-col mt-[.5em] gap-5">
+            <div class="Right w-full flex flex-col justify-start items-center">
+                <div class="Box w-full flex flex-col">
+                    <div class="lang w-full border-b-[1px] border-[#FFFFFF80]
+                     pb-[.5em] flex justify-between items-center relative z-2">
+                        <div class="langC w-auto flex justify-center items-center">
+                            <a href="#"
+                                class="langs gap-2 hover:cursor-pointer w-auto flex gap-1 justify-center items-center">
+                                <span class="langIcon">
+                                    <img src="/mobile/assets/images/en-v3.png" alt="">
+                                </span>
+
+                                <span class="langText font-IRANSansWeb400 font-normal text-[13px] text-White">
+                                    انگلیسی
+                                </span>
+
+                            </a>
+
+                        </div>
+
+                        <div class="Socials w-auto flex justify-start items-start gap-3 mt-3">
+                            <span class="social linkdin">
+                                <a href="">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M3.37008 4.65527H0.250627C0.112181 4.65527 0 4.76561 0 4.90167V14.754C0 14.8901 0.112181 15.0004 0.250627 15.0004H3.37008C3.50852 15.0004 3.6207 14.8901 3.6207 14.754V4.90167C3.6207 4.76561 3.50852 4.65527 3.37008 4.65527Z"
+                                            fill="white" />
+                                        <path
+                                            d="M2.06981 0C0.928505 0 0 0.927972 0 2.0686C0 3.20973 0.928505 4.13805 2.06981 4.13805C3.2102 4.13805 4.13795 3.20968 4.13795 2.0686C4.138 0.927972 3.2102 0 2.06981 0Z"
+                                            fill="white" />
+                                        <path
+                                            d="M11.1646 4.65527C9.95942 4.65527 9.06852 5.17253 8.52816 5.76027V5.13518C8.52816 5.00226 8.42026 4.89448 8.28708 4.89448H5.41344C5.28027 4.89448 5.17236 5.00226 5.17236 5.13518V14.7597C5.17236 14.8926 5.28027 15.0004 5.41344 15.0004H8.40753C8.5407 15.0004 8.64861 14.8926 8.64861 14.7597V9.99777C8.64861 8.39313 9.08516 7.76799 10.2055 7.76799C11.4257 7.76799 11.5226 8.77016 11.5226 10.0803V14.7597C11.5226 14.8927 11.6305 15.0004 11.7637 15.0004H14.7589C14.8921 15.0004 15 14.8927 15 14.7597V9.48051C15 7.09446 14.5443 4.65527 11.1646 4.65527Z"
+                                            fill="white" />
+                                    </svg>
+
+                                </a>
+                            </span>
+                            <span class="social github">
+                                <a href="">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_30_501)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M7.5 0C11.6423 0 15 3.44244 15 7.68969C15 11.0864 12.8535 13.968 9.87525 14.9857C9.495 15.0615 9.36 14.8213 9.36 14.6166C9.36 14.3631 9.369 13.5351 9.369 12.5061C9.369 11.7891 9.129 11.3211 8.85975 11.0826C10.53 10.8921 12.285 10.2418 12.285 7.28832C12.285 6.44832 11.994 5.76286 11.5125 5.22436C11.5905 5.03011 11.8477 4.24796 11.439 3.18896C11.439 3.18896 10.8105 2.98291 9.37875 3.97741C8.7795 3.80716 8.1375 3.7215 7.5 3.7185C6.8625 3.7215 6.22125 3.80716 5.62275 3.97741C4.1895 2.98291 3.5595 3.18896 3.5595 3.18896C3.15225 4.24796 3.4095 5.03011 3.48675 5.22436C3.0075 5.76286 2.71425 6.44832 2.71425 7.28832C2.71425 10.2343 4.4655 10.8946 6.13125 11.0889C5.91675 11.2809 5.7225 11.6196 5.655 12.1168C5.2275 12.3133 4.1415 12.6534 3.4725 11.4781C3.4725 11.4781 3.07575 10.7393 2.32275 10.6853C2.32275 10.6853 1.5915 10.6756 2.27175 11.1526C2.27175 11.1526 2.763 11.3888 3.10425 12.2776C3.10425 12.2776 3.5445 13.65 5.631 13.185C5.63475 13.8278 5.6415 14.4336 5.6415 14.6166C5.6415 14.8198 5.5035 15.0577 5.12925 14.9864C2.14875 13.9702 0 11.0872 0 7.68969C0 3.44244 3.3585 0 7.5 0Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_30_501">
+                                                <rect width="15" height="15" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </span>
+                            <span class="social npm">
+                                <a href="">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_34_493)">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M0 4H15V11H7V13H4V11H0V4ZM4 10V5H1V10H2V6H3V10H4ZM5 5V12H6V10H8V5H5ZM9 5V10H10V6H11V10H12V6H13V10H14V5H9ZM6 9V6H7V9H6Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_34_493">
+                                                <rect width="15" height="15" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="text w-full flex flex-col flex-wrap mt-[1.5em]">
+                        <p class="font-IRANSansWeb400 font-normal text-sm leading-21.91 text-White">
+                            یک نرم افزار یکپارچه و قابل دسترس مبتنی بر SaaS است که برای مدیریت راحت مسائل شخصی،
+                            شرکتی و تجارت الکترونیکی شما استفاده می شود. بیسیس پنل توسط گروه منظومه نگاران ساخته و
+                            تولید شده است.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="Left w-full pb-6 flex flex-col gap-4 justify-start items-star">
+                <div class="title w-full flex justify-start items-start">
+                    <p class="font-IRANSansWeb700 font-bold text-base leading-25.4 text-White text-right">
+                        اطلاعات تماس
+                    </p>
+                </div>
+                <div class="Contact-box w-full flex flex-col max-w-[270px] gap-4">
+                    <div class="row w-full flex justify-start items-start">
+                        <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                            شماره تماس
+                        </span>
+                        <span class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                            : 2255555 (021)
+                        </span>
+                    </div>
+                    <div class="row w-full flex justify-start items-start">
+                        <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                            پست الکترونیک:
+                        </span>
+                        <span class="Answer font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                            : info[at]manzoomeh.ir
+                        </span>
+                    </div>
+                    <div class="row w-full flex justify-start items-start">
+                        <span class="Question font-IRANSansWeb400 font-normal text-xs leading-18.78 text-White">
+                            آدرس : پاسداران - خیابان گل‌نبی - خیابان ناطق نوری - نبش بن‌بست رامین - پلاک 2/1 -
+                            ساختمان ماکا - واحد 1
+                        </span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Bottom-footer
+             w-full flex py-[1.2em]
+              bg-dark2 justify-center
+               items-center">
+            <a href="">
+                <img src="/mobile/assets/images/copyRight-v3.png" alt="">
+            </a>
+        </div>
+    </footer>
+    </main> 
+    <script src="/mobile/assets/js/lenisScroll.js"></script>
+    <script src="/mobile/assets/js/configMobile-v3.js"></script>
+</body>
+</html>

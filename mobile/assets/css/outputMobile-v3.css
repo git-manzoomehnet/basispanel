@@ -936,6 +936,10 @@ video {
   margin-bottom: 4em;
 }
 
+.mb-\[5em\] {
+  margin-bottom: 5em;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -954,6 +958,10 @@ video {
 
 .mr-4 {
   margin-right: 1rem;
+}
+
+.mr-\[1\.5em\] {
+  margin-right: 1.5em;
 }
 
 .mr-\[1em\] {
@@ -1239,6 +1247,10 @@ video {
   height: 421px;
 }
 
+.h-\[441px\] {
+  height: 441px;
+}
+
 .h-\[44px\] {
   height: 44px;
 }
@@ -1318,10 +1330,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-\[441px\] {
-  height: 441px;
 }
 
 .max-h-\[299px\] {
@@ -2374,6 +2382,10 @@ video {
 
 .gap-9 {
   gap: 2.25rem;
+}
+
+.gap-\[\.2em\] {
+  gap: .2em;
 }
 
 .gap-\[\.5em\] {
@@ -3887,6 +3899,10 @@ video {
   line-height: 33.6px;
 }
 
+.leading-\[35px\] {
+  line-height: 35px;
+}
+
 .leading-\[40\.17px\] {
   line-height: 40.17px;
 }
@@ -4721,6 +4737,10 @@ header .Menu-container.menu-opened ul.menu li.menu-item:nth-child(8) {
   z-index: 5;
 }
 
+.Menu-container.menu-opened{
+  pointer-events: all !important;
+}
+
 header .Menu-container {
   transition: all 0.5s ease-out, background 1s ease-out;
 }
@@ -4732,7 +4752,6 @@ header .Menu-container {
   background-size: contain;
 }
 
-.ReleaseNote-Show .Bg-gray-sec,
 .CrmServices .Bg-gray-sec,
 .TaskManager-C .Bg-gray-sec ,
 .BPMS-BasisPanel .Bg-gray-sec{
@@ -4783,13 +4802,7 @@ header .Menu-container {
   filter: drop-shadow( 0px 0px 50px 5px #00000033);
 }
 
-.ReleaseNote-Show .Bg-gray-sec::before{
-  /* clip-path: ellipse(54% 55% at 50% 40%); */
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
-}
-
-.ReleaseNote-Show .section-1 .Box{
+.ReleaseNote-Show-mobile .section-1 .Box{
   box-shadow: 0px 0px 40px 0px #0000001A;
 }
 
@@ -5795,6 +5808,24 @@ footer .Right .text p{
   font-weight: 400;
   line-height: 21.91px;
   color: white;
+  font-family: "IRANSansWeb400";
+  text-align: right;
+}
+
+.ReleaseNote-Show-mobile .Inner .title p{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 35px;
+  color: #494949;
+  font-family: "IRANSansWeb700";
+  text-align: right;
+}
+
+.ReleaseNote-Show-mobile .Inner .text p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 35px;
+  color: #494949;
   font-family: "IRANSansWeb400";
   text-align: right;
 }

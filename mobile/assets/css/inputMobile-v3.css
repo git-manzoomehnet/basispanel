@@ -231,6 +231,9 @@ header .Menu-container.menu-opened ul.menu li.menu-item:nth-child(8) {
     position: relative;
     z-index: 5;
 }
+.Menu-container.menu-opened{
+pointer-events: all !important;
+}
 header .Menu-container {
     transition: all 0.5s ease-out, background 1s ease-out;
 }
@@ -242,7 +245,6 @@ header .Menu-container {
   background-size: contain;
 }
 
-.ReleaseNote-Show .Bg-gray-sec,
 .CrmServices .Bg-gray-sec,
 .TaskManager-C .Bg-gray-sec ,
 .BPMS-BasisPanel .Bg-gray-sec{
@@ -292,13 +294,8 @@ header .Menu-container {
     filter: drop-shadow( 0px 0px 50px 5px #00000033);
 
 }
-.ReleaseNote-Show .Bg-gray-sec::before{
-  /* clip-path: ellipse(54% 55% at 50% 40%); */
-  border-bottom-right-radius: 50%;
-  border-bottom-left-radius: 50%;
 
-}
-.ReleaseNote-Show .section-1 .Box{
+.ReleaseNote-Show-mobile .section-1 .Box{
   box-shadow: 0px 0px 40px 0px #0000001A;
 
 }
@@ -1128,6 +1125,22 @@ footer .Right .text p{
   font-weight: 400;
   line-height: 21.91px;
   color: white;
+  font-family: "IRANSansWeb400";
+  text-align: right;
+}
+.ReleaseNote-Show-mobile .Inner .title p{
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 35px;
+  color: #494949;
+  font-family: "IRANSansWeb700";
+  text-align: right;
+}
+.ReleaseNote-Show-mobile .Inner .text p{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 35px;
+  color: #494949;
   font-family: "IRANSansWeb400";
   text-align: right;
 }
