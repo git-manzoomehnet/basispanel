@@ -1,0 +1,110 @@
+<basis
+  core="dbsource"
+  source="basiscore"
+  name="db"
+  lid="1"
+  mid="1"
+  usedforid="[##cms.query.id##]"
+>
+  <member type="view" name="show" preview="false"></member>
+</basis>
+<basis
+  core="dbsource"
+  source="basiscore"
+  name="db"
+  lid="1"
+  mid="1"
+  catid="201687"
+>
+  <member
+    type="list"
+    name="articles"
+    perpage="3"
+    pageno=" [##cms.query.pageid|(1)##]  "
+    preview="false"
+    link="showblog"
+    propertyid="7244,7249"
+  />
+</basis>
+<basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
+    <member type="list" name="list" request="taglist" preview=""  ></member>
+  </basis>
+  <basis core="dbsource" source="media" name="db" lid="1" sourcemid="article" usedforid="[##cms.query.id##]" >
+      <member type="list" name="media" perpage="1"  format="4"  preview="" />
+  </basis>
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta
+    name="description"
+    content="[##cms.seo.description##]"
+  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[##cms.seo.title##]</title>
+  <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/outputDesk-v3.css">
+  <basis core="print" datamembername="tag.list">  
+    <face filter="key <> 'canonical'">      
+      <meta property="@key" content="@value" />
+  </face>
+  </basis>
+  <link rel="canonical" href="https://[##cms.request.full-url##]" />
+  <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]" >
+    <member request="json-ld" type="scalar" name="json"  />
+    </basis>
+    
+    <script  type="application/ld+json" >
+    [##db.json.Column1##]
+    </script>
+    <basis core="call" file="styles-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<body>
+    <main class="ReleaseNote-Show-mobile w-full overflow-hidden" dir="rtl">
+        <basis core="call" file="checkheaderLogin-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <div class="Title-C mt-[6em] w-90p mx-auto flex flex-col justify-center items-center gap-3">
+            <basis core="print" datamembername="db.show">
+                <layout> @child </layout>
+                <else-layout> اطلاعات وارد نشده است </else-layout>
+                <face filter="prpID = 7243">
+                    <h1 class="font-IRANSansWeb800 font-extrabold text-base leading-24 text-textGray text-center
+                    flex gap-1">              
+                            @Answer
+                    
+                    </h1>
+                </face>
+              </basis>
+            <!-- <div class="text w-full flex flex-col justify-center items-center">
+                <p class="font-IRANSansWeb400 font-normal text-sm leading-[30px] text-textGray text-center">
+                    تغییرات در اسپرینت 64 شامل مواردی در زیر سیستم‌های مدیریت پروژه و CRM و ... است.
+                </p>
+            </div> -->
+        </div>
+        <section class="section-1 z-1 mb-[5em] mt-5 relative w-full flex flex-col  bg-White">
+            <div class="Box bg-White rounded-5 w-90p flex relative z-[2] mx-[auto] flex-col justify-center items-center gap-6">
+                <div class="Inner w-90p mx-auto py-[5%] flex flex-col gap-[1.3em]">
+                    <basis core="print" datamembername="db.show">
+                        <layout>
+                             @child
+                         </layout>
+                        <else-layout> اطلاعات وارد نشده است </else-layout>
+                      <face filter="typeid not in (150,159,160,161,162)and prpID not in (7244) ">
+                        <div class="Row w-full flex flex-col justify-start items-start gap-[.2em]">
+                            <span class="title font-IRANSansWeb700 font-bold text-sm leading-[35px] text-textGray ">
+                                @text
+                            </span>
+                            <div class="text mr-[1.5em] font-IRANSansWeb400 font-normal text-sm leading-[35px] text-text">
+                                @largetext
+                            </div>
+                        </div>
+                      </face>
+                      </basis>
+                </div>
+            </div>
+         
+       </section>
+       <basis core="call" file="cta-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="footer-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    </main> 
+    <basis core="call" file="script-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />t>
+</body>
+</html>
