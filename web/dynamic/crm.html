@@ -59,7 +59,7 @@
                 قابلیت‌های پیشرفته فیلتر داده
             </span>
             <span class="image group-even/timeline:order-2 mb-4">
-                <img src="/[##cms.cms.cdn##]/images/p1-v3.png" alt="basis" title="basis">
+                <img src="[##cms.cms.cdn##]/images/p1-v3.png" alt="basis" title="basis">
             </span>
             <span class="line w-1 group-even/timeline:order-1 h-full border-l-[1px] border-dashed border-text"></span>
            </div>
@@ -339,12 +339,12 @@
                 سوالات متداول
             </h4>
            </div>
-           <div class="Questions-boxes mt-[3em] pb-[4em]  w-[1100px] flex  gap-[1em] flex-col my-0 mx-auto">
+           <div class="Questions-boxes mt-[3em] pb-[4em]  w-full flex  gap-[1em] flex-col my-0 mx-auto">
 
             <basis core="print" datamembername="db.qa">
                 <face filter="typeid <> 150">
                     <div class="Question group/question bg-White w-full rounded-lg flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
-                        <div class="title-question py-[1.4em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
+                        <div class="title-question py-[1.4em] group-[&.active]/question:pb-[.5em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
                          px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
                         border-l-mainGray  border-r-mainGray
                          rounded-5 w-full  mx-auto flex justify-start items-center gap-2">
@@ -359,7 +359,8 @@
                                     
                             </span>
                             <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
-                            group-[&.active]/question:font-IRANSansWeb800 group-[&.active]/question:font-extrabold group-[&.active]/question:text-[21px]
+                            group-[&.active]/question:font-IRANSansWeb800 
+                            group-[&.active]/question:font-extrabold group-[&.active]/question:text-[18px]
                             group-[&.active]/question:leading-[24px]
                              font-normal text-base leading-[24px] text-textGray">
                                 @text
@@ -368,15 +369,15 @@
                         <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
                         mx-auto group-[&.active]/question:flex justify-start items-center gap-2
                         flex-col">
-                            <p class="font-IRANSansWeb400 duration-500 font-normal group-[&.active]/question:text-White text-[15px] leading-[28px] answer">
+                            <p class="font-IRANSansWeb400 duration-500 font-normal
+                             group-[&.active]/question:text-White text-[15px]
+                              leading-[28px] answer">
                                 @largetext
                             </p>
                         </div>
                     </div>
                 </face>
             </basis>
-
-             
            </div>
         </div>
        </section>

@@ -21,6 +21,7 @@ let containerInput = document.createElement('div')
 let firsttBtn = document.querySelector('button.firstBtn')
 let Errorcontainer = document.querySelector('.Alert-container')
 let ErrorText = Errorcontainer.querySelector('p.error')
+let PopUp = document.querySelector('.Popup-container')
 let token;
 let hashid;
 let IS = false
@@ -811,7 +812,7 @@ const CreateSelectBox = (countryCode, responseJson,OBJ) => {
     responseJson.filter(data=>{
         if(data.code == countryCode){
             console.log('data.code');
-            img.setAttribute('src', data.image)
+            img.setAttribute('src',`/${data.image}`)
         }
     })
     pfirst.appendChild(img)
@@ -830,7 +831,7 @@ const CreateSelectBox = (countryCode, responseJson,OBJ) => {
         op.setAttribute('data-id', data.countryid)
         op.setAttribute('data-title', data.title)
         let img = document.createElement('img')
-        img.setAttribute('src', data.image)
+        img.setAttribute('src',`/${data.image}`)
         p.appendChild(img)
     })
     document.querySelector('.mobileInput').appendChild(selectBox)
@@ -1177,7 +1178,7 @@ async function onProcessedForgetPasswordFn(args) {
             // The password change link sent to email
             AlertMessage('Success', 'لینک تغییر رمز عبور از طریق ایمیل ارسال شد')
             setTimeout(() => {
-                PopUp.classList.toggle('open')
+                PopUp.classList.remove('open')
             }, 1000);
         }
         if (errorid == '43') {
@@ -1253,10 +1254,17 @@ async function onProcessedSelectChangePassMethodFn(args) {
             if (errorid == '41') {
                 // invalid user
                 AlertMessage('Error', 'لینک تغییر رمز عبور از طریق پیامک ارسال شد')
+                setTimeout(() => {
+                    PopUp.classList.remove('open')
+                }, 1000);
             }
             if (errorid == '42') {
                 // The password change link sent to mobile
                 AlertMessage('Error', 'لینک تغییر رمز عبور از طریق ایمیل ارسال شد')
+                setTimeout(() => {
+                    PopUp.classList.remove('open')
+                }, 1000);
+                
             }
             if (errorid == '43') {
                 // error in sending email
@@ -1271,3 +1279,4 @@ async function onProcessedSelectChangePassMethodFn(args) {
 
     }
 }
+

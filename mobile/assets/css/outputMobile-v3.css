@@ -940,6 +940,10 @@ video {
   margin-bottom: 5em;
 }
 
+.mb-auto {
+  margin-bottom: auto;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1054,6 +1058,10 @@ video {
 
 .mt-\[8em\] {
   margin-top: 8em;
+}
+
+.mt-\[8svh\] {
+  margin-top: 8svh;
 }
 
 .mt-\[9em\] {
@@ -1388,10 +1396,6 @@ video {
   width: 95%;
 }
 
-.w-\[1100px\] {
-  width: 1100px;
-}
-
 .w-\[14px\] {
   width: 14px;
 }
@@ -1675,6 +1679,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-\[-116px\] {
+  --tw-translate-x: -116px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-\[-21\%\] {
   --tw-translate-x: -21%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1695,8 +1704,23 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-\[-60px\] {
+  --tw-translate-x: -60px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-\[10\%\] {
   --tw-translate-x: 10%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[100\%\] {
+  --tw-translate-x: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[10px\] {
+  --tw-translate-x: 10px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1770,6 +1794,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-y-\[10px\] {
+  --tw-translate-y: 10px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-y-\[29\%\] {
   --tw-translate-y: 29%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1802,6 +1831,11 @@ video {
 
 .translate-y-\[73\%\] {
   --tw-translate-y: 73%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-\[73px\] {
+  --tw-translate-y: 73px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -4745,16 +4779,17 @@ header .Menu-container {
   transition: all 0.5s ease-out, background 1s ease-out;
 }
 
-.Home-BasisPanel-mobile .section-1 {
-  background-image: url('../../images/homebg-v3.png');
+.Home-BasisPanel-mobile .Bg-gray-sec::before{
+  /* background-image: url('../images/bg-mobile-v3.png'); */
+  background-image: url('../../images/bg-mobile-v3.png');
   background-position: bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-repeat: repeat;
+  background-size: cover;
 }
 
 .CrmServices .Bg-gray-sec,
 .TaskManager-C .Bg-gray-sec ,
-.BPMS-BasisPanel .Bg-gray-sec{
+.BPMS-BasisPanel .Bg-gray-secm{
   /* background-image: url('../images/bg-light-v3.png'); */
   background-image: url('../../images/bg-light-v3.png');
   background-position: center;
@@ -4887,7 +4922,9 @@ li{
 
 .Home-BasisPanel-mobile .help-Boxes .spd,
  .Home-BasisPanel-mobile .help-Boxes h4,
- .Home-BasisPanel-mobile .help-Boxes p{
+ .Home-BasisPanel-mobile .help-Boxes p,
+ .Home-BasisPanel-mobile .Methods .Tcontent p,
+ .Home-BasisPanel-mobile .Methods .Tcontent img{
   transform: translateX(100%);
   opacity: 0;
   transition: all 1s ease;
@@ -4895,7 +4932,9 @@ li{
 
 .Home-BasisPanel-mobile .help-Boxes .box.appear .spd,
  .Home-BasisPanel-mobile .help-Boxes .box.appear h4,
- .Home-BasisPanel-mobile .help-Boxes .box.appear p{
+ .Home-BasisPanel-mobile .help-Boxes .box.appear p,
+ .Home-BasisPanel-mobile .Methods .Tcontent.appear p,
+ .Home-BasisPanel-mobile .Methods .Tcontent.appear img{
   transform: translateX(0);
   opacity: 1;
 }
@@ -4998,9 +5037,9 @@ main.ReleaseNote-C .section-3 {
 
 .Tcontent .Text p{
   font-family: "IRANSansWeb400";
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 22.5px;
+  line-height: 21px;
   color: #555555;
 }
 
@@ -5830,6 +5869,14 @@ footer .Right .text p{
   text-align: right;
 }
 
+.UserDropdown{
+  box-shadow: 0px 0px 8px 8px #00000008;
+}
+
+.passwordBox-email input[type="password"]{
+  direction: rtl !important;
+}
+
 @media (min-width: 480px) {
   .sm\:container {
     width: 100%;
@@ -6311,6 +6358,11 @@ footer .Right .text p{
   background-color: rgb(230 247 245 / var(--tw-bg-opacity, 1));
 }
 
+.group\/burger.menu-opened .group-\[\&\.menu-opened\]\/burger\:bg-White {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .group\/Alert.Error .group-\[\&\.Error\]\/Alert\:fill-red {
   fill: #F9461C;
 }
@@ -6320,8 +6372,16 @@ footer .Right .text p{
   padding-bottom: .5em;
 }
 
+.group\/question.active .group-\[\&\.active\]\/question\:pb-\[\.5em\] {
+  padding-bottom: .5em;
+}
+
 .group\/question.active .group-\[\&\.active\]\/question\:font-IRANSansWeb800 {
   font-family: IRANSansWeb800, IRANSansWeb800;
+}
+
+.group\/question.active .group-\[\&\.active\]\/question\:text-\[18px\] {
+  font-size: 18px;
 }
 
 .group\/question.active .group-\[\&\.active\]\/question\:text-\[21px\] {
@@ -6499,6 +6559,11 @@ footer .Right .text p{
 .\[\&\.menu-opened\]\:bg-White.menu-opened {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.\[\&\.menu-opened\]\:bg-black.menu-opened {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .\[\&\.openLang\]\:pointer-events-auto.openLang {

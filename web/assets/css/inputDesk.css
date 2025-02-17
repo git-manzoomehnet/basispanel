@@ -1031,7 +1031,9 @@ font-family: "IRANSansWeb400";
 text-align: right;
 }
 .chat-BasisPanel .chatInputBox #chat,
-.chat-BasisPanel .chatInputBox #chat::placeholder{
+.chat-BasisPanel .chatInputBox #chat::placeholder,
+.chatNodata-BasisPanel .chatInputBox #chat,
+.chatNodata-BasisPanel .chatInputBox #chat::placeholder{
   color:#68737C;
 font-size: 14px;
 line-height: 21.91px;
@@ -1041,7 +1043,8 @@ text-align: right;
 direction: rtl;
 padding-bottom: 3em;
 }
-.chat-BasisPanel .chatInputBox #chat{
+.chat-BasisPanel .chatInputBox #chat,
+.chatNodata-BasisPanel .chatInputBox #chat{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1074,4 +1077,10 @@ footer .Right .text p{
   color: white;
   font-family: "IRANSansWeb400";
   text-align: right;
+}
+.UserDropdown{
+  box-shadow: 0px 0px 8px 8px #00000008;
+}
+.passwordBox-email input[type="password"]{
+  direction: rtl !important;
 }

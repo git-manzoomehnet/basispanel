@@ -1,9 +1,9 @@
 // service slider
 let SwiperService= new Swiper ('.purpose-boxes', {
-  slidesPerView: 2.7,
-  spaceBetween: 30,
+  slidesPerView: 2.9,
+  spaceBetween: 70,
+  slidesPerGroup: 3,
   effect:'slide' ,
-  centeredSlides:true,
   loop:true,
  speed:700,
  pagination: {
@@ -14,6 +14,7 @@ let SwiperService= new Swiper ('.purpose-boxes', {
     },
 },
 })
+
 let TitlesSec3 = document.querySelectorAll('.section-3 > .title.fadeIN h3,.section-3 > .title.fadeIN h4')
 console.log(TitlesSec3);
 const RunAnimation = (elem)=>{
@@ -36,15 +37,26 @@ const RunAnimation = (elem)=>{
 let counterStart = false
 let counter =document.getElementById('counter')
 let Boxes = document.querySelectorAll('.help-Boxes .fadeIN')
-lenis.on('scroll',()=>{
+let contents = document.querySelectorAll('.Home-BasisPanel-mobile .Methods .Tcontent')
 
+document.addEventListener('DOMContentLoaded',()=>{
+  let checkScroll = ()=>{
     TitlesSec3.forEach(i=>{
-        RunAnimation(i)
-    })
-    Boxes.forEach(b=>{
-        RunAnimation(b)
-    })
+      RunAnimation(i)
+  })
+  Boxes.forEach(b=>{
+      RunAnimation(b)
+  })
+  contents.forEach(b=>{
+      RunAnimation(b)
+  })
+  }
+  checkScroll()
+  lenis.on('scroll',()=>{
+    checkScroll()
+  })
 })
+
 
 let tabBtns = [...document.querySelectorAll('.tabs .Tab')]
 let Signs = [...document.querySelectorAll('.Signs .sign')]
@@ -80,13 +92,31 @@ btn.addEventListener('click',(e)=>{
     Slides[index].classList.add('activeSlide')
 })
 })
-// logo slider one
-let SwiperLOGO = new Swiper(".Customers", {
-  slidesPerView: "auto",  // عرض خودکار
-  freeMode: true,         // اسکرول آزاد
-  spaceBetween: 10,       // فاصله بین اسلایدها
-  grabCursor: true,       // تغییر نشانگر ماوس به دست برای حس طبیعی‌تر
+// logo slider 
+let swiper = new Swiper(".swiper-1", {
+  slidesPerView: "auto",
+  spaceBetween: 10,
+  speed: 30000,
+  allowTouchMove: false,
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+  },
+  loop: true,
 });
+let swiper2 = new Swiper(".swiper-2", {
+  slidesPerView: "auto",
+  spaceBetween: 10,
+  speed: 30000,
+  allowTouchMove: false,
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+    reverseDirection: true
+  },
+  loop: true,
+});
+console.log(Swiper.prototype,'Swiper.prototyp');
 const texts = ['مدیرفروش هستم ،','با افتخار پاسخگوی شما ','بفرمایید'];
 const inputt = document.querySelector('#myInput');
 const animationWorker = function (input, texts) {

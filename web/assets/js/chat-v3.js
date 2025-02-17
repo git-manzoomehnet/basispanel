@@ -61,7 +61,10 @@ let langIcon = document.querySelector(".langC"),
     drops.forEach(drop=>{
         drop.querySelector('.title-dropdown').addEventListener('click',(e)=>{
             console.log( e.currentTarget);
-            drop.classList.toggle('open')
+            if(drop.querySelector('.dropdown-menu ul li')){
+                drop.classList.toggle('open')
+            }
+           
         })
     })
 document.addEventListener("click", (e) => {

@@ -33,7 +33,7 @@
         </div>
         <section class="section-1 mt-8 pb-[2em] z-1 relative w-full flex flex-col  bg-White">
             <div class="Bg-gray-sec w-screen z-2 absolute h-full  before:content-[''] before:absolute 
-            before:left-0 before:bottom-0 before:bg-bgGray before:h-[80%]
+            before:left-0 before:bottom-0 bg-bgGray before:h-[80%]
             before:w-full  pointer-events-none before:z-0 ">
            
             </div>
@@ -52,14 +52,14 @@
                 </h2>
             </div>
        </section>
-       <section class="section-2 overflow-hidden relative z-[5] w-full flex flex-col gap-7 my-[2em]">
+       <section class="section-2 overflow-hidden relative z-[5] w-full flex flex-col gap-[.5em] my-[2em]">
              <div class="Purpose-title w-full flex justify-center items-center">
                 <h2 class="font-IRANSansWeb700 font-bold text-base leading-25.04 text-black">
                     سرویس‌ها
                 </h2>
              </div>
         <div class="Purpose-sec relative w-full flex mx-auto flex-col mb-[2em]">
-            <div class="purpose-boxes overflow-hidden w-full swiper">
+            <div class="purpose-boxes  pt-[2em] overflow-hidden w-full swiper">
                 <div class="swiper-wrapper w-full">
                     <div class="swiper-slide w-full flex">
                         <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -265,11 +265,11 @@
             <div class="title w-full flex flex-col gap-3 fadeIN">
 
                 <h4
-                    class="font-IRANSansWeb600 font-semibold text-sm text-blue3 text-center duration-[1s] translate-x-100 opacity-0">
+                    class="font-IRANSansWeb600 font-semibold text-sm text-blue3 text-center duration-[1s] translate-x-[100%] opacity-0">
                     مزایای بیسیس پنل
                 </h4>
                 <h3
-                    class="font-IRANSansWeb800 font-extrabold text-base text-textGray text-center duration-[1s] translate-x-100 opacity-0">
+                    class="font-IRANSansWeb800 font-extrabold text-base text-textGray text-center duration-[1s] translate-x-[100%] opacity-0">
                     بیسیس پنل چطور به کسب و کار من کمک می‌کند؟
                 </h3>
             </div>
@@ -397,10 +397,10 @@
                                 <span class="line w-[2px] h-[25px] bg-primary"></span>
                             </span>
                         </div>
-                        <div class="tabContents relative w-full flex rounded-5 h-[441px] ">
+                        <div class="tabContents relative w-full flex rounded-5 h-[421px] ">
                             <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                               [&.activeSlide]:pointer-events-auto
-                               bottom-0 left-0  w-full flex rounded-5  h-[441px] border-[2px] border-bgGray">
+                               bottom-0 left-0  w-full flex rounded-5  h-[421px] border-[2px] border-bgGray">
                                 <div class="Container h-[94%] flex-col my-auto justify-start items-center w-90p 
                                     mx-auto gap-4 flex">
                                     <div class="RightSec w-full flex justify-start items-start">
@@ -429,7 +429,7 @@
                             </div>
                             <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                             [&.activeSlide]:pointer-events-auto
-                             bottom-0 left-0  w-full flex rounded-5  h-[441px] border-[2px] border-bgGray">
+                             bottom-0 left-0  w-full flex rounded-5  h-[421px] border-[2px] border-bgGray">
                               <div class="Container h-[94%] flex-col my-auto justify-start items-center w-90p 
                                   mx-auto gap-4 flex">
                                   <div class="RightSec w-full flex justify-start items-start">
@@ -459,7 +459,7 @@
                           </div>
                           <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                           [&.activeSlide]:pointer-events-auto
-                           bottom-0 left-0  w-full flex rounded-5  h-[441px] border-[2px] border-bgGray">
+                           bottom-0 left-0  w-full flex rounded-5  h-[421px] border-[2px] border-bgGray">
                             <div class="Container h-[94%] flex-col my-auto justify-start items-center w-90p 
                                 mx-auto gap-4 flex">
                                 <div class="RightSec w-full flex justify-start items-start">
@@ -498,7 +498,8 @@
         <basis core="call" file="footer-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>
     <basis core="call" file="script-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-    <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
+
+    <script src="[##cms.cms.cdn##]/_js/swiper-bundle11.0.5.min.js"></script>
     <script src="[##cms.cms.cdn##]/asset/js/home-mobile-v3.js"></script>
 </body>
 

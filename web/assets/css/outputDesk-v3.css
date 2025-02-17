@@ -874,6 +874,11 @@ video {
   margin-bottom: 2.3em;
 }
 
+.my-\[2em\] {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
 .my-auto {
   margin-top: auto;
   margin-bottom: auto;
@@ -889,6 +894,10 @@ video {
 
 .mb-16 {
   margin-bottom: 4rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-3 {
@@ -927,6 +936,10 @@ video {
   margin-bottom: 4em;
 }
 
+.mb-\[5em\] {
+  margin-bottom: 5em;
+}
+
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -947,6 +960,10 @@ video {
   margin-right: 1rem;
 }
 
+.mr-\[1\.5em\] {
+  margin-right: 1.5em;
+}
+
 .mr-\[1em\] {
   margin-right: 1em;
 }
@@ -961,6 +978,10 @@ video {
 
 .mr-auto {
   margin-right: auto;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .mt-10 {
@@ -1174,12 +1195,20 @@ video {
   height: 171px;
 }
 
+.h-\[18px\] {
+  height: 18px;
+}
+
 .h-\[20px\] {
   height: 20px;
 }
 
 .h-\[23px\] {
   height: 23px;
+}
+
+.h-\[25px\] {
+  height: 25px;
 }
 
 .h-\[2em\] {
@@ -1216,6 +1245,10 @@ video {
 
 .h-\[421px\] {
   height: 421px;
+}
+
+.h-\[441px\] {
+  height: 441px;
 }
 
 .h-\[44px\] {
@@ -1274,6 +1307,10 @@ video {
   height: 85px;
 }
 
+.h-\[94\%\] {
+  height: 94%;
+}
+
 .h-\[95\%\] {
   height: 95%;
 }
@@ -1323,6 +1360,10 @@ video {
   min-height: 100svh;
 }
 
+.\!w-auto {
+  width: auto !important;
+}
+
 .\!w-full {
   width: 100% !important;
 }
@@ -1345,10 +1386,6 @@ video {
 
 .w-95p {
   width: 95%;
-}
-
-.w-\[1100px\] {
-  width: 1100px;
 }
 
 .w-\[14px\] {
@@ -1634,6 +1671,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-\[-116px\] {
+  --tw-translate-x: -116px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-\[-21\%\] {
   --tw-translate-x: -21%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1654,8 +1696,18 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-x-\[-60px\] {
+  --tw-translate-x: -60px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-x-\[10\%\] {
   --tw-translate-x: 10%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[10px\] {
+  --tw-translate-x: 10px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1729,6 +1781,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-y-\[10px\] {
+  --tw-translate-y: 10px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-y-\[29\%\] {
   --tw-translate-y: 29%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1761,6 +1818,11 @@ video {
 
 .translate-y-\[73\%\] {
   --tw-translate-y: 73%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-y-\[73px\] {
+  --tw-translate-y: 73px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -2341,6 +2403,10 @@ video {
 
 .gap-9 {
   gap: 2.25rem;
+}
+
+.gap-\[\.2em\] {
+  gap: .2em;
 }
 
 .gap-\[\.5em\] {
@@ -3212,6 +3278,11 @@ video {
   padding-right: 1.25rem;
 }
 
+.px-\[\.2em\] {
+  padding-left: .2em;
+  padding-right: .2em;
+}
+
 .px-\[\.3em\] {
   padding-left: .3em;
   padding-right: .3em;
@@ -3757,8 +3828,16 @@ video {
   line-height: 15.65px;
 }
 
+.leading-\[18px\] {
+  line-height: 18px;
+}
+
 .leading-\[19\.5px\] {
   line-height: 19.5px;
+}
+
+.leading-\[19\.6px\] {
+  line-height: 19.6px;
 }
 
 .leading-\[20\.35px\] {
@@ -3839,6 +3918,10 @@ video {
 
 .leading-\[33\.6px\] {
   line-height: 33.6px;
+}
+
+.leading-\[35px\] {
+  line-height: 35px;
 }
 
 .leading-\[40\.17px\] {
@@ -4292,6 +4375,10 @@ video {
 
 .duration-500 {
   transition-duration: 500ms;
+}
+
+.duration-75 {
+  transition-duration: 75ms;
 }
 
 .duration-\[\.3s\] {
@@ -5615,7 +5702,7 @@ input#conversationSearch::placeholder{
   text-align: right;
 }
 
-.chat-BasisPanel .chatInputBox #chat::-moz-placeholder{
+.chat-BasisPanel .chatInputBox #chat::-moz-placeholder, .chatNodata-BasisPanel .chatInputBox #chat::-moz-placeholder{
   color:#68737C;
   font-size: 14px;
   line-height: 21.91px;
@@ -5627,7 +5714,9 @@ input#conversationSearch::placeholder{
 }
 
 .chat-BasisPanel .chatInputBox #chat,
-.chat-BasisPanel .chatInputBox #chat::placeholder{
+.chat-BasisPanel .chatInputBox #chat::placeholder,
+.chatNodata-BasisPanel .chatInputBox #chat,
+.chatNodata-BasisPanel .chatInputBox #chat::placeholder{
   color:#68737C;
   font-size: 14px;
   line-height: 21.91px;
@@ -5638,7 +5727,8 @@ input#conversationSearch::placeholder{
   padding-bottom: 3em;
 }
 
-.chat-BasisPanel .chatInputBox #chat{
+.chat-BasisPanel .chatInputBox #chat,
+.chatNodata-BasisPanel .chatInputBox #chat{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -5678,6 +5768,14 @@ footer .Right .text p{
   color: white;
   font-family: "IRANSansWeb400";
   text-align: right;
+}
+
+.UserDropdown{
+  box-shadow: 0px 0px 8px 8px #00000008;
+}
+
+.passwordBox-email input[type="password"]{
+  direction: rtl !important;
 }
 
 @media (min-width: 480px) {
@@ -5825,6 +5923,11 @@ footer .Right .text p{
   height: 70%;
 }
 
+.before\:h-\[80\%\]::before {
+  content: var(--tw-content);
+  height: 80%;
+}
+
 .before\:h-full::before {
   content: var(--tw-content);
   height: 100%;
@@ -5876,6 +5979,12 @@ footer .Right .text p{
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.before\:bg-bgGray::before {
+  content: var(--tw-content);
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity, 1));
 }
 
 .before\:bg-mainGray::before {
@@ -6150,6 +6259,11 @@ footer .Right .text p{
   background-color: rgb(230 247 245 / var(--tw-bg-opacity, 1));
 }
 
+.group\/burger.menu-opened .group-\[\&\.menu-opened\]\/burger\:bg-White {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
 .group\/Alert.Error .group-\[\&\.Error\]\/Alert\:fill-red {
   fill: #F9461C;
 }
@@ -6159,8 +6273,16 @@ footer .Right .text p{
   padding-bottom: .5em;
 }
 
+.group\/question.active .group-\[\&\.active\]\/question\:pb-\[\.5em\] {
+  padding-bottom: .5em;
+}
+
 .group\/question.active .group-\[\&\.active\]\/question\:font-IRANSansWeb800 {
   font-family: IRANSansWeb800, IRANSansWeb800;
+}
+
+.group\/question.active .group-\[\&\.active\]\/question\:text-\[18px\] {
+  font-size: 18px;
 }
 
 .group\/question.active .group-\[\&\.active\]\/question\:text-\[21px\] {
@@ -6338,6 +6460,11 @@ footer .Right .text p{
 .\[\&\.menu-opened\]\:bg-White.menu-opened {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.\[\&\.menu-opened\]\:bg-black.menu-opened {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
 .\[\&\.openLang\]\:pointer-events-auto.openLang {
