@@ -6,8 +6,15 @@
         console.log(burger);
     
     burger.onclick = function() {
-        console.log('click burger');
-        
+    
+        if(!burger.classList.contains('menu-opened')){
+            lenis.stop()
+            console.log('menu-opened');
+        }
+        else{
+            lenis.start()
+            console.log(' not menu-opened');
+        }
         header.classList.toggle('menu-opened');
         innerheader.classList.toggle('menu-opened');
         burger.classList.toggle('menu-opened');

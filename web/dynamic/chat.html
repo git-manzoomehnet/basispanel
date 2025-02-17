@@ -6,8 +6,171 @@
     <title>چت</title>
     <meta name="description" content="چت">
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <style>
+     
+
+.css-typing {
+
+  white-space: nowrap;
+  overflow: hidden;
+  direction: rtl;
+}
+.typewriter{
+  width: 100%;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+/* 
+.css-typing p:nth-child(2) {
+  width: 11.5em;
+  opacity: 0;
+  -webkit-animation: type2 2s steps(40, end);
+  animation: type2 2s steps(40, end);
+  -webkit-animation-delay: 2s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.css-typing p:nth-child(3) {
+  width: 7.3em;
+  opacity: 0;
+  -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+  animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
+  -webkit-animation-delay: 4s;
+  animation-delay: 4s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+} */
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid #C8CCCF;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+}
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
+}
+    </style>
 </head>
 <body>
+
+    <basis core="api" name="db.chat" url="/service/ai/sending_question" method="post"  
+    triggers="db.send"
+body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
+ run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat"></basis>
+<basis core="cookie" name="guid" value="[##cms.cookie.guid##]" />
     <main class="chat-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
         <section class="section-1 mt-[9em] w-full flex mb-[4em] min-h-[80vh]">
@@ -40,7 +203,7 @@
                                 <img src="/web/assets/images/arrowicon-v3.svg" alt="">
                             </span>
                         </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                        <!-- <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
                          flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
                          group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
                             <ul class="menu w-full flex flex-col">
@@ -53,7 +216,7 @@
                                     نسبت به رقبا
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="Drop overflow-hidden hover:cursor-pointer duration-1000 
                      group/drop py-[.5em] w-full flex flex-col">
@@ -62,7 +225,7 @@
                          group-hover/drop:border-[#004B85]        
                        group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
                             <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
-                                درخواست دمو
+                                مزایای نرم‌افزار
                             </span>
                             <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
                                 <img src="/web/assets/images/arrowicon-v3.svg" alt="">
@@ -73,13 +236,17 @@
                          group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
                             <ul class="menu w-full flex flex-col">
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-sm text-text">
-                                    نسبت به رقبا
+                                 font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                    نسبت به سایر رقبا چه مزایایی دارد ؟
                                 </li>
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-sm text-text">
-                                    نسبت به رقبا
+                                 font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                 نسبت به نرم‌افزارهای مشابه خارجی چه مزایایی دارد؟
                                 </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                امکان توسعه‌پذیری دارد ؟ 
+                               </li>
                             </ul>
                         </div>
                     </div>
@@ -98,206 +265,15 @@
                 </button>
                 </div>
                 <div class="chatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
-                  <div class="chats w-[95%] mx-auto gap-10 flex flex-col mt-9">
-                    <div class="ME w-full flex gap-6 justify-start items-start">
-                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-                            <img src="[##cms.cms.cdn##]/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
-                        </span> 
-                        <span class="userDetail w-auto flex flex-col justify-start items-start">
-                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
-                            leading-[22px] text-text">
-                                شما
-                            </div>
-                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-                            leading-[15.65px] text-text">
-                                crm چه ویژگی هایی داره ؟
-
-                            </div>
-                        </span>
-                    </div>
-                    <div class="YOU w-full flex gap-6 justify-start items-start">
-                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
-                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
-                        </span> 
-                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
-                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-                            leading-[15.65px] text-text">
-                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
-                            1. مدیریت اطلاعات مشتریان
-                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
-                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
-                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
-                            2. مدیریت فروش
-                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
-                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
-                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
-                            3. مدیریت بازاریابی
-                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
-                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
-                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
-                            4. مدیریت خدمات مشتریان
-                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
-                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
-                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
-                            5. گزارشگیری و تحلیل دادهها
-                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
-                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
-                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
-                            6. یکپارچهسازی با سایر سیستمها
-                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
-                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
-                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
-                            7. اتوماسیون فرآیندها
-                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
-                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
-                            8. دسترسی چندپلتفرمی
-                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
-                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
-                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
-                            9. امنیت دادهها
-                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
-                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
-                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
-                            10. شخصیسازی
-                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
-                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
-                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
-                            11. مدیریت تیم
-                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
-                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
-                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
-                            12. پشتیبانی از چند زبانه
-                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
-                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
-                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
-                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
-                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
-                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
-                            14. مقیاسپذیری
-                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
-                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
-                            15. قابلیتهای اجتماعی
-                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
-                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
-                            نتیجهگیری
-                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
-                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
-                            </div>
-                            <div class="contact-c w-full flex justify-end items-center gap-2">
-                                <span class="CopyText hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="disLike hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="like hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
-                                </span>
-                            </div>
-                        </span>
-                    </div>
-                    <div class="ME w-full flex gap-6 justify-start items-start">
-                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-                            <img src="[##cms.cms.cdn##]/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
-                        </span> 
-                        <span class="userDetail w-auto flex flex-col justify-start items-start">
-                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
-                            leading-[22px] text-text">
-                                شما
-                            </div>
-                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-                            leading-[15.65px] text-text">
-                                crm چه ویژگی هایی داره ؟
-
-                            </div>
-                        </span>
-                    </div>
-                    <div class="YOU w-full flex gap-6 justify-start items-start">
-                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
-                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
-                        </span> 
-                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
-                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-                            leading-[15.65px] text-text">
-                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
-                            1. مدیریت اطلاعات مشتریان
-                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
-                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
-                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
-                            2. مدیریت فروش
-                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
-                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
-                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
-                            3. مدیریت بازاریابی
-                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
-                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
-                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
-                            4. مدیریت خدمات مشتریان
-                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
-                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
-                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
-                            5. گزارشگیری و تحلیل دادهها
-                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
-                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
-                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
-                            6. یکپارچهسازی با سایر سیستمها
-                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
-                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
-                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
-                            7. اتوماسیون فرآیندها
-                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
-                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
-                            8. دسترسی چندپلتفرمی
-                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
-                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
-                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
-                            9. امنیت دادهها
-                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
-                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
-                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
-                            10. شخصیسازی
-                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
-                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
-                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
-                            11. مدیریت تیم
-                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
-                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
-                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
-                            12. پشتیبانی از چند زبانه
-                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
-                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
-                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
-                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
-                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
-                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
-                            14. مقیاسپذیری
-                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
-                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
-                            15. قابلیتهای اجتماعی
-                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
-                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
-                            نتیجهگیری
-                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
-                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
-                            </div>
-                            <div class="contact-c w-full flex justify-end items-center gap-2">
-                                <span class="CopyText hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="disLike hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="like hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
-                                </span>
-                            </div>
-                        </span>
-                    </div>
+                  <div class="chats w-[95%] mx-auto gap-10 flex  mt-9" id="chatbox" style="margin-bottom: 20px;flex-direction: column;height:calc(100% - 170px);justify-content: end;">
+               
+                   
+                 
                   </div>
-                  <div class="chatInputBox sticky bottom-[1em] left-0 right-0 z-2 w-95p mx-auto h-[95px] rounded-5">
+                  <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
                     <input type="text" id="chat" placeholder="پیام را اینجا تایپ کنید"
-                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5">
-                    <span class="Icon SendMessage absolute hover:cursor-pointer z-3 left-4 top-2">
+                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;">
+                    <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()"  style="left: 30px;top: 20px;">
                         <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
                     </span>
                   </div>
@@ -424,7 +400,120 @@
             </div>
         </div>
     </main>
+    
     <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
     <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script>
+
+    <script>
+        async function loadingchat(){
+            // const response = args.response;
+            // const responseJson = await response.json();
+            const chatvalue = document.querySelector("#chat")
+            const newDiv = document.createElement("div")
+            newDiv.setAttribute("class" , "YOU w-full flex gap-6 justify-start items-start")
+            newDiv.innerHTML = `
+           
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
+                        </span> 
+                        <div class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start " id="typewriter">
+                            <div class="  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[30px] text-sm  current_section" id="current_section">
+                            <div class="loader"></div>
+                            </div>
+                            <div class="contact-c w-full flex justify-end items-center gap-2">
+                                <span class="CopyText hover:cursor-pointer" onclick="opcytext(this,event)">
+                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="disLike hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
+                                </span>
+                                <span class="like hover:cursor-pointer">
+                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
+                                </span>
+                            </div>
+                        </div>
+                    
+            `
+            document.querySelector("#chatbox").appendChild(newDiv)
+        }
+       async function setChatFirst(args){
+            const response = args.response;
+            const responseJson = await response.json();
+            const typingSpeed = 200;
+            const text = responseJson.message
+            for(var i = 0 ; i < text.length ; i++){
+                typeText(text , i )
+        
+            }
+
+        }
+        function typeText(text , i){
+            setTimeout(() => {
+                document.querySelector("#current_section").textContent += text.charAt(i);    
+            }, i* 50);
+            
+        }
+        function sendMessage(){
+         
+            const chatvalue = document.querySelector("#chat")
+            const newDiv = document.createElement("div")
+            newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
+            newDiv.innerHTML = `
+            <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+            <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+            </span> 
+            <span class="userDetail w-auto flex flex-col justify-start items-start">
+            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+            leading-[22px] text-text">
+            شما
+            </div>
+            <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+            leading-[15.65px] text-sm">
+            ${chatvalue.value}
+
+            </div>
+            </span>
+            `
+            document.querySelector("#chatbox").appendChild(newDiv)
+            $bc.setSource("db.send" ,{
+                "run" : true,
+                "val" : chatvalue.value
+            })
+            chatvalue.value=""
+            document.querySelector("#current_section")?.removeAttribute("id")
+        }
+        var wage = document.getElementById("chat");
+        wage.addEventListener("keydown", function (e) {
+            if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+                sendMessage()
+            }
+        });
+
+        function opcytext(el, event){
+            const parent = el.closest(".userDetail")
+            const copyElement = parent.querySelector(".current_section")
+            CopyToClipboard(copyElement)
+        }
+        function CopyToClipboard(containerid) {
+    if (document.selection) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(containerid);
+        range.select().createTextRange();
+        document.execCommand("copy");
+    } else if (window.getSelection) {
+        var range = document.createRange();
+        range.selectNode(containerid);
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+      //  alert("Text has been copied, now paste in the text-area")
+      AlertMessage('Success', 'متن در clipboard کپی شد.')
+    }
+    }
+    function selectItem(el , event){
+        document.querySelector("#chat").value = el.textContent
+        sendMessage()
+    }
+    </script>
 </body>
 </html>

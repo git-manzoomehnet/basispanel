@@ -34,7 +34,9 @@ let counterStart = false
 let counter =document.getElementById('counter')
 let Boxes = document.querySelectorAll('.help-Boxes .fadeIN')
 let Chart = document.querySelector(' #animations-example-1')
-lenis.on('scroll',()=>{
+
+document.addEventListener('DOMContentLoaded',()=>{
+  let checkScroll = ()=>{
     RunAnimation(counter)
     TitlesSec3.forEach(i=>{
         RunAnimation(i)
@@ -43,8 +45,12 @@ lenis.on('scroll',()=>{
         RunAnimation(b)
     })
     RunAnimation(Chart)
+  }
+  checkScroll()
+  lenis.on('scroll',()=>{
+    checkScroll()
+  })
 })
-
 let tabBtns = [...document.querySelectorAll('.tabs .Tab')]
 let Signs = [...document.querySelectorAll('.Signs .sign')]
 let Slides = [...document.querySelectorAll('.Tcontent')]

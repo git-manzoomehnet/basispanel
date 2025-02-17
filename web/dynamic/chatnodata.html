@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <meta name="description" content="chat">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<body>
+    <main class="chatNodata-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <section class="section-1 mt-[9em] w-full flex mb-[4em] min-h-[80vh]">
+            <div class="container-chat w-80p mx-auto my-auto min-h-[80vh]
+            grid grid-cols-[1fr,3fr] gap-9 ">
+                <div class="chatsSection
+                 w-full flex flex-col border-[1px]
+                  bg-White border-[#E8ECEF] rounded-5">
+              
+                  <div class="chats w-95p pt-4 mx-auto flex flex-col">
+                    <div class="chat overflow-hidden hover:cursor-pointer duration-1000 
+                     group/drop w-full flex flex-col">
+                     <span class="title-line w-full flex justify-start items-center relative">
+                        <span class="text w-full font-IRANSansWeb700 items-center gap-3 flex h-fit before:content-[''] before:relative
+                         before:w-[5%] before:left-0 before:top-[50%] before:bg-mainGray before:h-[1px]
+                         after:content-[''] after:relative
+                         after:w-full after:bg-mainGray after:h-[1px]
+                         font-bold text-[8px] leading-[12.52px] text-mainGray bg-White">
+                            امروز
+                        </span>
+                     </span>
+                        <div class="title duration-300 px-[.5em] rounded-5 py-[.5em]
+                        border-White border-r-[2px] border-l-[2px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-start gap-2 items-center">
+                       <span class="Icon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                        <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                    </span>
+                            <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                                درخواست دمو
+                            </span>
+                          
+                        </div>
+                  
+                    </div>
+                    <div class="chat overflow-hidden hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col">
+                    <span class="title-line w-full flex justify-start items-center relative">
+                       <span class="text w-full font-IRANSansWeb700 items-center gap-3 flex h-fit before:content-[''] before:relative
+                        before:w-[5%] before:left-0 before:top-[50%] before:bg-mainGray before:h-[1px]
+                        after:content-[''] after:relative
+                        after:w-full after:bg-mainGray after:h-[1px]
+                        font-bold text-[8px] leading-[12.52px] text-mainGray bg-White">
+                        دیروز
+                       </span>
+                    </span>
+                       <div class="title duration-300 px-[.5em] rounded-5 py-[.5em]
+                       border-White border-r-[2px] border-l-[2px]
+                        group-hover/drop:border-[#004B85]        
+                      group-[&.open]/drop:border-[#004B85]  w-full flex justify-start gap-2 items-center">
+                      <span class="Icon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                       <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                   </span>
+                           <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                               درخواست دمو
+                           </span>
+                         
+                       </div>
+                 
+                   </div>
+                  </div>
+           
+                <button class="newConversation-btn mt-auto mb-3 bg-lightBlue w-90p mx-auto rounded-5
+                 flex justify-center items-center gap-2 py-[.5em]">
+                 <span class="icon w-auto flex justify-center ">
+                    <img src="[##cms.cms.cdn##]/images/conver-v3.svg" alt="">
+                 </span>
+                    <span class="text w-auto flex justify-center font-IRANSansWeb700 font-bold text-sm leading-21.91
+                    text-primary">
+                        گفت و گوی جدید
+                    </span>
+                   
+                </button>
+                </div>
+                <div class="chatSection gap-5 relative h-[80vh] justify-center items-center w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
+                 <div class="titlechat">
+                    <div class="ME w-full flex gap-2 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                        </span>
+                        <span class="userDetail w-auto flex flex-col justify-start items-start">
+                            <div class="userName w-auto flex justify-start font-IRANSansWeb700 font-bold text-base
+                            leading-25.04 text-textGray">
+                            من مدیر فروش هستم
+                            </div>
+                        
+                        </span>
+                    </div>
+                    <div class="text flex-col w-full flex justify-start items-start">
+                        <p class="font-IRANSansWeb400 font-normal text-sm leading-21.91 text-text">
+                            چطوری می‌تونم بهتون کمک کنم ؟ 
+                        </p>
+                    </div>
+                 </div>
+                  <div class="chatInputBox relative  w-[584px] mx-auto h-[95px] rounded-5">
+                    <input type="text" id="chat" placeholder="پیام را اینجا تایپ کنید"
+                    class="w-full h-[95px] border-[1px] pr-3 outline-none border-mainGray rounded-5">
+                    <span class="Icon w-[34px] h-[34px] SendMessage absolute hover:cursor-pointer z-3 left-1 top-2">
+                        <img src="[##cms.cms.cdn##]/images/StartIcon.png" alt="">
+                    </span>
+                  </div>
+                </div>
+              
+            </div>
+        </section>
+        <div id="footer-manzoomeh-negaran">
+            <style>
+                #footer-manzoomeh-negaran{
+                    width: 100%;
+                    height: 70px;           
+                    font-size: 12px;
+                    font-family:Arial, Helvetica, sans-serif;
+                }
+                #footer-manzoomeh-negaran span{
+                    margin: 0 5px;
+                    margin-top: -10px;
+                }
+                #footer-manzoomeh-negaran a{
+                    display: flex;
+                    text-decoration: none;
+                    align-items: center;
+                    direction: ltr;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light{
+                    color: #FFFFFF;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light a{
+                    color: #FFFFFF;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark #manzoomeh_footer_logo{
+                    width: 60px;
+                    height: 35px;
+                    background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_dark.png);
+                    
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-light #manzoomeh_footer_logo{
+                    width: 60px;
+                    height: 35px;
+                    background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_light.png);
+                    
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark{
+                    color: #000;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-dark a{
+                    color: #000;
+                }
+              
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-black{
+                    background-color: #000;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-blue{
+                    background-color: #004B85;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-red{
+                    background-color: #B40020;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-green{
+                    background-color: #00A693;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-gray{
+                    background-color: #D0D0D0;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-white{
+                    background-color: #FFFFFF;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-palegreen{
+                    background-color: #CDFFCD;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #footer-manzoomeh-negaran .footer-manzoomeh-negaran-paleblue{
+                    background-color: #BAE1FF;
+                    width: 100%;
+                    height: 70px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+               
+            </style>
+            <div class="footer-manzoomeh-negaran-black footer-manzoomeh-light" >
+                <a href="https://manzoomeh.ir/" target="_blank">
+                Powered By
+               <span id="manzoomeh_footer_logo"></span>
+                    
+                MANZOOMEH NEGARAN
+            </a>
+            </div>
+        </div>
+    </main>
+    <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
+    <!-- <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script> -->
+</body>
+</html>

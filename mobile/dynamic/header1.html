@@ -16,12 +16,12 @@
                 class="burger-container group/burger relative flex w-[50px] cursor-pointer rotate-0 duration-[.3s]">
                 <div id="burger" class="w-[18px] gap-1 relative flex flex-col top-[50%] mx-[4px]">
                     <div class="bar topBar group-[&.menu-opened]/burger:translate-y-[5px] group-[&.menu-opened]/burger:rotate-[-45deg]
-                   w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                   w-full h-[2px] rounded-5 group-[&.menu-opened]/burger:bg-White bg-textGray block  duration-[.3s] delay-0"></div>
                     <div
                         class="bar mdlBar w-full h-[2px] rounded-5 group-[&.menu-opened]/burger:translate-x-[-100px] group-[&.menu-opened]/burger:opacity-0 bg-textGray block  duration-[.3s] delay-0">
                     </div>
                     <div class="bar btmBar group-[&.menu-opened]/burger:translate-y-[-7px] group-[&.menu-opened]/burger:rotate-45
-                   w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                   w-full h-[2px] rounded-5 bg-textGray group-[&.menu-opened]/burger:bg-White block  duration-[.3s] delay-0"></div>
                 </div>
             </div>
         </div>
@@ -41,53 +41,59 @@
     </div>
     <div class="Menu-container absolute left-0 top-0 flex h-[50px] bg-[transparent] w-full
     overflow-hidden delay-[.2s] z-1 group/menu pointer-events-none [&.menu-opened]:pointer-events-[all] [&.menu-opened]:h-svh
-     [&.menu-opened]:bg-White">
-     <ul class="menu w-90p mx-auto flex flex-col mb-auto mt-[8svh]">
+     [&.menu-opened]:bg-black">
+        <ul class="menu w-90p mx-auto flex flex-col my-auto">
             <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
              scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
             w-full flex justify-start items-center group/itemMenu">
-                <a href="/" alt="خانه" title="خانه"  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                 font-normal text-sm text-textGray">
+                <a href="/" alt="خانه" title="خانه"  class="menu-link font-IRANSansWeb400
+                 group-hover/itemMenu:text-primary duration-200
+                 font-normal text-sm leading-21.91 text-white">
                     خانه
                 </a>
             </li>
-            <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
+            <li class="menu-item py-[.8em group-[&.menu-opened]/menu:scale-[1]
             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
            w-full flex justify-start items-center group/itemMenu">
-                <a href="#" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-           font-normal text-sm text-textGray">
+                <a href="#" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400
+                group-hover/itemMenu:text-primary duration-200
+                font-normal text-sm leading-21.91 text-white">
            راهکارها
                 </a>
             </li>
-            <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
-             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
-            w-full flex justify-start items-center group/itemMenu">
-                <a href="#" alt="بلاگ" title="بلاگ" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-           font-normal text-sm text-textGray">
+            <li class="menu-item py-[.8em] group-[&.menu-opened]/menu:scale-[1]
+            scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+           w-full flex justify-start items-center group/itemMenu">
+                <a href="#" alt="بلاگ" title="بلاگ" class="menu-link font-IRANSansWeb400
+                group-hover/itemMenu:text-primary duration-200
+                font-normal text-sm leading-21.91 text-white">
            بلاگ
                 </a>
             </li>
-            <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
+            <li class="menu-item py-[.8em] group-[&.menu-opened]/menu:scale-[1]
             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
            w-full flex justify-start items-center group/itemMenu">
-                <a href="#" alt=" درباره ما" title=" درباره ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-           font-normal text-sm text-textGray">
+                <a href="#" alt=" درباره ما" title=" درباره ما" class="menu-link font-IRANSansWeb400
+                group-hover/itemMenu:text-primary duration-200
+                font-normal text-sm leading-21.91 text-white">
            درباره ما
                 </a>
             </li>
             <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
            w-full flex justify-start items-center group/itemMenu">
-                <a href="#" alt="تماس با ما" title="تماس با ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-           font-normal text-sm text-textGray">
+                <a href="#" alt="تماس با ما" title="تماس با ما" class="menu-link font-IRANSansWeb400
+                group-hover/itemMenu:text-primary duration-200
+                font-normal text-sm leading-21.91 text-white">
            تماس با ما
                 </a>
             </li>
             <li class="menu-item py-[.8em]  group-[&.menu-opened]/menu:scale-[1]
             scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
            w-full flex justify-start items-center group/itemMenu">
-                <a href="/versions" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-           font-normal text-sm text-textGray">
+                <a href="/versions" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400
+                group-hover/itemMenu:text-primary duration-200
+                font-normal text-sm leading-21.91 text-white">
            آخرین تغییرات
                 </a>
             </li>
