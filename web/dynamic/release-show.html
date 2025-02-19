@@ -65,7 +65,7 @@
                 <layout> @child </layout>
                 <else-layout> اطلاعات وارد نشده است </else-layout>
                 <face filter="prpID = 7243">
-                    <h1 class="font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-textGray text-center
+                    <h1 class="font-IRANSansWeb800 font-extrabold text-[50px] leading-[75px] text-textGray text-center
                     flex gap-1">
                           
                             @Answer
@@ -94,8 +94,8 @@
             <div class="Bg-gray-sec w-screen z-2 absolute h-screen before:content-[''] before:absolute before:left-0 before:top-[-100px]
             before:w-full before:h-[70%] pointer-events-none before:bg-White before:z-0 bg-bgGray ">
             </div>
-            <div class="Box mt-[8em] bg-White w-90p flex relative z-[2] mx-[auto] flex-col justify-center items-center gap-6">
-                <div class="Inner w-90p mx-auto py-[5%] flex flex-col gap-[1.3em]">
+            <div class="Box mt-[8em] mb-[7em] bg-White w-80p flex relative z-[2] mx-[auto] flex-col justify-center items-center gap-6 rounded-lg">
+                <div class="Inner w-full mx-auto py-[5%] px-[5%] flex flex-col gap-[1.3em] ">
                     <basis core="print" datamembername="db.show">
                         <layout>
                              @child
@@ -117,22 +117,7 @@
             </div>
          
        </section>
-       <section class="section-2  w-full flex flex-col pb-[3em] mt-[6.5em] bg-lightBG ">
-        <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
-            <h5 class="font-IRANSansWeb700 font-bold text-[40px] leading-[67.3px] text-textGray text-center">
-                برای شروع آماده‌اید ؟
-            </h5>
-            <p class="font-IRANSansWeb700 font-bold text-lg leading-[30.52px] text-textGray text-center">
-                زمان خود را از دست ندهید و درخواست دهید !
-            </p>
-            <a href="/demo" class="button w-max mt-4 px-[4em] py-[1em] hover:bg-hoverBtnDprimary duration-200 bg-primary flex justify-center items-center rounded-5">
-                <button type="button " class="w-auto flex justify-center
-                 text-White items-center font-IRANSansWeb700 font-normal text-2xl leading-[40.17px] rounded-5">
-                    درخواست دمو
-                </button>
-            </a>
-        </div>
-    </section>
+       <basis core="call" file="cta.inc" pageindex="[##cms.cms.pageindex##]" />
     <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
     </main> 
     <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />

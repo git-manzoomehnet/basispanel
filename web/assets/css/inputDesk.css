@@ -244,7 +244,6 @@ a {
 
 }
 .ReleaseNote-Show .Bg-gray-sec::before{
-  /* clip-path: ellipse(54% 55% at 50% 40%); */
   border-bottom-right-radius: 50%;
   border-bottom-left-radius: 50%;
 
@@ -316,6 +315,14 @@ background-color: #F9461C;
  .fadeIN h4.appear{
   transform: translateX(0);
   opacity: 1;
+ }
+ .Home-BasisPanel .help-Boxes .helpBox .rightSec p,
+ .Home-BasisPanel .help-Boxes .helpBox .leftSec p{
+font-size: 15px;
+font-weight: 400;
+line-height: 22.5px;
+text-align: justify;
+color: #68737C;
  }
  .Home-BasisPanel .help-Boxes .helpBox .rightSec .spd,
  .Home-BasisPanel .help-Boxes .helpBox .rightSec h4,
@@ -1033,7 +1040,9 @@ text-align: right;
 .chat-BasisPanel .chatInputBox #chat,
 .chat-BasisPanel .chatInputBox #chat::placeholder,
 .chatNodata-BasisPanel .chatInputBox #chat,
-.chatNodata-BasisPanel .chatInputBox #chat::placeholder{
+.chatNodata-BasisPanel .chatInputBox #chat::placeholder,
+.chat-BasisPanel .chatInputBox #chat2,
+.chat-BasisPanel .chatInputBox #chat2::placeholder{
   color:#68737C;
 font-size: 14px;
 line-height: 21.91px;
@@ -1044,7 +1053,8 @@ direction: rtl;
 padding-bottom: 3em;
 }
 .chat-BasisPanel .chatInputBox #chat,
-.chatNodata-BasisPanel .chatInputBox #chat{
+.chatNodata-BasisPanel .chatInputBox #chat,
+.chat-BasisPanel .chatInputBox #chat2{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1083,4 +1093,154 @@ footer .Right .text p{
 }
 .passwordBox-email input[type="password"]{
   direction: rtl !important;
+}
+.chat-BasisPanel .css-typing {
+  white-space: nowrap;
+  overflow: hidden;
+  direction: rtl;
+}
+.chat-BasisPanel .typewriter{
+  width: 100%;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+.chat-BasisPanel .loader {
+  width: 20px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 3px solid #C8CCCF;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+@keyframes l20-1{
+   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
+   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
+   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
+   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
+   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
+   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+}
+@keyframes l20-2{ 
+  0%    {transform:scaleY(1)  rotate(0deg)}
+  49.99%{transform:scaleY(1)  rotate(135deg)}
+  50%   {transform:scaleY(-1) rotate(0deg)}
+  100%  {transform:scaleY(-1) rotate(-135deg)}
+}
+.DropDowns {
+  max-height: 80vh; /* جلوگیری از ارتفاع بیش از حد */
+  overflow-y: auto;  /* اسکرول در صورت نیاز */
+  scrollbar-width: thin; /* اسکرول بار باریک برای فایرفاکس */
+  scrollbar-color: #004B85 #E8ECEF; /* رنگ اسکرول */
+}
+
+/* برای نمایش اسکرول بار در کروم */
+.DropDowns::-webkit-scrollbar {
+  width: 5px;
+}
+
+.DropDowns::-webkit-scrollbar-thumb {
+  background: #004B85;
+  border-radius: 5px;
+}
+
+.DropDowns::-webkit-scrollbar-track {
+  background: #E8ECEF;
+}
+.SendMessage{
+  transition:all .4s ease ;
 }

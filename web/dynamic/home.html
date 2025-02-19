@@ -18,18 +18,13 @@
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
         <div class="callInput flex mt-[10em] relative z-2 w-[975px] h-[80px] mx-auto 
         flex-col justify-center items-center gap-3">
-          <input type="text" class="callback px-[1em] w-full h-full rounded-5 border-[1px] border-mainGray" 
+          <input type="text" class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray" 
           id="myInput" placeholder="مدیرفروش هستم">
           <div class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto left-[1em] z-1">
            <img src="[##cms.cms.cdn##]/images/input-v3.png" alt="">
           </div>
        </div>
        <section class="section-1 mt-8 pb-[2em] z-1 relative w-full flex flex-col  bg-White">
-        <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute 
-        before:left-0 before:bottom-0
-        before:w-full  pointer-events-none before:z-0 ">
-       
-        </div>
         <div class="Banner w-full flex justify-center relative z-3 items-center">
             <img src="[##cms.cms.cdn##]/images/bg-home-v3.png" alt="">
         </div>
@@ -222,7 +217,7 @@ flex flex-col gap-1">
                 </h3>
             </div>
             <div class="help-Boxes w-80p mx-auto flex flex-col">
-                <div class="helpBox w-full gap-5 grid grid-cols-2 mt-7 py-[4em] fadeIN">
+                <div class="helpBox w-full gap-[8em] grid grid-cols-2 mt-7 py-[4em] fadeIN">
                     <div class="leftSec w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -315,7 +310,7 @@ flex flex-col gap-1">
                         </div>
                     </div>
                 </div>
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
                     <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -342,18 +337,18 @@ flex flex-col gap-1">
                     <div
                         class="leftSec  group-odd/help:justify-end group-odd/help:order-1 w-full relative flex justify-start items-center">
                         <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
-                            <img src="images/psd_blank_smartphone_template 1-v3.png" alt=""
+                            <img src="[##cms.cms.cdn##]/images/psd_blank_smartphone_template 1-v3.png" alt=""
                                 class=" w-full object-cover">
                         </div>
 
                         <div class="IMG-ov  absolute right-0 top-0 z-1 max-w-[445px]
                 max-h-[299px] translate-y-[50%] translate-x-[-30%]">
-                            <img src="images/ov-v3.png" class=" w-full object-cover">
+                            <img src="[##cms.cms.cdn##]/images/ov-v3.png" class=" w-full object-cover">
                         </div>
                     </div>
                 </div>
 
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
                     <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -380,7 +375,7 @@ flex flex-col gap-1">
                     <div
                         class="rightSec  group-even/help:order-1  group-odd/help:justify-end w-full relative flex justify-start items-center">
                         <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
-                            <img src="images/Untitled-v3.png" alt="" class=" w-full object-cover">
+                            <img src="[##cms.cms.cdn##]/images/Untitled-v3.png" alt="" class=" w-full object-cover">
                         </div>
 
                     </div>
@@ -448,7 +443,7 @@ flex flex-col gap-1">
 
                                     <div class="RightSec h-full w-full flex justify-start items-center">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
+                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
                                                 class="w-full h-full object-cover">
                                         </div>
                                     </div>
@@ -467,10 +462,12 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                             duration-[1s] px-[2em] 
+                                             py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
                                                 class="w-auto flex justify-center
-                                   text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
+                                   text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
                                                 مطالعه بیشتر
                                             </button>
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
@@ -492,7 +489,7 @@ flex flex-col gap-1">
 
                                     <div class="RightSec h-full w-full flex justify-start items-center">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
+                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
                                                 class="w-full h-full object-cover">
                                         </div>
                                     </div>
@@ -511,20 +508,22 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
+                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                         duration-[1s] px-[2em] 
+                                         py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                        <button type="button "
+                                            class="w-auto flex justify-center
+                               text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
+                                            مطالعه بیشتر
+                                        </button>
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                fill="white" />
+                                        </svg>
 
-                                        </a>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -536,7 +535,7 @@ flex flex-col gap-1">
 
                                     <div class="RightSec h-full w-full flex justify-start items-center">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="images/smiling-bartender-with-hot-beverage 1.png" alt=""
+                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
                                                 class="w-full h-full object-cover">
                                         </div>
                                     </div>
@@ -555,20 +554,22 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
+                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                         duration-[1s] px-[2em] 
+                                         py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                        <button type="button "
+                                            class="w-auto flex justify-center
+                               text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
+                                            مطالعه بیشتر
+                                        </button>
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                fill="white" />
+                                        </svg>
 
-                                        </a>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -579,7 +580,7 @@ flex flex-col gap-1">
             </div>
         </section>
         
-   <basis core="call" file="logo.inc" />
+   <basis core="call" file="logo.inc" pageindex="[##cms.cms.pageindex##]"  />
         <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
         <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>
