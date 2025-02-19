@@ -1,4 +1,4 @@
-
+   
 let userMessage = document.querySelectorAll('.YOU')
 userMessage.forEach(y=>{
     let message = y.querySelector('.message').innerHTML
@@ -55,18 +55,43 @@ let langIcon = document.querySelector(".langC"),
             langSVG.classList.remove("rotate")
         })
     }
+ 
 
+    let drops = document.querySelectorAll('.DropDowns .Drop');
 
-    let drops = document.querySelectorAll('.DropDowns .Drop')
-    drops.forEach(drop=>{
-        drop.querySelector('.title-dropdown').addEventListener('click',(e)=>{
-            console.log( e.currentTarget);
-            if(drop.querySelector('.dropdown-menu ul li')){
-                drop.classList.toggle('open')
-            }
-           
-        })
-    })
+    drops.forEach(drop => {
+        let dropdownMenu = drop.querySelector('.dropdown-menu');
+        let titleDropdown = drop.querySelector('.title-dropdown');
+        let icon = drop.querySelector('.icon');
+        let hasItems = dropdownMenu && dropdownMenu.querySelector('ul li');
+    
+        if (hasItems) {
+            titleDropdown.addEventListener('click', (e) => {
+                // بستن سایر دراپ‌داون‌ها قبل از باز کردن جدید
+                // drops.forEach(item => {
+                //     if (item !== drop) {
+                //         item.classList.remove('open');
+                //         item.querySelector('.dropdown-menu').style.height = '0px';
+                //         item.querySelector('.dropdown-menu').style.opacity = '0';
+                //     }
+                // });
+    
+                // تغییر وضعیت دراپ‌داون انتخاب‌شده
+                drop.classList.toggle('open');
+    
+                if (drop.classList.contains('open')) {
+                    dropdownMenu.style.height = dropdownMenu.scrollHeight + 'px';
+                    dropdownMenu.style.opacity = '1';
+                } else {
+                    dropdownMenu.style.height = '0px';
+                    dropdownMenu.style.opacity = '0';
+                }
+            });
+        } else {
+            if (icon) icon.style.display = "none"; // مخفی کردن آیکون اگر لیستی وجود نداشته باشد
+        }
+    });
+    
 document.addEventListener("click", (e) => {
     console.log('click') 
     langContent.classList.remove("openLang")
@@ -188,3 +213,224 @@ else{
 }
 })
 
+async function loadingchat(){
+    const chatvalue = document.querySelector("#chat")
+    const newDiv = document.createElement("div")
+    newDiv.setAttribute("class" , "YOU w-full flex gap-6 justify-start items-start")
+    newDiv.innerHTML = `
+   
+                <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                    <img src="/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
+                </span> 
+                <div class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start " id="typewriter">
+                    <div class="  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                    leading-[30px] text-sm  current_section" id="current_section">
+                    <div class="loader"></div>
+                    </div>
+                    <div class="contact-c w-full flex justify-end items-center gap-2">
+                        <span class="CopyText hover:cursor-pointer" onclick="opcytext(this,event)">
+                            <img src="/images/copy-v3.svg" alt="basis" title="basis">
+                        </span>
+                        <span class="disLike hover:cursor-pointer">
+                            <img src="/images/dislike-v3.svg" alt="basis" title="basis">
+                        </span>
+                        <span class="like hover:cursor-pointer">
+                            <img src="/images/like-v3.svg" alt="basis" title="basis">
+                        </span>
+                    </div>
+                </div>
+            
+    `
+    document.querySelector("#chatbox").appendChild(newDiv)
+}
+async function setChatFirst(args){
+    const response = args.response;
+    const responseJson = await response.json();
+    const typingSpeed = 200;
+    const text = responseJson.message
+    for(var i = 0 ; i < text.length ; i++){
+        typeText(text , i )
+
+    }
+
+}
+function typeText(text , i){
+    setTimeout(() => {
+        document.querySelector("#current_section").textContent += text.charAt(i);    
+    }, i* 50);
+    
+}
+const detectLanguage = (text) =>{
+    const persianRegex = /[\u0600-\u06FF]/; // محدوده یونیکد حروف فارسی
+    const englishRegex = /[a-zA-Z]/; // حروف انگلیسی
+    let chatbox = document.querySelector('#chatbox')
+    if (persianRegex.test(text)) {
+        console.log('فارسی');
+        chatbox.style.direction ='rtl'
+
+    } else if (englishRegex.test(text)) {
+         chatbox.style.direction ='ltr'
+        console.log('انگلیسی');
+
+    } else {
+        console.log('نامشخص');
+        return "نامشخص";
+    }
+}
+let firstinput =document?.querySelector('input.chatNodata')
+let chaticons = document.querySelectorAll('.SendMessage')
+const opacityIcon =(input)=>{
+   let typer = input;
+    function handleKeyPress(e) {
+        chaticons.forEach(c=>{
+            c.style.opacity = '.5'
+        })
+    }
+    function handleKeyUp(e) {
+        chaticons.forEach(c=>{
+            c.style.opacity = '1'
+        })
+    }
+    typer.addEventListener("keypress", handleKeyPress)
+    typer.addEventListener("keyup", handleKeyUp)
+}
+opacityIcon(firstinput)
+const sendMessageOne = ()=>{
+    let input = document.querySelector('input.chatNodata')
+    let chatsecNodata = document.querySelector('div.sec1')
+    let chatsec = document.querySelector('div.sec2')
+    detectLanguage(input.value)
+    if(input.value != ''){
+      console.log('send');
+      chatsecNodata.classList.add('hideChat')
+      chatsec.classList.add('showChat')
+      sendMessage(input.value)
+    }
+    else{
+        AlertMessage('Error', 'لطفا فیلد را پر کنید')
+    }
+
+
+}
+const chatvalue = document?.querySelector("#chat2")
+opacityIcon(chatvalue)
+function sendMessage(value){
+  
+    if(!value){
+        let chatvalue2 = document.querySelector("#chat2")
+        detectLanguage(chatvalue2.value)
+        const newDiv = document.createElement("div")
+        newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
+        newDiv.innerHTML = `
+        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        </span> 
+        <span class="userDetail w-auto flex flex-col justify-start items-start">
+        <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+        leading-[22px] text-text">
+        شما
+        </div>
+        <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+        leading-[15.65px] text-sm">
+        ${chatvalue2.value}
+    
+        </div>
+        </span>
+        `
+        document.querySelector("#chatbox").appendChild(newDiv)
+        $bc.setSource("db.send" ,{
+            "run" : true,
+            "val" : chatvalue2.value
+        })
+        chatvalue2.value=""
+        document.querySelector("#current_section")?.removeAttribute("id")
+    }
+    else{
+        detectLanguage(value)
+        const newDiv = document.createElement("div")
+        newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
+        newDiv.innerHTML = `
+        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        </span> 
+        <span class="userDetail w-auto flex flex-col justify-start items-start">
+        <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+        leading-[22px] text-text">
+        شما
+        </div>
+        <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+        leading-[15.65px] text-sm">
+        ${value}
+    
+        </div>
+        </span>
+        `
+        document.querySelector("#chatbox").appendChild(newDiv)
+        $bc.setSource("db.send" ,{
+            "run" : true,
+            "val" :value
+        })
+        value=""
+        document.querySelector("#current_section")?.removeAttribute("id")
+    }
+   
+   
+}
+
+var wage = document.getElementById("chat2");
+wage.addEventListener("keydown", function (e) {
+    if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+        sendMessage()
+    }
+});
+
+let chatinput =document?.querySelector('#chat')
+chatinput?.addEventListener("keydown", function (e) {
+        let input = document.querySelector('input.chatNodata')
+        let chatsecNodata = document.querySelector('div.sec1')
+        let chatsec = document.querySelector('div.sec2')
+        if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+                if(input.value != ''){
+                    console.log('send');
+                    chatsecNodata.classList.add('hideChat')
+                    chatsec.classList.add('showChat')
+                    sendMessage(input.value)
+                  }
+  }
+    });
+function opcytext(el, event){
+    const parent = el.closest(".userDetail")
+    const copyElement = parent.querySelector(".current_section")
+    CopyToClipboard(copyElement)
+}
+function CopyToClipboard(containerid) {
+if (document.selection) {
+var range = document.body.createTextRange();
+range.moveToElementText(containerid);
+range.select().createTextRange();
+document.execCommand("copy");
+} else if (window.getSelection) {
+var range = document.createRange();
+range.selectNode(containerid);
+window.getSelection().addRange(range);
+document.execCommand("copy");
+//  alert("Text has been copied, now paste in the text-area")
+AlertMessage('Success', 'متن در clipboard کپی شد.')
+}
+}
+function selectItem(el , event){
+    if(!firstinput?.classList.contains('hideChat')){
+        let chatsecNodata = document?.querySelector('div.sec1')
+        let chatsec = document.querySelector('div.sec2')
+          console.log('send');
+          chatsecNodata?.classList.add('hideChat')
+          chatsec.classList.add('showChat')
+          document.querySelector("#chat2").value = el.getAttribute("data-val")
+          sendMessage(el.getAttribute("data-val"))
+    }
+    else{
+        document.querySelector("#chat2").value = el.getAttribute("data-val")
+        // sendMessage(el.getAttribut("data-val"))
+    }
+
+}

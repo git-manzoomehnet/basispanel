@@ -920,7 +920,7 @@ transform: translate(-50%,-50%);
   box-shadow: 0px 0px 8px 8px #00000008;
 
 }
-.Home-BasisPanel-mobile .PurposeBox {
+.Home-BasisPanel-mobile .PurposeBox .IMG{
   box-shadow: 0px 0px 8px 8px #00000008;
 
 }
@@ -1155,3 +1155,9 @@ footer .Right .text p{
 .passwordBox-email input[type="password"]{
   direction: rtl !important;
 }
+.Purpose-sec .swiper-wrapper{
+  align-items: flex-end;
+}
+ .Home-BasisPanel-mobile .help-Boxes .box p{
+  text-align: justify;
+ }

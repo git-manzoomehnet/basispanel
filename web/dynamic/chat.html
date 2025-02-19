@@ -6,179 +6,23 @@
     <title>چت</title>
     <meta name="description" content="چت">
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-    <style>
-     
-
-.css-typing {
-
-  white-space: nowrap;
-  overflow: hidden;
-  direction: rtl;
-}
-.typewriter{
-  width: 100%;
-  -webkit-animation: type 2s steps(40, end);
-  animation: type 2s steps(40, end);
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-/* 
-.css-typing p:nth-child(2) {
-  width: 11.5em;
-  opacity: 0;
-  -webkit-animation: type2 2s steps(40, end);
-  animation: type2 2s steps(40, end);
-  -webkit-animation-delay: 2s;
-  animation-delay: 2s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
-.css-typing p:nth-child(3) {
-  width: 7.3em;
-  opacity: 0;
-  -webkit-animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
-  animation: type3 5s steps(20, end), blink .5s step-end infinite alternate;
-  -webkit-animation-delay: 4s;
-  animation-delay: 4s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-} */
-
-@keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@-webkit-keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-@-webkit-keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-@keyframes type3 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes type3 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-@-webkit-keyframes blink {
-  50% {
-    border-color: tranparent;
-  }
-}
-
-
-/* HTML: <div class="loader"></div> */
-.loader {
-  width: 20px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 3px solid #C8CCCF;
-  animation:
-    l20-1 0.8s infinite linear alternate,
-    l20-2 1.6s infinite linear;
-}
-@keyframes l20-1{
-   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
-   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
-   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
-   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
-   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
-}
-@keyframes l20-2{ 
-  0%    {transform:scaleY(1)  rotate(0deg)}
-  49.99%{transform:scaleY(1)  rotate(135deg)}
-  50%   {transform:scaleY(-1) rotate(0deg)}
-  100%  {transform:scaleY(-1) rotate(-135deg)}
-}
-    </style>
 </head>
 <body>
+    <basis core="api" name="db.chat" url="/service/ai/sending_question" method="post"   triggers="db.send"
+    body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
+      run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat">
+    </basis>
+    <basis core="cookie" name="guid" value="[##cms.cookie.guid##]" />
 
-    <basis core="api" name="db.chat" url="/service/ai/sending_question" method="post"  
-    triggers="db.send"
-body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
- run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat"></basis>
-<basis core="cookie" name="guid" value="[##cms.cookie.guid##]" />
     <main class="chat-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+       
         <section class="section-1 mt-[9em] w-full flex mb-[4em] min-h-[80vh]">
             <div class="container-chat w-80p mx-auto my-auto min-h-[80vh]
             grid grid-cols-[1fr,3fr] gap-9 ">
                 <div class="chatBoxesSection
                  w-full flex flex-col border-[1px]
-                  bg-White border-[#E8ECEF] rounded-5">
+                  bg-White border-[#E8ECEF] rounded-5 h-[80vh]">
                   <div class="topSec w-90p mx-auto py-[1em] border-b-[1px] border-[#E8ECEF]">
                     <div class="Searchbox  relative w-full h-[44px]">
                         <input type="text" id="conversationSearch"
@@ -189,46 +33,33 @@ body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
                         </span>
                       </div>
                   </div>
-                  <div class="DropDowns overflow-y-auto w-90p mx-auto flex flex-col">
-                    <div class="Drop overflow-hidden hover:cursor-pointer duration-1000 
-                     group/drop py-[.5em] w-full flex flex-col">
-                        <div class="title-dropdown duration-300 px-[.5em] rounded-5 py-[.5em]
-                        border-White border-r-[4px] border-l-[4px]
+                  <div class="DropDowns h-full overflow-y-auto w-90p mx-auto flex flex-col">
+                    <div class="Drop min-h-[55px] [&.open]:min-h-[unset] duration-300  overflow-hidden hover:cursor-pointer duration-1000 
+                     group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
                          group-hover/drop:border-[#004B85]        
                        group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
-                            <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
                                 درخواست دمو
                             </span>
                             <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="/web/assets/images/arrowicon-v3.svg" alt="">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
                             </span>
                         </div>
-                        <!-- <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                            <ul class="menu w-full flex flex-col">
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-sm text-text">
-                                    نسبت به رقبا
-                                </li>
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-sm text-text">
-                                    نسبت به رقبا
-                                </li>
-                            </ul>
-                        </div> -->
+                    
                     </div>
-                    <div class="Drop overflow-hidden hover:cursor-pointer duration-1000 
-                     group/drop py-[.5em] w-full flex flex-col">
-                        <div class="title-dropdown duration-300 px-[.5em] rounded-5 py-[.5em]
-                        border-White border-r-[4px] border-l-[4px]
+                    <div class="Drop min-h-[55px] [&.open]:min-h-[unset] duration-300   overflow-hidden hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
                          group-hover/drop:border-[#004B85]        
                        group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
-                            <span class="title font-IRANSansWeb500 font-medium text-sm text-text">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
                                 مزایای نرم‌افزار
                             </span>
                             <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="/web/assets/images/arrowicon-v3.svg" alt="">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
                             </span>
                         </div>
                         <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
@@ -236,20 +67,22 @@ body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
                          group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
                             <ul class="menu w-full flex flex-col">
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="نسبت به سایر رقبا چه مزایایی دارد ؟" onclick="selectItem(this,event)">
                                     نسبت به سایر رقبا چه مزایایی دارد ؟
                                 </li>
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="نسبت به نرم‌افزارهای مشابه خارجی چه مزایایی دارد؟" onclick="selectItem(this,event)">
                                  نسبت به نرم‌افزارهای مشابه خارجی چه مزایایی دارد؟
                                 </li>
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                font-IRANSansWeb500 font-medium text-xs text-text" onclick="selectItem(this,event)">
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="امکان توسعه‌پذیری دارد ؟" onclick="selectItem(this,event)">
                                 امکان توسعه‌پذیری دارد ؟ 
                                </li>
                             </ul>
                         </div>
                     </div>
+                  
+                 
                   </div>
            
                 <button class="newConversation-btn mt-auto mb-3 bg-lightBlue w-90p mx-auto rounded-5
@@ -264,20 +97,77 @@ body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
                    
                 </button>
                 </div>
-                <div class="chatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
-                  <div class="chats w-[95%] mx-auto gap-10 flex  mt-9" id="chatbox" style="margin-bottom: 20px;flex-direction: column;height:calc(100% - 170px);justify-content: end;">
-               
+                 <div class="loadChatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
+                  <basis core="group" if="'[##cms.query.q##]'=''">
+                    <div class="chatSection sec1 my-auto [&.hideChat]:hidden noData gap-5 relative justify-center items-center w-full 
+                    flex flex-col rounded-5">
+                      <div class="titlechat">
+                         <div class="ME w-full flex gap-2 justify-start items-start">
+                             <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                                 <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                             </span>
+                             <span class="userDetail w-auto flex flex-col justify-start items-start">
+                                 <div class="userName w-auto flex justify-start font-IRANSansWeb700 font-bold text-base
+                                 leading-25.04 text-textGray">
+                                 من مدیر فروش هستم
+                                 </div>
+                             
+                             </span>
+                         </div>
+                         <div class="text flex-col w-full flex justify-start items-start">
+                             <p class="font-IRANSansWeb400 font-normal text-sm leading-21.91 text-text">
+                                 چطوری می‌تونم بهتون کمک کنم ؟ 
+                             </p>
+                         </div>
+                      </div>
+                       <div class="chatInputBox relative  w-[584px] mx-auto h-[95px] rounded-5">
+                         <input type="text" id="chat" placeholder="پیام را اینجا تایپ کنید"
+                         class="chatNodata w-full h-[95px] border-[1px] pr-3 outline-none border-mainGray rounded-5">
+                         <span class="Icon w-[34px] h-[34px] SendMessage absolute 
+                          hover:cursor-pointer z-3 left-1 top-2" onclick="sendMessageOne()">
+                             <img src="[##cms.cms.cdn##]/images/StartIcon.png" alt="">
+                         </span>
+                       </div>
+                     </div>
+    
+                    <div class="chatSection sec2 duration-300 opacity-0 [&.showChat]:opacity-[1]
+                     mt-auto mb-[1em] relative  w-full flex flex-col ">
+                      <div class="chats w-[95%] mx-auto gap-10 flex  mt-9" id="chatbox" style="margin-bottom: 20px;flex-direction: column;height:calc(100% - 170px);justify-content: end;">
                    
-                 
-                  </div>
-                  <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
-                    <input type="text" id="chat" placeholder="پیام را اینجا تایپ کنید"
-                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;">
-                    <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()"  style="left: 30px;top: 20px;">
-                        <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
-                    </span>
-                  </div>
-                </div>
+                       
+                     
+                      </div>
+                      <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
+                        <input type="text" id="chat2" placeholder="پیام را اینجا تایپ کنید"
+                        class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;">
+                        <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                         style="left: 30px;top: 20px;">
+                            <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                        </span>
+                      </div>
+                    </div>
+                </basis>
+                <basis core="group" if="'[##cms.query.q##]' <> ''">
+                  <div class="chatSection sec2 duration-300 opacity-0 showChat [&.showChat]:opacity-[1]
+                  mt-auto mb-[1em] relative  w-full flex flex-col ">
+                   <div class="chats w-[95%] mx-auto gap-10 flex  mt-9" id="chatbox" style="margin-bottom: 20px;flex-direction: column;height:calc(100% - 170px);justify-content: end;">
+                
+                    
+                  
+                   </div>
+                   <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
+                     <input type="text" id="chat2" placeholder="پیام را اینجا تایپ کنید"
+                     class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;">
+                     <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                      style="left: 30px;top: 20px;">
+                         <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                     </span>
+                   </div>
+                 </div>
+                </basis>
+             
+                 </div>
+           
               
             </div>
         </section>
@@ -404,116 +294,5 @@ body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
     <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
     <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script>
 
-    <script>
-        async function loadingchat(){
-            // const response = args.response;
-            // const responseJson = await response.json();
-            const chatvalue = document.querySelector("#chat")
-            const newDiv = document.createElement("div")
-            newDiv.setAttribute("class" , "YOU w-full flex gap-6 justify-start items-start")
-            newDiv.innerHTML = `
-           
-                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
-                            <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
-                        </span> 
-                        <div class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start " id="typewriter">
-                            <div class="  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-                            leading-[30px] text-sm  current_section" id="current_section">
-                            <div class="loader"></div>
-                            </div>
-                            <div class="contact-c w-full flex justify-end items-center gap-2">
-                                <span class="CopyText hover:cursor-pointer" onclick="opcytext(this,event)">
-                                    <img src="[##cms.cms.cdn##]/images/copy-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="disLike hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/dislike-v3.svg" alt="basis" title="basis">
-                                </span>
-                                <span class="like hover:cursor-pointer">
-                                    <img src="[##cms.cms.cdn##]/images/like-v3.svg" alt="basis" title="basis">
-                                </span>
-                            </div>
-                        </div>
-                    
-            `
-            document.querySelector("#chatbox").appendChild(newDiv)
-        }
-       async function setChatFirst(args){
-            const response = args.response;
-            const responseJson = await response.json();
-            const typingSpeed = 200;
-            const text = responseJson.message
-            for(var i = 0 ; i < text.length ; i++){
-                typeText(text , i )
-        
-            }
-
-        }
-        function typeText(text , i){
-            setTimeout(() => {
-                document.querySelector("#current_section").textContent += text.charAt(i);    
-            }, i* 50);
-            
-        }
-        function sendMessage(){
-         
-            const chatvalue = document.querySelector("#chat")
-            const newDiv = document.createElement("div")
-            newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
-            newDiv.innerHTML = `
-            <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-            <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
-            </span> 
-            <span class="userDetail w-auto flex flex-col justify-start items-start">
-            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
-            leading-[22px] text-text">
-            شما
-            </div>
-            <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
-            leading-[15.65px] text-sm">
-            ${chatvalue.value}
-
-            </div>
-            </span>
-            `
-            document.querySelector("#chatbox").appendChild(newDiv)
-            $bc.setSource("db.send" ,{
-                "run" : true,
-                "val" : chatvalue.value
-            })
-            chatvalue.value=""
-            document.querySelector("#current_section")?.removeAttribute("id")
-        }
-        var wage = document.getElementById("chat");
-        wage.addEventListener("keydown", function (e) {
-            if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
-                sendMessage()
-            }
-        });
-
-        function opcytext(el, event){
-            const parent = el.closest(".userDetail")
-            const copyElement = parent.querySelector(".current_section")
-            CopyToClipboard(copyElement)
-        }
-        function CopyToClipboard(containerid) {
-    if (document.selection) {
-        var range = document.body.createTextRange();
-        range.moveToElementText(containerid);
-        range.select().createTextRange();
-        document.execCommand("copy");
-    } else if (window.getSelection) {
-        var range = document.createRange();
-        range.selectNode(containerid);
-        window.getSelection().addRange(range);
-        document.execCommand("copy");
-      //  alert("Text has been copied, now paste in the text-area")
-      AlertMessage('Success', 'متن در clipboard کپی شد.')
-    }
-    }
-    function selectItem(el , event){
-        document.querySelector("#chat").value = el.textContent
-        sendMessage()
-    }
-    </script>
 </body>
 </html>
