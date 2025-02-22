@@ -5756,7 +5756,7 @@ input#conversationSearch::placeholder{
   text-align: right;
 }
 
-.chat-BasisPanel .chatInputBox #chat::-moz-placeholder, .chatNodata-BasisPanel .chatInputBox #chat::-moz-placeholder, .chat-BasisPanel .chatInputBox #chat2::-moz-placeholder{
+.chat-BasisPanel textarea::-moz-placeholder, .chatNodata-BasisPanel textarea::-moz-placeholder{
   color:#68737C;
   font-size: 14px;
   line-height: 21.91px;
@@ -5765,32 +5765,54 @@ input#conversationSearch::placeholder{
   text-align: right;
   direction: rtl;
   padding-bottom: 3em;
-}
-
-.chat-BasisPanel .chatInputBox #chat,
-.chat-BasisPanel .chatInputBox #chat::placeholder,
-.chatNodata-BasisPanel .chatInputBox #chat,
-.chatNodata-BasisPanel .chatInputBox #chat::placeholder,
-.chat-BasisPanel .chatInputBox #chat2,
-.chat-BasisPanel .chatInputBox #chat2::placeholder{
-  color:#68737C;
-  font-size: 14px;
-  line-height: 21.91px;
-  font-weight: 500;
-  font-family: "IRANSansWeb500";
-  text-align: right;
-  direction: rtl;
-  padding-bottom: 3em;
-}
-
-.chat-BasisPanel .chatInputBox #chat,
-.chatNodata-BasisPanel .chatInputBox #chat,
-.chat-BasisPanel .chatInputBox #chat2{
-  white-space: nowrap;
+  padding-top: 5px;
+  height: auto;
+  /* اجازه بده ارتفاع متناسب باشد */
+  min-height: 50px;
+  /* حداقل ارتفاع */
+  max-height: 100px;
+  /* حداکثر ارتفاع برای جلوگیری از بزرگ شدن */
+  overflow-y: auto;
+  /* فعال کردن اسکرول زمانی که متن زیاد شد */
+  resize: none;
+  /* جلوگیری از تغییر اندازه توسط کاربر */
+  white-space: pre-wrap;
+  /* شکستن خطوط درون textarea */
+  word-wrap: break-word;
+  /* انتقال متن به خط بعدی در صورت نیاز */
   overflow: hidden;
-  text-overflow: ellipsis;
-  width: 100%;
-  word-break: break-all;
+  padding-left: 2.3em;
+}
+
+.chat-BasisPanel textarea,
+.chat-BasisPanel textarea::placeholder,
+.chatNodata-BasisPanel textarea,
+.chatNodata-BasisPanel textarea::placeholder{
+  color:#68737C;
+  font-size: 14px;
+  line-height: 21.91px;
+  font-weight: 500;
+  font-family: "IRANSansWeb500";
+  text-align: right;
+  direction: rtl;
+  padding-bottom: 3em;
+  padding-top: 5px;
+  height: auto;
+  /* اجازه بده ارتفاع متناسب باشد */
+  min-height: 50px;
+  /* حداقل ارتفاع */
+  max-height: 100px;
+  /* حداکثر ارتفاع برای جلوگیری از بزرگ شدن */
+  overflow-y: auto;
+  /* فعال کردن اسکرول زمانی که متن زیاد شد */
+  resize: none;
+  /* جلوگیری از تغییر اندازه توسط کاربر */
+  white-space: pre-wrap;
+  /* شکستن خطوط درون textarea */
+  word-wrap: break-word;
+  /* انتقال متن به خط بعدی در صورت نیاز */
+  overflow: hidden;
+  padding-left: 2.3em;
 }
 
 .BPMS-BasisPanel .Chart-container .box{
@@ -5897,6 +5919,49 @@ footer .Right .text p{
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+
+.typing-loader {
+  font-size: 16px;
+  font-weight: bold;
+  color: #004B85;
+  display: flex;
+  align-items: center;
+}
+
+.typing-loader span {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 4px;
+  background-color: #004B85;
+  border-radius: 50%;
+  animation: typing 1.5s infinite ease-in-out;
+}
+
+.typing-loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateY(-3px);
+  }
+
+  100% {
+    opacity: 0.3;
+    transform: translateY(0px);
   }
 }
 

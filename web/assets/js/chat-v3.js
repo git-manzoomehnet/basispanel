@@ -48,7 +48,6 @@ let langIcon = document.querySelector(".langC"),
         })
         logoutBtnn.addEventListener("click", (e) => {
             e.stopPropagation()
-            console.log('logoOut');
             $bc.setSource("query.flag", true)
             $bc.setSource("db.logout", true)
             langContent.classList.remove("openLang")
@@ -73,15 +72,7 @@ let langIcon = document.querySelector(".langC"),
     
         if (hasItems) {
             titleDropdown.addEventListener('click', (e) => {
-                // بستن سایر دراپ‌داون‌ها قبل از باز کردن جدید
-                // drops.forEach(item => {
-                //     if (item !== drop) {
-                //         item.classList.remove('open');
-                //         item.querySelector('.dropdown-menu').style.height = '0px';
-                //         item.querySelector('.dropdown-menu').style.opacity = '0';
-                //     }
-                // });
-    
+
                 // تغییر وضعیت دراپ‌داون انتخاب‌شده
                 drop.classList.toggle('open');
     
@@ -99,7 +90,6 @@ let langIcon = document.querySelector(".langC"),
     });
     
 document.addEventListener("click", (e) => {
-    console.log('click') 
     langContent.classList.remove("openLang")
     langSVG.classList.remove("rotate")
     if(document.querySelector('.UserProfile-box .User ')){
@@ -120,7 +110,6 @@ if(document.querySelector('.Popup-container')){
     PopUp.addEventListener('click',(e)=>{
         if (e.target == popc) {  // اگر کلیک روی خود popc نباشه (یعنی روی فرزند مثل فرم یا دکمه باشد)
             e.stopPropagation();  // پراپگیشن رو متوقف می‌کنیم\
-            console.log('click outside pop');
             PopUp.classList.toggle('open')
             // popc.innerHTML=LoginTemplate
         }
@@ -180,7 +169,6 @@ if(document.querySelector('.Popup-container')){
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(html, "text/html");
                 let tokenValue = doc.querySelector(".dmntoken").textContent;
-             console.log(tokenValue,'tokenValue');
              $bc.setSource('db.token',tokenValue)
              
             })
@@ -194,7 +182,6 @@ if(document.querySelector('.Popup-container')){
         $bc.setSource('run.token',true)
     })
     popCloseBTN.addEventListener('click', (e) => {
-        console.log('close pop');
         PopUp.classList.toggle('open')
            $bc.setSource('run.api',true)
            $bc.setSource('get.dmntoken',false)
@@ -231,7 +218,9 @@ async function loadingchat(){
                 <div class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start " id="typewriter">
                     <div class="  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
                     leading-[30px] text-sm  current_section" id="current_section">
-                    <div class="loader"></div>
+                 <div class="typing-loader">
+    is typing <span></span><span></span><span></span>
+</div>
                     </div>
                     <div class="contact-c w-full flex justify-end items-center gap-2">
                         <span class="CopyText hover:cursor-pointer" onclick="opcytext(this,event)">
@@ -254,11 +243,17 @@ async function setChatFirst(args){
     const responseJson = await response.json();
     const typingSpeed = 200;
     const text = responseJson.message
+    document.querySelector('.typing-loader').innerHTML=''
+    console.log(text);
+    
     for(var i = 0 ; i < text.length ; i++){
-        typeText(text , i )
+        let textF = text;
+        textF = text.replace(/(?:Typing|\s*Typing\s*)/gi, "");
+        typeText(textF , i )
 
     }
 
+document.querySelector('.typing-loader').style.display='none'
 }
 function typeText(text , i){
     setTimeout(() => {
@@ -272,20 +267,22 @@ const detectLanguage = (text) =>{
     const englishRegex = /[a-zA-Z]/; // حروف انگلیسی
     let chatbox = document.querySelector('#chatbox')
     if (persianRegex.test(text)) {
-        console.log('فارسی');
+
         chatbox.style.direction ='rtl'
 
     } else if (englishRegex.test(text)) {
          chatbox.style.direction ='ltr'
-        console.log('انگلیسی');
+ 
 
     } else {
-        console.log('نامشخص');
+
         return "نامشخص";
     }
 }
-let firstinput =document?.querySelector('input.chatNodata')
+let firstinput =document?.querySelector('textarea.chatNodata')
 let chaticons = document.querySelectorAll('.SendMessage')
+document.querySelector('.loadChatSection').style.overflow='hidden'
+
 const opacityIcon =(input)=>{
    let typer = input;
     function handleKeyPress(e) {
@@ -301,14 +298,17 @@ const opacityIcon =(input)=>{
     typer.addEventListener("keypress", handleKeyPress)
     typer.addEventListener("keyup", handleKeyUp)
 }
-opacityIcon(firstinput)
+if(firstinput){
+    opacityIcon(firstinput)
+}
+
 const sendMessageOne = ()=>{
-    let input = document.querySelector('input.chatNodata')
+    document.querySelector('.loadChatSection ').style.overflowY='auto'
+    let input = document.querySelector('textarea.chatNodata')
     let chatsecNodata = document.querySelector('div.sec1')
     let chatsec = document.querySelector('div.sec2')
     detectLanguage(input.value)
     if(input.value != ''){
-      console.log('send');
       chatsecNodata.classList.add('hideChat')
       chatsec.classList.add('showChat')
       sendMessage(input.value)
@@ -322,7 +322,14 @@ const sendMessageOne = ()=>{
 const chatvalue = document?.querySelector("#chat2")
 opacityIcon(chatvalue)
 function sendMessage(value){
-  
+      document.querySelector('.loadChatSection ').style.overflowY='auto'
+     
+//       if( document.querySelector('#chat')){
+//  document.querySelector('#chat').style.overflowY='auto'
+//       }
+//       if(document.querySelector('#chat2')){
+//            document.querySelector('#chat2').style.overflowY='auto'
+//       }
     if(!value){
         let chatvalue2 = document.querySelector("#chat2")
         detectLanguage(chatvalue2.value)
@@ -384,27 +391,34 @@ function sendMessage(value){
    
 }
 
-var wage = document.getElementById("chat2");
-wage.addEventListener("keydown", function (e) {
-    if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
-        sendMessage()
-    }
-});
-
 let chatinput =document?.querySelector('#chat')
 chatinput?.addEventListener("keydown", function (e) {
-        let input = document.querySelector('input.chatNodata')
+        let input = document.querySelector('textarea.chatNodata')
         let chatsecNodata = document.querySelector('div.sec1')
         let chatsec = document.querySelector('div.sec2')
         if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+            e.preventDefault()
                 if(input.value != ''){
-                    console.log('send');
+                        document.querySelector('.loadChatSection ').style.overflowY='auto'
                     chatsecNodata.classList.add('hideChat')
                     chatsec.classList.add('showChat')
                     sendMessage(input.value)
+                     chatinput.value = ''
                   }
   }
     });
+    let chatinput2 =document.querySelector('#chat2')
+    chatinput2.addEventListener("keydown", function (e) {
+        
+            if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+                e.preventDefault()
+                    if(chatinput2.value != ''){
+                
+                        sendMessage(chatinput2.value)
+                        chatinput2.value = ''
+                      }
+      }
+        });
 function opcytext(el, event){
     const parent = el.closest(".userDetail")
     const copyElement = parent.querySelector(".current_section")
@@ -429,7 +443,6 @@ function selectItem(el , event){
     if(!firstinput?.classList.contains('hideChat')){
         let chatsecNodata = document?.querySelector('div.sec1')
         let chatsec = document.querySelector('div.sec2')
-          console.log('send');
           chatsecNodata?.classList.add('hideChat')
           chatsec.classList.add('showChat')
           document.querySelector("#chat2").value = el.getAttribute("data-val")
