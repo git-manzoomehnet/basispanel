@@ -56,7 +56,13 @@ let langIcon = document.querySelector(".langC"),
         })
     }
  
-
+    function scrollToBottom() {
+        const container = document.querySelector(".chatSection.sec2"); // یا هر المانی که داری
+        const lastChild = container.lastElementChild;
+        if (lastChild) {
+            lastChild.scrollIntoView({ behavior: "smooth" });
+        }
+    }
     let drops = document.querySelectorAll('.DropDowns .Drop');
 
     drops.forEach(drop => {
@@ -256,7 +262,8 @@ async function setChatFirst(args){
 }
 function typeText(text , i){
     setTimeout(() => {
-        document.querySelector("#current_section").textContent += text.charAt(i);    
+        document.querySelector("#current_section").textContent += text.charAt(i);   
+        scrollToBottom() 
     }, i* 50);
     
 }
@@ -309,7 +316,7 @@ const sendMessageOne = ()=>{
     else{
         AlertMessage('Error', 'لطفا فیلد را پر کنید')
     }
-
+    scrollToBottom()
 
 }
 const chatvalue = document?.querySelector("#chat2")
@@ -373,7 +380,7 @@ function sendMessage(value){
         value=""
         document.querySelector("#current_section")?.removeAttribute("id")
     }
-   
+    scrollToBottom()
    
 }
 
@@ -434,3 +441,7 @@ function selectItem(el , event){
     }
 
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.querySelector(".DropDowns");
+    sidebar.style.overflowY = "auto";
+});

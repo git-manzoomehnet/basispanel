@@ -1344,16 +1344,16 @@ video {
   max-height: 299px;
 }
 
+.max-h-\[55px\] {
+  max-height: 55px;
+}
+
 .max-h-\[600px\] {
   max-height: 600px;
 }
 
 .min-h-\[349px\] {
   min-height: 349px;
-}
-
-.min-h-\[55px\] {
-  min-height: 55px;
 }
 
 .min-h-\[560px\] {
@@ -3016,6 +3016,11 @@ video {
 .border-text {
   --tw-border-opacity: 1;
   border-color: rgb(104 115 124 / var(--tw-border-opacity, 1));
+}
+
+.border-b-White {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .border-b-mainGray {
@@ -5954,33 +5959,52 @@ footer .Right .text p{
 }
 
 .DropDowns {
-  max-height: 80vh;
-  /* جلوگیری از ارتفاع بیش از حد */
+  height: 80vh;
+  /* به جای max-height از height استفاده کن */
   overflow-y: auto;
-  /* اسکرول در صورت نیاز */
+  /* فعال کردن اسکرول زمانی که محتوا زیاد می‌شود */
+  overflow-x: hidden;
+  flex-grow: 1;
+  /* اجازه بده که فضای موجود رو بگیره */
+  min-height: 0;
+  /* این مقدار مهمه تا flexbox به درستی عمل کنه */
   scrollbar-width: thin;
   /* اسکرول بار باریک برای فایرفاکس */
   scrollbar-color: #004B85 #E8ECEF;
   /* رنگ اسکرول */
 }
 
-/* برای نمایش اسکرول بار در کروم */
+.DropDowns::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
 
 .DropDowns::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
+  background-color: #f5f5f5;
 }
 
 .DropDowns::-webkit-scrollbar-thumb {
-  background: #004B85;
-  border-radius: 5px;
-}
-
-.DropDowns::-webkit-scrollbar-track {
-  background: #E8ECEF;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #004B85;
 }
 
 .SendMessage{
   transition:all .4s ease ;
+}
+
+.chat-BasisPanel .Drop {
+  max-height: 55px;
+  /* مقدار اولیه بسته بودن */
+  transition: max-height 0.5s ease-in-out;
+  /* انیمیشن برای باز و بسته شدن */
+}
+
+.chat-BasisPanel .Drop.open {
+  max-height: 500px;
+  /* مقدار کافی برای باز شدن، مقدار را به دلخواه تنظیم کن */
 }
 
 @media (min-width: 480px) {
@@ -6338,6 +6362,16 @@ footer .Right .text p{
   border-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
 }
 
+.group\/drop:hover .group-hover\/drop\:border-l-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop:hover .group-hover\/drop\:border-r-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
 .group\/purpose:hover .group-hover\/purpose\:bg-lightBlue {
   --tw-bg-opacity: 1;
   background-color: rgb(230 237 243 / var(--tw-bg-opacity, 1));
@@ -6442,6 +6476,16 @@ footer .Right .text p{
 .group\/drop.open .group-\[\&\.open\]\/drop\:border-\[\#004B85\] {
   --tw-border-opacity: 1;
   border-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop.open .group-\[\&\.open\]\/drop\:border-l-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop.open .group-\[\&\.open\]\/drop\:border-r-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
 }
 
 .group\/Alert.Error .group-\[\&\.Error\]\/Alert\:bg-red {
@@ -6700,10 +6744,6 @@ footer .Right .text p{
 
 .\[\&\.open\]\:pointer-events-auto.open {
   pointer-events: auto;
-}
-
-.\[\&\.open\]\:min-h-\[unset\].open {
-  min-height: unset;
 }
 
 .\[\&\.open\]\:opacity-\[1\].open {

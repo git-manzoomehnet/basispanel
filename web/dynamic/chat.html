@@ -22,7 +22,7 @@
             grid grid-cols-[1fr,3fr] gap-9 ">
                 <div class="chatBoxesSection
                  w-full flex flex-col border-[1px]
-                  bg-White border-[#E8ECEF] rounded-5 h-[80vh]">
+                  bg-White border-[#E8ECEF] rounded-5 ">
                   <div class="topSec w-90p mx-auto py-[1em] border-b-[1px] border-[#E8ECEF]">
                     <div class="Searchbox  relative w-full h-[44px]">
                         <input type="text" id="conversationSearch"
@@ -34,29 +34,53 @@
                       </div>
                   </div>
                   <div class="DropDowns h-full overflow-y-auto w-90p mx-auto flex flex-col">
-                    <div class="Drop min-h-[55px] [&.open]:min-h-[unset] duration-300  overflow-hidden hover:cursor-pointer duration-1000 
-                     group/drop w-full flex flex-col">
+                  
+                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col">
                         <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-[#004B85]        
-                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
                             <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                درخواست دمو
+                                سوالات عمومی
                             </span>
                             <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
                                 <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
                             </span>
                         </div>
-                    
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
+                                  بیسیس پنل چیست و چه امکاناتی دارد؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟" onclick="selectItem(this,event)">
+                                 بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟" onclick="selectItem(this,event)">
+                                آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟
+                               </li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="Drop min-h-[55px] [&.open]:min-h-[unset] duration-300   overflow-hidden hover:cursor-pointer duration-1000 
+   
+<!-- 
+                      <div class="Drop max-h-[55px]  hover:cursor-pointer duration-1000 
                     group/drop w-full flex flex-col">
                         <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
                         border-l-White border-r-White border-r-[4px] border-l-[4px]
                          group-hover/drop:border-[#004B85]        
                        group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
                             <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                مزایای نرم‌افزار
+                               قیمت‌گذاری و خرید
                             </span>
                             <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
                                 <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
@@ -67,24 +91,498 @@
                          group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
                             <ul class="menu w-full flex flex-col">
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="نسبت به سایر رقبا چه مزایایی دارد ؟" onclick="selectItem(this,event)">
-                                    نسبت به سایر رقبا چه مزایایی دارد ؟
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val=" هزینه خرید بیسیس پنل چقدر است؟" onclick="selectItem(this,event)">
+                                 هزینه خرید بیسیس پنل چقدر است؟
                                 </li>
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="نسبت به نرم‌افزارهای مشابه خارجی چه مزایایی دارد؟" onclick="selectItem(this,event)">
-                                 نسبت به نرم‌افزارهای مشابه خارجی چه مزایایی دارد؟
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا برای هر ماژول هزینه جداگانه‌ای دریافت می‌شود؟" onclick="selectItem(this,event)">
+                               آیا برای هر ماژول هزینه جداگانه‌ای دریافت می‌شود؟
                                 </li>
                                 <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="امکان توسعه‌پذیری دارد ؟" onclick="selectItem(this,event)">
-                                امکان توسعه‌پذیری دارد ؟ 
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="شرایط تمدید سالانه بیسیس پنل چگونه است؟" onclick="selectItem(this,event)">
+                             شرایط تمدید سالانه بیسیس پنل چگونه است؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا برای پشتیبانی فنی نیاز به پرداخت هزینه جداگانه است؟" onclick="selectItem(this,event)">
+                              آیا برای پشتیبانی فنی نیاز به پرداخت هزینه جداگانه است؟
+                               </li>
+                                  <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم سفارش خود را ثبت کنم؟" onclick="selectItem(this,event)">
+                            چگونه می‌توانم سفارش خود را ثبت کنم؟
                                </li>
                             </ul>
                         </div>
                     </div>
-                  
-                 
+
+
+                      <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                              قابلیت‌ها
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل شامل CRM است؟" onclick="selectItem(this,event)">
+                                  آیا بیسیس پنل شامل CRM است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان مدیریت پروژه در بیسیس پنل وجود دارد؟" onclick="selectItem(this,event)">
+                             آیا امکان مدیریت پروژه در بیسیس پنل وجود دارد؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="سیستم تیکتینگ و پشتیبانی بیسیس پنل چگونه کار می‌کند؟" onclick="selectItem(this,event)">
+                            سیستم تیکتینگ و پشتیبانی بیسیس پنل چگونه کار می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا قابلیت یکپارچه‌سازی با سایر نرم‌افزارها وجود دارد؟" onclick="selectItem(this,event)">
+                             آیا قابلیت یکپارچه‌سازی با سایر نرم‌افزارها وجود دارد؟
+                               </li>
+                                  <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان افزودن قابلیت‌های سفارشی به پنل وجود دارد؟" onclick="selectItem(this,event)">
+                          آیا امکان افزودن قابلیت‌های سفارشی به پنل وجود دارد؟
+                               </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                         <div class="Drop max-h-[55px]  hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                             فنی و پشتیبانی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل تحت وب است یا نیاز به نصب دارد؟" onclick="selectItem(this,event)">
+                               آیا بیسیس پنل تحت وب است یا نیاز به نصب دارد؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان استفاده از بیسیس پنل روی موبایل وجود دارد؟" onclick="selectItem(this,event)">
+                            آیا امکان استفاده از بیسیس پنل روی موبایل وجود دارد؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم رمز عبور خود را بازیابی کنم؟" onclick="selectItem(this,event)">
+                           چگونه می‌توانم رمز عبور خود را بازیابی کنم؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="پشتیبانی فنی به چه صورتی ارائه می‌شود؟" onclick="selectItem(this,event)">
+                            پشتیبانی فنی به چه صورتی ارائه می‌شود؟
+                               </li>
+                                  <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="اگر در استفاده از پنل مشکلی داشته باشم، چگونه می‌توانم گزارش بدهم؟" onclick="selectItem(this,event)">
+                         اگر در استفاده از پنل مشکلی داشته باشم، چگونه می‌توانم گزارش بدهم؟
+                               </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="Drop max-h-[55px] hover:cursor-pointer
+                     duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا اطلاعات کاربران در بیسیس پنل امن است؟" onclick="selectItem(this,event)">
+                                 آیا اطلاعات کاربران در بیسیس پنل امن است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل امکان کنترل سطح دسترسی کاربران را دارد؟" onclick="selectItem(this,event)">
+                                آیا بیسیس پنل امکان کنترل سطح دسترسی کاربران را دارد؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم از داده‌های خود نسخه پشتیبان بگیرم؟" onclick="selectItem(this,event)">
+                                چگونه می‌توانم از داده‌های خود نسخه پشتیبان بگیرم؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان محدود کردن دسترسی به داده‌ها برای برخی از کاربران وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان محدود کردن دسترسی به داده‌ها برای برخی از کاربران وجود دارد؟
+                               </li>
+                                  <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="چه تدابیری برای جلوگیری از هک شدن پنل در نظر گرفته شده است؟" onclick="selectItem(this,event)">
+                                چه تدابیری برای جلوگیری از هک شدن پنل در نظر گرفته شده است؟
+                               </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px]  hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px] hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="Drop max-h-[55px]  hover:cursor-pointer 
+                    duration-1000 
+                    group/drop w-full flex flex-col">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-[#004B85]        
+                       group-[&.open]/drop:border-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                       امنیت و حریم خصوصی
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                            <ul class="menu w-full flex flex-col">
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="میزان فضای ذخیره‌سازی چقدر است؟" onclick="selectItem(this,event)">
+                                 میزان فضای ذخیره‌سازی چقدر است؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟" onclick="selectItem(this,event)">
+                                 آیا می‌توانم فضای ذخیره‌سازی را افزایش دهم؟
+                                </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟" onclick="selectItem(this,event)">
+                                بیسیس پنل چگونه عملکرد سیستم را بهینه‌سازی می‌کند؟
+                               </li>
+                                <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟" onclick="selectItem(this,event)">
+                                آیا امکان اتصال بیسیس پنل به سرویس‌های ابری مانند ابر آروان وجود دارد؟
+                               </li>
+                                  
+                            </ul>
+                        </div>
+                    </div> -->
                   </div>
-           
+<!--            
                 <button class="newConversation-btn mt-auto mb-3 bg-lightBlue w-90p mx-auto rounded-5
                  flex justify-center items-center gap-2 py-[.5em]">
                  <span class="icon w-auto flex justify-center ">
@@ -95,7 +593,7 @@
                         گفت و گوی جدید
                     </span>
                    
-                </button>
+                </button> -->
                 </div>
                  <div class="loadChatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
                   <basis core="group" if="'[##cms.query.q##]'=''">
@@ -293,6 +791,8 @@
     
     <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
     <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script>
+<script>
 
+</script>
 </body>
 </html>

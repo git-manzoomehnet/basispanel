@@ -1222,25 +1222,39 @@ footer .Right .text p{
   100%  {transform:scaleY(-1) rotate(-135deg)}
 }
 .DropDowns {
-  max-height: 80vh; /* جلوگیری از ارتفاع بیش از حد */
-  overflow-y: auto;  /* اسکرول در صورت نیاز */
+  height: 80vh; /* به جای max-height از height استفاده کن */
+  overflow-y: auto; /* فعال کردن اسکرول زمانی که محتوا زیاد می‌شود */
+  overflow-x: hidden;
+  flex-grow: 1; /* اجازه بده که فضای موجود رو بگیره */
+  min-height: 0; /* این مقدار مهمه تا flexbox به درستی عمل کنه */
   scrollbar-width: thin; /* اسکرول بار باریک برای فایرفاکس */
   scrollbar-color: #004B85 #E8ECEF; /* رنگ اسکرول */
 }
+.DropDowns::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
 
-/* برای نمایش اسکرول بار در کروم */
 .DropDowns::-webkit-scrollbar {
-  width: 5px;
+  width: 2px;
+  background-color: #f5f5f5;
 }
 
 .DropDowns::-webkit-scrollbar-thumb {
-  background: #004B85;
-  border-radius: 5px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #004B85;
 }
 
-.DropDowns::-webkit-scrollbar-track {
-  background: #E8ECEF;
-}
 .SendMessage{
   transition:all .4s ease ;
+}
+.chat-BasisPanel .Drop {
+  max-height: 55px; /* مقدار اولیه بسته بودن */
+  transition: max-height 0.5s ease-in-out; /* انیمیشن برای باز و بسته شدن */
+}
+
+.chat-BasisPanel .Drop.open {
+  max-height: 500px; /* مقدار کافی برای باز شدن، مقدار را به دلخواه تنظیم کن */
 }
