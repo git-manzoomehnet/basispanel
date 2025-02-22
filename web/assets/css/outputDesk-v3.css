@@ -5015,7 +5015,7 @@ li{
 }
 
 ::-webkit-scrollbar {
-  width: 2px;
+  width: 5px;
   background-color: #f5f5f5;
 }
 
@@ -5927,7 +5927,9 @@ footer .Right .text p{
   font-weight: bold;
   color: #004B85;
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: .3em;
 }
 
 .typing-loader span {
@@ -6033,10 +6035,6 @@ footer .Right .text p{
   /* اجازه بده که فضای موجود رو بگیره */
   min-height: 0;
   /* این مقدار مهمه تا flexbox به درستی عمل کنه */
-  scrollbar-width: thin;
-  /* اسکرول بار باریک برای فایرفاکس */
-  scrollbar-color: #004B85 #E8ECEF;
-  /* رنگ اسکرول */
 }
 
 .DropDowns::-webkit-scrollbar-track {
@@ -6046,7 +6044,7 @@ footer .Right .text p{
 }
 
 .DropDowns::-webkit-scrollbar {
-  width: 2px;
+  width: 5px;
   background-color: #f5f5f5;
 }
 

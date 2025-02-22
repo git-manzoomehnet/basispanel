@@ -237,6 +237,7 @@ async function loadingchat(){
             
     `
     document.querySelector("#chatbox").appendChild(newDiv)
+    scrollToBottom()
 }
 async function setChatFirst(args){
     const response = args.response;
@@ -244,8 +245,7 @@ async function setChatFirst(args){
     const typingSpeed = 200;
     const text = responseJson.message
     document.querySelector('.typing-loader').innerHTML=''
-    console.log(text);
-    
+   
     for(var i = 0 ; i < text.length ; i++){
         let textF = text;
         textF = text.replace(/(?:Typing|\s*Typing\s*)/gi, "");
@@ -308,6 +308,7 @@ const sendMessageOne = ()=>{
     let chatsecNodata = document.querySelector('div.sec1')
     let chatsec = document.querySelector('div.sec2')
     detectLanguage(input.value)
+    scrollToBottom()
     if(input.value != ''){
       chatsecNodata.classList.add('hideChat')
       chatsec.classList.add('showChat')
@@ -316,14 +317,14 @@ const sendMessageOne = ()=>{
     else{
         AlertMessage('Error', 'لطفا فیلد را پر کنید')
     }
-    scrollToBottom()
+  
 
 }
 const chatvalue = document?.querySelector("#chat2")
 opacityIcon(chatvalue)
 function sendMessage(value){
       document.querySelector('.loadChatSection ').style.overflowY='auto'
-     
+   
 //       if( document.querySelector('#chat')){
 //  document.querySelector('#chat').style.overflowY='auto'
 //       }
@@ -440,6 +441,7 @@ AlertMessage('Success', 'متن در clipboard کپی شد.')
 }
 }
 function selectItem(el , event){
+    scrollToBottom()
     if(!firstinput?.classList.contains('hideChat')){
         let chatsecNodata = document?.querySelector('div.sec1')
         let chatsec = document.querySelector('div.sec2')
