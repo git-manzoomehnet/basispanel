@@ -372,39 +372,7 @@ let langIcon = document.querySelector(".langC"),
             lastChild.scrollIntoView({ behavior: "smooth" });
         }
     }
-    let drops = document.querySelectorAll('.DropDowns .Drop');
-    function toggleMenu(el,event){
-        let dropdownMenu = el.querySelector('.dropdown-menu');
-        let titleDropdown = el.querySelector('.title-dropdown');
-        let icon = el.querySelector('.icon');
-        let hasItems = dropdownMenu && dropdownMenu.querySelector('ul li');
-    
-        if (hasItems) {
-            titleDropdown.addEventListener('click', (e) => {
-                const openitems = document.querySelectorAll(".open")
-                openitems.forEach(ee => {
-                    ee.classList.remove('open');
-                })
-                const openDropDownMenu = document.querySelectorAll(".dropdown-menu")
-                openDropDownMenu.forEach(ee => {
-                    ee.style.height = '0px';
-                    ee.style.opacity = '0';
-                })
-                // تغییر وضعیت دراپ‌داون انتخاب‌شده
-                el.classList.toggle('open');
-    
-                if (el.classList.contains('open')) {
-                    dropdownMenu.style.height = dropdownMenu.scrollHeight + 'px';
-                    dropdownMenu.style.opacity = '1';
-                } else {
-                    dropdownMenu.style.height = '0px';
-                    dropdownMenu.style.opacity = '0';
-                }
-            });
-        } else {
-            if (icon) icon.style.display = "none"; // مخفی کردن آیکون اگر لیستی وجود نداشته باشد
-        }
-    }
+
  
     
 document.addEventListener("click", (e) => {
@@ -416,9 +384,7 @@ document.addEventListener("click", (e) => {
         dropBox.classList.remove('openProf')
         userProfile.classList.remove('openProf')
     }
-    if(drops){
-        
-    }
+
 });
 if(document.querySelector('.Popup-container')){
     let PopUp = document.querySelector('.Popup-container')
@@ -840,6 +806,7 @@ function dislikeMessage(el, event){
 async function makeList(args){
     const response = args.response;
     const responseJson = await response.json();
+
     responseJson.forEach(e => {
         const newDrop = document.createElement("div") 
         let question = ""
@@ -852,7 +819,7 @@ async function makeList(args){
         })
         
         newDrop.innerHTML = `<div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col" onclick="toggleMenu(this, event)">
+                    group/drop w-full flex flex-col" >
                         <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
                         border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
                          group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
@@ -875,7 +842,41 @@ async function makeList(args){
                     document.querySelector(".question_loader")?.remove()
                     document.querySelector(".DropDowns").appendChild(newDrop)
     })
-  
+    let drops = document.querySelectorAll('.DropDowns .Drop');
+
+drops.forEach(drop => {
+    let dropdownMenu = drop.querySelector('.dropdown-menu');
+    let titleDropdown = drop.querySelector('.title-dropdown');
+    let icon = drop.querySelector('.icon');
+    let hasItems = dropdownMenu && dropdownMenu.querySelector('ul li');
+
+    if (hasItems) {
+        titleDropdown.addEventListener('click', (e) => {
+            drops.forEach(otherDrop => {
+                if (otherDrop !== drop) {
+                    otherDrop.classList.remove('open');
+                    let otherMenu = otherDrop.querySelector('.dropdown-menu');
+                    if (otherMenu) {
+                        otherMenu.style.height = '0px';
+                        otherMenu.style.opacity = '0';
+                    }
+                }
+            });
+            drop.classList.toggle('open');
+
+            if (drop.classList.contains('open')) {
+                dropdownMenu.style.height = dropdownMenu.scrollHeight +20+ 'px';
+                dropdownMenu.style.opacity = '1';
+            } else {
+                dropdownMenu.style.height = '0px';
+                dropdownMenu.style.opacity = '0';
+            }
+        });
+    } else {
+        if (icon) icon.style.display = "none"; // مخفی کردن آیکون اگر لیستی وجود نداشته باشد
+    }
+});
+
 }
 if("[##cms.query.q##]" != ""){
     sendMessage('[##cms.query.q##]')
