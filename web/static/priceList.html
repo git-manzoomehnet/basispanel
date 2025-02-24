@@ -15,6 +15,96 @@
         <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center mt-[208px] mb-[73px]">
             جدول قیمت محصولات
         </h1>
+        <div class="popPriceCalculate z-[1000000000] bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 ">
+            <div class="inner w-full max-w-[718px] mx-auto mt-[14vh] bg-White pt-2.5 px-8 pb-10 rounded-[10px]">
+                <div class="flex justify-between mb-2.5 items-center">
+                    <span class="font-IRANSansWeb700 text-base leading-[50px]">
+                        محاسبه قیمت 
+                    </span>
+
+                    <div class="closepopPriceCalculate cursor-pointer">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z" fill="#68737C"/>
+                            </svg>
+                            
+                    </div>
+                </div>
+
+                <div class="questions">
+                    <div class="questionBox mb-[42.42]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            1 - حجم مورد نیاز شما چقدر است ؟
+                        </p>
+
+                        <select class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none" name="" id="">
+                            <option value="500">
+                                500 GB
+                            </option>
+                            <option value="1t">
+                                1 T
+                            </option>
+                            <option value="3t">
+                                3 T
+                            </option>
+                            <option value="5t">
+                                5 T
+                            </option>
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            2 - اندازه سازمان شما چقدر است ؟ 
+                        </p>
+
+                        <select class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none" name="" id="">
+                            <option value="5">
+                                بین 1 تا 5 نفر
+                            </option>
+                            <option value="10">
+                                بین 5 تا 10 نفر
+                            </option>
+                            <option value="20">
+                                بین 11 تا 20 نفر
+                            </option>
+                            <option value="45">
+                                بین 21 تا 45 نفر
+                            </option>
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            3- در سازمان شما از چه متدی برای کنترل پروژه استفاده میشود ؟
+                        </p>
+
+                        <select class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none" name="" id="">
+                            <option value="5">
+                                اسکرام
+                            </option>
+                           
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            4- آیا به سیستم فروش نیاز دارید؟
+                                                </p>
+
+                        <select class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none" name="" id="">
+                            <option value="1">
+                                بله
+                            </option>
+                            <option value="2">
+                                خیر
+                            </option>
+                           
+                        </select>
+                    </div>
+                </div>
+
+                <button class="bg-primary w-[176px] h-[48px]">
+                    محاسبه قیمت
+                </button>
+            </div>
+        </div>
         <div class="flex justify-between w-80p mx-auto mb-14 gap-x-10 items-end">
             <div class="para font-IRANSansWeb700 text-base leading-[50px] max-w-[948px] w-[67%]">
                 <p>
@@ -661,7 +751,7 @@
 
         <div
             class="errorPriceList [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
-            <div
+            <div 
                 class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit flex items-center gap-x-2">
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

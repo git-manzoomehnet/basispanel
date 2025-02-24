@@ -791,6 +791,10 @@ video {
   z-index: 50;
 }
 
+.z-\[1000000000\] {
+  z-index: 1000000000;
+}
+
 .z-\[100\] {
   z-index: 100;
 }
@@ -916,6 +920,10 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
+}
+
 .mb-3 {
   margin-bottom: 0.75rem;
 }
@@ -958,6 +966,10 @@ video {
 
 .mb-\[4\.5em\] {
   margin-bottom: 4.5em;
+}
+
+.mb-\[42\.42\] {
+  margin-bottom: 42.42;
 }
 
 .mb-\[4em\] {
@@ -1078,6 +1090,10 @@ video {
 
 .mt-\[130px\] {
   margin-top: 130px;
+}
+
+.mt-\[14vh\] {
+  margin-top: 14vh;
 }
 
 .mt-\[208px\] {
@@ -1319,12 +1335,20 @@ video {
   height: 47px;
 }
 
+.h-\[48px\] {
+  height: 48px;
+}
+
 .h-\[4px\] {
   height: 4px;
 }
 
 .h-\[50\%\] {
   height: 50%;
+}
+
+.h-\[50\.58px\] {
+  height: 50.58px;
 }
 
 .h-\[50px\] {
@@ -1464,6 +1488,10 @@ video {
   width: 16px;
 }
 
+.w-\[176px\] {
+  width: 176px;
+}
+
 .w-\[183px\] {
   width: 183px;
 }
@@ -1506,6 +1534,10 @@ video {
 
 .w-\[315px\] {
   width: 315px;
+}
+
+.w-\[320px\] {
+  width: 320px;
 }
 
 .w-\[32px\] {
@@ -1700,6 +1732,10 @@ video {
 
 .max-w-\[600px\] {
   max-width: 600px;
+}
+
+.max-w-\[718px\] {
+  max-width: 718px;
 }
 
 .max-w-\[860px\] {
@@ -3754,6 +3790,10 @@ video {
   padding-top: 3.5rem;
 }
 
+.pt-2\.5 {
+  padding-top: 0.625rem;
+}
+
 .pt-4 {
   padding-top: 1rem;
 }
@@ -4638,12 +4678,6 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.transition-\[background-color\] {
-  transition-property: background-color;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -6666,25 +6700,19 @@ footer .Right .text p{
   height: 1px;
 }
 
-.after\:w-full::after {
-  content: var(--tw-content);
-  width: 100%;
-}
-
 .after\:w-0::after {
   content: var(--tw-content);
   width: 0px;
 }
 
+.after\:w-full::after {
+  content: var(--tw-content);
+  width: 100%;
+}
+
 .after\:origin-right::after {
   content: var(--tw-content);
   transform-origin: right;
-}
-
-.after\:scale-x-0::after {
-  content: var(--tw-content);
-  --tw-scale-x: 0;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .after\:bg-mainGray::after {
@@ -6697,16 +6725,6 @@ footer .Right .text p{
   content: var(--tw-content);
   --tw-bg-opacity: 1;
   background-color: rgb(249 70 28 / var(--tw-bg-opacity, 1));
-}
-
-.after\:duration-\[3000\]::after {
-  content: var(--tw-content);
-  transition-duration: 3000;
-}
-
-.after\:duration-\[3000ms\]::after {
-  content: var(--tw-content);
-  transition-duration: 3000ms;
 }
 
 .after\:duration-\[5000ms\]::after {
@@ -6900,6 +6918,11 @@ footer .Right .text p{
   height: auto;
 }
 
+.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:translate-y-\[0\] {
+  --tw-translate-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .group\/burger.menu-opened .group-\[\&\.menu-opened\]\/burger\:translate-x-\[-100px\] {
   --tw-translate-x: -100px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -6930,11 +6953,6 @@ footer .Right .text p{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:translate-y-\[0\] {
-  --tw-translate-y: 0;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
 .group\/accordion.accordion .group-\[\&\.accordion__active\]\/accordion\:rotate-180 active {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -6958,16 +6976,6 @@ footer .Right .text p{
 .group\/menu.menu-opened .group-\[\&\.menu-opened\]\/menu\:scale-\[1\] {
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.group.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\:scale-x-100 {
-  --tw-scale-x: 1;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:scale-x-100 {
-  --tw-scale-x: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -7093,6 +7101,10 @@ footer .Right .text p{
   opacity: 1;
 }
 
+.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:opacity-100 {
+  opacity: 1;
+}
+
 .group\/question.active .group-\[\&\.active\]\/question\:opacity-\[0\] {
   opacity: 0;
 }
@@ -7115,15 +7127,6 @@ footer .Right .text p{
 
 .group\/pop.open .group-\[\&\.open\]\/pop\:opacity-\[1\] {
   opacity: 1;
-}
-
-.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:opacity-100 {
-  opacity: 1;
-}
-
-.group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:after\:w-0::after {
-  content: var(--tw-content);
-  width: 0px;
 }
 
 .group\/errorPriceList.activeErrorPriceList .group-\[\&\.activeErrorPriceList\]\/errorPriceList\:after\:w-full::after {
@@ -7188,14 +7191,6 @@ footer .Right .text p{
 }
 
 .\[\&\.activeErrorPriceList2\]\:bg-black\/\[0\.3\].activeErrorPriceList2 {
-  background-color: rgb(0 0 0 / 0.3);
-}
-
-.\[\&\.activeErrorPriceList\]\:z-\[1000000000\].activeErrorPriceList {
-  z-index: 1000000000;
-}
-
-.\[\&\.activeErrorPriceList\]\:bg-black\/\[0\.3\].activeErrorPriceList {
   background-color: rgb(0 0 0 / 0.3);
 }
 
