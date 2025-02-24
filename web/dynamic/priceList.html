@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa">
 
 <head>
     <meta charset="UTF-8">
@@ -13,6 +13,8 @@
 
 <body>
     <main class="priceList" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
+
         <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center mt-[208px] mb-[73px]">
             جدول قیمت محصولات
         </h1>
@@ -121,7 +123,7 @@
             </div>
         </div>
         <div class="flex justify-between w-80p mx-auto mb-14 gap-x-10 items-end">
-            <div class="para font-IRANSansWeb700 text-base leading-[50px] max-w-[948px] w-[67%]">
+            <div class="para font-IRANSansWeb700 text-textGray text-base leading-[50px] max-w-[948px] w-[67%]">
                 <p>
                     این جدول قیمت‌ها بر اساس آخرین به‌روزرسانی‌های بازار تنظیم شده است. برای محاسبه قیمت نهایی،
                     می‌توانید از کلید محاسبه قیمت استفاده کنید. لطفاً قبل از هرگونه تصمیم‌گیری، اطلاعات را به دقت بررسی
@@ -129,10 +131,10 @@
                 </p>
             </div>
 
-            <button class="cursor-pointer openPopCalPrice flex items-center gap-x-2.5 py-3 px-2 bg-primary rounded-5">
+            <button class="cursor-pointer hidden openPopCalPrice flex items-center gap-x-2.5 py-3 px-2 bg-primary rounded-5">
                 <img src="[##cms.cms.cdn##]/asset/images/calculator.svg" alt="calculator">
 
-                <span class="font-IRANSansWeb700 text-sm text-White whitespace-nowrap">
+                <span class="font-IRANSansWeb600 text-sm text-White whitespace-nowrap">
                     محاسبه قیمت خودکار
                 </span>
             </button>
@@ -148,15 +150,14 @@
             <div class=" w-80p mx-auto">
                 <div
                     class="accordion plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-tl-[10px] rounded-tr-[10px]">
-                    <div
-                        class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
                         <div class="flex gap-x-4 items-center">
                             <input type="checkbox"
                                 class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
                                 disabled>
 
                             <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
-                                انتخاب پنل ؟
+                                انتخاب پنل 
                             </h4>
 
                         </div>
@@ -170,8 +171,8 @@
 
                         </div>
                     </div>
-                    <div class="accordion__content px-[75px]">
-                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
+                    <div class="accordion__content !overflow-x-auto px-[75px]">
+                        <div class="inner w-full !pt-[74px] pb-3 ">
 
 
                             <table class="w-full">
@@ -186,7 +187,8 @@
                                                 <button
                                                     class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 ">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-White">
                                                         افزودن به فاکتور
                                                     </span>
@@ -194,12 +196,13 @@
                                                 <button
                                                     class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-primary">
                                                         مشاهده فاکتور
                                                     </span>
                                                 </button>
-                                                <span class="font-interBold text-xl text-placeholder">
+                                                <span class="panel-name product-price font-interBold text-xl text-placeholder">
 
                                                     B1
                                                 </span>
@@ -212,7 +215,8 @@
                                                 <button
                                                     class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 relative popularBtn">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-White">
                                                         افزودن به فاکتور
                                                     </span>
@@ -220,14 +224,15 @@
                                                 <button
                                                     class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative popularBtn">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-primary">
                                                         مشاهده فاکتور
                                                     </span>
                                                 </button>
-                                                <span class="font-interBold text-xl text-placeholder">
+                                                <span class="panel-name font-interBold text-xl text-placeholder">
 
-                                                    B1
+                                                    B2
                                                 </span>
                                             </div>
 
@@ -239,7 +244,8 @@
                                                 <button
                                                     class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 ">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-White">
                                                         افزودن به فاکتور
                                                     </span>
@@ -247,14 +253,15 @@
                                                 <button
                                                     class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-primary">
                                                         مشاهده فاکتور
                                                     </span>
                                                 </button>
-                                                <span class="font-interBold text-xl text-placeholder">
+                                                <span class="panel-name font-interBold text-xl text-placeholder">
 
-                                                    B1
+                                                    A1
                                                 </span>
                                             </div>
 
@@ -265,7 +272,8 @@
                                                 <button
                                                     class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 ">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-White">
                                                         افزودن به فاکتور
                                                     </span>
@@ -273,14 +281,43 @@
                                                 <button
                                                     class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative">
 
-                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg" alt="addtoFactor">
+                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                        alt="addtoFactor">
                                                     <span class="font-interBold text-sm text-primary">
                                                         مشاهده فاکتور
                                                     </span>
                                                 </button>
-                                                <span class="font-interBold text-xl text-placeholder">
+                                                <span class="panel-name font-interBold text-xl text-placeholder">
 
-                                                    B1
+                                                    A2
+                                                </span>
+                                            </div>
+
+                                        </th>
+                                        <th class="px-7 border-r border-borderP/[0.3] pb-10">
+                                            <div class="flex flex-col justify-center items-center">
+
+                                                <button
+                                                    class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 ">
+
+                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                        alt="addtoFactor">
+                                                    <span class="font-interBold text-sm text-White">
+                                                        افزودن به فاکتور
+                                                    </span>
+                                                </button>
+                                                <button
+                                                    class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative">
+
+                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                        alt="addtoFactor">
+                                                    <span class="font-interBold text-sm text-primary">
+                                                        مشاهده فاکتور
+                                                    </span>
+                                                </button>
+                                                <span class="panel-name font-interBold text-xl text-placeholder">
+
+                                                    A3
                                                 </span>
                                             </div>
 
@@ -314,6 +351,11 @@
                                                 5 T
                                             </span>
                                         </td>
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                10 T
+                                            </span>
+                                        </td>
 
                                     </tr>
 
@@ -327,7 +369,19 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -338,7 +392,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -349,7 +404,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -360,7 +416,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -372,29 +429,69 @@
                                     <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
-                                                تعداد کاربران
+                                                مدیریت محتوا
+
                                             </span>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                5
-                                            </span>
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                10
-                                            </span>
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
                                         </td>
+
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                20
-                                            </span>
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
                                         </td>
+
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                45
-                                            </span>
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
                                         </td>
+
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+
 
                                     </tr>
 
@@ -410,7 +507,8 @@
                                             <div
                                                 class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -421,7 +519,19 @@
                                             <div
                                                 class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -432,7 +542,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -443,7 +554,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -456,30 +568,72 @@
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
                                                 پوشه اشتراکی
-                                            </span>
-                                        </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                Iran
-                                            </span>
-                                        </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-                                                Iran
-                                            </span>
-                                        </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+
 
                                             </span>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
-
-                                            </span>
+                                            <div
+                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
                                         </td>
+
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+
 
                                     </tr>
+                                   
                                     <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
@@ -490,7 +644,19 @@
                                             <div
                                                 class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -501,7 +667,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -512,7 +679,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -523,7 +691,8 @@
                                             <div
                                                 class="imgS group/activePlan activePlan relative flex justify-center items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
-                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg" alt="activePricePlan">
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
                                                 <img class="group-[&.deactivePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
                                                     alt="deactivePricePlan">
@@ -532,7 +701,7 @@
 
 
                                     </tr>
-                                    <tr class="border-t border-t-borderP/[0.3]">
+                                    <!-- <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
                                                 پشتیبانی
@@ -559,8 +728,8 @@
                                             </span>
                                         </td>
 
-                                    </tr>
-                                    <tr class="border-t border-t-borderP/[0.3]">
+                                    </tr> -->
+                                    <!-- <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
                                                 یادآور پیامک
@@ -611,8 +780,8 @@
                                         </td>
 
 
-                                    </tr>
-                                    <tr class="border-t border-t-borderP/[0.3]">
+                                    </tr> -->
+                                    <!-- <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
                                                 دسترسی کلاب
@@ -663,8 +832,8 @@
                                         </td>
 
 
-                                    </tr>
-                                    <tr class="border-t border-t-borderP/[0.3]">
+                                    </tr> -->
+                                    <!-- <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
                                                 امکان تسویه غیرآنلاین
@@ -715,10 +884,10 @@
                                         </td>
 
 
-                                    </tr>
+                                    </tr> -->
 
 
-                                    <tr class="border-t border-t-borderP/[0.3]">
+                                    <!-- <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <div class=" px-4 py-3 bg-lightBlue rounded-5">
 
@@ -745,6 +914,127 @@
 
 
                                     </tr>
+ -->
+
+
+
+                                    <tr class="border-t border-t-borderP/[0.3]">
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-Inter400 text-base text-placeholder">
+                                                Annual fee
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-yearly py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                3,500,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-yearly py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                7,000,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-yearly py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                17,500,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-yearly py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                25,000,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-yearly py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                45,000,000
+
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="border-t border-t-borderP/[0.3]">
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-Inter400 text-base text-placeholder">
+                                                Secound ywars subsciption fee
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-renew py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                3,500,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-renew py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                7,000,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-renew py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                17,500,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-renew py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                25,000,000
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-renew py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                45,000,000
+
+                                            </span>
+                                        </td>
+
+                                    </tr>
+                                    <tr class="border-t border-t-borderP/[0.3]">
+                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-Inter400 text-base text-placeholder">
+                                                Support (optional)
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-support py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                0
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-support py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                0
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-support py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                0
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-support py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                0
+
+                                            </span>
+                                        </td>
+                                        <td class="text-center panel-price-support py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span dir="ltr" class="font-Inter400 text-base text-placeholder">
+                                                0
+
+                                            </span>
+                                        </td>
+
+                                    </tr>
+
 
                                 </tbody>
                             </table>
@@ -759,16 +1049,32 @@
                 <div class="accordion bg-White group/accordion overflow-hidden  shadow-[0px_4px_50px_0px_#8a8a8a30]">
                     <div
                         class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
-                        <div class="flex gap-x-4 items-center">
-                            <input type="checkbox"
-                                class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
-                                disabled>
+                        <div class="flex gap-x-8 items-center">
 
-                            <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
-                                محصولات
-                            </h4>
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    disabled>
 
+                                <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                    محصولات
+                                </h4>
+
+                            </div>
+                            <div class="totalP hidden bg-White/[0.5] rounded-5 py-2 px-3">
+                                <p class="font-IRANSansWeb600 text-sm text-primary">
+                                    قیمت کل :
+
+                                    <span class="totalPriceC">
+
+                                        250,000,000 
+                                    </span>
+                                     
+                                     تومان
+                                </p>
+                            </div>
                         </div>
+
                         <div class="arrowList">
                             <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
                                 height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -780,7 +1086,7 @@
                         </div>
                     </div>
                     <div class="accordion__content px-[75px]">
-                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
+                        <div class="inner w-full !pt-[74px] pb-3 ">
 
 
                             <table class="w-full">
@@ -822,8 +1128,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="product-name text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -832,13 +1138,13 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                9,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                9,500,000
                                             </span>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-Inter400 text-base text-placeholder">
-                                               رایگان
+                                                رایگان
 
                                             </span>
                                         </td>
@@ -854,9 +1160,9 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
-                                                <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
+                                                <img src="[##cms.cms.cdn##]/asset/images/crmIcon.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
                                                     CRM
@@ -864,8 +1170,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                39,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                39,500,000
 
                                             </span>
                                         </td>
@@ -886,8 +1192,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -896,8 +1202,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                49,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                49,500,000
 
 
                                             </span>
@@ -919,9 +1225,9 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
-                                                <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
+                                                <img src="[##cms.cms.cdn##]/asset/images/bpmsIcon.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
                                                     BPMS
@@ -930,8 +1236,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                149,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                149,500,000
 
 
 
@@ -954,9 +1260,9 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
-                                                <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
+                                                <img src="[##cms.cms.cdn##]/asset/images/postIcon.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
                                                     Post Office
@@ -966,8 +1272,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                19,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                19,500,000
 
 
 
@@ -991,8 +1297,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -1004,8 +1310,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                249,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                249,500,000
 
 
 
@@ -1030,8 +1336,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -1044,8 +1350,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                9,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                9,500,000
 
                                             </span>
                                         </td>
@@ -1061,14 +1367,14 @@
                                         </td>
 
                                     </tr>
-                                  
+
                                     <tr class="border-t border-t-borderP/[0.3]">
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -1077,8 +1383,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                99,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                99,500,000
 
 
                                             </span>
@@ -1100,8 +1406,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -1111,8 +1417,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                29,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                29,500,000
 
                                             </span>
                                         </td>
@@ -1133,8 +1439,8 @@
                                             <input type="checkbox"
                                                 class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative">
                                         </td>
-                                        <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <div class="flex items-center justify-center gap-x-2.5">
+                                        <td class="text-center product-name py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div class="flex items-center pr-10 gap-x-2.5">
                                                 <img src="[##cms.cms.cdn##]/asset/images/calculatorProList.svg"
                                                     alt="calculatorProList">
                                                 <span class="font-Inter400 text-base text-placeholder">
@@ -1145,8 +1451,8 @@
                                             </div>
                                         </td>
                                         <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
-                                            <span class="font-Inter400 text-base text-placeholder">
-                                                99,500,000 
+                                            <span class="font-Inter400 priceP text-base text-placeholder">
+                                                99,500,000
 
 
                                             </span>
@@ -1163,7 +1469,7 @@
                                         </td>
 
                                     </tr>
-                                  
+
 
 
                                 </tbody>
@@ -1199,7 +1505,7 @@
                         </div>
                     </div>
                     <div class="accordion__content px-[75px]">
-                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
+                        <div class="inner w-full !pt-[74px] pb-3 ">
 
 
                         </div>
@@ -1209,76 +1515,86 @@
             </div>
 
         </section>
+        <section class=" pb-[217px]">
 
-        <section
-            class="mt-16 mb-[217px] flex w-80p mx-auto gap-x-14 rounded-[10px] shadow-[0px_4px_50px_0px_#8a8a8a30] pb-16">
-            <div
-                class="rSide shadow-[0px_4px_50px_0px_#8a8a8a30] w-[65%] border border-bgGray rounded-[10px] overflow-hidden">
-                <table class="w-full">
-                    <thead class="py-6 px-3 bg-lightBlue">
-                        <tr>
-                            <th class="font-interBold py-6 px-3 text-base text-primary">
-                                نام محصول
-                            </th>
-                            <th class="font-interBold py-6 px-3 text-base text-primary">
-                                قیمت سالانه
-                            </th>
-                            <th class="font-interBold py-6 px-3 text-base text-primary">
-                                قیمت تمدید سالانه
-                            </th>
-                            <th class="font-interBold py-6 px-3 text-base text-primary">
-                                هزینه پشتیبانی
-                            </th>
+            <section
+                class="mt-16 bg-White flex w-80p mx-auto gap-x-14 rounded-[10px] shadow-[0px_4px_50px_0px_#8a8a8a30] pb-16">
+                <div
+                    class="rSide shadow-[0px_4px_50px_0px_#8a8a8a30] w-[65%] border border-bgGray rounded-[10px] overflow-hidden">
+                    <table class="w-full">
+                        <thead class="py-6 px-3 bg-lightBlue">
+                            <tr>
+                                <th class="font-interBold py-6 px-3 text-base text-primary">
+                                    نام محصول
+                                </th>
+                                <th class="font-interBold py-6 px-3 text-base text-primary">
+                                    قیمت سالانه
+                                </th>
+                                <th class="font-interBold py-6 px-3 text-base text-primary">
+                                    قیمت تمدید سالانه
+                                </th>
+                                <th class="font-interBold py-6 px-3 text-base text-primary">
+                                    هزینه پشتیبانی
+                                </th>
 
-                            <th></th>
+                                <th></th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
+                            </tr>
+                        </thead>
+                        <tbody>
 
 
-                        <tr class="pt-9 pb-7 even:bg-gray/[0.19]">
-                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                پنل پایه : A 1
-                            </td>
-                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                15,000,000 تومان
-                            </td>
-                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                15,000,000 تومان
-                            </td>
-                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                رایگان
-                            </td>
-                            <td class="deleteRow cursor-pointer px-6">
-                                <img src="[##cms.cms.cdn##]/asset/images/deleteRow.svg" alt="deleteRow">
+                            <tr class="pt-9 pb-7 even:bg-gray/[0.19] hidden">
+                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                    پنل پایه : A 1
+                                </td>
+                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                    15,000,000 تومان
+                                </td>
+                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                    15,000,000 تومان
+                                </td>
+                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                    رایگان
+                                </td>
+                                <td class="deleteRow cursor-pointer px-6">
+                                    <img src="[##cms.cms.cdn##]/asset/images/deleteRow.svg" alt="deleteRow">
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                            <tr class="emptyBasket font-IRANSansWeb400 text-base text-textGray text-center">
+                                <p>
+                                    فاکتور خالی میباشد.
+                                </p>
 
-                    </tbody>
-                </table>
-            </div>
-            <div class="lSide w-[35%] pt-14 rounded-[10px] text-center bg-bgGray/[0.19] flex flex-col items-center">
-                <span class="font-interBold block mb-5 text-xl text-black">
-                    قیمت کل :
-                </span>
+                            </tr>
 
-                <div class="price font-interBold text-base">
-                    <span class="totalPrice inline-block">
-                        350,000,000
 
-                    </span>
-                    <p class="inline-block">
-
-                        تومان
-                    </p>
+                            
+                        </tbody>
+                    </table>
                 </div>
-            </div>
+                <div class="lSide w-[35%] pt-14 rounded-[10px] text-center bg-bgGray/[0.19] flex flex-col items-center">
+                    <span class="font-interBold block mb-5 text-xl text-black">
+                        قیمت کل :
+                    </span>
+
+                    <div class="price">
+                        <span class="totalPrice inline-block font-interBold text-base">
+                            350,000,000
+
+                        </span>
+                        <p class="inline-block font-interBold text-base">
+
+                            تومان
+                        </p>
+                    </div>
+                </div>
+            </section>
         </section>
 
         <div
-            class="errorPriceList [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
+            class="errorPriceList  [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
             <div
                 class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit flex items-center gap-x-2">
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1296,11 +1612,10 @@
 
 
 
-        <basis core="call" file="logo.inc" pageindex="[##cms.cms.pageindex##]"  />
         <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>
-    
-    
+
+
     <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
     <script src="[##cms.cms.cdn##]/asset/js/priceListPage.js"></script>
 </body>
