@@ -1315,6 +1315,7 @@ text-align: right;
 direction: rtl;
 resize: none;
 height: auto; 
+padding-left: 3em;
 min-height: 50px; 
 max-height: 100px; 
 overflow-y: auto; 

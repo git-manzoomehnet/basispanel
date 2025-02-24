@@ -6383,6 +6383,7 @@ footer .Right .text p{
   text-align: right;
   direction: rtl;
   height: auto;
+  padding-left: 3em;
   min-height: 50px;
   max-height: 100px;
   overflow-y: auto;
@@ -6402,6 +6403,7 @@ footer .Right .text p{
   text-align: right;
   direction: rtl;
   height: auto;
+  padding-left: 3em;
   min-height: 50px;
   max-height: 100px;
   overflow-y: auto;
