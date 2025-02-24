@@ -791,10 +791,6 @@ video {
   z-index: 50;
 }
 
-.z-\[1000000000\] {
-  z-index: 1000000000;
-}
-
 .z-\[100\] {
   z-index: 100;
 }
@@ -968,8 +964,8 @@ video {
   margin-bottom: 4.5em;
 }
 
-.mb-\[42\.42\] {
-  margin-bottom: 42.42;
+.mb-\[42\.42px\] {
+  margin-bottom: 42.42px;
 }
 
 .mb-\[4em\] {
@@ -1967,6 +1963,12 @@ video {
 
 .rotate-\[-45deg\] {
   --tw-rotate: -45deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-0 {
+  --tw-scale-x: 0;
+  --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -3266,10 +3268,6 @@ video {
 
 .bg-bgGray\/\[0\.19\] {
   background-color: rgb(229 229 229 / 0.19);
-}
-
-.bg-black\/\[0\.3\] {
-  background-color: rgb(0 0 0 / 0.3);
 }
 
 .bg-blue4 {
@@ -5764,7 +5762,7 @@ input.nonePadding{
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 15.65px;
   color: #222222;
@@ -5828,9 +5826,8 @@ input.nonePadding{
   border-color:#004B85 ;
 }
 
-.mailsSelectBox .userSpan ,
-.email-label{
-  font-size: 10px;
+.mailsSelectBox .userSpan, .email-label {
+  font-size: 12px;
   font-weight: 400;
   line-height: 15.65px;
   color: #222222;
@@ -6923,6 +6920,11 @@ footer .Right .text p{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.group\/PopCalculator.activePopCalculator2 .group-\[\&\.activePopCalculator2\]\/PopCalculator\:translate-y-\[0\] {
+  --tw-translate-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .group\/burger.menu-opened .group-\[\&\.menu-opened\]\/burger\:translate-x-\[-100px\] {
   --tw-translate-x: -100px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -7105,6 +7107,10 @@ footer .Right .text p{
   opacity: 1;
 }
 
+.group\/PopCalculator.activePopCalculator2 .group-\[\&\.activePopCalculator2\]\/PopCalculator\:opacity-100 {
+  opacity: 1;
+}
+
 .group\/question.active .group-\[\&\.active\]\/question\:opacity-\[0\] {
   opacity: 0;
 }
@@ -7191,6 +7197,24 @@ footer .Right .text p{
 }
 
 .\[\&\.activeErrorPriceList2\]\:bg-black\/\[0\.3\].activeErrorPriceList2 {
+  background-color: rgb(0 0 0 / 0.3);
+}
+
+.\[\&\.activePopCalculator\]\:z-\[1000000000\].activePopCalculator {
+  z-index: 1000000000;
+}
+
+.\[\&\.activePopCalculator\]\:scale-100.activePopCalculator {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&\.activePopCalculator\]\:overflow-y-auto.activePopCalculator {
+  overflow-y: auto;
+}
+
+.\[\&\.activePopCalculator\]\:bg-black\/\[0\.3\].activePopCalculator {
   background-color: rgb(0 0 0 / 0.3);
 }
 

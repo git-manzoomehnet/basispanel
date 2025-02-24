@@ -787,7 +787,7 @@ input.nonePadding{
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   line-height: 15.65px;
   color: #222222;
@@ -843,13 +843,13 @@ transform: translate(-50%,-50%);
 .mailsSelectBox input[type="radio"].active{
   border-color:#004B85 ;
 }
-.mailsSelectBox .userSpan ,
-.email-label{
-  font-size: 10px;
+.mailsSelectBox .userSpan, .email-label {
+  font-size: 12px;
   font-weight: 400;
   line-height: 15.65px;
   color: #222222;
   font-family: "IRANSansWeb400";
+
 }
 .passwordBox-email input[type="password"]:focus,
  .passwordBox-email input[type="text"]:focus,
