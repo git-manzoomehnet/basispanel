@@ -54,6 +54,7 @@ module.exports = {
          'dark2':'#1A1C24',
          'dark3':'#212121',
          'placeholder':'#222222',
+         'borderP':'#6D6E71',
          'color1':'#FFE6DB',
          'color2':'#F7EEFF',
          'color3':'#E7F3E7',
@@ -76,6 +77,7 @@ module.exports = {
         'IRANSansWeb800': ['IRANSansWeb800', 'IRANSansWeb800'],
         'IRANSansWeb900': ['IRANSansWeb900', 'IRANSansWeb900'],
          'Inter400':['Inter400'],
+         'interBold':['interBold'],
          'NotoSans400':['NotoSans400'],
          'ABeeZee400':['ABeeZee400'],
   

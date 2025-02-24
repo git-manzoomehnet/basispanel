@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست قیمت با آکوردیون</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+        }
+        .accordion {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            overflow: hidden;   
+        }
+        .accordion-title {
+            background: #f1f1f1;
+            padding: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .accordion-content {
+            display: none;
+            padding: 10px;
+            background: #fff;
+        }
+        .accordion-content label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="checkbox"] {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #0A4A7D; /* رنگ آبی مشابه */
+    border-radius: 4px;
+    background-color: white;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #0A4A7D;
+    border-color: #0A4A7D;
+}
+
+input[type="checkbox"]:checked::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="accordion">
+        <div class="accordion-title">
+            <span>پلن پایه</span>
+            <input type="checkbox" class="accordion-checkbox" disabled>
+        </div>
+        <div class="accordion-content">
+            <label>
+                <input type="checkbox" class="option-checkbox"> اشتراک ۱ ماهه
+            </label>
+            <label>
+                <input type="checkbox" class="option-checkbox"> پشتیبانی معمولی
+            </label>
+        </div>
+    </div>
+
+    <div class="accordion">
+        <div class="accordion-title">
+            <span>پلن ویژه</span>
+            <input type="checkbox" class="accordion-checkbox" disabled>
+        </div>
+        <div class="accordion-content">
+            <label>
+                <input type="checkbox" class="option-checkbox"> اشتراک ۳ ماهه
+            </label>
+            <label>
+                <input type="checkbox" class="option-checkbox"> پشتیبانی VIP
+            </label>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const accordions = document.querySelectorAll(".accordion");
+
+            accordions.forEach(accordion => {
+                const title = accordion.querySelector(".accordion-title");
+                const content = accordion.querySelector(".accordion-content");
+                const mainCheckbox = accordion.querySelector(".accordion-checkbox");
+                const optionCheckboxes = accordion.querySelectorAll(".option-checkbox");
+
+                // باز و بسته کردن آکاردئون
+                title.addEventListener("click", () => {
+                    content.style.display = content.style.display === "block" ? "none" : "block";
+                });
+
+                // بررسی انتخاب گزینه‌ها
+                optionCheckboxes.forEach(option => {
+                    option.addEventListener("change", () => {
+                        const isChecked = [...optionCheckboxes].some(checkbox => checkbox.checked);
+                        mainCheckbox.checked = isChecked;
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
