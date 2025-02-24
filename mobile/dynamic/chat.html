@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>چت</title>
+    <meta name="description" content="چت">
+    <basis core="call" file="styles-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<body>
+    <basis core="api" name="db.chat" url="/service/ai/sending_question" method="post"   triggers="db.send"
+    body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
+      run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat">
+    </basis>
+    <basis core="api" name="db.chat" url="/service/ai/addreaction" method="post"   triggers="db.like"
+    body='{##db.like.val##}' if="{##db.like.run|(false)##}"
+      run="atclient" onprocessed="likeMethod" content-type="application/json" >
+    </basis>
+
+    <basis core="api" name="db.chat" url="/service/ai/addreaction" method="post"   triggers="db.dislike"
+    body='{##db.dislike.val##}' if="{##db.dislike.run|(false)##}"
+      run="atclient" onprocessed="dislikeMethod" content-type="application/json" >
+    </basis>
+
+    <basis core="api" name="db.chat" url="/service/ai/fa/referencecategories" method="get" 
+      run="atclient" onprocessed="makeList" content-type="application/json" >
+    </basis>
+
+    <basis core="cookie" name="guid" value="[##cms.cookie.guid##]" />
+
+    <main class="chat-BasisPanel-mobile flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
+        <basis core="call" file="checkheaderLogin-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <section class="section-1 h-[100svh] scrollable-section overflow-y-auto overflow-hidden  w-full flex  ">
+            <div class="container-chat w-90p mx-auto flex-col mb-auto h-[97%] flex ">
+                <div class="DropBTN w-auto hover:cursor-pointer gap-2 flex fixed right-[7em] top-[1.5em] justify-center z-[99] items-center">
+                    <span class="w-auto flex justify-center items-center font-IRANSansWeb400 text-xs text-black">
+                    سوالات متداول
+                    </span>
+                    <!-- <div class="DropIconp mt-auto w-auto flex justify-center items-center">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"></path>
+                            </svg>
+                    </div> -->
+                </div>
+                <div class="DropPop bg-White flex flex-col fixed translate-x-[-100%]  pointer-events-none opacity-0
+                duration-700 [&.OpenDrop]:opacity-[1] [&.OpenDrop]:translate-x-[0] [&.OpenDrop]:pointer-events-auto
+                 z-[999] left-0 top-0 bottom-0 h-[100svh] overflow-hidden w-screen">
+                    <span class="CloseDrop mr-[2em] mt-[2em]">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 6L18 18M6 18L18 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          
+                    </span>
+                    <div class="DropDowns mt-5 h-full overflow-y-auto w-90p mx-auto flex flex-col">
+                        <div class="question_loader"></div>
+                      </div>
+                </div>
+            
+                <div class="loadChatContainer mt-[4em]  flex flex-col">
+                    <basis core="group" if="'[##cms.query.q##]'=''">
+                        <div class="chatSection w-90p translate-y-[100%]
+                        mx-auto sec1 my-auto [&.hideChat]:hidden noData gap-5 relative justify-center items-center  
+                       flex flex-col rounded-5">
+                         <div class="titlechat w-full flex flex-col justify-center items-center">
+                            <div class="ME w-full flex gap-2 justify-center items-center">
+                                <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                                    <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                                </span>
+                                <span class="userDetail w-auto flex  flex-col justify-start items-start">
+                                    <div class="userName text-center w-auto flex justify-start font-IRANSansWeb700 font-bold text-base
+                                    leading-25.04 text-textGray">
+                                    من کارشناس فروش هستم
+                                    </div>
+                                
+                                </span>
+                            </div>
+                            <div class="text flex-col w-full  flex justify-center items-center">
+                                <p class="font-IRANSansWeb400 text-center font-normal text-sm leading-21.91 text-text">
+                                    چطوری می‌تونم بهتون کمک کنم ؟ 
+                                </p>
+                            </div>
+                         </div>
+                          <div class="chatInputBox relative  w-90p mx-auto h-[50px] rounded-5">
+                            <textarea id="chat" rows="2" cols="30"  class="chatNodata w-full pt-[.5em] h-[50px] border-[1px] pr-3 outline-none border-mainGray rounded-5"
+                            placeholder="پیام را اینجا تایپ کنید"></textarea>
+                            <span class="Icon w-[34px] h-[34px] SendMessage absolute 
+                             hover:cursor-pointer z-3 left-1 top-2" onclick="sendMessageOne()">
+                                <img src="[##cms.cms.cdn##]/images/StartIcon.png" alt="">
+                            </span>
+                          </div>
+                        </div>
+       
+                        <div class="chatSection sec2 duration-300 opacity-0 [&.showChat]:opacity-[1]
+                        mt-auto  relative  w-full flex flex-col ">
+                         <div class="chats w-[95%] mx-auto gap-10 flex  mt-9 flex-col" id="chatbox" >
+           
+                        
+                         </div>
+                         <div class="chatInputBox fixed bottom-[1em] left-0 right-0 z-2 w-full mx-auto h-[50px] rounded-5 padding-4" style="padding: 0 15px;">
+                          <textarea  id="chat2" rows="2" cols="30"   placeholder="پیام را اینجا تایپ کنید" 
+                          class="w-full h-[50px] border-[1px] pr-4 pt-[.5em] outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"
+                           style="left: 28px;"></textarea>
+                           <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                            style="left: 28px;">
+                               <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                           </span>
+                         </div>
+                       </div>
+                    </basis>
+                    <basis core="group" if="'[##cms.query.q##]' <> ''">
+                        <div class="chatSection sec2 duration-300 opacity-0 showChat [&.showChat]:opacity-[1]
+                        mt-auto  relative  w-full flex flex-col ">
+                         <div class="chats w-[95%] mx-auto gap-10 flex  mt-9 flex-col" id="chatbox" >
+                      
+        
+                        
+                         </div>
+                         <div class="chatInputBox fixed bottom-[1em] left-0 right-0 z-2 w-full mx-auto h-[50px] rounded-5 padding-4" style="padding: 0 15px;">
+                          <textarea  id="chat2" rows="2" cols="30"   placeholder="پیام را اینجا تایپ کنید" 
+                          class="w-full h-[50px] border-[1px] pr-4 pt-[.5em] outline-none border-mainGray rounded-5"
+                            style="margin-bottom: 15px;"
+                           style="left: 28px;"></textarea>
+                           <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                            style="left: 28px">
+                               <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                           </span>
+                         </div>
+                       </div>
+                    </basis>
+                </div>
+              
+            </div>
+        </section>
+
+    </main>
+    <basis core="call" file="script-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script src="[##cms.cms.cdn##]/asset/js/chat-mobile-v3.js"></script>
+<script>
+    if("[##cms.query.q##]" != ""){
+    sendMessage('[##cms.query.q##]')
+}
+</script>
+</body>
+</html>

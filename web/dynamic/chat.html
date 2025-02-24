@@ -3,16 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>چت</title>
+    <title>چت بات</title>
     <meta name="description" content="چت">
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <style>
+        .CopyText path,.like path,.disLike path,.chatNodata path{
+            transition: all 0.5s ease-in-out;
+        }
+        .CopyText:hover path,.chatNodata path{
+            fill: #68737C;
+        }
+        .like:hover path{
+            fill: #00A693;
+        }
+        .disLike:hover path{
+            fill: #F9461C;
+        }
+        /* HTML: <div class="loader"></div> */
+.question_loader {
+  width: 30px;
+  aspect-ratio: 2;
+  --_g: no-repeat radial-gradient(circle closest-side,#004B85 90%,#0000);
+  background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 50%;
+  animation: l3 1s infinite linear;
+  margin: 0 auto;
+  position: relative;
+  top: 130px;
+}
+@keyframes l3 {
+    20%{background-position:0%   0%, 50%  50%,100%  50%}
+    40%{background-position:0% 100%, 50%   0%,100%  50%}
+    60%{background-position:0%  50%, 50% 100%,100%   0%}
+    80%{background-position:0%  50%, 50%  50%,100% 100%}
+}
+        </style>
 </head>
 <body>
     <basis core="api" name="db.chat" url="/service/ai/sending_question" method="post"   triggers="db.send"
     body='{"message":"{##db.send.val##}"}' if="{##db.send.run|(false)##}"
       run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat">
     </basis>
-    <basis core="cookie" name="guid" value="[##cms.cookie.guid##]" />
+
+    <basis core="api" name="db.chat" url="/service/ai/addreaction" method="post"   triggers="db.like"
+    body='{##db.like.val##}' if="{##db.like.run|(false)##}"
+      run="atclient" onprocessed="likeMethod" content-type="application/json" >
+    </basis>
+
+    <basis core="api" name="db.chat" url="/service/ai/addreaction" method="post"   triggers="db.dislike"
+    body='{##db.dislike.val##}' if="{##db.dislike.run|(false)##}"
+      run="atclient" onprocessed="dislikeMethod" content-type="application/json" >
+    </basis>
+
+    <basis core="api" name="db.chat" url="/service/ai/fa/referencecategories" method="get" 
+      run="atclient" onprocessed="makeList" content-type="application/json" >
+    </basis>
+
+
+    
+    
 
     <main class="chat-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
@@ -34,219 +86,12 @@
                       </div>
                   </div>
                   <div class="DropDowns h-full overflow-y-auto w-90p mx-auto flex flex-col">
-                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col">
-                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
-                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
-                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                سوالات عمومی
-                            </span>
-                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                            <ul class="menu w-full flex flex-col">
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
-                                  بیسیس پنل چیست و چه امکاناتی دارد؟
-                                </li>
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟" onclick="selectItem(this,event)">
-                                 بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟
-                                </li>
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟" onclick="selectItem(this,event)">
-                                آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟
-                               </li>
-                                <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟" onclick="selectItem(this,event)">
-                                آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟
-                               </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col">
-                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
-                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
-                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                قیمت‌گذاری و خرید
-                            </span>
-                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                         <ul class="menu w-full flex flex-col">
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val=" هزینه خرید بیسیس پنل چقدر است؟" onclick="selectItem(this,event)">
-                             هزینه خرید بیسیس پنل چقدر است؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا برای هر ماژول هزینه جداگانه‌ای دریافت می‌شود؟" onclick="selectItem(this,event)">
-                           آیا برای هر ماژول هزینه جداگانه‌ای دریافت می‌شود؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="شرایط تمدید سالانه بیسیس پنل چگونه است؟" onclick="selectItem(this,event)">
-                         شرایط تمدید سالانه بیسیس پنل چگونه است؟
-                           </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا برای پشتیبانی فنی نیاز به پرداخت هزینه جداگانه است؟" onclick="selectItem(this,event)">
-                          آیا برای پشتیبانی فنی نیاز به پرداخت هزینه جداگانه است؟
-                           </li>
-                              <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم سفارش خود را ثبت کنم؟" onclick="selectItem(this,event)">
-                        چگونه می‌توانم سفارش خود را ثبت کنم؟
-                           </li>
-                        </ul>
-                        </div>
-                    </div>
-
-                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col">
-                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
-                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
-                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                قابلیت‌ها
-                            </span>
-                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                         <ul class="menu w-full flex flex-col">
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل شامل CRM است؟" onclick="selectItem(this,event)">
-                              آیا بیسیس پنل شامل CRM است؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان مدیریت پروژه در بیسیس پنل وجود دارد؟" onclick="selectItem(this,event)">
-                         آیا امکان مدیریت پروژه در بیسیس پنل وجود دارد؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="سیستم تیکتینگ و پشتیبانی بیسیس پنل چگونه کار می‌کند؟" onclick="selectItem(this,event)">
-                        سیستم تیکتینگ و پشتیبانی بیسیس پنل چگونه کار می‌کند؟
-                           </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا قابلیت یکپارچه‌سازی با سایر نرم‌افزارها وجود دارد؟" onclick="selectItem(this,event)">
-                         آیا قابلیت یکپارچه‌سازی با سایر نرم‌افزارها وجود دارد؟
-                           </li>
-                              <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان افزودن قابلیت‌های سفارشی به پنل وجود دارد؟" onclick="selectItem(this,event)">
-                      آیا امکان افزودن قابلیت‌های سفارشی به پنل وجود دارد؟
-                           </li>
-                        </ul>
-                        </div>
-                    </div>
-                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col">
-                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
-                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
-                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                فنی و پشتیبانی
-                            </span>
-                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                         <ul class="menu w-full flex flex-col">
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل تحت وب است یا نیاز به نصب دارد؟" onclick="selectItem(this,event)">
-                           آیا بیسیس پنل تحت وب است یا نیاز به نصب دارد؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان استفاده از بیسیس پنل روی موبایل وجود دارد؟" onclick="selectItem(this,event)">
-                        آیا امکان استفاده از بیسیس پنل روی موبایل وجود دارد؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم رمز عبور خود را بازیابی کنم؟" onclick="selectItem(this,event)">
-                       چگونه می‌توانم رمز عبور خود را بازیابی کنم؟
-                           </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="پشتیبانی فنی به چه صورتی ارائه می‌شود؟" onclick="selectItem(this,event)">
-                        پشتیبانی فنی به چه صورتی ارائه می‌شود؟
-                           </li>
-                              <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="اگر در استفاده از پنل مشکلی داشته باشم، چگونه می‌توانم گزارش بدهم؟" onclick="selectItem(this,event)">
-                     اگر در استفاده از پنل مشکلی داشته باشم، چگونه می‌توانم گزارش بدهم؟
-                           </li>
-                        </ul>
-                        </div>
-                    </div>
-                    <div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
-                    group/drop w-full flex flex-col">
-                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
-                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
-                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
-                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
-                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                                امنیت و حریم خصوصی
-                            </span>
-                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
-                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
-                            </span>
-                        </div>
-                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
-                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
-                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
-                         <ul class="menu w-full flex flex-col">
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا اطلاعات کاربران در بیسیس پنل امن است؟" onclick="selectItem(this,event)">
-                             آیا اطلاعات کاربران در بیسیس پنل امن است؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                             font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا بیسیس پنل امکان کنترل سطح دسترسی کاربران را دارد؟" onclick="selectItem(this,event)">
-                            آیا بیسیس پنل امکان کنترل سطح دسترسی کاربران را دارد؟
-                            </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="چگونه می‌توانم از داده‌های خود نسخه پشتیبان بگیرم؟" onclick="selectItem(this,event)">
-                            چگونه می‌توانم از داده‌های خود نسخه پشتیبان بگیرم؟
-                           </li>
-                            <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="آیا امکان محدود کردن دسترسی به داده‌ها برای برخی از کاربران وجود دارد؟" onclick="selectItem(this,event)">
-                            آیا امکان محدود کردن دسترسی به داده‌ها برای برخی از کاربران وجود دارد؟
-                           </li>
-                              <li class="menu-item py-[.5em] leading-[22px] pr-5
-                            font-IRANSansWeb500 font-medium text-xs text-text" data-val="چه تدابیری برای جلوگیری از هک شدن پنل در نظر گرفته شده است؟" onclick="selectItem(this,event)">
-                            چه تدابیری برای جلوگیری از هک شدن پنل در نظر گرفته شده است؟
-                           </li>
-                        </ul>
-                        </div>
-                    </div>
-
+                
+                    <div class="question_loader"></div>
         
                  
                   </div>
-<!--            
-                <button class="newConversation-btn mt-auto mb-3 bg-lightBlue w-90p mx-auto rounded-5
-                 flex justify-center items-center gap-2 py-[.5em]">
-                 <span class="icon w-auto flex justify-center ">
-                    <img src="[##cms.cms.cdn##]/images/conver-v3.svg" alt="">
-                 </span>
-                    <span class="text w-auto flex justify-center font-IRANSansWeb700 font-bold text-sm leading-21.91
-                    text-primary">
-                        گفت و گوی جدید
-                    </span>
-                   
-                </button> -->
+
                 </div>
                  <div class="loadChatSection relative h-[80vh] overflow-y-auto w-full flex flex-col border-[1px] bg-White border-[#E8ECEF] rounded-5">
                   <basis core="group" if="'[##cms.query.q##]'=''">
@@ -260,7 +105,7 @@
                              <span class="userDetail w-auto flex flex-col justify-start items-start">
                                  <div class="userName w-auto flex justify-start font-IRANSansWeb700 font-bold text-base
                                  leading-25.04 text-textGray">
-                                 من مدیر فروش هستم
+                                 من کارشناس فروش هستم
                                  </div>
                              
                              </span>
@@ -272,11 +117,15 @@
                          </div>
                       </div>
                        <div class="chatInputBox relative  w-[584px] mx-auto h-[95px] rounded-5">
-                         <textarea id="chat" rows="2" cols="30"  class="chatNodata w-full h-[95px] border-[1px] pr-3 outline-none border-mainGray rounded-5"
-                         placeholder="پیام را اینجا تایپ کنید"></textarea>
+                         <_textarea id="chat" rows="2" cols="30"  class="chatNodata w-full h-[95px] border-[1px] pr-3 outline-none border-mainGray rounded-5"
+                         placeholder="پیام را اینجا تایپ کنید" style="padding-top: 10px;padding-left: 50px;padding-left: 50px;"></_textarea>
                          <span class="Icon w-[34px] h-[34px] SendMessage absolute 
                           hover:cursor-pointer z-3 left-1 top-2" onclick="sendMessageOne()">
-                             <img src="[##cms.cms.cdn##]/images/StartIcon.png" alt="">
+                                                   
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.3409 11.741C19.0298 11.1188 18.7076 10.5188 18.3742 9.94102C18.0409 9.36325 17.6742 8.78547 17.2742 8.20769L19.1409 7.84103L21.9409 10.641L19.3409 11.741ZM3.27422 2.57436C4.82977 2.6188 6.49089 3.07436 8.25755 3.94103C10.0242 4.80769 11.6298 5.96325 13.0742 7.40769C14.0076 8.34103 14.8409 9.34103 15.5742 10.4077C16.3076 11.4744 16.852 12.4744 17.2076 13.4077L13.4076 17.1744C12.4742 16.8188 11.4742 16.2744 10.4076 15.541C9.34089 14.8077 8.34089 13.9744 7.40755 13.041C5.96311 11.5966 4.80755 9.99658 3.94089 8.24102C3.07422 6.48547 2.61866 4.82991 2.57422 3.27436C2.57422 3.18547 2.59089 3.09658 2.62422 3.00769C2.65755 2.9188 2.70755 2.84103 2.77422 2.77436C2.84089 2.70769 2.91866 2.65769 3.00755 2.62436C3.09644 2.59103 3.18533 2.57436 3.27422 2.57436ZM10.6076 10.5744C11.1187 10.0632 11.3742 9.43547 11.3742 8.69103C11.3742 7.94658 11.1187 7.3188 10.6076 6.80769C10.0964 6.29658 9.46311 6.04103 8.70755 6.04103C7.952 6.04103 7.31866 6.29658 6.80755 6.80769C6.29644 7.3188 6.04089 7.94658 6.04089 8.69103C6.04089 9.43547 6.29644 10.0632 6.80755 10.5744C7.31866 11.0855 7.952 11.341 8.70755 11.341C9.46311 11.341 10.0964 11.0855 10.6076 10.5744ZM11.7409 19.3077L10.6409 21.941L7.84089 19.141L8.20755 17.2744C8.78533 17.6744 9.36311 18.0355 9.94089 18.3577C10.5187 18.6799 11.1187 18.9966 11.7409 19.3077ZM0.0408878 1.50769C-0.13689 3.95214 0.263109 6.33547 1.24089 8.65769C2.21866 10.9799 3.76311 13.1966 5.87422 15.3077L5.20755 18.6077C5.11866 19.0521 5.14089 19.4855 5.27422 19.9077C5.40755 20.3299 5.62978 20.6966 5.94089 21.0077L10.1409 25.2077C10.4742 25.541 10.8742 25.6688 11.3409 25.591C11.8076 25.5132 12.1298 25.2521 12.3076 24.8077L14.3409 20.041L20.0409 14.341L24.8076 12.3077C25.252 12.1299 25.5187 11.8077 25.6076 11.341C25.6964 10.8744 25.5742 10.4744 25.2409 10.141L21.0409 5.94103C20.7298 5.62991 20.3576 5.40769 19.9242 5.27436C19.4909 5.14103 19.052 5.1188 18.6076 5.20769L15.3076 5.87436C13.1964 3.76325 10.9798 2.2188 8.65755 1.24103C6.33533 0.263248 3.952 -0.136752 1.50755 0.0410256C1.32977 0.0632479 1.152 0.113248 0.97422 0.191026C0.796442 0.268803 0.640886 0.374359 0.507553 0.507692C0.37422 0.641026 0.268665 0.796581 0.190887 0.974359C0.11311 1.15214 0.0631084 1.32991 0.0408878 1.50769ZM23.5742 17.9077C22.7964 17.1299 21.8464 16.7355 20.7242 16.7244C19.602 16.7132 18.652 17.0966 17.8742 17.8744C17.0964 18.6521 16.7131 19.6021 16.7242 20.7244C16.7353 21.8466 17.1298 22.7966 17.9076 23.5744C18.9742 24.641 20.2353 25.2744 21.6909 25.4744C23.1464 25.6744 24.6076 25.8744 26.0742 26.0744C25.8742 24.6077 25.6742 23.1466 25.4742 21.691C25.2742 20.2355 24.6409 18.9744 23.5742 17.9077ZM21.6742 19.7744C22.052 20.1521 22.3131 20.6077 22.4576 21.141C22.602 21.6744 22.7187 22.2188 22.8076 22.7744C22.252 22.6855 21.7076 22.5744 21.1742 22.441C20.6409 22.3077 20.1853 22.0521 19.8076 21.6744C19.5409 21.4077 19.3964 21.0855 19.3742 20.7077C19.352 20.3299 19.4742 20.0077 19.7409 19.741C20.0076 19.4744 20.3298 19.3466 20.7076 19.3577C21.0853 19.3688 21.4076 19.5077 21.6742 19.7744Z" fill="#C8CCCF"/>
+    </svg>
+    
                          </span>
                        </div>
                      </div>
@@ -289,12 +138,16 @@
                      
                       </div>
                       <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
-                     <textarea id="chat2" rows="2" cols="30"  placeholder="پیام را اینجا تایپ کنید"  
-                        class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"
-                         style="left: 30px;top: 20px;"></textarea>
+                     <_textarea id="chat2" rows="2" cols="30"  placeholder="پیام را اینجا تایپ کنید"  
+                        class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;padding-top: 10px;padding-left: 50px;"
+                         style="left: 30px;top: 20px;padding-left: 50px;"></_textarea>
                          <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
                       style="left: 30px;top: 20px;">
-                            <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                        
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.3409 11.741C19.0298 11.1188 18.7076 10.5188 18.3742 9.94102C18.0409 9.36325 17.6742 8.78547 17.2742 8.20769L19.1409 7.84103L21.9409 10.641L19.3409 11.741ZM3.27422 2.57436C4.82977 2.6188 6.49089 3.07436 8.25755 3.94103C10.0242 4.80769 11.6298 5.96325 13.0742 7.40769C14.0076 8.34103 14.8409 9.34103 15.5742 10.4077C16.3076 11.4744 16.852 12.4744 17.2076 13.4077L13.4076 17.1744C12.4742 16.8188 11.4742 16.2744 10.4076 15.541C9.34089 14.8077 8.34089 13.9744 7.40755 13.041C5.96311 11.5966 4.80755 9.99658 3.94089 8.24102C3.07422 6.48547 2.61866 4.82991 2.57422 3.27436C2.57422 3.18547 2.59089 3.09658 2.62422 3.00769C2.65755 2.9188 2.70755 2.84103 2.77422 2.77436C2.84089 2.70769 2.91866 2.65769 3.00755 2.62436C3.09644 2.59103 3.18533 2.57436 3.27422 2.57436ZM10.6076 10.5744C11.1187 10.0632 11.3742 9.43547 11.3742 8.69103C11.3742 7.94658 11.1187 7.3188 10.6076 6.80769C10.0964 6.29658 9.46311 6.04103 8.70755 6.04103C7.952 6.04103 7.31866 6.29658 6.80755 6.80769C6.29644 7.3188 6.04089 7.94658 6.04089 8.69103C6.04089 9.43547 6.29644 10.0632 6.80755 10.5744C7.31866 11.0855 7.952 11.341 8.70755 11.341C9.46311 11.341 10.0964 11.0855 10.6076 10.5744ZM11.7409 19.3077L10.6409 21.941L7.84089 19.141L8.20755 17.2744C8.78533 17.6744 9.36311 18.0355 9.94089 18.3577C10.5187 18.6799 11.1187 18.9966 11.7409 19.3077ZM0.0408878 1.50769C-0.13689 3.95214 0.263109 6.33547 1.24089 8.65769C2.21866 10.9799 3.76311 13.1966 5.87422 15.3077L5.20755 18.6077C5.11866 19.0521 5.14089 19.4855 5.27422 19.9077C5.40755 20.3299 5.62978 20.6966 5.94089 21.0077L10.1409 25.2077C10.4742 25.541 10.8742 25.6688 11.3409 25.591C11.8076 25.5132 12.1298 25.2521 12.3076 24.8077L14.3409 20.041L20.0409 14.341L24.8076 12.3077C25.252 12.1299 25.5187 11.8077 25.6076 11.341C25.6964 10.8744 25.5742 10.4744 25.2409 10.141L21.0409 5.94103C20.7298 5.62991 20.3576 5.40769 19.9242 5.27436C19.4909 5.14103 19.052 5.1188 18.6076 5.20769L15.3076 5.87436C13.1964 3.76325 10.9798 2.2188 8.65755 1.24103C6.33533 0.263248 3.952 -0.136752 1.50755 0.0410256C1.32977 0.0632479 1.152 0.113248 0.97422 0.191026C0.796442 0.268803 0.640886 0.374359 0.507553 0.507692C0.37422 0.641026 0.268665 0.796581 0.190887 0.974359C0.11311 1.15214 0.0631084 1.32991 0.0408878 1.50769ZM23.5742 17.9077C22.7964 17.1299 21.8464 16.7355 20.7242 16.7244C19.602 16.7132 18.652 17.0966 17.8742 17.8744C17.0964 18.6521 16.7131 19.6021 16.7242 20.7244C16.7353 21.8466 17.1298 22.7966 17.9076 23.5744C18.9742 24.641 20.2353 25.2744 21.6909 25.4744C23.1464 25.6744 24.6076 25.8744 26.0742 26.0744C25.8742 24.6077 25.6742 23.1466 25.4742 21.691C25.2742 20.2355 24.6409 18.9744 23.5742 17.9077ZM21.6742 19.7744C22.052 20.1521 22.3131 20.6077 22.4576 21.141C22.602 21.6744 22.7187 22.2188 22.8076 22.7744C22.252 22.6855 21.7076 22.5744 21.1742 22.441C20.6409 22.3077 20.1853 22.0521 19.8076 21.6744C19.5409 21.4077 19.3964 21.0855 19.3742 20.7077C19.352 20.3299 19.4742 20.0077 19.7409 19.741C20.0076 19.4744 20.3298 19.3466 20.7076 19.3577C21.0853 19.3688 21.4076 19.5077 21.6742 19.7744Z" fill="#C8CCCF"/>
+    </svg>
+    
                         </span>
                       </div>
                     </div>
@@ -308,14 +161,18 @@
                   
                    </div>
                    <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
-                    <textarea  id="chat2" rows="2" cols="30"   placeholder="پیام را اینجا تایپ کنید" 
-                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"
-                     style="left: 30px;top: 20px;"></textarea>
+                    <_textarea  id="chat2" rows="2" cols="30"   placeholder="پیام را اینجا تایپ کنید" 
+                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;padding-top: 10px;padding-left: 50px;"
+                     style="left: 30px;top: 20px;"></_textarea>
                     <!-- <input type="text" id="chat2" placeholder="پیام را اینجا تایپ کنید"
                      class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"> -->
                      <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
                       style="left: 30px;top: 20px;">
-                         <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                        
+<svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19.3409 11.741C19.0298 11.1188 18.7076 10.5188 18.3742 9.94102C18.0409 9.36325 17.6742 8.78547 17.2742 8.20769L19.1409 7.84103L21.9409 10.641L19.3409 11.741ZM3.27422 2.57436C4.82977 2.6188 6.49089 3.07436 8.25755 3.94103C10.0242 4.80769 11.6298 5.96325 13.0742 7.40769C14.0076 8.34103 14.8409 9.34103 15.5742 10.4077C16.3076 11.4744 16.852 12.4744 17.2076 13.4077L13.4076 17.1744C12.4742 16.8188 11.4742 16.2744 10.4076 15.541C9.34089 14.8077 8.34089 13.9744 7.40755 13.041C5.96311 11.5966 4.80755 9.99658 3.94089 8.24102C3.07422 6.48547 2.61866 4.82991 2.57422 3.27436C2.57422 3.18547 2.59089 3.09658 2.62422 3.00769C2.65755 2.9188 2.70755 2.84103 2.77422 2.77436C2.84089 2.70769 2.91866 2.65769 3.00755 2.62436C3.09644 2.59103 3.18533 2.57436 3.27422 2.57436ZM10.6076 10.5744C11.1187 10.0632 11.3742 9.43547 11.3742 8.69103C11.3742 7.94658 11.1187 7.3188 10.6076 6.80769C10.0964 6.29658 9.46311 6.04103 8.70755 6.04103C7.952 6.04103 7.31866 6.29658 6.80755 6.80769C6.29644 7.3188 6.04089 7.94658 6.04089 8.69103C6.04089 9.43547 6.29644 10.0632 6.80755 10.5744C7.31866 11.0855 7.952 11.341 8.70755 11.341C9.46311 11.341 10.0964 11.0855 10.6076 10.5744ZM11.7409 19.3077L10.6409 21.941L7.84089 19.141L8.20755 17.2744C8.78533 17.6744 9.36311 18.0355 9.94089 18.3577C10.5187 18.6799 11.1187 18.9966 11.7409 19.3077ZM0.0408878 1.50769C-0.13689 3.95214 0.263109 6.33547 1.24089 8.65769C2.21866 10.9799 3.76311 13.1966 5.87422 15.3077L5.20755 18.6077C5.11866 19.0521 5.14089 19.4855 5.27422 19.9077C5.40755 20.3299 5.62978 20.6966 5.94089 21.0077L10.1409 25.2077C10.4742 25.541 10.8742 25.6688 11.3409 25.591C11.8076 25.5132 12.1298 25.2521 12.3076 24.8077L14.3409 20.041L20.0409 14.341L24.8076 12.3077C25.252 12.1299 25.5187 11.8077 25.6076 11.341C25.6964 10.8744 25.5742 10.4744 25.2409 10.141L21.0409 5.94103C20.7298 5.62991 20.3576 5.40769 19.9242 5.27436C19.4909 5.14103 19.052 5.1188 18.6076 5.20769L15.3076 5.87436C13.1964 3.76325 10.9798 2.2188 8.65755 1.24103C6.33533 0.263248 3.952 -0.136752 1.50755 0.0410256C1.32977 0.0632479 1.152 0.113248 0.97422 0.191026C0.796442 0.268803 0.640886 0.374359 0.507553 0.507692C0.37422 0.641026 0.268665 0.796581 0.190887 0.974359C0.11311 1.15214 0.0631084 1.32991 0.0408878 1.50769ZM23.5742 17.9077C22.7964 17.1299 21.8464 16.7355 20.7242 16.7244C19.602 16.7132 18.652 17.0966 17.8742 17.8744C17.0964 18.6521 16.7131 19.6021 16.7242 20.7244C16.7353 21.8466 17.1298 22.7966 17.9076 23.5744C18.9742 24.641 20.2353 25.2744 21.6909 25.4744C23.1464 25.6744 24.6076 25.8744 26.0742 26.0744C25.8742 24.6077 25.6742 23.1466 25.4742 21.691C25.2742 20.2355 24.6409 18.9744 23.5742 17.9077ZM21.6742 19.7744C22.052 20.1521 22.3131 20.6077 22.4576 21.141C22.602 21.6744 22.7187 22.2188 22.8076 22.7744C22.252 22.6855 21.7076 22.5744 21.1742 22.441C20.6409 22.3077 20.1853 22.0521 19.8076 21.6744C19.5409 21.4077 19.3964 21.0855 19.3742 20.7077C19.352 20.3299 19.4742 20.0077 19.7409 19.741C20.0076 19.4744 20.3298 19.3466 20.7076 19.3577C21.0853 19.3688 21.4076 19.5077 21.6742 19.7744Z" fill="#C8CCCF"/>
+    </svg>
+    
                      </span>
                    </div>
                  </div>
@@ -447,7 +304,583 @@
     </main>
     
     <script src="[##cms.cms.cdn##]/_js/lenisScroll.js"></script>
-    <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script>
+    <!-- <script src="[##cms.cms.cdn##]/asset/js/chat-v3.js"></script> -->
+     <script>
+           
+
+
+
+let userMessage = document.querySelectorAll('.YOU')
+userMessage.forEach(y=>{
+    let message = y.querySelector('.message').innerHTML
+    y.querySelector('.CopyText').addEventListener('click',()=>{
+        copyToClipboard(message)
+        
+    })
+})
+function copyToClipboard(message) {
+    const text = message;
+    navigator.clipboard.writeText(text)
+        .then(() =>  console.log('copy text'))
+        .catch(err => console.error("error in copy:", err));
+}
+
+
+
+
+
+let langIcon = document.querySelector(".langC"),
+    langSVG = document.querySelector(".langC svg"),
+    langContent = document.querySelector(".langs-content");
+    langIcon.addEventListener('click',(e)=>{
+        e.stopPropagation()
+        langContent.classList.toggle("openLang")
+        langSVG.classList.toggle("rotate")
+        if(document.querySelector('.UserProfile-box .User ')){
+            let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
+            let userProfile = document.querySelector('.UserProfile-box .Icon ')
+            dropBox.classList.remove('openProf')
+            userProfile.classList.remove('openProf')
+        }
+
+    })
+
+    if(document.querySelector('.UserProfile-box .User ')){
+        let userProfile = document.querySelector('.UserProfile-box .Icon ')
+        let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
+        let logoutBtnn = document.querySelector(".logoOut ")
+        document.querySelector('.UserProfile-box .User').addEventListener('click',(e)=>{
+            e.stopPropagation()
+            dropBox.classList.toggle('openProf')
+            userProfile.classList.toggle('openProf')
+            langContent.classList.remove("openLang")
+            langSVG.classList.remove("rotate")
+        })
+        logoutBtnn.addEventListener("click", (e) => {
+            e.stopPropagation()
+            $bc.setSource("query.flag", true)
+            $bc.setSource("db.logout", true)
+            langContent.classList.remove("openLang")
+            langSVG.classList.remove("rotate")
+        })
+    }
+ 
+    function scrollToBottom() {
+        const container = document.querySelector(".chatSection.sec2"); // یا هر المانی که داری
+        const lastChild = container.lastElementChild;
+        if (lastChild) {
+            lastChild.scrollIntoView({ behavior: "smooth" });
+        }
+    }
+    let drops = document.querySelectorAll('.DropDowns .Drop');
+    function toggleMenu(el,event){
+        let dropdownMenu = el.querySelector('.dropdown-menu');
+        let titleDropdown = el.querySelector('.title-dropdown');
+        let icon = el.querySelector('.icon');
+        let hasItems = dropdownMenu && dropdownMenu.querySelector('ul li');
+    
+        if (hasItems) {
+            titleDropdown.addEventListener('click', (e) => {
+                const openitems = document.querySelectorAll(".open")
+                openitems.forEach(ee => {
+                    ee.classList.remove('open');
+                })
+                const openDropDownMenu = document.querySelectorAll(".dropdown-menu")
+                openDropDownMenu.forEach(ee => {
+                    ee.style.height = '0px';
+                    ee.style.opacity = '0';
+                })
+                // تغییر وضعیت دراپ‌داون انتخاب‌شده
+                el.classList.toggle('open');
+    
+                if (el.classList.contains('open')) {
+                    dropdownMenu.style.height = dropdownMenu.scrollHeight + 'px';
+                    dropdownMenu.style.opacity = '1';
+                } else {
+                    dropdownMenu.style.height = '0px';
+                    dropdownMenu.style.opacity = '0';
+                }
+            });
+        } else {
+            if (icon) icon.style.display = "none"; // مخفی کردن آیکون اگر لیستی وجود نداشته باشد
+        }
+    }
+ 
+    
+document.addEventListener("click", (e) => {
+    langContent.classList.remove("openLang")
+    langSVG.classList.remove("rotate")
+    if(document.querySelector('.UserProfile-box .User ')){
+        let dropBox = document.querySelector('.UserProfile-box .UserDropdown')
+        let userProfile = document.querySelector('.UserProfile-box .Icon ')
+        dropBox.classList.remove('openProf')
+        userProfile.classList.remove('openProf')
+    }
+    if(drops){
+        
+    }
+});
+if(document.querySelector('.Popup-container')){
+    let PopUp = document.querySelector('.Popup-container')
+    let popBTN = document.querySelector('.login-button')
+    let popCloseBTN = document.querySelector('.Popup-container .ClosePop')
+    let popc = document.querySelector('.Popup-container')
+    PopUp.addEventListener('click',(e)=>{
+        if (e.target == popc) {  // اگر کلیک روی خود popc نباشه (یعنی روی فرزند مثل فرم یا دکمه باشد)
+            e.stopPropagation();  // پراپگیشن رو متوقف می‌کنیم            PopUp.classList.toggle('open')
+            // popc.innerHTML=LoginTemplate
+        }
+    
+      
+    })
+    let LoginTemplate =`   <div class="Login-popup overflow-hidden  group-[&.open]/pop:translate-y-[0] group-[&.open]/pop:opacity-[1]
+     delay-100 translate-y-100 duration-500 opacity-0
+    rounded-5 bg-White w-max px-[1em] pt-[2em] pb-1 flex flex-col relative justify-center items-center">
+             <span class="ClosePop absolute top-[1em] left-[1em] hover:cursor-pointer">
+                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <path
+                         d="M6.9998 8.40005L2.0998 13.3C1.91647 13.4834 1.68314 13.575 1.3998 13.575C1.11647 13.575 0.883138 13.4834 0.699805 13.3C0.516471 13.1167 0.424805 12.8834 0.424805 12.6C0.424805 12.3167 0.516471 12.0834 0.699805 11.9L5.5998 7.00005L0.699805 2.10005C0.516471 1.91672 0.424805 1.68338 0.424805 1.40005C0.424805 1.11672 0.516471 0.883382 0.699805 0.700049C0.883138 0.516715 1.11647 0.425049 1.3998 0.425049C1.68314 0.425049 1.91647 0.516715 2.0998 0.700049L6.9998 5.60005L11.8998 0.700049C12.0831 0.516715 12.3165 0.425049 12.5998 0.425049C12.8831 0.425049 13.1165 0.516715 13.2998 0.700049C13.4831 0.883382 13.5748 1.11672 13.5748 1.40005C13.5748 1.68338 13.4831 1.91672 13.2998 2.10005L8.3998 7.00005L13.2998 11.9C13.4831 12.0834 13.5748 12.3167 13.5748 12.6C13.5748 12.8834 13.4831 13.1167 13.2998 13.3C13.1165 13.4834 12.8831 13.575 12.5998 13.575C12.3165 13.575 12.0831 13.4834 11.8998 13.3L6.9998 8.40005Z"
+                         fill="#68737C" />
+                 </svg>
+             </span>
+             <div class="Logo w-auto mb-8 flex justify-center items-center mx-auto">
+                 <a href="" class="w-auto flex justify-center items-center">
+                     <img src="images/logo-v3.png" alt="">
+                 </a>
+             </div>
+    
+    
+            
+     
+    
+             <p style="display: none;">{##db.userLogin.runtoken|()##}</p>
+     
+             <form class="userLogin overflow-hidden min-w-[320px] w-full flex flex-col gap-[1em] pb-[2.8em]"
+                 name="db.userLogin" bc-triggers="submit">
+                 <div class="Input-Row w-full flex" dir="rtl">
+                     <input type="text" name="UserName" placeholder="ایمیل، شماره موبایل یا نام کاربری را وارد کنید"
+                         class="w-full border-[1px] border-lightBlue rounded-5 bg-White outline-none placeholder:font-IRANSansWeb400
+            placeholder:font-normal placeholder:text-xs h-[50px] placeholder:leading-14.06 font-ABeeZee400
+             placeholder:text-placeholder pr-[1em]">
+                 </div>
+    
+                 <div class="BTN w-full flex justify-center items-center">
+                     <button type="submit" class="submit-btn firstBtn min-w-[320px] w-90p absolute bottom-[3.5em] left-0 right-0 mx-auto
+               [&.goLeft]:translate-x-[115%] hover:bg-hoverBtnDprimary duration-200
+            py-[.8em] bg-primary flex justify-center items-center rounded-5 
+            text-White  font-IRANSansWeb400 font-normal text-sm ">
+                         مرحله بعد
+                     </button>
+                 </div>
+             </form>
+             <span class="copyRight my-3 w-full justify-end items-end">
+                 <img src="images/trust-logo-v3.png" alt="">
+             </span>
+         </div>`
+    function refreshAndFetch() {
+        let url = "http://nljpdiw.undertest.ir/dmntoken-v3.inc?nocache=" + new Date().getTime(); // جلوگیری از کش شدن
+    
+        fetch(url) 
+            .then(response => response.text())
+            .then(html => {
+                let parser = new DOMParser();
+                let doc = parser.parseFromString(html, "text/html");
+                let tokenValue = doc.querySelector(".dmntoken").textContent;
+             $bc.setSource('db.token',tokenValue)
+             
+            })
+            .catch(error => console.error("خطا در دریافت مقدار:", error));
+    }
+    popBTN.addEventListener('click', (e) => {
+        //    run token api
+         $bc.setSource('get.dmntoken',true)
+        PopUp.classList.toggle('open')
+        refreshAndFetch()
+        $bc.setSource('run.token',true)
+    })
+    popCloseBTN.addEventListener('click', (e) => {
+        PopUp.classList.toggle('open')
+           $bc.setSource('run.api',true)
+           $bc.setSource('get.dmntoken',false)
+        //    popc.innerHTML=LoginTemplate
+    })
+}
+
+
+const lenis = new Lenis({ smoothWheel: !0, wheelMultiplier: 2 });
+function raf(e) {
+    lenis.raf(e),
+     requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf)
+lenis.on('scroll',(e)=>{
+
+if(e.scroll==0){
+    document.querySelector('header').classList.remove('bgWhite')
+}
+else{
+    document.querySelector('header').classList.add('bgWhite')
+}
+})
+
+async function loadingchat(){
+    const chatvalue = document.querySelector("#chat")
+    const newDiv = document.createElement("div")
+    newDiv.setAttribute("class" , "YOU w-full flex gap-6 justify-start items-start")
+    newDiv.innerHTML = `
+   
+                <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                    <img src="/images/user1-v3.png" alt="basis" title="basis" class="object-contain">
+                </span> 
+                <div class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start " id="typewriter">
+                    <div class="  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                    leading-[30px] text-sm  current_section" id="current_section">
+                 <div class="typing-loader">
+    is typing <span></span><span></span><span></span>
+</div>
+                    </div>
+                    <div class="contact-c w-full flex justify-end items-center gap-2">
+                        <span class="CopyText hover:cursor-pointer" onclick="opcytext(this,event)" >
+                         
+<svg width="15" height="18" viewBox="0 0 15 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 14.0003C5.04167 14.0003 4.64931 13.8371 4.32292 13.5107C3.99653 13.1844 3.83333 12.792 3.83333 12.3337V2.33366C3.83333 1.87533 3.99653 1.48296 4.32292 1.15658C4.64931 0.830187 5.04167 0.666992 5.5 0.666992H13C13.4583 0.666992 13.8507 0.830187 14.1771 1.15658C14.5035 1.48296 14.6667 1.87533 14.6667 2.33366V12.3337C14.6667 12.792 14.5035 13.1844 14.1771 13.5107C13.8507 13.8371 13.4583 14.0003 13 14.0003H5.5ZM5.5 12.3337H13V2.33366H5.5V12.3337ZM2.16667 17.3337C1.70833 17.3337 1.31597 17.1705 0.989583 16.8441C0.663194 16.5177 0.5 16.1253 0.5 15.667V4.83366C0.5 4.59755 0.579861 4.39963 0.739583 4.23991C0.899306 4.08019 1.09722 4.00033 1.33333 4.00033C1.56944 4.00033 1.76736 4.08019 1.92708 4.23991C2.08681 4.39963 2.16667 4.59755 2.16667 4.83366V15.667H10.5C10.7361 15.667 10.934 15.7469 11.0938 15.9066C11.2535 16.0663 11.3333 16.2642 11.3333 16.5003C11.3333 16.7364 11.2535 16.9344 11.0938 17.0941C10.934 17.2538 10.7361 17.3337 10.5 17.3337H2.16667Z" fill="#C8CCCF"/>
+</svg>
+
+                        </span>
+                        <span class="disLike hover:cursor-pointer" onclick="dislikeMessage(this,event)">
+                          
+<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg" >
+<path id="dislikeicon" d="M2.50016 11.3333C2.05572 11.3333 1.66683 11.1667 1.3335 10.8333C1.00016 10.5 0.833496 10.1111 0.833496 9.66667V8C0.833496 7.90278 0.847385 7.79861 0.875163 7.6875C0.902941 7.57639 0.930718 7.47222 0.958496 7.375L3.4585 1.5C3.5835 1.22222 3.79183 0.986111 4.0835 0.791667C4.37516 0.597222 4.68072 0.5 5.00016 0.5H14.1668V11.3333L9.16683 16.2917C8.9585 16.5 8.71197 16.6215 8.42725 16.6562C8.14252 16.691 7.86822 16.6389 7.60433 16.5C7.34044 16.3611 7.146 16.1667 7.021 15.9167C6.896 15.6667 6.86822 15.4097 6.93766 15.1458L7.87516 11.3333H2.50016ZM12.5002 10.625V2.16667H5.00016L2.50016 8V9.66667H10.0002L8.87516 14.25L12.5002 10.625ZM16.6668 0.5C17.1252 0.5 17.5175 0.663194 17.8439 0.989583C18.1703 1.31597 18.3335 1.70833 18.3335 2.16667V9.66667C18.3335 10.125 18.1703 10.5174 17.8439 10.8437C17.5175 11.1701 17.1252 11.3333 16.6668 11.3333H14.1668V9.66667H16.6668V2.16667H14.1668V0.5H16.6668Z" fill="#C8CCCF"/>
+</svg>
+
+                        </span>
+                        <span class="like hover:cursor-pointer" onclick="likeMessage(this,event)">
+                           
+<svg width="19" height="17" viewBox="0 0 19 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path id="likeicon" d="M16.4998 5.66634C16.9443 5.66634 17.3332 5.83301 17.6665 6.16634C17.9998 6.49967 18.1665 6.88856 18.1665 7.33301V8.99967C18.1665 9.0969 18.1526 9.20106 18.1248 9.31217C18.0971 9.42329 18.0693 9.52745 18.0415 9.62467L15.5415 15.4997C15.4165 15.7775 15.2082 16.0136 14.9165 16.208C14.6248 16.4025 14.3193 16.4997 13.9998 16.4997H4.83317V5.66634L9.83317 0.708008C10.0415 0.499674 10.288 0.378147 10.5728 0.343424C10.8575 0.308702 11.1318 0.360786 11.3957 0.499674C11.6596 0.638563 11.854 0.833008 11.979 1.08301C12.104 1.33301 12.1318 1.58995 12.0623 1.85384L11.1248 5.66634H16.4998ZM6.49984 6.37467V14.833H13.9998L16.4998 8.99967V7.33301H8.99984L10.1248 2.74967L6.49984 6.37467ZM2.33317 16.4997C1.87484 16.4997 1.48248 16.3365 1.15609 16.0101C0.829698 15.6837 0.666504 15.2913 0.666504 14.833V7.33301C0.666504 6.87467 0.829698 6.48231 1.15609 6.15592C1.48248 5.82954 1.87484 5.66634 2.33317 5.66634H4.83317V7.33301H2.33317V14.833H4.83317V16.4997H2.33317Z" fill="#C8CCCF"/>
+</svg>
+
+                        </span>
+                    </div>
+                </div>
+            
+    `
+    document.querySelector("#chatbox").appendChild(newDiv)
+    scrollToBottom()
+}
+async function setChatFirst(args){
+    const response = args.response;
+    const responseJson = await response.json();
+    const typingSpeed = 200;
+    const text = responseJson.message
+    document.querySelector('.typing-loader').innerHTML=''
+    document.querySelector("#current_section").setAttribute("data-id",responseJson.id)
+    for(var i = 0 ; i < text.length ; i++){
+        let textF = text;
+        textF = text.replace(/(?:Typing|\s*Typing\s*)/gi, "");
+        typeText(textF , i )
+
+    }
+
+document.querySelector('.typing-loader').style.display='none'
+}
+function typeText(text , i){
+    setTimeout(() => {
+        
+        document.querySelector("#current_section").textContent += text.charAt(i);   
+        scrollToBottom() 
+    }, i* 50);
+    
+}
+const detectLanguage = (text) =>{
+    const persianRegex = /[\u0600-\u06FF]/; // محدوده یونیکد حروف فارسی
+    const englishRegex = /[a-zA-Z]/; // حروف انگلیسی
+    let chatbox = document.querySelector('#chatbox')
+    if (persianRegex.test(text)) {
+
+        // chatbox.style.direction ='rtl'
+
+    } else if (englishRegex.test(text)) {
+        //  chatbox.style.direction ='ltr'
+ 
+
+    } else {
+
+        return "نامشخص";
+    }
+}
+let firstinput =document?.querySelector('_textarea.chatNodata')
+let chaticons = document.querySelectorAll('.SendMessage')
+document.querySelector('.loadChatSection').style.overflow='hidden'
+
+const opacityIcon =(input)=>{
+   let typer = input;
+    function handleKeyPress(e) {
+        chaticons.forEach(c=>{
+            c.style.opacity = '.5'
+        })
+    }
+    function handleKeyUp(e) {
+        chaticons.forEach(c=>{
+            c.style.opacity = '1'
+        })
+    }
+    typer.addEventListener("keypress", handleKeyPress)
+    typer.addEventListener("keyup", handleKeyUp)
+}
+if(firstinput){
+    opacityIcon(firstinput)
+}
+
+const sendMessageOne = ()=>{
+    document.querySelector('.loadChatSection ').style.overflowY='auto'
+    let input = document.querySelector('_textarea.chatNodata')
+    let chatsecNodata = document.querySelector('div.sec1')
+    let chatsec = document.querySelector('div.sec2')
+    detectLanguage(input.value)
+    scrollToBottom()
+    if(input.value != ''){
+      chatsecNodata.classList.add('hideChat')
+      chatsec.classList.add('showChat')
+      sendMessage(input.value)
+    }
+    else{
+        AlertMessage('Error', 'لطفا فیلد را پر کنید')
+    }
+  
+
+}
+const chatvalue = document?.querySelector("#chat2")
+opacityIcon(chatvalue)
+function sendMessage(value){
+      document.querySelector('.loadChatSection ').style.overflowY='auto'
+   
+//       if( document.querySelector('#chat')){
+//  document.querySelector('#chat').style.overflowY='auto'
+//       }
+//       if(document.querySelector('#chat2')){
+//            document.querySelector('#chat2').style.overflowY='auto'
+//       }
+    if(!value){
+        let chatvalue2 = document.querySelector("#chat2")
+        detectLanguage(chatvalue2.value)
+        const newDiv = document.createElement("div")
+        newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
+        newDiv.innerHTML = `
+        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        </span> 
+        <span class="userDetail w-auto flex flex-col justify-start items-start">
+        <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+        leading-[22px] text-text">
+        شما
+        </div>
+        <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+        leading-[15.65px] text-sm">
+        ${chatvalue2.value}
+    
+        </div>
+        </span>
+        `
+        document.querySelector("#chatbox").appendChild(newDiv)
+        $bc.setSource("db.send" ,{
+            "run" : true,
+            "val" : chatvalue2.value
+        })
+        chatvalue2.value=""
+        document.querySelector("#current_section")?.removeAttribute("id")
+    }
+    else{
+        detectLanguage(value)
+        const newDiv = document.createElement("div")
+        newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
+        newDiv.innerHTML = `
+        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        </span> 
+        <span class="userDetail w-auto flex flex-col justify-start items-start">
+        <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+        leading-[22px] text-text">
+        شما
+        </div>
+        <div class=" w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+        leading-[15.65px] text-sm">
+        ${value}
+    
+        </div>
+        </span>
+        `
+        document.querySelector("#chatbox").appendChild(newDiv)
+        $bc.setSource("db.send" ,{
+            "run" : true,
+            "val" :value
+        })
+        value=""
+        document.querySelector("#current_section")?.removeAttribute("id")
+    }
+    scrollToBottom()
+   
+}
+
+let chatinput =document?.querySelector('#chat')
+chatinput?.addEventListener("keydown", function (e) {
+        let input = document.querySelector('_textarea.chatNodata')
+        let chatsecNodata = document.querySelector('div.sec1')
+        let chatsec = document.querySelector('div.sec2')
+        if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+            e.preventDefault()
+                if(input.value != ''){
+                        document.querySelector('.loadChatSection ').style.overflowY='auto'
+                    chatsecNodata.classList.add('hideChat')
+                    chatsec.classList.add('showChat')
+                    sendMessage(input.value)
+                     chatinput.value = ''
+                  }
+  }
+    });
+    let chatinput2 =document.querySelector('#chat2')
+    chatinput2.addEventListener("keydown", function (e) {
+        
+            if (e.keyCode == 13) {  //checks whether the pressed key is "Enter"
+                e.preventDefault()
+                    if(chatinput2.value != ''){
+                
+                        sendMessage(chatinput2.value)
+                        chatinput2.value = ''
+                      }
+      }
+        });
+function opcytext(el, event){
+    const parent = el.closest(".userDetail")
+    const copyElement = parent.querySelector(".current_section")
+    CopyToClipboard(copyElement)
+}
+function CopyToClipboard(containerid) {
+if (document.selection) {
+var range = document.body.createTextRange();
+range.moveToElementText(containerid);
+range.select().createTextRange();
+document.execCommand("copy");
+} else if (window.getSelection) {
+var range = document.createRange();
+range.selectNode(containerid);
+window.getSelection().addRange(range);
+document.execCommand("copy");
+//  alert("Text has been copied, now paste in the text-area")
+AlertMessage('Success', 'متن در clipboard کپی شد.')
+}
+}
+function selectItem(el , event){
+    scrollToBottom()
+    if(!firstinput?.classList.contains('hideChat')){
+        let chatsecNodata = document?.querySelector('div.sec1')
+        let chatsec = document.querySelector('div.sec2')
+          chatsecNodata?.classList.add('hideChat')
+          chatsec.classList.add('showChat')
+          document.querySelector("#chat2").value = el.getAttribute("data-val")
+          sendMessage(el.getAttribute("data-val"))
+    }
+    else{
+        document.querySelector("#chat2").value = el.getAttribute("data-val")
+        // sendMessage(el.getAttribut("data-val"))
+    }
+
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const sidebar = document.querySelector(".DropDowns");
+    sidebar.style.overflowY = "auto";
+});
+function likeMessage(el, event){
+    const messageid = el.closest("#typewriter").querySelector(".current_section").getAttribute("data-id")
+    document.querySelector("#likeicon").style.fill="#00A693"
+    let json= {
+	"messageid":messageid,
+	"reactionid ":1
+}
+
+    $bc.setSource("db.like",{
+        "val" : JSON.stringify(json) ,
+        "run" : true
+    })
+}
+async function likeMethod(args){
+    const response = args.response;
+    const responseJson = await response.json();
+    if(responseJson.errorid == 5){
+        AlertMessage('Success', 'متن مورد نظر پسندیده شد.')
+    }
+    else{
+        AlertMessage('error', 'خطا در انجام عملیات')
+    }
+}
+async function dislikeMethod(args){
+    const response = args.response;
+    const responseJson = await response.json();
+    if(responseJson.errorid == 5){
+        AlertMessage('Success', 'متن مورد نظر پسندیده نشد.')
+    }
+    else{
+        AlertMessage('error', 'خطا در انجام عملیات')
+    }
+}
+
+function dislikeMessage(el, event){
+    const messageid = el.closest("#typewriter").querySelector(".current_section").getAttribute("data-id")
+    document.querySelector("#dislikeicon").style.fill="#F9461C"
+    let json= {
+	"messageid":messageid,
+	"reactionid ":0
+}
+
+    $bc.setSource("db.dislike",{
+        "val" : JSON.stringify(json) ,
+        "run" : true
+    })
+}
+async function makeList(args){
+    const response = args.response;
+    const responseJson = await response.json();
+    responseJson.forEach(e => {
+        const newDrop = document.createElement("div") 
+        let question = ""
+        e.questions	.forEach(q => {
+            
+            question += `  <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="${q}" onclick="selectItem(this,event)">
+                                  ${q}
+                                </li>`
+        })
+        
+        newDrop.innerHTML = `<div class="Drop max-h-[55px] hover:cursor-pointer duration-1000 
+                    group/drop w-full flex flex-col" onclick="toggleMenu(this, event)">
+                        <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                        border-l-White border-r-White border-b-White border-r-[4px] border-l-[4px]
+                         group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+                       group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
+                            <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                                ${e.title}
+                            </span>
+                            <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                            </span>
+                        </div>
+                        <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+                         flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                         group-[&.open]/drop:py-[.5em] bg-[#E5E5E540] rounded-lg">
+                            <ul class="menu w-full flex flex-col" style="padding-left: 15px;padding-bottom: 15px;">
+                             ${question}
+                            </ul>
+                        </div>
+                    </div>`
+                    document.querySelector(".question_loader")?.remove()
+                    document.querySelector(".DropDowns").appendChild(newDrop)
+    })
+  
+}
+if("[##cms.query.q##]" != ""){
+    sendMessage('[##cms.query.q##]')
+}
+        </script>
 
 </body>
 </html>

@@ -1,140 +1,28 @@
-<basis
-  core="dbsource"
-  source="basiscore"
-  name="db"
-  lid="1"
-  mid="1"
-  usedforid="[##cms.query.id##]"
->
-  <member type="view" name="show" preview="false"></member>
-</basis>
-<basis
-  core="dbsource"
-  source="basiscore"
-  name="db"
-  lid="1"
-  mid="1"
-  catid="201687"
->
-  <member
-    type="list"
-    name="articles"
-    perpage="3"
-    pageno=" [##cms.query.pageid|(1)##]  "
-    preview="false"
-    link="showblog"
-    propertyid="7244,7249"
-  />
-</basis>
-<basis core="dbsource" source="hosting" name="tag" urlid="[##cms.seo.urlid##]">
-    <member type="list" name="list" request="taglist" preview=""  ></member>
-  </basis>
-  <basis core="dbsource" source="media" name="db" lid="1" sourcemid="article" usedforid="[##cms.query.id##]" >
-      <member type="list" name="media" perpage="1"  format="4"  preview="" />
-  </basis>
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta
-    name="description"
-    content="[##cms.seo.description##]"
-  />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[##cms.seo.title##]</title>
-  <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/outputDesk-v3.css">
-  <basis core="print" datamembername="tag.list">  
-    <face filter="key <> 'canonical'">      
-      <meta property="@key" content="@value" />
-  </face>
-  </basis>
-  <link rel="canonical" href="https://[##cms.request.full-url##]" />
-  <basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="[##cms.query.id##]" >
-    <member request="json-ld" type="scalar" name="json"  />
-    </basis>
-    
-    <script  type="application/ld+json" >
-    [##db.json.Column1##]
-    </script>
-    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-</head>
-<body>
-    <main class="ReleaseNote-Show w-full overflow-hidden" dir="rtl">
-      <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
-        <div class="Title-C mt-[10em] relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-7">
-            <basis core="print" datamembername="db.show">
-                <layout> @child </layout>
-                <else-layout> اطلاعات وارد نشده است </else-layout>
-                <face filter="prpID = 7243">
-                    <h1 class="font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-textGray text-center
-                    flex gap-1">
-                          
-                            @Answer
-                    
-                    </h1>
-                </face>
-              </basis>
-              <!-- <basis core="print" datamembername="db.show">
-                <layout> 
-                    <div class="text w-full flex flex-col justify-center items-center max-w-[860px]">
-                    @child 
-                    </div>
-                </layout>
-                <else-layout> اطلاعات وارد نشده است </else-layout>
-                <face filter="prpID = 7243">
-                    <p class="font-IRANSansWeb700 font-bold text-lg leading-[50px] text-text text-justify">
-                          
-                            @Answer
-                    
-                    </p>
-                </face>
-              </basis> -->
-         
-        </div>
-        <section class="section-1 z-1 min-h-screen relative w-full flex flex-col  bg-White">
-            <div class="Bg-gray-sec w-screen z-2 absolute h-screen before:content-[''] before:absolute before:left-0 before:top-[-100px]
-            before:w-full before:h-[70%] pointer-events-none before:bg-White before:z-0 bg-bgGray ">
-            </div>
-            <div class="Box mt-[8em] bg-White w-80p flex relative z-[2] mx-[auto] flex-col justify-center items-center gap-6 rounded-lg">
-                <div class="Inner w-full mx-auto py-[5%] px-[5%] flex flex-col gap-[1.3em] ">
-                    <basis core="print" datamembername="db.show">
-                        <layout>
-                             @child
-                         </layout>
-                        <else-layout> اطلاعات وارد نشده است </else-layout>
-                      <face filter="typeid not in (150,159,160,161,162)and prpID not in (7244) ">
-                        <div class="Row w-full flex flex-col justify-start items-start gap-[.5em]">
-                            <span class="title font-IRANSansWeb700 font-bold text-base leading-[25px] text-textGray ">
-                                @text
-                            </span>
-                            <div class="text mr-[3em] font-IRANSansWeb400 font-normal text-sm leading-[25px] text-text">
-                                @largetext
-                            </div>
-                        </div>
-                      </face>
-                      </basis>
-                   
-                </div>
-            </div>
-         
-       </section>
-       <section class="section-8  w-full flex flex-col pb-[3em] mt-[6.5em] bg-lightBG ">
-        <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
-            <h5 class="font-IRANSansWeb700 font-bold text-[40px] leading-[67.3px] text-textGray text-center">
-                برای شروع آماده‌اید ؟
-            </h5>
-            <p class="font-IRANSansWeb700 font-bold text-lg leading-[30.52px] text-textGray text-center">
-                زمان خود را از دست ندهید و درخواست دهید !
-            </p>
-            <a href="/demo" class="button w-max mt-4 px-[4em] py-[1em] hover:bg-hoverBtnDprimary duration-200 bg-primary flex justify-center items-center rounded-5">
-                <button type="button " class="w-auto flex justify-center
-                 text-White items-center font-IRANSansWeb700 font-normal text-2xl leading-[40.17px] rounded-5">
-                    درخواست دمو
-                </button>
-            </a>
-        </div>
-    </section>
-    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
-    </main> 
-    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-</body>
-</html>
+<div class="Drop overflow-x-hidden hover:cursor-pointer duration-1000 
+group/drop w-full flex flex-col">
+    <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+    border-l-White border-r-White border-b-[#004B85] border-r-[4px] border-l-[4px]
+     group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+   group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
+        <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+            سوالات عمومی
+        </span>
+        <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+            <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+        </span>
+    </div>
+    <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+     flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+     group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+        <ul class="menu w-full flex flex-col">
+       
+
+        </ul>
+    </div>
+</div>
+
+
+<li class="menu-item py-[.5em] leading-[22px] pr-5
+font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
+ بیسیس پنل چیست و چه امکاناتی دارد؟
+</li>
