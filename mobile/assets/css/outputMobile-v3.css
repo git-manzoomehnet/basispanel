@@ -751,6 +751,26 @@ video {
   top: 50%;
 }
 
+.top-\[1\.5em\] {
+  top: 1.5em;
+}
+
+.left-\[4em\] {
+  left: 4em;
+}
+
+.left-\[8em\] {
+  left: 8em;
+}
+
+.right-\[8em\] {
+  right: 8em;
+}
+
+.right-\[7em\] {
+  right: 7em;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -793,6 +813,10 @@ video {
 
 .z-\[999\] {
   z-index: 999;
+}
+
+.z-\[99\] {
+  z-index: 99;
 }
 
 .float-start {
@@ -1076,6 +1100,10 @@ video {
   margin-top: auto;
 }
 
+.mt-\[4em\] {
+  margin-top: 4em;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1185,6 +1213,10 @@ video {
 
 .h-\[100px\] {
   height: 100px;
+}
+
+.h-\[100svh\] {
+  height: 100svh;
 }
 
 .h-\[126px\] {
@@ -1327,6 +1359,10 @@ video {
   height: 95px;
 }
 
+.h-\[97\%\] {
+  height: 97%;
+}
+
 .h-fit {
   height: -moz-fit-content;
   height: fit-content;
@@ -1340,8 +1376,16 @@ video {
   height: 100vh;
 }
 
+.h-\[90\%\] {
+  height: 90%;
+}
+
 .max-h-\[299px\] {
   max-height: 299px;
+}
+
+.max-h-\[55px\] {
+  max-height: 55px;
 }
 
 .max-h-\[600px\] {
@@ -1794,6 +1838,11 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.translate-y-\[100\%\] {
+  --tw-translate-y: 100%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .translate-y-\[10px\] {
   --tw-translate-y: 10px;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1836,6 +1885,16 @@ video {
 
 .translate-y-\[73px\] {
   --tw-translate-y: 73px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[\] {
+  --tw-translate-x: ;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-\[-100\%\] {
+  --tw-translate-x: -100%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -3014,14 +3073,29 @@ video {
   border-color: rgb(104 115 124 / var(--tw-border-opacity, 1));
 }
 
+.border-b-White {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
 .border-b-mainGray {
   --tw-border-opacity: 1;
   border-bottom-color: rgb(200 204 207 / var(--tw-border-opacity, 1));
 }
 
+.border-l-White {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
 .border-l-mainGray {
   --tw-border-opacity: 1;
   border-left-color: rgb(200 204 207 / var(--tw-border-opacity, 1));
+}
+
+.border-r-White {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
 .border-r-mainGray {
@@ -3032,6 +3106,15 @@ video {
 .border-t-mainGray {
   --tw-border-opacity: 1;
   border-top-color: rgb(200 204 207 / var(--tw-border-opacity, 1));
+}
+
+.border-b-\[White\] {
+  border-bottom-color: White;
+}
+
+.border-b-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
 }
 
 .bg-White {
@@ -3515,6 +3598,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-\[\.5em\] {
+  padding-top: .5em;
 }
 
 .pt-\[116px\] {
@@ -4422,6 +4509,10 @@ video {
 
 .duration-\[1s\] {
   transition-duration: 1s;
+}
+
+.duration-700 {
+  transition-duration: 700ms;
 }
 
 .ease-in {
@@ -6254,6 +6345,16 @@ footer .Right .text p{
   border-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
 }
 
+.group\/drop:hover .group-hover\/drop\:border-l-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop:hover .group-hover\/drop\:border-r-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
 .group\/purpose:hover .group-hover\/purpose\:bg-lightBlue {
   --tw-bg-opacity: 1;
   background-color: rgb(230 237 243 / var(--tw-bg-opacity, 1));
@@ -6358,6 +6459,16 @@ footer .Right .text p{
 .group\/drop.open .group-\[\&\.open\]\/drop\:border-\[\#004B85\] {
   --tw-border-opacity: 1;
   border-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop.open .group-\[\&\.open\]\/drop\:border-l-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
+}
+
+.group\/drop.open .group-\[\&\.open\]\/drop\:border-r-\[\#004B85\] {
+  --tw-border-opacity: 1;
+  border-right-color: rgb(0 75 133 / var(--tw-border-opacity, 1));
 }
 
 .group\/Alert.Error .group-\[\&\.Error\]\/Alert\:bg-red {
@@ -6515,6 +6626,19 @@ footer .Right .text p{
   }
 }
 
+.\[\&\.OpenDrop\]\:pointer-events-auto.OpenDrop {
+  pointer-events: auto;
+}
+
+.\[\&\.OpenDrop\]\:translate-x-\[0\].OpenDrop {
+  --tw-translate-x: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&\.OpenDrop\]\:opacity-\[1\].OpenDrop {
+  opacity: 1;
+}
+
 .\[\&\.Show\]\:translate-x-\[0\].Show {
   --tw-translate-x: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -6574,6 +6698,10 @@ footer .Right .text p{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.\[\&\.hideChat\]\:hidden.hideChat {
+  display: none;
+}
+
 .\[\&\.menu-opened\]\:h-svh.menu-opened {
   height: 100svh;
 }
@@ -6621,4 +6749,8 @@ footer .Right .text p{
 .\[\&\.rotate\]\:rotate-\[180deg\].rotate {
   --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.\[\&\.showChat\]\:opacity-\[1\].showChat {
+  opacity: 1;
 }
