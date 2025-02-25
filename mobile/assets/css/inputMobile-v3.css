@@ -1517,3 +1517,64 @@ color: #494949 !important;
 fill:  #494949 !important;
 stroke: #494949 !important;
   }
+
+ /* price list accordion */
+.priceList .accordion__content {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  will-change: max-height;
+  transition: all 0.25s ease-out;
+  color: #f1f1f1;
+  opacity: 0;
+}
+
+.priceList .accordion__active .accordion__content {
+  opacity: 1;
+}
+.priceList .accordion__intro input[type="checkbox"]:checked::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23004B85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.priceList table input[type="checkbox"]:checked::after {
+  content: "";
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23004B85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l4 4L19 7"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.priceList .popularBtn::after{
+  content: "محبوب‌ترین";
+  background-color: #0D9900;
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: white;
+  font-family: "interBold";
+  font-size: 8px;
+  width: 65px;
+  height: 20px;
+  border-radius: 10px 10px 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-15.8px,-10px);
+}
+
+.font-interBold{
+  font-weight: 600;
+}

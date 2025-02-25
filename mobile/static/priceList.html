@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/outputMobile-v3.css">
+
+</head>
+
+
+<body>
+    <main class="priceList" dir="rtl">
+        <h1 class="font-IRANSansWeb600 text-base w-90p mx-auto text-center mt-[93px] mb-5">
+            جدول قیمت محصولات
+        </h1>
+        <div
+            class="popPriceCalculate [&.activePopCalculator]:overflow-y-auto -z-1 scale-0 [&.activePopCalculator]:scale-100 [&.activePopCalculator]:z-[1000000000] [&.activePopCalculator]:bg-black/[0.3] group/PopCalculator duration-1000  fixed w-svw h-svh inset-0 ">
+            <div class="inner relative w-full max-w-[718px] mx-auto mt-[14vh] bg-White pt-2.5 px-8 pb-10 rounded-[10px] opacity-0 translate-y-100 duration-1000 group-[&.activePopCalculator2]/PopCalculator:opacity-100 group-[&.activePopCalculator2]/PopCalculator:translate-y-[0]">
+                <div class="flex justify-between mb-2.5 items-center">
+                    <span class="font-IRANSansWeb700 text-base leading-[50px]">
+                        محاسبه قیمت
+                    </span>
+
+                    <div class="closepopPriceCalculate cursor-pointer">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M6.575 7.975L1.675 12.875C1.49167 13.0583 1.25833 13.15 0.975 13.15C0.691667 13.15 0.458333 13.0583 0.275 12.875C0.0916667 12.6917 0 12.4583 0 12.175C0 11.8917 0.0916667 11.6583 0.275 11.475L5.175 6.575L0.275 1.675C0.0916667 1.49167 0 1.25833 0 0.975C0 0.691667 0.0916667 0.458333 0.275 0.275C0.458333 0.0916667 0.691667 0 0.975 0C1.25833 0 1.49167 0.0916667 1.675 0.275L6.575 5.175L11.475 0.275C11.6583 0.0916667 11.8917 0 12.175 0C12.4583 0 12.6917 0.0916667 12.875 0.275C13.0583 0.458333 13.15 0.691667 13.15 0.975C13.15 1.25833 13.0583 1.49167 12.875 1.675L7.975 6.575L12.875 11.475C13.0583 11.6583 13.15 11.8917 13.15 12.175C13.15 12.4583 13.0583 12.6917 12.875 12.875C12.6917 13.0583 12.4583 13.15 12.175 13.15C11.8917 13.15 11.6583 13.0583 11.475 12.875L6.575 7.975Z"
+                                fill="#68737C" />
+                        </svg>
+
+                    </div>
+                </div>
+
+                <div class="questions relative z-2">
+                    <div class="questionBox mb-[42.42px]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            1 - حجم مورد نیاز شما چقدر است ؟
+                        </p>
+
+                        <select
+                            class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none"
+                            name="spaceGb" id="spaceGb">
+                            <option value="500">
+                                500 GB
+                            </option>
+                            <option value="1t">
+                                1 T
+                            </option>
+                            <option value="3t">
+                                3 T
+                            </option>
+                            <option value="5t">
+                                5 T
+                            </option>
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42px]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            2 - اندازه سازمان شما چقدر است ؟
+                        </p>
+
+                        <select
+                            class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none"
+                            name="nMembers" id="nMembers">
+                            <option value="5">
+                                بین 1 تا 5 نفر
+                            </option>
+                            <option value="10">
+                                بین 5 تا 10 نفر
+                            </option>
+                            <option value="20">
+                                بین 11 تا 20 نفر
+                            </option>
+                            <option value="45">
+                                بین 21 تا 45 نفر
+                            </option>
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42px]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            3- در سازمان شما از چه متدی برای کنترل پروژه استفاده میشود ؟
+                        </p>
+
+                        <select
+                            class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none"
+                            name="method" id="method">
+                            <option value="1">
+                                اسکرام
+                            </option>
+
+                        </select>
+                    </div>
+                    <div class="questionBox mb-[42.42px]">
+                        <p class="font-IRANSansWeb400 text-sm text-textGray leading-[50px]">
+                            4- آیا به سیستم فروش نیاز دارید؟
+                        </p>
+
+                        <select
+                            class="w-[320px] h-[50.58px] rounded-5 font-IRANSansWeb400 text-sm text-textGray border border-lightBlue outline-none"
+                            name="" id="">
+                            <option value="1">
+                                بله
+                            </option>
+                            <option value="2">
+                                خیر
+                            </option>
+
+                        </select>
+                    </div>
+                </div>
+
+                <button class="bg-primary relative z-2 w-[176px] h-[48px] text-White rounded-5">
+                    محاسبه قیمت
+                </button>
+
+            </div>
+        </div>
+        <div class="flex justify-between w-90p mx-auto mb-14 gap-x-10 items-end">
+            <div class="para font-IRANSansWeb400 text-sm text-textGray text-center leading-[50px]">
+                <p>
+                    این جدول قیمت‌ها بر اساس آخرین به‌روزرسانی‌های بازار تنظیم شده است. برای محاسبه قیمت نهایی،
+                    می‌توانید از کلید محاسبه قیمت استفاده کنید. لطفاً قبل از هرگونه تصمیم‌گیری، اطلاعات را به دقت بررسی
+                    کنید. در صورت نیاز به اطلاعات بیشتر، با بخش پشتیبانی تماس بگیرید.
+                </p>
+            </div>
+
+            <button class="cursor-pointer hidden openPopCalPrice  items-center gap-x-2.5 py-3 px-2 bg-primary rounded-5">
+                <img src="../assets/images/calculator.svg" alt="calculator">
+
+                <span class="font-IRANSansWeb700 text-sm text-White whitespace-nowrap">
+                    محاسبه قیمت خودکار
+                </span>
+            </button>
+        </div>
+
+
+        <section class="accordionSection relative">
+           
+
+
+            <div class=" w-90p mx-auto">
+                <div class="accordion panelaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    >
+
+                                <h4 class="font-IRANSansWeb600 panel-name text-sm text-primary">
+                                    پنل B1
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                    <tr class="border-b border-b-borderP/[0.3]">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                حجم
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                500 MG
+                                            </span>
+                                        </td>
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                مدیریت کاربران
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <span class="font-IRANSansWeb400 panel-price-renew  text-sm text-placeholder">
+                                                    3,500,000 
+                                                     
+                                                </span>
+                                                تومان
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
+                                                3,500,000 
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
+                                               0
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion panelaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    >
+
+                                <h4 class="font-IRANSansWeb600 panel-name text-sm text-primary">
+                                    پنل B2
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                    <tr class="border-b border-b-borderP/[0.3]">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                حجم
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                500 MG
+                                            </span>
+                                        </td>
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                مدیریت کاربران
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <span class="font-IRANSansWeb400 panel-price-renew  text-sm text-placeholder">
+                                                    3,500,000 
+                                                     
+                                                </span>
+                                                تومان
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
+                                                3,500,000 
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
+                                               0
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="accordion productaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    >
+
+                                <h4 class="font-IRANSansWeb600 product-name text-sm text-primary">
+                                    ماژول حسابداری
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                    <tr class="border-b border-b-borderP/[0.3]">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                حجم
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                500 MG
+                                            </span>
+                                        </td>
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                مدیریت کاربران
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <span class="font-IRANSansWeb400 product-price text-sm text-placeholder">
+                                                    3,500,000 
+                                                     
+                                                </span>
+                                                تومان
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
+                                                3,500,000 
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion productaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    >
+
+                                <h4 class="font-IRANSansWeb600 product-name text-sm text-primary">
+                                    ماژول حسابداری
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                    <tr class="border-b border-b-borderP/[0.3]">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                حجم
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                500 MG
+                                            </span>
+                                        </td>
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                مدیریت کاربران
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <div
+                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                <img class="group-[&.activePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
+                                                    alt="activePricePlan">
+                                                <img class="group-[&.deactivePlan]/activePlan:block hidden"
+                                                    src="[##cms.cms.cdn##]/asset/images/deactivePricePlan.svg"
+                                                    alt="deactivePricePlan">
+                                            </div>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <span class="font-IRANSansWeb400 product-price text-sm text-placeholder">
+                                                    3,500,000 
+                                                     
+                                                </span>
+                                                تومان
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                            <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
+                                                3,500,000 
+                                                 
+                                            </span>
+                                            تومان
+                                            </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section
+            class="mt-16 mb-11 border-b border-b-bgGray factorSection">
+            <div class="title py-6 text-center bg-lightBlue border-b border-b-primary">
+                <p class="font-IRANSansWeb600 text-sm text-primary">
+                    اطلاعات فاکتور  
+                </p>
+            </div>
+            <div
+                class="rSide">
+<!--               
+                  <ul class="w-90p mx-auto border-b border-bgGray pt-4">
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                           
+                            <span class=" font-IRANSansWeb400">
+
+                                150000000
+                                تومان
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                            قیمت سالانه :
+                            <span class=" font-IRANSansWeb400">
+
+                                150000000
+                                تومان
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                            تمدید سالانه :
+                            <span class=" font-IRANSansWeb400">
+
+                                150000000
+                                تومان
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                            پشتیبانی :
+                            <span class=" font-IRANSansWeb400">
+
+                                150000000
+                                تومان
+                            </span>
+                            </p>
+                    </li>
+                  </ul> -->
+                  <div class="emptyFactor font-IRANSansWeb400 text-sm hidden">
+                    <p>
+                        فاکتور خالی میباشد.
+                    </p>
+                  </div>
+            </div>
+            <div class="lSide text-center bg-bgGray/[0.19] flex justify-center items-baseline gap-x-2 mt-7 py-4 w-90p mx-auto rounded-bl-[10px] rounded-br-[10px]">
+                <span class="font-interBold block text-xl text-black">
+                    قیمت کل :
+                </span>
+
+                <div class="price font-interBold text-sm">
+                    <span class="totalPrice inline-block">
+                        350,000,000
+
+                    </span>
+                    <p class="inline-block">
+
+                        تومان
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div
+            class="errorPriceList [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
+            <div
+                class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit  items-center gap-x-2">
+                <svg width="20" class="inline" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 15.5C10.2833 15.5 10.5167 15.4083 10.7 15.225C10.9 15.025 11 14.7833 11 14.5C11 14.2167 10.9 13.9833 10.7 13.8C10.5167 13.6 10.2833 13.5 10 13.5C9.71667 13.5 9.475 13.6 9.275 13.8C9.09167 13.9833 9 14.2167 9 14.5C9 14.7833 9.09167 15.025 9.275 15.225C9.475 15.4083 9.71667 15.5 10 15.5ZM9 11.5H11V5.5H9V11.5ZM10 20.5C8.61667 20.5 7.31667 20.2417 6.1 19.725C4.88333 19.1917 3.825 18.475 2.925 17.575C2.025 16.675 1.30833 15.6167 0.775 14.4C0.258333 13.1833 5.96046e-08 11.8833 5.96046e-08 10.5C5.96046e-08 9.11667 0.258333 7.81667 0.775 6.6C1.30833 5.38333 2.025 4.325 2.925 3.425C3.825 2.525 4.88333 1.81667 6.1 1.3C7.31667 0.766666 8.61667 0.5 10 0.5C11.3833 0.5 12.6833 0.766666 13.9 1.3C15.1167 1.81667 16.175 2.525 17.075 3.425C17.975 4.325 18.6833 5.38333 19.2 6.6C19.7333 7.81667 20 9.11667 20 10.5C20 11.8833 19.7333 13.1833 19.2 14.4C18.6833 15.6167 17.975 16.675 17.075 17.575C16.175 18.475 15.1167 19.1917 13.9 19.725C12.6833 20.2417 11.3833 20.5 10 20.5ZM10 18.5C12.2333 18.5 14.125 17.725 15.675 16.175C17.225 14.625 18 12.7333 18 10.5C18 8.26667 17.225 6.375 15.675 4.825C14.125 3.275 12.2333 2.5 10 2.5C7.76667 2.5 5.875 3.275 4.325 4.825C2.775 6.375 2 8.26667 2 10.5C2 12.7333 2.775 14.625 4.325 16.175C5.875 17.725 7.76667 18.5 10 18.5Z"
+                        fill="#F9461C" />
+                </svg>
+
+                <p class="text-sm inline text-red font-IRANSansWeb400 ">
+                    برای اضافه کردن محصول، ابتدا یکی از سرویس های پنل پایه را به فاکتور اضافه کنید
+                </p>
+
+            </div>
+        </div>
+
+    </main>
+
+
+    <script src="../assets/js/priceListPage.js"></script>
+</body>
+
+</html>
