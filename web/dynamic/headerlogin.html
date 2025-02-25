@@ -9,7 +9,7 @@
     name="api.logout" onprocessed="onprocessedlogoutfn" if="{##query.flag.value|(false)##}"
     body='{"dmntoken":"[##db.dmntoken.dmntoken##]"}' triggers="db.logout query.flag">
 </basis>
-<header class="DesktopHeader inLogin fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
+<header class="DesktopHeader  [&.lightHeader]  inLogin fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
     <div class="InnerHeader w-80p grid grid-cols-[2fr,1fr]">
         <div class="RightSec w-full flex justify-start gap-9">
             <div class="Logo w-auto flex justify-center items-center">
@@ -21,37 +21,37 @@
                 <ul class="w-auto flex gap-6 justify-start items-center">
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
                         <a href="/" alt="خانه" title="خانه" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                       font-normal text-sm text-textGray">
+                       font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
                             خانه
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
-                        <a href="#" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                       font-normal text-sm text-textGray">
+                        <a href="/solutions" alt="راهکارها" title="راهکارها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                       font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
                        راهکارها
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
-                        <a href="#" alt="بلاگ" title="بلاگ" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                       font-normal text-sm text-textGray">
-                       بلاگ
+                        <a href="/pricelist" alt="تعرفه‌ها" title="تعرفه‌ها" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                       font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                       تعرفه‌ها
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
-                        <a href="#" alt="  درباره ما" title="  درباره ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                     font-normal text-sm text-textGray">
+                        <a href="/about" alt="  درباره ما" title="  درباره ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                     font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
                             درباره ما
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
-                        <a href="#" alt="  تماس با ما" title="  تماس با ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                     font-normal text-sm text-textGray">
+                        <a href="/contact" alt="  تماس با ما" title="  تماس با ما" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                     font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
                             تماس با ما
                         </a>
                     </li>
                     <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
                         <a href="/versions" alt="تغییرات" title="تغییرات" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
-                     font-normal text-sm text-textGray">
+                     font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
                             آخرین تغییرات
                         </a>
                     </li>
@@ -64,7 +64,7 @@
                                 <img src="[##cms.cms.cdn##]/images/Group 35649.png" alt="basis" title="basis">
                             </span>
 
-                            <span class="langText font-IRANSansWeb400 font-normal text-[13px] text-textGray">
+                            <span class="langText group-[&.lightHeader]/header:text-White font-IRANSansWeb400 font-normal text-[13px] text-textGray">
                                 انگلیسی
                             </span>
 
@@ -83,7 +83,7 @@
                         <ul class="w-full flex flex-col">
                             <li class="w-auto flex justify-center group/langs duration-100 py-[.5em] hover:text-textGray
                           hover:bg-White ">
-                                <a href="/en" alt="basis" title="basis class=" w-auto flex">
+                                <a href="/en" alt="basis" title="basis" class=" w-auto flex">
                                     <span class="langText font-IRANSansWeb400 font-normal duration-100 text-[13px] group-hover/langs:text-textGray
                                  text-White">
                                         انگلیسی
@@ -129,7 +129,7 @@
         
               </div>
               <div class="UserDropdown border-[1px] rounded-5 border-lightBlue bg-White absolute top-[4em] opacity-0 translate-y-[-2em] duration-500 [&.openProf]:opacity-[1]
-              [&.openProf]:translate-y-[0]   min-w-[140px] left-0 right-0 mx-auto w-auto  py-[.5em] flex">
+              [&.openProf]:translate-y-[0]   min-w-[140px] left-0 right-0 mx-auto w-auto   flex">
                 <div class="Box w-auto px-[.7em] py-[.7em] flex flex-col gap-2 min-w-[140px]">
                     <div class="title w-full flex justify-start items-start leading-[15.65px]
                      text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
@@ -139,9 +139,18 @@
                     text-black font-IRANSansWeb400 font-normal text-[13px]">
                         غدیره مرادی
                     </span>
+                    <a href="/panel" class=" hover:cursor-pointer w-full flex justify-between items-center">
+                        <div class="text leading-[21.91px]
+                        text-black font-IRANSansWeb400 font-normal text-xs">
+                            پنل کاربری
+                        </div>
+                        <div class=" w-auto my-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#5F6368"><path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/></svg>                       
+                        </div>
+                    </a>
                     <span class="logoOut hover:cursor-pointer w-full flex justify-between items-center">
                         <div class="text leading-[21.91px]
-                        text-black font-IRANSansWeb400 font-normal text-sm">
+                        text-black font-IRANSansWeb400 font-normal text-xs">
                             خارج شدن
                         </div>
                         <div class=" w-auto my-auto">
