@@ -1,43 +1,43 @@
-function startCounter(targetNumber,duration){
-const counterElem = document.getElementById('counter')
-let currentNumber = 1
-const increment = targetNumber / (duration / 100)
-const interval = setInterval(()=>{
-    currentNumber += increment;
-    if(currentNumber >= targetNumber){
-        currentNumber = targetNumber;
-        clearInterval(interval)
-    }
-    counterElem.textContent = `%${Math.floor(currentNumber)}`
-},100) 
-}
+// function startCounter(targetNumber,duration){
+// // const counterElem = document.getElementById('counter')
+// let currentNumber = 1
+// const increment = targetNumber / (duration / 100)
+// const interval = setInterval(()=>{
+//     currentNumber += increment;
+//     if(currentNumber >= targetNumber){
+//         currentNumber = targetNumber;
+//         clearInterval(interval)
+//     }
+//     counterElem.textContent = `%${Math.floor(currentNumber)}`
+// },100) 
+// }
 let TitlesSec3 = document.querySelectorAll('.section-3 > .title.fadeIN h3,.section-3 > .title.fadeIN h4')
 console.log(TitlesSec3);
 const RunAnimation = (elem)=>{
     let fadeElement = elem
     let positionElement = fadeElement.getBoundingClientRect().top+300;
     let windowHeight = window.innerHeight
-    if(fadeElement.classList.contains('percent')){
-        if(positionElement < windowHeight && !counterStart){
-            counterStart = true
-                startCounter(22,1000)
-        } 
-    }
-    else{
+    // if(fadeElement.classList.contains('percent')){
+    //     if(positionElement < windowHeight && !counterStart){
+    //         counterStart = true
+    //             startCounter(22,1000)
+    //     } 
+    // }
+    // else{
         if(positionElement < windowHeight){
            elem.classList.add('appear')
         } 
-    }
+    // }
    
 }
-let counterStart = false
-let counter =document.getElementById('counter')
+// let counterStart = false
+// let counter =document.getElementById('counter')
 let Boxes = document.querySelectorAll('.help-Boxes .fadeIN')
 let Chart = document.querySelector(' #animations-example-1')
 
 document.addEventListener('DOMContentLoaded',()=>{
   let checkScroll = ()=>{
-    RunAnimation(counter)
+    // RunAnimation(counter)
     TitlesSec3.forEach(i=>{
         RunAnimation(i)
     })
