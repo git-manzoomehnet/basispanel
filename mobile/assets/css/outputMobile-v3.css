@@ -791,10 +791,6 @@ video {
   z-index: 50;
 }
 
-.z-\[1000000000\] {
-  z-index: 1000000000;
-}
-
 .z-\[100\] {
   z-index: 100;
 }
@@ -902,6 +898,10 @@ video {
 
 .mb-10 {
   margin-bottom: 2.5rem;
+}
+
+.mb-11 {
+  margin-bottom: 2.75rem;
 }
 
 .mb-12 {
@@ -1138,10 +1138,6 @@ video {
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mb-11 {
-  margin-bottom: 2.75rem;
 }
 
 .box-border {
@@ -3018,12 +3014,20 @@ video {
   border-bottom-left-radius: 5px;
 }
 
+.rounded-bl-\[10px\] {
+  border-bottom-left-radius: 10px;
+}
+
 .rounded-br {
   border-bottom-right-radius: 0.25rem;
 }
 
 .rounded-br-5 {
   border-bottom-right-radius: 5px;
+}
+
+.rounded-br-\[10px\] {
+  border-bottom-right-radius: 10px;
 }
 
 .rounded-ee {
@@ -3056,14 +3060,6 @@ video {
 
 .rounded-tr-\[10px\] {
   border-top-right-radius: 10px;
-}
-
-.rounded-br-\[10px\] {
-  border-bottom-right-radius: 10px;
-}
-
-.rounded-bl-\[10px\] {
-  border-bottom-left-radius: 10px;
 }
 
 .border {
@@ -3217,6 +3213,11 @@ video {
   border-bottom-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
 }
 
+.border-b-bgGray {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
+}
+
 .border-b-borderP\/\[0\.3\] {
   border-bottom-color: rgb(109 110 113 / 0.3);
 }
@@ -3264,11 +3265,6 @@ video {
   border-top-color: rgb(200 204 207 / var(--tw-border-opacity, 1));
 }
 
-.border-b-bgGray {
-  --tw-border-opacity: 1;
-  border-bottom-color: rgb(229 229 229 / var(--tw-border-opacity, 1));
-}
-
 .bg-White {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
@@ -3310,10 +3306,6 @@ video {
 
 .bg-bgGray\/\[0\.19\] {
   background-color: rgb(229 229 229 / 0.19);
-}
-
-.bg-black\/\[0\.3\] {
-  background-color: rgb(0 0 0 / 0.3);
 }
 
 .bg-blue4 {
@@ -3650,6 +3642,11 @@ video {
   padding-bottom: 1.5rem;
 }
 
+.py-7 {
+  padding-top: 1.75rem;
+  padding-bottom: 1.75rem;
+}
+
 .py-\[\.1em\] {
   padding-top: .1em;
   padding-bottom: .1em;
@@ -3755,11 +3752,6 @@ video {
   padding-bottom: 8em;
 }
 
-.py-7 {
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
-}
-
 .\!pt-\[74px\] {
   padding-top: 74px !important;
 }
@@ -3858,6 +3850,10 @@ video {
 
 .pt-4 {
   padding-top: 1rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .pt-9 {
