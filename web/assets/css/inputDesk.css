@@ -1437,15 +1437,15 @@ footer .Right .text p{
   }
 }
 .Landing-Basispanel .Circle{
-  background-image: url('/web/assets/images/landingbg-v3.png');
+  background-image: url('../images/landingbg-v3.png');
 }
-.Color-circle-1{
+.Landing-Basispanel .Color-circle-1{
   background: linear-gradient(180deg, #E5E5E5 0%, #FAFAFA 100%);
   box-shadow: 0px 16px 60.1px 22px #FFFFFF73 inset;
   animation: animatedCircle1 10s infinite ease-in-out;
 
 }
-.Color-circle-2{
+.Landing-Basispanel .Color-circle-2{
   animation: animatedCircle2 10s infinite ease-in-out;
 
 }
@@ -1489,17 +1489,17 @@ footer .Right .text p{
     opacity: 0.5;
   }
 }
-.section-5 .det p{
+.Landing-Basispanel .section-5 .det p{
 position: relative;
 display: flex;
 gap: .5em;
+flex-wrap: wrap;
+padding-right: 1em;
 }
-.section-5 .det p::before{
-  position: relative;
+.Landing-Basispanel .section-5 .det p::before{
+  position: absolute;
   right: 0;
-  bottom: 0;
-  top: 0;
-  margin: auto 0;
+  top: 16px;
   content: '';
   width: 8px;
   height: 8px;
@@ -1515,6 +1515,24 @@ gap: .5em;
   .fadeUP.appear{
     transform: translateY(0em);
     opacity: 1;
+  }
+  .Landing-Basispanel header li a,
+  .Landing-Basispanel header .langC .langText,
+  .Landing-Basispanel header svg path{
+ color: white;
+ fill:  white;
+ stroke: white;
+  }
+  .Landing-Basispanel header .langs-content .langText{
+    color: white !important;
+     }
+  .Landing-Basispanel header.bgWhite li a,
+  .Landing-Basispanel header.bgWhite .langC .langText,
+  .Landing-Basispanel header.bgWhite svg path{
+color: #494949 !important;
+fill:  #494949 !important;
+stroke: #494949 !important;
+  }
   }
 
 .font-interBold{

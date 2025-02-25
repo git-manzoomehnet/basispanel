@@ -1,4 +1,3 @@
-
 <!---------------------------- TOKEN -------------------------------->
 <basis core="api" url="http://trust.basiscore.net/token?recaptcha={##token.recaptcha.value|()##}"
   method="post" triggers="token.recaptcha run.token" if="{##run.token|(false)##}"
@@ -46,6 +45,7 @@ triggers="user.rkey" run="atclient" OnRendered="onRenderedCookie">
 
 
 <basis core="callback" triggers="db.token" run="atClient"></basis>
+<basis core="callback" triggers="run.token" run="atClient"></basis>
 <basis core="callback" triggers="db.userLogin" run="atClient"></basis>
 <basis core="callback" triggers="run.token" run="atClient"></basis>
 <basis core="callback" triggers="token.token" run="atClient"></basis>
