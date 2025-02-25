@@ -322,16 +322,20 @@ proListCheckBox.forEach(element => {
         const price = parseInt(priceText, 10);
 
         let productName = element.closest("tr").querySelectorAll("td")[1].querySelector("span")?.innerHTML.replace(/ /g, '');
-        let pricePro = element.closest("tr").querySelector(".priceP")?.innerHTML;
+        let pricePro = element.closest("tr").querySelector(".priceP")?.innerHTML.replace(/ /g, '');
         let pricerenew = element.closest("tr").querySelectorAll("td")[3].querySelector("span")?.innerHTML.replace(/ /g, '');
         let supportprice = element.closest("tr").querySelectorAll("td")[4].querySelector("span")?.innerHTML.replace(/ /g, '');
         clearInvoice();
+       console.log(productName);
+       
+        
         // محاسبه مجموع قیمت
         if (element.checked) {
             totalPrice += price;
 
             selectedProducts.push({ productName, price, pricerenew, supportprice });
             totalPriceSpan.innerHTML=totalPriceSpanIn+totalPrice
+console.log(selectedProducts);
 
         } else {
             totalPrice -= price;
