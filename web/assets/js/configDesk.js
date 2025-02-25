@@ -172,6 +172,9 @@ lenis.on('scroll',(e)=>{
     
 if(e.scroll==0){
     document.querySelector('header').classList.remove('bgWhite')
+    if(document.querySelector('.Landing-Basispanel')){
+        document.querySelector('header').classList.add('lightHeader')
+    }
 }
 else{
     if(document.querySelector('.Landing-Basispanel')){
