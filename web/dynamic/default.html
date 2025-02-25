@@ -13,12 +13,20 @@
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
   
  </head>
+ <basis
+ core="call"
+ if="{##get.dmntoken.value|(false)##}"
+ run="AtClient"
+ file="features/dmntoken.inc"
+ triggers="get.dmntoken"
+ onrendered="setDmnToken"
+></basis>
 <body class="gray">
     <main class="Home-BasisPanel w-full overflow-hidden" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
         <div class="callInput flex mt-[10em] relative z-2 w-[975px] h-[80px] mx-auto 
         flex-col justify-center items-center gap-3">
-          <input type="text" class="callback px-[1em] w-full h-full rounded-5 border-[1px] border-mainGray" 
+          <input type="text" class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray" 
           id="myInput" placeholder="مدیرفروش هستم">
           <div class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto left-[1em] z-1">
            <img src="[##cms.cms.cdn##]/images/input-v3.png" alt="">
@@ -44,7 +52,7 @@
              
     <div class="Purpose-sec w-80p flex mx-auto flex-col mb-[2em]">
         <div class="purpose-boxes w-full grid grid-cols-7 gap-y-20">
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="/solutions/users" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
          flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
              h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -54,7 +62,7 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
                     مدیریت اعضا
                 </span>
-            </div>
+            </a>
             <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
         flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
@@ -66,7 +74,7 @@
                     پوشه اشتراکی
                 </span>
             </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="solutions/reports" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
        flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
            h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -76,7 +84,7 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     گزارشات
                 </span>
-            </div>
+            </a>
             <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
       flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
@@ -88,7 +96,7 @@
                     سیستم تیکتینگ
                 </span>
             </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="/solutions/gallery" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
      flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
          h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -98,8 +106,8 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     گالری تصاویر
                 </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            </a>
+            <a href="solutions/bpms" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
     flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
         h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -109,8 +117,8 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     فرآیندساز
                 </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            </a>
+            <a href="/solutions/content" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
    flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
        h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -120,8 +128,8 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     بارگزاری محتوا
                 </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            </a>
+            <a href="/solutions/dashboard" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
   flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
       h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -131,7 +139,7 @@
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     میزکار
                 </span>
-            </div>
+            </a>
             <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
  flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
@@ -143,7 +151,7 @@
                     دبیرخانه
                 </span>
             </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="solutions/taskmanager" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
     h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -153,9 +161,9 @@ flex flex-col gap-1">
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     مدیریت پروژه
                 </span>
-            </div>
+            </a>
 
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="/solutions/sale" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
    h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -163,9 +171,9 @@ flex flex-col gap-1">
                 </span>
                 <span
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    سیستم مالی
+فروش و بازاریابی
                 </span>
-            </div>
+            </a>
             <a href="/solutions/crm" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
@@ -177,7 +185,7 @@ flex flex-col gap-1">
                     CRM
                 </span>
             </a>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="/solutions/domains" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
   h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -187,9 +195,9 @@ flex flex-col gap-1">
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     مدیریت دامنه
                 </span>
-            </div>
+            </a>
 
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+            <a href="/solutions" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
                 <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
  h-[60px] py-[.3em] px-[.3em] rounded-5">
@@ -199,7 +207,7 @@ flex flex-col gap-1">
                     class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
                     سایر راهکارها
                 </span>
-            </div>
+            </a>
         </div>
     </div>
 
@@ -217,7 +225,7 @@ flex flex-col gap-1">
                 </h3>
             </div>
             <div class="help-Boxes w-80p mx-auto flex flex-col">
-                <div class="helpBox w-full gap-5 grid grid-cols-2 mt-7 py-[4em] fadeIN">
+                <div class="helpBox w-full gap-[8em] grid grid-cols-2 mt-7 py-[4em] fadeIN">
                     <div class="leftSec w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -248,18 +256,18 @@ flex flex-col gap-1">
                             <div class="PopSale relative z-1 w-auto flex flex-col">
                                 <div
                                     class="title w-max flex justify-start items-start gap-2 border-b-[1px] berder-blue pb-[.5em] mb-[.5em]">
-                                    <span id="counter"
+                                    <!-- <span id="counter"
                                         class="percent font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
 
-                                    </span>
-                                    <span
+                                    </span> -->
+                                    <!-- <span
                                         class="text font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
                                         رشد فروش
-                                    </span>
+                                    </span> -->
                                 </div>
-                                <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
+                                <!-- <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
                                     در مقایسه با هفته گذشته
-                                </p>
+                                </p> -->
                             </div>
                             <div id="chart" class="relative z-1" dir="ltr">
                                 <div id="animations-example-1">
@@ -310,7 +318,7 @@ flex flex-col gap-1">
                         </div>
                     </div>
                 </div>
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
                     <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -348,7 +356,7 @@ flex flex-col gap-1">
                     </div>
                 </div>
 
-                <div class="helpBox fadeIN group/help item-2 w-full gap-5 grid grid-cols-2 mt-7 py-[4em]">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
                     <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
@@ -462,10 +470,12 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                             duration-[1s] px-[2em] 
+                                             py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
                                                 class="w-auto flex justify-center
-                                   text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
+                                   text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
                                                 مطالعه بیشتر
                                             </button>
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
@@ -506,20 +516,22 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
+                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                         duration-[1s] px-[2em] 
+                                         py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                        <button type="button "
+                                            class="w-auto flex justify-center
+                               text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
+                                            مطالعه بیشتر
+                                        </button>
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                fill="white" />
+                                        </svg>
 
-                                        </a>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -550,20 +562,22 @@ flex flex-col gap-1">
                                             </p>
                                         </div>
                                         <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary duration-[1s] px-[1.6em] py-[1.1em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                            <button type="button "
-                                                class="w-auto flex justify-center
-                                     text-White items-center font-IRANSansWeb600 font-semibold text-base leading-[30px] rounded-5">
-                                                مطالعه بیشتر
-                                            </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
+                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                         duration-[1s] px-[2em] 
+                                         py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
+                                        <button type="button "
+                                            class="w-auto flex justify-center
+                               text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
+                                            مطالعه بیشتر
+                                        </button>
+                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                fill="white" />
+                                        </svg>
 
-                                        </a>
+                                    </a>
                                     </div>
                                 </div>
                             </div>
@@ -580,6 +594,18 @@ flex flex-col gap-1">
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
    <script src="[##cms.cms.cdn##]/asset/js/home-v3.js"></script>
+   <script >
+    function setDmnToken(args){
+        const thisdmntoken = document.getElementById("dmntoken").value;
+        dmntoken = thisdmntoken;
+        $bc.setSource("db.runTokenCommand", {
+        value: true,
+        dmntoken: thisdmntoken,
+ });
+ 
+    }
+
+   </script>    
 </body>
 
 </html>

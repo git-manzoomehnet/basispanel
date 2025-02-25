@@ -64,7 +64,8 @@ module.exports = {
        'light3':'#F9F9F9',
        'orange':'#FFB238',
        'purple':'#5F39DD',
-       'gray3':'#FBFBFB'
+       'gray3':'#FBFBFB',
+       'lightBlue':'#D9D9D9'
         
     },
 
