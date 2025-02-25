@@ -1,20 +1,17 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لیست قیمت ها</title>
-    <meta name="description" content="لیست قیمت های بیسیس پنل">
-    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/outputDesk-v3.css">
 
 </head>
 
 
 <body>
     <main class="priceList" dir="rtl">
-        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
-
         <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center mt-[208px] mb-[73px]">
             جدول قیمت محصولات
         </h1>
@@ -119,11 +116,11 @@
                     محاسبه قیمت
                 </button>
 
-                <img class="absolute bottom-0" src="[##cms.cms.cdn##]/asset/images/bgCalculatePrice.png" alt="">
+                <img class="absolute bottom-0" src="../assets/images/bgCalculatePrice.png" alt="">
             </div>
         </div>
         <div class="flex justify-between w-80p mx-auto mb-14 gap-x-10 items-end">
-            <div class="para font-IRANSansWeb700 text-textGray text-base leading-[50px] max-w-[948px] w-[67%]">
+            <div class="para font-IRANSansWeb700 text-base leading-[50px] max-w-[948px] w-[67%]">
                 <p>
                     این جدول قیمت‌ها بر اساس آخرین به‌روزرسانی‌های بازار تنظیم شده است. برای محاسبه قیمت نهایی،
                     می‌توانید از کلید محاسبه قیمت استفاده کنید. لطفاً قبل از هرگونه تصمیم‌گیری، اطلاعات را به دقت بررسی
@@ -131,10 +128,10 @@
                 </p>
             </div>
 
-            <button class="cursor-pointer hidden openPopCalPrice flex items-center gap-x-2.5 py-3 px-2 bg-primary rounded-5">
-                <img src="[##cms.cms.cdn##]/asset/images/calculator.svg" alt="calculator">
+            <button class="cursor-pointer openPopCalPrice flex items-center gap-x-2.5 py-3 px-2 bg-primary rounded-5">
+                <img src="../assets/images/calculator.svg" alt="calculator">
 
-                <span class="font-IRANSansWeb600 text-sm text-White whitespace-nowrap">
+                <span class="font-IRANSansWeb700 text-sm text-White whitespace-nowrap">
                     محاسبه قیمت خودکار
                 </span>
             </button>
@@ -143,24 +140,26 @@
 
         <section class="accordionSection relative">
             <div class="imgBack absolute left-0 right-0 top-[276px] -z-1">
-                <img class="w-full" src="[##cms.cms.cdn##]/asset/images/midBg.png" alt="midbg">
+                <img class="w-full" src="../assets/images/midBg.png" alt="midbg">
             </div>
 
 
             <div class=" w-80p mx-auto">
                 <div
                     class="accordion plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-tl-[10px] rounded-tr-[10px]">
-                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
-                        <div class="flex gap-x-4 items-center">
-                            <input type="checkbox"
-                                class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
-                                disabled>
+                    <div
+                        class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    disabled>
 
-                            <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
-                                انتخاب پنل 
-                            </h4>
+                                <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                    انتخاب پنل ؟
+                                </h4>
 
-                        </div>
+                            </div>
+                          
                         <div class="arrowList">
                             <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
                                 height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -171,8 +170,8 @@
 
                         </div>
                     </div>
-                    <div class="accordion__content !overflow-x-auto px-[75px]">
-                        <div class="inner w-full !pt-[74px] pb-3 ">
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
 
 
                             <table class="w-full">
@@ -1051,30 +1050,29 @@
                         class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
                         <div class="flex gap-x-8 items-center">
 
-                            <div class="flex gap-x-4 items-center">
-                                <input type="checkbox"
-                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
-                                    disabled>
+                        <div class="flex gap-x-4 items-center">
+                            <input type="checkbox"
+                                class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                disabled>
 
-                                <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
-                                    محصولات
-                                </h4>
+                            <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                محصولات
+                            </h4>
 
-                            </div>
-                            <div class="totalP hidden bg-White/[0.5] rounded-5 py-2 px-3">
-                                <p class="font-IRANSansWeb600 text-sm text-primary">
-                                    قیمت کل :
-
-                                    <span class="totalPriceC">
-
-                                        250,000,000 
-                                    </span>
-                                     
-                                     تومان
-                                </p>
-                            </div>
                         </div>
+                        <div class="totalP hidden bg-White/[0.5] rounded-5 py-2 px-3">
+                            <p class="font-IRANSansWeb600 text-sm text-primary">
+                                قیمت کل :
 
+                                <span class="totalPriceC">
+
+                                    250,000,000 
+                                </span>
+                                 
+                                 تومان
+                            </p>
+                        </div>
+                        </div>
                         <div class="arrowList">
                             <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
                                 height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1086,7 +1084,7 @@
                         </div>
                     </div>
                     <div class="accordion__content px-[75px]">
-                        <div class="inner w-full !pt-[74px] pb-3 ">
+                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
 
 
                             <table class="w-full">
@@ -1505,7 +1503,7 @@
                         </div>
                     </div>
                     <div class="accordion__content px-[75px]">
-                        <div class="inner w-full !pt-[74px] pb-3 ">
+                        <div class="inner w-full xl:w-[82%] !pt-[74px] pb-3 ">
 
 
                         </div>
@@ -1515,86 +1513,84 @@
             </div>
 
         </section>
-        <section class=" pb-[217px]">
 
-            <section
-                class="mt-16 bg-White flex w-80p mx-auto gap-x-14 rounded-[10px] shadow-[0px_4px_50px_0px_#8a8a8a30] pb-16">
-                <div
-                    class="rSide shadow-[0px_4px_50px_0px_#8a8a8a30] w-[65%] border border-bgGray rounded-[10px] overflow-hidden">
-                    <table class="w-full">
-                        <thead class="py-6 px-3 bg-lightBlue">
-                            <tr>
-                                <th class="font-interBold py-6 px-3 text-base text-primary">
-                                    نام محصول
-                                </th>
-                                <th class="font-interBold py-6 px-3 text-base text-primary">
-                                    قیمت سالانه
-                                </th>
-                                <th class="font-interBold py-6 px-3 text-base text-primary">
-                                    قیمت تمدید سالانه
-                                </th>
-                                <th class="font-interBold py-6 px-3 text-base text-primary">
-                                    هزینه پشتیبانی
-                                </th>
+        <section
+            class="mt-16 mb-[217px] flex w-80p mx-auto gap-x-14 rounded-[10px] shadow-[0px_4px_50px_0px_#8a8a8a30] pb-16">
+            <div
+                class="rSide shadow-[0px_4px_50px_0px_#8a8a8a30] w-[65%] border border-bgGray rounded-[10px] overflow-hidden">
+                <table class="w-full">
+                    <thead class="py-6 px-3 bg-lightBlue">
+                        <tr>
+                            <th class="font-interBold py-6 px-3 text-base text-primary">
+                                نام محصول
+                            </th>
+                            <th class="font-interBold py-6 px-3 text-base text-primary">
+                                قیمت سالانه
+                            </th>
+                            <th class="font-interBold py-6 px-3 text-base text-primary">
+                                قیمت تمدید سالانه
+                            </th>
+                            <th class="font-interBold py-6 px-3 text-base text-primary">
+                                هزینه پشتیبانی
+                            </th>
 
-                                <th></th>
+                            <th></th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
+                        </tr>
+                    </thead>
+                    <tbody>
 
 
-                            <tr class="pt-9 pb-7 even:bg-gray/[0.19] hidden">
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                    پنل پایه : A 1
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                    15,000,000 تومان
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                    15,000,000 تومان
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                    رایگان
-                                </td>
-                                <td class="deleteRow cursor-pointer px-6">
-                                    <img src="../assets/images/deleteRow.svg" alt="deleteRow">
-    
-                                </td>
-                            </tr>
-    
-    
-                            <tr class="text-center emptyFactor">
-                                <td>
-                                    <p class="font-IRANSansWeb400 text-base text-textGray mt-5 mb-2">
-                                        فاکتور خالی میباشد.
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="lSide w-[35%] pt-14 rounded-[10px] text-center bg-bgGray/[0.19] flex flex-col items-center">
-                    <span class="font-interBold block mb-5 text-xl text-black">
-                        قیمت کل :
+                        <tr class="pt-9 pb-7 even:bg-gray/[0.19] hidden">
+                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                پنل پایه : A 1
+                            </td>
+                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                15,000,000 تومان
+                            </td>
+                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                15,000,000 تومان
+                            </td>
+                            <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                                رایگان
+                            </td>
+                            <td class="deleteRow cursor-pointer px-6">
+                                <img src="../assets/images/deleteRow.svg" alt="deleteRow">
+
+                            </td>
+                        </tr>
+
+
+                        <tr class="text-center emptyFactor">
+                            <td>
+                                <p class="font-IRANSansWeb400 text-base text-textGray mt-5 mb-2">
+                                    فاکتور خالی میباشد.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="lSide w-[35%] pt-14 rounded-[10px] text-center bg-bgGray/[0.19] flex flex-col items-center">
+                <span class="font-interBold block mb-5 text-xl text-black">
+                    قیمت کل :
+                </span>
+
+                <div class="price font-interBold text-base">
+                    <span class="totalPrice inline-block">
+                        350,000,000
+
                     </span>
+                    <p class="inline-block">
 
-                    <div class="price">
-                        <span class="totalPrice inline-block font-interBold text-base">
-                            350,000,000
-
-                        </span>
-                        <p class="inline-block font-interBold text-base">
-
-                            تومان
-                        </p>
-                    </div>
+                        تومان
+                    </p>
                 </div>
-            </section>
+            </div>
         </section>
 
         <div
-            class="errorPriceList  [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
+            class="errorPriceList [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
             <div
                 class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit flex items-center gap-x-2">
                 <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1610,14 +1606,10 @@
             </div>
         </div>
 
-
-
-        <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>
 
 
-    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-    <script src="[##cms.cms.cdn##]/asset/js/priceListPage.js"></script>
+    <script src="../assets/js/priceListPage.js"></script>
 </body>
 
 </html>
