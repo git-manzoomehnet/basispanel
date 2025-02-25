@@ -72,32 +72,54 @@ function addToInvoice(name, price, pricerenew, supportprice) {
         row.setAttribute("data-name", name);
         row.classList.add("invoice-item");
         row.innerHTML = `
-           
+             <ul class="w-90p mx-auto border-b border-bgGray pt-4">
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
 
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                ${name}
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                   ${price.toLocaleString()} 
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
+                           
+                            <span class=" font-IRANSansWeb400">
+
+                               ${name}
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                            قیمت سالانه :
+                            <span class=" font-IRANSansWeb400">
+
+                                ${price.toLocaleString()} 
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
+
+                            تمدید سالانه :
+                            <span class=" font-IRANSansWeb400">
+
                                  ${pricerenew.toLocaleString()}
-                                </td>
-                                <td class="font-Inter400 pt-9 pb-7 text-sm text-center">
-                                    ${supportprice}
-                                </td>
-                                <td class="deleteRow cursor-pointer px-6" onclick="deleteRowFn(event)">
-                                    <img src="/asset/images/deleteRow.svg" alt="deleteRow">
+                                
+                            </span>
+                            </p>
+                    </li>
+                    <li class="mb-5">
+                        <p class="font-IRANSansWeb600 text-sm">
 
-                                </td>
+                            پشتیبانی :
+                            <span class=" font-IRANSansWeb400">
+
+                            ${supportprice}
+                            </span>
+                            </p>
+                    </li>
+                  </ul>
+
+                                
         `;
 
-        // row.querySelector(".deleteRow").addEventListener("click", () => {
-        //     row.remove();
-        //     if (invoiceTable.querySelectorAll(".invoice-item").length === 0) {
-        //         emptyFactor.style.display = "table-row";
-        //     }
-        // });
+    
 
         invoiceTable.appendChild(row);
         emptyFactor.style.display = "none"; // پنهان کردن پیام فاکتور خالی
@@ -245,146 +267,14 @@ addToBasketBtn.forEach(btn => {
 
 
 
-addToBasketBtn.forEach(element => {
-    element.addEventListener("click", function (params) {
-
-
-
-
-
-
-
-
-
-        addToBasketBtn.forEach(el => {
-            el.classList.remove("hidden")
-            el.classList.add("flex")
-            el.nextElementSibling.classList.add("hidden")
-            el.nextElementSibling.classList.remove("flex")
-
-        })
-        element.classList.add("hidden")
-        element.classList.remove("flex")
-        element.nextElementSibling.classList.remove("hidden")
-        element.nextElementSibling.classList.add("flex")
-
-        const parentAccordion = element.closest('.accordion').querySelector(".accordion__intro input[type=checkbox]");
-        parentAccordion.checked = true
-    })
-});
-let totalPrice = 0;
-
-proListCheckBox.forEach(element => {
-    element.addEventListener("change", function () {
-
-        let plansInput = document.querySelector(".plans .accordion__intro input[type=checkbox]");
-
-        // بررسی انتخاب شدن حداقل یکی از proListCheckBox داخل همین accordion
-        const parentAccordion = element.closest('.accordion');
-        const isAnyChecked = parentAccordion.querySelectorAll(".proListCheckBox:checked").length > 0;
-        const accordionIntroCheckbox = parentAccordion.querySelector(".accordion__intro input[type=checkbox]");
-        accordionIntroCheckbox.checked = isAnyChecked;
-        if (isAnyChecked) {
-
-            totalP.style.display = "block";
+document.querySelectorAll(".panelaccordion .accordion-checkbox").forEach((checkbox) => {
+    checkbox.addEventListener("change", function () {
+        if (this.checked) {
+            document.querySelectorAll(".panelaccordion .accordion-checkbox").forEach((cb) => {
+                if (cb !== this) {
+                    cb.checked = false;
+                }
+            });
         }
-        else {
-            totalP.style.display = "none";
-
-        }
-        // پیدا کردن چک‌باکس داخل accordion__intro
-        if (!accordionIntroCheckbox) return;
-        // پیدا کردن والد اصلی
-        if (!plansInput.checked) {
-            errorPriceList.classList.add("activeErrorPriceList2");
-
-            setTimeout(() => {
-                errorPriceList.classList.add("activeErrorPriceList");
-                proListCheckBox.forEach(el => {
-                    el.checked = false;
-                    accordionIntroCheckbox.checked = false;
-                });
-                totalPrice = 0; // بازنشانی مجموع قیمت
-                totalPriceC.innerHTML = "0";
-            }, 400);
-
-            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList"), 5000);
-            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList2"), 5080);
-        }
-        if (!plansInput.checked) return;
-
-
-        if (!parentAccordion) return;
-
-
-        // گرفتن مقدار قیمت و تبدیل آن به عدد
-        const priceText = element.parentElement.parentElement.querySelector(".priceP").innerText.replace(/,/g, '');
-        const price = parseInt(priceText, 10);
-
-        let productName = element.closest("tr").querySelectorAll("td")[1].querySelector("span")?.innerHTML.replace(/ /g, '');
-        let pricePro = element.closest("tr").querySelector(".priceP")?.innerHTML;
-        let pricerenew = element.closest("tr").querySelectorAll("td")[3].querySelector("span")?.innerHTML.replace(/ /g, '');
-        let supportprice = element.closest("tr").querySelectorAll("td")[4].querySelector("span")?.innerHTML.replace(/ /g, '');
-        clearInvoice();
-        // محاسبه مجموع قیمت
-        if (element.checked) {
-            totalPrice += price;
-
-            selectedProducts.push({ productName, price, pricerenew, supportprice });
-            totalPriceSpan.innerHTML=totalPriceSpanIn+totalPrice
-
-        } else {
-            totalPrice -= price;
-            selectedProducts = selectedProducts.filter(item => item.productName !== productName);
-            let rowToRemove = invoiceTable.querySelector(`[data-name="${CSS.escape(productName)}"]`);
-            if (rowToRemove) rowToRemove.remove();
-            totalPriceSpan.innerHTML=totalPriceSpanIn+totalPrice
-
-        }
-
-
-
-        totalPriceC.innerHTML = totalPrice.toLocaleString()
-        // افزودن فقط مقدار جدید
-
-        selectedProducts.forEach(product => {
-            console.log(product);
-
-            addToInvoice(product.productName, product.price, product.pricerenew, product.supportprice);
-        });
-
-
-        if (selectedPlan.productName) {
-
-            addToInvoice(selectedPlan.productName, selectedPlan.price, selectedPlan.pricerenew, selectedPlan.supportprice);
-        }
-
-
-
     });
 });
-
-seeBasketBtn.forEach(element => {
-    console.log(element);
-});
-let openPopCalPrice = document.querySelector(".openPopCalPrice")
-let closepopPriceCalculate = document.querySelector(".closepopPriceCalculate")
-let popPriceCalculate = document.querySelector(".popPriceCalculate")
-openPopCalPrice.addEventListener("click", function (params) {
-    popPriceCalculate.classList.add("activePopCalculator")
-
-    setTimeout(() => {
-
-        popPriceCalculate.classList.add("activePopCalculator2")
-    }, 400);
-})
-
-
-closepopPriceCalculate.addEventListener("click", function (params) {
-
-    popPriceCalculate.classList.remove("activePopCalculator2")
-    setTimeout(() => {
-
-        popPriceCalculate.classList.remove("activePopCalculator")
-    }, 400);
-})
