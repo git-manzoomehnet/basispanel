@@ -1161,6 +1161,215 @@ footer .Right .text p{
  .Home-BasisPanel-mobile .help-Boxes .box p{
   text-align: justify;
  }
+ .SendMessage{
+  transition:all .4s ease ;
+}
+.typing-loader {
+  font-size: 14px;
+  font-weight: bold;
+  color: #004B85;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  gap: .3em;
+}
+
+.typing-loader span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 1px;
+  background-color: #004B85;
+  border-radius: 50%;
+  animation: typing 1s infinite ease-in-out;
+    animation-delay: 0s;
+  margin-top: 5px;
+}
+
+.typing-loader span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-loader span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typing {
+  0% { opacity: 0.3; transform: translateY(0px); }
+  50% { opacity: 1; transform: translateY(-3px); }
+  100% { opacity: 0.3; transform: translateY(0px); }
+}
+.chat-BasisPanel-mobile .css-typing {
+  white-space: nowrap;
+  overflow: hidden;
+  direction: rtl;
+}
+.chat-BasisPanel-mobile .typewriter{
+  width: 100%;
+  -webkit-animation: type 2s steps(40, end);
+  animation: type 2s steps(40, end);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@-webkit-keyframes type {
+  0% {
+    width: 0;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    border: none;
+  }
+}
+
+@keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@-webkit-keyframes type2 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  99.9% {
+    border-right: .15em solid orange;
+  }
+  100% {
+    opacity: 1;
+    border: none;
+  }
+}
+
+@keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes type3 {
+  0% {
+    width: 0;
+  }
+  1% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    border-color: tranparent;
+  }
+}
+
+.chat-BasisPanel-mobile textarea,
+.chat-BasisPanel-mobile textarea::placeholder{
+  color:#68737C;
+font-size: 14px;
+line-height: 21.91px;
+font-weight: 500;
+font-family: "IRANSansWeb500";
+text-align: right;
+direction: rtl;
+resize: none;
+height: auto; 
+padding-left: 3em;
+min-height: 50px; 
+max-height: 100px; 
+overflow-y: auto; 
+resize: none;
+white-space: pre-wrap;
+word-wrap: break-word; 
+overflow: hidden;
+
+}
+
+.chat-BasisPanel-mobile .userDetail{
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+}
+.chat-BasisPanel-mobile .userDetail .contact-c{
+  order: 1;
+}
+.chat-BasisPanel-mobile .userDetail div:first-child{
+  order: 2;
+}
+.CopyText path,.like path,.disLike path,.chatNodata path{
+  transition: all 0.5s ease-in-out;
+}
+.CopyText:hover path,.chatNodata path{
+  fill: #68737C;
+}
+.like:hover path{
+  fill: #00A693;
+}
+.disLike:hover path{
+  fill: #F9461C;
+}
+/* HTML: <div class="loader"></div> */
+.question_loader {
+width: 30px;
+aspect-ratio: 2;
+--_g: no-repeat radial-gradient(circle closest-side,#004B85 90%,#0000);
+background: 
+var(--_g) 0%   50%,
+var(--_g) 50%  50%,
+var(--_g) 100% 50%;
+background-size: calc(100%/3) 50%;
+animation: l3 1s infinite linear;
+margin: 0 auto;
+position: relative;
+top: 130px;
+}
+@keyframes l3 {
+20%{background-position:0%   0%, 50%  50%,100%  50%}
+40%{background-position:0% 100%, 50%   0%,100%  50%}
+60%{background-position:0%  50%, 50% 100%,100%   0%}
+80%{background-position:0%  50%, 50%  50%,100% 100%}
+}
 
  /* price list accordion */
 .priceList .accordion__content {

@@ -221,16 +221,16 @@ inputt.addEventListener("keypress", function(event) {
     // If the user presses the "Enter" key on the keyboard
     if (event.key === "Enter") {
       // Cancel the default action, if needed
-      if(inputt.value != ''){
+
         event.preventDefault();
         console.log('clicked');
         console.log('val',inputt );
         console.log('val',inputt.value);
-        window.location.href = `/chat.bc?q=${inputt.value}`
+        window.location.href = `/chat?q=${inputt.value}`
         setTimeout(() => {
         
         }, 1000);
-      }
+      
   
   
     }

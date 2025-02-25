@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",(()=>{let e=document.querySelectorAll(".fadeUP");let t=()=>{e.forEach((e=>{var t;(t=e).getBoundingClientRect().top<window.innerHeight&&t.classList.add("appear")}))};t(),lenis.on("scroll",(()=>{t()}))})),document.querySelector("header").classList.add("lightHeader");

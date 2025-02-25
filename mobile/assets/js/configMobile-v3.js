@@ -3,7 +3,7 @@
     let burger = document.querySelector('.burger-container'),
         header = document.querySelector('.Menu-container');
         innerheader = document.querySelector('.InnerHeader');
-        console.log(burger);
+    
     
     burger.onclick = function() {
     

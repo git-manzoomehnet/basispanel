@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <meta name="description" content="chat">
+    <link rel="stylesheet" href="/mobile/assets/css/outputMobile-v3.css">
+</head>
+<body>
+    <main class="chat-BasisPanel-mobile flex flex-col w-full min-h-svh justify-between overflow-hidden bg-[#E5E5E530]" dir="rtl">
+        <header class="MobileHeader [&.bgWhite]:bg-White duration-500 flex-col fixed top-0 left-0 z-50 w-full py-[1em] flex justify-center items-center">
+            <div class="InnerHeader w-90p grid grid-cols-2">
+                <div class="RightSec w-full flex justify-start gap-2 items-center">
+                    <div class="Logo w-auto flex justify-center items-center">
+                        <a href="">
+                            <img src="/mobile/assets/images/logo-mobile-v3.png" alt="">
+                        </a>
+                    </div>
+                    <div
+                        class="burger-container group/burger relative flex w-[50px] cursor-pointer rotate-0 duration-[.3s]">
+                        <div id="burger" class="w-[18px] gap-1 relative flex flex-col top-[50%] mx-[4px]">
+                            <div class="bar topBar group-[&.menu-opened]/burger:translate-y-[5px] group-[&.menu-opened]/burger:rotate-[-45deg]
+                           w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                            <div
+                                class="bar mdlBar w-full h-[2px] rounded-5 group-[&.menu-opened]/burger:translate-x-[-100px] group-[&.menu-opened]/burger:opacity-0 bg-textGray block  duration-[.3s] delay-0">
+                            </div>
+                            <div class="bar btmBar group-[&.menu-opened]/burger:translate-y-[-7px] group-[&.menu-opened]/burger:rotate-45
+                           w-full h-[2px] rounded-5 bg-textGray block  duration-[.3s] delay-0"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="LeftSec w-full flex justify-end">
+                    <div class="Btns w-auto flex gap-5">
+                        <!-- <span class="login-button  w-max px-[.7em] hover:bg-hoverBtlightBlue duration-200 
+                         py-[.2em] bg-lightBlue flex justify-center items-center rounded-5">
+                            <button type="button "
+                                class="w-auto flex justify-center
+                             text-primary items-center font-IRANSansWeb400 font-normal text-xs leading-18.78 rounded-5">
+                                ورود / ثبت‌نام
+                            </button>
+                        </span> -->
+                        <div class="UserProfile-box relative w-auto flex gap-4 flex-col">
+                            <div class="User w-auto flex gap-4 hover:cursor-pointer">
+                              <span class="Icon [&.openProf]:rotate-180 duration-150 w-auto flex justify-center items-center my-auto">
+                                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"/>
+                                      </svg>
+                                      
+                              </span>
+                              <span class="User-Image w-[32px] h-[32px] rounded-full flex justify-center items-center">
+                                  <img src="http://a4tech.webisaz.ir/images/m-avatar.png" alt="" class="rounded-full w-full h-full object-cover">
+                              </span>
+                      
+                            </div>
+                            <div class="UserDropdown bg-White absolute top-[4em] opacity-0 translate-y-[-2em] duration-500 [&.openProf]:opacity-[1]
+                            [&.openProf]:translate-y-[0]   min-w-[140px] left-[-6px] right-[inherit] mx-auto w-auto  py-[.5em] flex">
+                              <div class="Box w-auto px-[.7em] py-[.7em] flex flex-col gap-2 min-w-[140px]">
+                                  <div class="title w-full flex justify-start items-start leading-[15.65px]
+                                   text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
+                                      نام کاربری
+                                  </div>
+                                  <span class="Username pb-[.5em] leading-[20.35px] border-b-[1px] border-mainGray
+                                  text-black font-IRANSansWeb400 font-normal text-[13px]">
+                                      غدیره مرادی
+                                  </span>
+                                  <span class="logOut w-full flex justify-between items-center">
+                                      <div class="text leading-[21.91px]
+                                      text-black font-IRANSansWeb400 font-normal text-sm">
+                                          خارج شدن
+                                      </div>
+                                      <div class="logoOut w-auto my-auto">
+                                          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                              <path d="M1.54167 12.875C1.15208 12.875 0.818576 12.7363 0.541146 12.4589C0.263715 12.1814 0.125 11.8479 0.125 11.4583V1.54167C0.125 1.15208 0.263715 0.818576 0.541146 0.541146C0.818576 0.263715 1.15208 0.125 1.54167 0.125H6.5V1.54167H1.54167V11.4583H6.5V12.875H1.54167ZM9.33333 10.0417L8.35938 9.01458L10.1656 7.20833H4.375V5.79167H10.1656L8.35938 3.98542L9.33333 2.95833L12.875 6.5L9.33333 10.0417Z" fill="#5F6368"/>
+                                              </svg>                                    
+                                      </div>
+                                  </span>
+                              </div>
+                            </div>
+                             </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="Menu-container absolute left-0 top-0 flex h-[50px] bg-[transparent] w-full
+            overflow-hidden delay-[.2s] z-1 group/menu pointer-events-none [&.menu-opened]:pointer-events-[all] [&.menu-opened]:h-svh
+             [&.menu-opened]:bg-White">
+                <ul class="menu w-90p mx-auto flex flex-col my-auto">
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                     scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                    w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal text-lg text-textGray">
+                            خانه
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            آخرین تغییرات
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            درباره ما
+                        </a>
+                    </li>
+                    <li class="menu-item py-[.8em] border-b-[1px] border-primary group-[&.menu-opened]/menu:scale-[1]
+                    scale-[1.15] translate-y-[-30px]  opacity-0 group-[&.menu-opened]/menu:opacity-[1] group-[&.menu-opened]/menu:translate-y-[0]
+                   w-full flex justify-start items-center group/itemMenu">
+                        <a href="" class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                   font-normal text-lg text-textGray">
+                            تماس با ما
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </header>
+        <section class="section-1 h-[100svh] scrollable-section overflow-y-auto overflow-hidden  w-full flex  ">
+            <div class="container-chat w-90p mx-auto flex-col mb-auto h-[97%] flex ">
+                <div class="DropBTN w-auto hover:cursor-pointer gap-5 flex fixed right-[7em] top-[1em] justify-center z-[99] items-center">
+                    <span class="w-auto flex justify-center items-center">
+                        منو
+                    </span>
+                    <div class="DropIconp mt-auto w-auto flex justify-center items-center">
+                        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"></path>
+                            </svg>
+                    </div>
+                </div>
+                <div class="DropPop bg-White flex flex-col fixed translate-x-[-100%]  pointer-events-none opacity-0
+                duration-700 [&.OpenDrop]:opacity-[1] [&.OpenDrop]:translate-x-[0] [&.OpenDrop]:pointer-events-auto
+                 z-[999] left-0 top-0 bottom-0 h-[100svh] overflow-hidden w-screen">
+                    <span class="CloseDrop mr-[2em] mt-[2em]">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6 6L18 18M6 18L18 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                          
+                    </span>
+                    <div class="DropDowns mt-5 h-full overflow-y-auto w-90p mx-auto flex flex-col">
+                        <div class="Drop overflow-x-hidden hover:cursor-pointer duration-1000 
+                        group/drop w-full flex flex-col">
+                            <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                            border-l-White border-r-White border-b-[#004B85] border-r-[4px] border-l-[4px]
+                             group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+                           group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
+                                <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                                    سوالات عمومی
+                                </span>
+                                <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                    <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                                </span>
+                            </div>
+                            <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+                             flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                             group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                                <ul class="menu w-full flex flex-col">
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
+                                      بیسیس پنل چیست و چه امکاناتی دارد؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟" onclick="selectItem(this,event)">
+                                     بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟" onclick="selectItem(this,event)">
+                                    آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟
+                                   </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟" onclick="selectItem(this,event)">
+                                    آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟
+                                   </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Drop overflow-x-hidden hover:cursor-pointer duration-1000 
+                        group/drop w-full flex flex-col">
+                            <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                            border-l-White border-r-White border-b-[#004B85] border-r-[4px] border-l-[4px]
+                             group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+                           group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
+                                <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                                    سوالات عمومی
+                                </span>
+                                <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                    <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                                </span>
+                            </div>
+                            <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+                             flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                             group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                                <ul class="menu w-full flex flex-col">
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
+                                      بیسیس پنل چیست و چه امکاناتی دارد؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟" onclick="selectItem(this,event)">
+                                     بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟" onclick="selectItem(this,event)">
+                                    آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟
+                                   </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟" onclick="selectItem(this,event)">
+                                    آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟
+                                   </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="Drop overflow-x-hidden hover:cursor-pointer duration-1000 
+                        group/drop w-full flex flex-col">
+                            <div class="title-dropdown border-b-[1px] border-[#E8ECEF] duration-300 px-[.5em] rounded-5 
+                            border-l-White border-r-White border-b-[#004B85] border-r-[4px] border-l-[4px]
+                             group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
+                           group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
+                                <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
+                                    سوالات عمومی
+                                </span>
+                                <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
+                                    <img src="[##cms.cms.cdn##]/images/arrowicon-v3.svg" alt="">
+                                </span>
+                            </div>
+                            <div class="dropdown-menu w-full duration-[.4s] h-0 opacity-0 overflow-hidden 
+                             flex group-[&.open]/drop:h-[auto] group-[&.open]/drop:opacity-[1] flex-col group-[&.open]/drop:mt-4
+                             group-[&.open]/drop:py-[.5em] bg-[#E5E5E540]">
+                                <ul class="menu w-full flex flex-col">
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل چیست و چه امکاناتی دارد؟" onclick="selectItem(this,event)">
+                                      بیسیس پنل چیست و چه امکاناتی دارد؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                     font-IRANSansWeb500 font-medium text-xs text-text" data-val=" بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟" onclick="selectItem(this,event)">
+                                     بیسیس پنل برای چه نوع کسب‌وکارهایی مناسب است؟
+                                    </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟" onclick="selectItem(this,event)">
+                                    آیا امکان استفاده از بیسیس پنل به‌صورت آزمایشی وجود دارد؟
+                                   </li>
+                                    <li class="menu-item py-[.5em] leading-[22px] pr-5
+                                    font-IRANSansWeb500 font-medium text-xs text-text" data-val=" آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟" onclick="selectItem(this,event)">
+                                    آیا می‌توان بیسیس پنل را روی سرور اختصاصی خود نصب کرد؟
+                                   </li>
+                                </ul>
+                            </div>
+                        </div>
+                     
+                      </div>
+                </div>
+            
+                <div class="loadChatContainer mt-[4em]  flex flex-col">
+     <!-- <div class="chatSection w-90p translate-y-[100%]
+                 mx-auto sec1 my-auto [&.hideChat]:hidden noData gap-5 relative justify-center items-center  
+                flex flex-col rounded-5">
+                  <div class="titlechat w-full flex flex-col justify-center items-center">
+                     <div class="ME w-full flex gap-2 justify-center items-center">
+                         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                             <img src="[##cms.cms.cdn##]/images/user1-v3.png" alt="" class="object-contain">
+                         </span>
+                         <span class="userDetail w-auto flex  flex-col justify-start items-start">
+                             <div class="userName text-center w-auto flex justify-start font-IRANSansWeb700 font-bold text-base
+                             leading-25.04 text-textGray">
+                             من مدیر فروش هستم
+                             </div>
+                         
+                         </span>
+                     </div>
+                     <div class="text flex-col w-full  flex justify-center items-center">
+                         <p class="font-IRANSansWeb400 text-center font-normal text-sm leading-21.91 text-text">
+                             چطوری می‌تونم بهتون کمک کنم ؟ 
+                         </p>
+                     </div>
+                  </div>
+                   <div class="chatInputBox relative  w-90p mx-auto h-[50px] rounded-5">
+                     <textarea id="chat" rows="2" cols="30"  class="chatNodata w-full pt-[.5em] h-[50px] border-[1px] pr-3 outline-none border-mainGray rounded-5"
+                     placeholder="پیام را اینجا تایپ کنید"></textarea>
+                     <span class="Icon w-[34px] h-[34px] SendMessage absolute 
+                      hover:cursor-pointer z-3 left-1 top-2" onclick="sendMessageOne()">
+                         <img src="[##cms.cms.cdn##]/images/StartIcon.png" alt="">
+                     </span>
+                   </div>
+                 </div>
+
+                <div class="chatSection sec2 duration-300 opacity-0 [&.showChat]:opacity-[1]
+                 mt-auto mb-[1em] relative  w-full flex flex-col ">
+                  <div class="chats w-[95%] mx-auto gap-10 flex  mt-9" id="chatbox" style="margin-bottom: 20px;flex-direction: column;height:calc(100% - 170px);justify-content: end;">
+               
+                   
+                 
+                  </div>
+                  <div class="chatInputBox sticky bottom-0 left-0 right-0 z-2 w-full mx-auto h-[95px] rounded-5 padding-4" style="padding: 0 15px;">
+                 <textarea id="chat2" rows="2" cols="30"  placeholder="پیام را اینجا تایپ کنید"  
+                    class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"
+                     style="left: 30px;top: 20px;"></textarea>
+                     <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                  style="left: 30px;top: 20px;">
+                        <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                    </span>
+                  </div>
+                </div> -->
+                <div class="chatSection sec2 duration-300 opacity-0 showChat [&.showChat]:opacity-[1]
+                mt-auto  relative  w-full flex flex-col ">
+                 <div class="chats w-[95%] mx-auto gap-10 flex  mt-9 flex-col" id="chatbox" >
+              
+                    <div class="ME w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+                            <img src="/web/assets/images/usericon-v3.svg" alt="" class="w-[16px] h-[16px] object-contain">
+                        </span> 
+                        <span class="userDetail w-auto flex flex-col justify-start items-start">
+                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+                            leading-[22px] text-text">
+                                شما
+                            </div>
+                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                                crm چه ویژگی هایی داره ؟
+
+                            </div>
+                        </span>
+                    </div>
+                    <div class="YOU w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="/web/assets/images/user1-v3.png" alt="" class="object-contain">
+                        </span> 
+                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
+                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
+                            1. مدیریت اطلاعات مشتریان
+                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
+                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
+                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
+                            2. مدیریت فروش
+                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
+                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
+                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
+                            3. مدیریت بازاریابی
+                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
+                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
+                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
+                            4. مدیریت خدمات مشتریان
+                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
+                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
+                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
+                            5. گزارشگیری و تحلیل دادهها
+                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
+                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
+                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
+                            6. یکپارچهسازی با سایر سیستمها
+                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
+                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
+                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
+                            7. اتوماسیون فرآیندها
+                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
+                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
+                            8. دسترسی چندپلتفرمی
+                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
+                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
+                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
+                            9. امنیت دادهها
+                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
+                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
+                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
+                            10. شخصیسازی
+                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
+                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
+                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
+                            11. مدیریت تیم
+                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
+                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
+                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
+                            12. پشتیبانی از چند زبانه
+                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
+                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
+                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
+                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
+                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
+                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
+                            14. مقیاسپذیری
+                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
+                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
+                            15. قابلیتهای اجتماعی
+                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
+                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
+                            نتیجهگیری
+                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
+                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
+                            </div>
+                            <div class="contact-c w-full flex justify-end items-center gap-2">
+                                <span class="CopyText hover:cursor-pointer">
+                                    <img src="/web/assets/images/copy-v3.svg" alt="">
+                                </span>
+                                <span class="disLike hover:cursor-pointer">
+                                    <img src="/web/assets/images/dislike-v3.svg" alt="">
+                                </span>
+                                <span class="like hover:cursor-pointer">
+                                    <img src="/web/assets/images/like-v3.svg" alt="">
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="ME w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
+                            <img src="/web/assets/images/usericon-v3.svg" alt="" class="w-[16px] h-[16px] object-contain">
+                        </span> 
+                        <span class="userDetail w-auto flex flex-col justify-start items-start">
+                            <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
+                            leading-[22px] text-text">
+                                شما
+                            </div>
+                            <div class="message  w-auto flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                                crm چه ویژگی هایی داره ؟
+
+                            </div>
+                        </span>
+                    </div>
+                    <div class="YOU w-full flex gap-6 justify-start items-start">
+                        <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full">
+                            <img src="/web/assets/images/user1-v3.png" alt="" class="object-contain">
+                        </span> 
+                        <span class="userDetail w-95p mr-auto grid grid-cols-[5fr,1fr] justify-start items-start">
+                            <div class="message  w-full flex justify-start font-IRANSansWeb400 font-normal text-[10px]
+                            leading-[15.65px] text-text">
+                            CRM (Customer Relationship Management) یا مدیریت ارتباط با مشتری، یک سیستم یا استراتژی است که به کسبوکارها کمک میکند تا تعاملات با  مشتریان فعلی و بالقوه را مدیریت، تحلیل و بهبود بخشند. CRMها ویژگیها و  قابلیتهای متنوعی دارند که به سازمانها کمک میکنند تا روابط با مشتریان را  تقویت کرده، فروش را افزایش دهند و خدمات بهتری ارائه دهند. در ادامه به  برخی از ویژگیهای کلیدی CRM اشاره میکنم:
+                            1. مدیریت اطلاعات مشتریان
+                            ذخیرهسازی اطلاعات: جمعآوری و ذخیره اطلاعات مشتریان مانند نام، تماس، تاریخچه خرید، تعاملات و ترجیحات.
+                            پروفایل مشتری: ایجاد پروفایل کامل برای هر مشتری به منظور دسترسی سریع به اطلاعات مرتبط.
+                            بهروزرسانی خودکار: بهروزرسانی خودکار اطلاعات مشتریان بر اساس تعاملات جدید.
+                            2. مدیریت فروش
+                            پیگیری فرصتهای فروش: مدیریت و پیگیری فرصتهای فروش از ابتدا تا انتها.
+                            پیشبینی فروش: پیشبینی میزان فروش بر اساس دادههای تاریخی و روندهای فعلی.
+                            مدیریت خط فروش (Pipeline): نمایش مراحل مختلف فرآیند فروش و پیشرفت هر مشتری در این مراحل.
+                            3. مدیریت بازاریابی
+                            کمپینهای بازاریابی: طراحی، اجرا و پیگیری کمپینهای بازاریابی.
+                            تجزیه و تحلیل بازاریابی: تحلیل اثربخشی کمپینها و شناسایی مشتریان هدف.
+                            اتوماسیون بازاریابی: ارسال خودکار ایمیلها، پیامها و تبلیغات به مشتریان بر اساس رفتار آنها.
+                            4. مدیریت خدمات مشتریان
+                            تیکتینگ (Ticketing): ایجاد و مدیریت درخواستهای پشتیبانی مشتریان.
+                            پاسخگویی خودکار: استفاده از چتباتها یا سیستمهای پاسخگویی خودکار برای حل سریعتر مشکلات.
+                            رصد رضایت مشتری: جمعآوری بازخورد و نظرات مشتریان برای بهبود خدمات.
+                            5. گزارشگیری و تحلیل دادهها
+                            داشبوردهای تحلیلی: نمایش دادههای کلیدی مانند نرخ تبدیل، رضایت مشتری و عملکرد تیم فروش.
+                            گزارشهای سفارشی: ایجاد گزارشهای متنوع بر اساس نیاز کسبوکار.
+                            هوش تجاری (BI): استفاده از ابزارهای تحلیلی برای شناسایی روندها و الگوها.
+                            6. یکپارچهسازی با سایر سیستمها
+                            یکپارچهسازی با ایمیل و تقویم: همگامسازی ایمیلها و رویدادها با سیستم CRM.
+                            اتصال به سیستمهای ERP: یکپارچهسازی با سیستمهای مدیریت منابع سازمانی (ERP) برای مدیریت بهتر فرآیندها.
+                            پشتیبانی از API: امکان اتصال به سایر نرمافزارها و سرویسهای第三方.
+                            7. اتوماسیون فرآیندها
+                            کارflowهای خودکار: طراحی فرآیندهای خودکار برای کاهش کارهای دستی و افزایش کارایی.
+                            هشدارها و یادآوریها: ارسال هشدارها و یادآوریها برای پیگیری تعاملات و وظایف.
+                            8. دسترسی چندپلتفرمی
+                            نسخه موبایل: دسترسی به CRM از طریق اپلیکیشنهای موبایل.
+                            نسخه وب: استفاده از CRM از طریق مرورگرهای وب.
+                            دسترسی آفلاین: امکان استفاده از برخی قابلیتها بدون نیاز به اینترنت.
+                            9. امنیت دادهها
+                            مدیریت دسترسیها: تعیین سطح دسترسی کاربران به اطلاعات مختلف.
+                            رمزنگاری دادهها: محافظت از اطلاعات مشتریان با استفاده از رمزنگاری پیشرفته.
+                            پشتیبانگیری خودکار: ایجاد نسخه پشتیبان از دادهها به صورت منظم.
+                            10. شخصیسازی
+                            فیلدهای سفارشی: اضافه کردن فیلدهای مورد نیاز برای جمعآوری اطلاعات خاص.
+                            قالبهای سفارشی: طراحی قالبهای گزارش و ایمیل متناسب با نیاز کسبوکار.
+                            پیکربندی فرآیندها: تنظیم فرآیندهای داخلی بر اساس نیاز سازمان.
+                            11. مدیریت تیم
+                            تخصیص وظایف: توزیع وظایف بین اعضای تیم.
+                            پیگیری عملکرد: بررسی عملکرد تیم فروش و پشتیبانی.
+                            همکاری تیمی: تسهیل ارتباط و همکاری بین اعضای تیم.
+                            12. پشتیبانی از چند زبانه
+                            زبانهای مختلف: پشتیبانی از زبانهای مختلف برای کسبوکارهای بینالمللی.
+                            محلیسازی: تطبیق سیستم با قوانین و استانداردهای محلی.
+                            13. قابلیتهای مبتنی بر هوش مصنوعی (AI)
+                            تحلیل احساسات: تحلیل احساسات مشتریان از طریق تعاملات (مانند ایمیلها و چتها).
+                            پیشنهادات هوشمند: ارائه پیشنهادات فروش یا خدمات بر اساس رفتار مشتری.
+                            چتباتهای هوشمند: استفاده از چتباتها برای پاسخگویی سریع به سوالات مشتریان.
+                            14. مقیاسپذیری
+                            افزایش کاربران: امکان اضافه کردن کاربران جدید با رشد کسبوکار.
+                            افزایش حجم دادهها: پشتیبانی از افزایش حجم دادهها بدون کاهش عملکرد.
+                            15. قابلیتهای اجتماعی
+                            یکپارچهسازی با شبکههای اجتماعی: مدیریت تعاملات مشتریان در شبکههای اجتماعی.
+                            رصد شبکههای اجتماعی: پیگیری نظرات و بازخوردهای مشتریان در پلتفرمهای اجتماعی.
+                            نتیجهگیری
+                            CRMها ابزارهای قدرتمندی هستند که به سازمانها کمک میکنند تا روابط با مشتریان  را بهبود بخشند، فرآیندهای داخلی را بهینه کنند و در نهایت به رشد کسبوکار  کمک کنند. انتخاب یک CRM مناسب به نیازها و اهداف کسبوکار شما بستگی دارد.  برخی از CRMهای محبوب شامل Salesforce, HubSpot, Microsoft Dynamics 365, و Zoho CRM هستند.
+                            اگر نیاز به اطلاعات بیشتر یا مشاوره در انتخاب CRM دارید، خوشحال میشوم کمک کنم!
+                            </div>
+                            <div class="contact-c w-full flex justify-end items-center gap-2">
+                                <span class="CopyText hover:cursor-pointer">
+                                    <img src="/web/assets/images/copy-v3.svg" alt="">
+                                </span>
+                                <span class="disLike hover:cursor-pointer">
+                                    <img src="/web/assets/images/dislike-v3.svg" alt="">
+                                </span>
+                                <span class="like hover:cursor-pointer">
+                                    <img src="/web/assets/images/like-v3.svg" alt="">
+                                </span>
+                            </div>
+                        </span>
+                    </div>
+                
+                 </div>
+                 <div class="chatInputBox fixed bottom-[1em] left-0 right-0 z-2 w-full mx-auto h-[50px] rounded-5 padding-4" style="padding: 0 15px;">
+                  <textarea  id="chat2" rows="2" cols="30"   placeholder="پیام را اینجا تایپ کنید" 
+                  class="w-full h-[50px] border-[1px] pr-4 pt-[.5em] outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"
+                   style="left: 30px;top: 20px;"></textarea>
+                  <!-- <input type="text" id="chat2" placeholder="پیام را اینجا تایپ کنید"
+                   class="w-full h-[95px] border-[1px] pr-4 outline-none border-mainGray rounded-5"  style="margin-bottom: 15px;"> -->
+                   <span class="Icon SendMessage absolute hover:cursor-pointer z-3  top-2" onclick="sendMessage()" 
+                    style="left: 30px;top: 20px;">
+                       <img src="[##cms.cms.cdn##]/images/send-v3.png" alt="basis" title="basis">
+                   </span>
+                 </div>
+               </div>
+                </div>
+           
+          
+            </div>
+        </section>
+
+    </main>
+    <script src="/mobile/assets/js/lenisScroll.js"></script>
+    <script src="/mobile/assets/js/configMobile-v3.js"></script>
+    <script src="/mobile/assets/js/chat-mobile-v3.js"></script>
+</body>
+</html>
