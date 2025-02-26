@@ -1,209 +1,214 @@
 <!DOCTYPE html>
 <html lang="fa">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بیسیس پنل | BasisPanel | معمار یکپارچگی کسب و کار شما</title>
-    <meta
-    name="description"
-    content="BasisPanel یک سیستم جامع است که تمامی فرآیندهای کلیدی کسب و کار شما را به صورت یکپارچه مدیریت می‌کند. "
-    />
+    <meta name="description"
+        content="BasisPanel یک سیستم جامع است که تمامی فرآیندهای کلیدی کسب و کار شما را به صورت یکپارچه مدیریت می‌کند. " />
     <meta name="description" content="home">
     <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
     <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-  
- </head>
+
+</head>
+<basis core="call" if="{##get.dmntoken.value|(false)##}" run="AtClient" file="features/dmntoken.inc"
+    triggers="get.dmntoken" onrendered="setDmnToken"></basis>
+
 <body class="gray">
     <main class="Home-BasisPanel w-full overflow-hidden" dir="rtl">
-        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
         <div class="callInput flex mt-[10em] relative z-2 w-[975px] h-[80px] mx-auto 
         flex-col justify-center items-center gap-3">
-          <input type="text" class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray" 
-          id="myInput" placeholder="مدیرفروش هستم">
-          <div class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto left-[1em] z-1">
-           <img src="[##cms.cms.cdn##]/images/input-v3.png" alt="">
-          </div>
-       </div>
-       <section class="section-1 mt-8 pb-[2em] z-1 relative w-full flex flex-col  bg-White">
-        <div class="Banner w-full flex justify-center relative z-3 items-center">
-            <img src="[##cms.cms.cdn##]/images/bg-home-v3.png" alt="">
+            <input type="text" class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray"
+                id="myInput" placeholder="مدیرفروش هستم">
+            <div
+                class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto left-[1em] z-1">
+                <img src="[##cms.cms.cdn##]/images/input-v3.png" alt="">
+            </div>
         </div>
-        <div class="Titles w-full flex relative z-3  flex-col justify-center items-center">
-            <h1 class="font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px] text-blue">
-                راهکارهای یکپارچه نرم افزاری برای <span
-                    class="color text-blue2 font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px]">
-                    مدیریت
-                </span> کسب و کار
-            </h1>
-            <h2 class="font-IRANSansWeb600 font-semibold text-[21px] leading-[50px] text-center text-textGray">
-                بیسیس پنل مجموعه‌ای از ابزارهای یکپارچه ابری است که تمام نیازهای سازمانی شما را پوشش می‌دهد.
-            </h2>
-        </div>
-   </section>
-   <section class="section-2 relative z-[5] w-full flex flex-col py-[3em]">
-             
-    <div class="Purpose-sec w-80p flex mx-auto flex-col mb-[2em]">
-        <div class="purpose-boxes w-full grid grid-cols-7 gap-y-20">
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+        <section class="section-1 mt-8 pb-[2em] z-1 relative w-full flex flex-col  bg-White">
+            <div class="Banner w-full flex justify-center relative z-3 items-center">
+                <img src="[##cms.cms.cdn##]/images/bg-home-v3.png" alt="">
+            </div>
+            <div class="Titles w-full flex relative z-3  flex-col justify-center items-center">
+                <h1 class="font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px] text-blue">
+                    راهکارهای یکپارچه نرم افزاری برای <span
+                        class="color text-blue2 font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px]">
+                        مدیریت
+                    </span> کسب و کار
+                </h1>
+                <h2 class="font-IRANSansWeb600 font-semibold text-[21px] leading-[50px] text-center text-textGray">
+                    بیسیس پنل مجموعه‌ای از ابزارهای یکپارچه ابری است که تمام نیازهای سازمانی شما را پوشش می‌دهد.
+                </h2>
+            </div>
+        </section>
+        <section class="section-2 relative z-[5] w-full flex flex-col py-[3em]">
+
+            <div class="Purpose-sec w-80p flex mx-auto flex-col mb-[2em]">
+                <div class="purpose-boxes w-full grid grid-cols-7 gap-y-20">
+                    <a href="/solutions/users" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
          flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
              h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/user-group-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
-                    مدیریت اعضا
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/user-group-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
+                            مدیریت اعضا
+                        </span>
+                    </a>
+                    <a href="solutions/sharedfolder" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
         flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
             h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/folderShare-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    پوشه اشتراکی
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/folderShare-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            پوشه اشتراکی
+                        </span>
+                    </a>
+                    <a href="solutions/reports" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
        flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
            h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/reports-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    گزارشات
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/reports-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            گزارشات
+                        </span>
+                    </a>
+                    <a href="solutions/ticketing" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
       flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
           h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/ticket-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    سیستم تیکتینگ
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/ticket-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            سیستم تیکتینگ
+                        </span>
+                    </a>
+                    <a href="/solutions/gallery" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
      flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
          h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/gallery-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    گالری تصاویر
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/gallery-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            گالری تصاویر
+                        </span>
+                    </a>
+                    <a href="solutions/bpms" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
     flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
         h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/processMaker-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    فرآیندساز
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/processMaker-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            فرآیندساز
+                        </span>
+                    </a>
+                    <a href="/solutions/content" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
    flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
        h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/uploadContent-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    بارگزاری محتوا
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/uploadContent-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            بارگزاری محتوا
+                        </span>
+                    </a>
+                    <a href="/solutions/dashboard" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
   flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
       h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/work-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    میزکار
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/work-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            میزکار
+                        </span>
+                    </a>
+                    <a href="solutions/automation" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
  flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
      h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/message-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    دبیرخانه
-                </span>
-            </div>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/message-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            دبیرخانه
+                        </span>
+                    </a>
+                    <a href="solutions/taskmanager" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
     h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/managementProj-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    مدیریت پروژه
-                </span>
-            </div>
+                            <img src="[##cms.cms.cdn##]/images/managementProj-v3.png" alt=""
+                                class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            مدیریت پروژه
+                        </span>
+                    </a>
 
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                    <a href="/solutions/sale" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
    h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/financialSystem-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    سیستم مالی
-                </span>
-            </div>
-            <a href="/solutions/crm" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/financialSystem-v3.png" alt=""
+                                class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            فروش و بازاریابی
+                        </span>
+                    </a>
+                    <a href="/solutions/crm" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
   h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/crm-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    CRM
-                </span>
-            </a>
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                            <img src="[##cms.cms.cdn##]/images/crm-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            CRM
+                        </span>
+                    </a>
+                    <a href="/solutions/domains" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
   h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/domailManage-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    مدیریت دامنه
-                </span>
-            </div>
+                            <img src="[##cms.cms.cdn##]/images/domailManage-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            مدیریت دامنه
+                        </span>
+                    </a>
 
-            <div class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                    <a href="/solutions" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
 flex flex-col gap-1">
-                <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                        <span class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
  h-[60px] py-[.3em] px-[.3em] rounded-5">
-                    <img src="[##cms.cms.cdn##]/images/more-icon-v3.png" alt="" class="w-full object-cover">
-                </span>
-                <span
-                    class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                    سایر راهکارها
-                </span>
+                            <img src="[##cms.cms.cdn##]/images/more-icon-v3.png" alt="" class="w-full object-cover">
+                        </span>
+                        <span
+                            class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+                            سایر راهکارها
+                        </span>
+                    </a>
+                </div>
             </div>
-        </div>
-    </div>
 
-</section>
+        </section>
         <section class="section-3 w-full flex flex-col mt-[2em]">
             <div class="title w-full flex flex-col gap-3 fadeIN">
 
@@ -232,10 +237,17 @@ flex flex-col gap-1">
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من فرهاد، مدیر فروش یک کسب‌وکار متوسط هستم؛ با ماژول CRM در بیسیس پنل می‌توانم
-                                پایپ‌لاین‌های مختلف فروش را تعریف کرده و در یک نگاه و کسری از ثانیه، نقاط قوت و ضعف تیم
-                                خود را تحلیل کنم. به واسطه این راه‌کار، ما به‌طور مداوم به اهداف تیمی مدنظر خود
-                                رسیده‌ایم و تصمیمات کلان سازمانی را بر مبنای داده اخذ کردیم.
+                                سیستم CRM بیسیس پنل با ماژول‌های خود به بهترین نحو این نیاز را برآورده کرده است. با
+                                استفاده از این سیستم، توانسته‌ایم خطوط فروش خود را به‌طور کاملاً ساختاریافته تعریف کنیم
+                                و روند فروش را در هر لحظه به دقت ارزیابی نماییم. این ابزار به ما این امکان را می‌دهد که
+                                نقاط قوت و ضعف تیم فروش را به‌طور شفاف و در زمان واقعی شناسایی کرده و بر اساس آن،
+                                تصمیمات به‌موقع اتخاذ کنیم. سرعت بالای تحلیل داده‌ها در این سیستم به ما اجازه می‌دهد که
+                                هر تصمیمی را بر اساس داده‌های معتبر و به‌روز اتخاذ کنیم. یکی از مزایای کلیدی استفاده از
+                                بیسیس پنل، شفافیت بالای اطلاعات است. این سیستم به ما این امکان را می‌دهد که به‌راحتی به
+                                تمامی اطلاعات مربوط به عملکرد تیم فروش، از جمله پیشرفت‌ها و چالش‌ها، دسترسی پیدا کنیم و
+                                آن‌ها را تحلیل کنیم. در نهایت، بیسیس پنل نه تنها به ما کمک می‌کند که تیم فروش خود را به
+                                بهترین شکل ممکن مدیریت کنیم، بلکه باعث می‌شود که تصمیمات استراتژیک‌تری در سطح کلان اتخاذ
+                                کنیم.
                             </p>
                         </div>
                     </div>
@@ -248,18 +260,18 @@ flex flex-col gap-1">
                             <div class="PopSale relative z-1 w-auto flex flex-col">
                                 <div
                                     class="title w-max flex justify-start items-start gap-2 border-b-[1px] berder-blue pb-[.5em] mb-[.5em]">
-                                    <span id="counter"
+                                    <!-- <span id="counter"
                                         class="percent font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
 
-                                    </span>
-                                    <span
+                                    </span> -->
+                                    <!-- <span
                                         class="text font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
                                         رشد فروش
-                                    </span>
+                                    </span> -->
                                 </div>
-                                <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
+                                <!-- <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
                                     در مقایسه با هفته گذشته
-                                </p>
+                                </p> -->
                             </div>
                             <div id="chart" class="relative z-1" dir="ltr">
                                 <div id="animations-example-1">
@@ -310,8 +322,8 @@ flex flex-col gap-1">
                         </div>
                     </div>
                 </div>
-                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
-                    <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2">
+                    <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-center items-center">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
                         text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
@@ -320,36 +332,36 @@ flex flex-col gap-1">
                             </span>
                             <h4
                                 class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                پیش‌بینی چالش‌های کسب‌وکار؛ فتح فرصت‌هـــا برای رشـــــد سازمان
+                                پیش‌بینی چالش‌های کسب‌وکار؛ فتح فرصت‌ها برای رشد سازمان
                             </h4>
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من سینا، مدیرعامل یک شرکت در حال رشد هستم؛ داشبورد مدیریتی بیسیس پنل و قابلیت‌های
-                                کاربردی آن، نمای جامع و لحظه‌ای مناسبی از تمامی عملیات کسب‌وکار در اختیار من قرار
-                                می‌دهد. به کمک این داشبورد می‌توانم تصمیمات استراتژیک سازمان را به شکل آگاهانه اتخاذ
-                                کنم، فرصت‌های رشد را شناسایی کرده و چالش‌ها را پیش از تاثیرگذاری آن‌ها بر سودآوری سازمان
-                                حل کنم.
-
+                                در دنیای پیچیده و پرسرعت امروزی، پیش‌بینی و مدیریت چالش‌های کسب‌وکار به یکی از عوامل
+                                کلیدی موفقیت هر سازمان تبدیل شده است. به‌عنوان مدیرعامل یک شرکت در حال رشد، شناسایی
+                                به‌موقع چالش‌ها و فرصت‌های موجود به ما این امکان را می‌دهد که استراتژی‌های مؤثری را
+                                پیاده‌سازی کرده و از بروز بحران‌ها جلوگیری کنیم. در این زمینه، استفاده از ابزارهای
+                                مدیریتی هوشمند، نظیر داشبورد مدیریتی بیسیس پنل، به‌عنوان یک راهکار عملی برای تحلیل و
+                                پیش‌بینی روندهای مختلف کسب‌وکار، نقش بسزایی ایفا کرده است.
                             </p>
                         </div>
                     </div>
                     <div
                         class="leftSec  group-odd/help:justify-end group-odd/help:order-1 w-full relative flex justify-start items-center">
-                        <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
+                        <div class="IMG w-auto flex">
                             <img src="[##cms.cms.cdn##]/images/psd_blank_smartphone_template 1-v3.png" alt=""
-                                class=" w-full object-cover">
+                                class=" object-cover w-80p" >
                         </div>
 
-                        <div class="IMG-ov  absolute right-0 top-0 z-1 max-w-[445px]
-                max-h-[299px] translate-y-[50%] translate-x-[-30%]">
+                        <div class="IMG-ov  absolute right-0  z-1 max-w-[445px]
+                max-h-[299px] translate-y-[50%] translate-x-[-30%]" style="top: -20px;">
                             <img src="[##cms.cms.cdn##]/images/ov-v3.png" class=" w-full object-cover">
                         </div>
                     </div>
                 </div>
 
-                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2 mt-7 py-[4em]">
-                    <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-start items-start">
+                <div class="helpBox fadeIN group/help item-2 w-full  gap-[8em] grid grid-cols-2  pb-[4em]">
+                    <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-center items-center">
                         <div class="title w-full flex justify-start flex-col items-start gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
                      text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
@@ -358,23 +370,24 @@ flex flex-col gap-1">
                             </span>
                             <h4
                                 class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                بیسیس پنــل؛ واسطی بـــــرای ورود کسب‌وکار به جهـــــان هوش مصنوعی
+                                بیسیس پنل؛ واسطی برای ورود کسب‌وار به جهان هوش مصنوعی
                             </h4>
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                من شروین، مدیر توسعه کسب‌و‌کار هستم؛ با بیسیس پنل، ما تمام داده‌های کسب و کار خود - از
-                                فروش و بازاریابی گرفته تا عملیات و امور مالی - را در یک مرکز هوشمند، قابل‌اکتفا و منسجم،
-                                یکپارچه کرده‌ایم. این یکپارچگی نه تنها امروز به ما بینش‌های اجرایی مختلفی می‌دهد، بلکه
-                                ما را برای پیاده‌سازی راه‌کارهای هوش مصنوعی در آینده نیز آماده می‌کند. با کمک بیسیس پنل،
-                                علاوه بر سازماندهی داده‌ها، کسب‌وکار ما برای تحولات آینده نیز آماده می‌شود.
-
+                                پنل بیسیس با ویژگی‌های منحصر به فرد خود، نه تنها به یکپارچگی داده‌ها کمک می‌کند، بلکه به
+                                سازمان‌ها این امکان را می‌دهد که برای تغییرات آینده آماده شوند. این ابزار به‌ویژه در
+                                حوزه هوش مصنوعی و یادگیری ماشین بسیار کارآمد است. با پردازش و تحلیل مداوم داده‌های
+                                مختلف، این سیستم شرایطی را فراهم می‌آورد که بتوانیم الگوریتم‌های هوش مصنوعی را به‌طور
+                                مؤثری در آینده پیاده‌سازی کنیم و تحلیل‌های پیشرفته‌تری انجام دهیم که به بهبود عملکرد
+                                سازمان کمک می‌کند.علاوه بر این، سیستم بیسیس پنل به‌طور لحظه‌ای به‌روزرسانی می‌شود و این
+                                امکان را برای ما فراهم می‌آورد که در هر زمان به اطلاعات دقیق دسترسی داشته باشیم.
                             </p>
                         </div>
                     </div>
                     <div
                         class="rightSec  group-even/help:order-1  group-odd/help:justify-end w-full relative flex justify-start items-center">
-                        <div class="IMG w-auto flex max-w-[370px] max-h-[600px]">
+                        <div class="IMG w-auto flex  max-h-[600px]">
                             <img src="[##cms.cms.cdn##]/images/Untitled-v3.png" alt="" class=" w-full object-cover">
                         </div>
 
@@ -382,7 +395,7 @@ flex flex-col gap-1">
                 </div>
             </div>
         </section>
-     
+
         <section class="section-5 w-full flex flex-col ">
             <div class="MethodsSec w-80p mx-auto flex flex-col">
                 <div class="title w-full flex justify-center items-center py-[2em]">
@@ -439,30 +452,31 @@ flex flex-col gap-1">
                     [&.activeSlide]:pointer-events-auto
                      bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
+                                    class="Container  h-[95%] my-auto justify-center items-center w-95p mx-auto flex ">
 
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
+                                    <div class="RightSec h-full w-full flex justify-start items-center" style="width: 560px">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
+                                            <img src="[##cms.cms.cdn##]/images/small_business_image.jpg" class="rounded-lg"
+                                                alt="" class="w-full h-full object-cover">
                                         </div>
                                     </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
+                                    <div class="LeftSec h-full flex-col  flex justify-center items-center" style="width: calc(100% - 560px) ;">
                                         <div
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                   leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
+                                                در دنیای کنونی، کسب‌وکارهای کوچک به دنبال راهکارهایی هستند که به آن‌ها
+                                                کمک کند تا با حداقل منابع، بهره‌وری بیشتری داشته و به رشد و توسعه پایدار
+                                                دست یابند. یکی از بزرگ‌ترین چالش‌های این کسب‌وکارها، مدیریت مؤثر داده‌ها
+                                                و فرآیندهای داخلی است. بیسیس پنل با ارائه مجموعه‌ای از ابزارهای مدیریتی
+                                                یکپارچه، راه‌حل‌های مناسبی برای مواجهه با این چالش‌ها در اختیار
+                                                کسب‌وکارهای کوچک قرار داده است. ، بیسیس پنل با تحلیل دقیق داده‌ها و
+                                                ارائه گزارش‌های جامع، به کسب‌وکارهای کوچک کمک می‌کند تا با داشتن دیدی
+                                                شفاف از عملکرد سازمان، به‌طور مؤثری با رقبا رقابت کرده و به رشد خود
+                                                ادامه دهند.
                                             </p>
                                         </div>
-                                        <a href=""
-                                            class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                              duration-[1s] px-[2em] 
                                              py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
@@ -477,7 +491,7 @@ flex flex-col gap-1">
                                                     fill="white" />
                                             </svg>
 
-                                        </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
@@ -485,45 +499,46 @@ flex flex-col gap-1">
                       [&.activeSlide]:pointer-events-auto
                        bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
+                                    class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
 
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
+                                    <div class="RightSec h-full flex justify-start items-center" style="width: 560px">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
+                                            <img src="[##cms.cms.cdn##]/images/e-bussines-picture.jpg"
+                                                alt="" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                     </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
+                                    <div class="LeftSec h-full flex-col flex justify-center items-center" style="width: calc(100% - 560px) ;">
                                         <div
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                     leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
+                                                یکی از ویژگی‌های برجسته بیسیس پنل برای کسب‌وکارهای تجارت الکترونیک،
+                                                یکپارچگی داده‌ها است. این سیستم به کسب‌وکارهای آنلاین این امکان را
+                                                می‌دهد که تمامی اطلاعات مرتبط با فروش، مشتریان، موجودی کالا، بازاریابی و
+                                                امور مالی را در یک بستر واحد تجزیه و تحلیل کنند. این یکپارچگی به صاحبان
+                                                کسب‌وکار کمک می‌کند تا تصویری دقیق از عملکرد فروشگاه آنلاین خود داشته
+                                                باشند و بتوانند تصمیمات مبتنی بر داده‌های واقعی و به‌روز اتخاذ کنند.
+                                                بیسیس پنل نه تنها به بهینه‌سازی فرآیندهای جاری کسب‌وکارهای تجارت
+                                                الکترونیک کمک می‌کند، بلکه آن‌ها را برای مواجهه با چالش‌ها و تحولات
+                                                آینده نیز آماده می‌سازد.
                                             </p>
                                         </div>
-                                        <a href=""
-                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                          duration-[1s] px-[2em] 
                                          py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                        <button type="button "
-                                            class="w-auto flex justify-center
+                                            <button type="button "
+                                                class="w-auto flex justify-center
                                text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
-                                            مطالعه بیشتر
-                                        </button>
-                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                fill="white" />
-                                        </svg>
+                                                مطالعه بیشتر
+                                            </button>
+                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                    fill="white" />
+                                            </svg>
 
-                                    </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
@@ -531,45 +546,47 @@ flex flex-col gap-1">
                         [&.activeSlide]:pointer-events-auto
                          bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
-                                    class="Container gap-[8em] h-[95%] my-auto justify-center items-center w-95p mx-auto grid grid-cols-2">
+                                    class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
 
-                                    <div class="RightSec h-full w-full flex justify-start items-center">
+                                    <div class="RightSec h-full w-full flex justify-start items-center" style="width:560px">
                                         <div class="IMG max-w-[560px] min-h-[349px]">
-                                            <img src="[##cms.cms.cdn##]/images/smiling-bartender-with-hot-beverage 1.png" alt=""
-                                                class="w-full h-full object-cover">
+                                            <img src="[##cms.cms.cdn##]/images/sale_picture.jpg"
+                                                alt="" class="w-full h-full object-cover rounded-lg">
                                         </div>
                                     </div>
-                                    <div class="LeftSec h-full flex-col w-full flex justify-center items-center">
+                                    <div class="LeftSec h-full flex-col flex justify-center items-center" style="width: calc(100% - 560px) ;">
                                         <div
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                       leading-[22px] text-gray text-justify">
-                                                با بیسیس پنل، تمامی جریان‌های کاری خود را در یک پلتفرم قدرتمند و یکپارچه
-                                                مدیریت کنید. این نرم‌افزار سازمانی تمامی ابزارهای ضروری کسب‌وکار شما –
-                                                از مدیریت وظایف و تقویم تیمی تا اشتراک‌گذاری اسناد و ارتباطات – را در یک
-                                                بستر قابل‌اعتماد و دسترس‌پذیر ادغام می‌کند. بدین ترتیب، از پیچیدگی‌ها و
-                                                دغدغه‌های نرم‌افزاری رهایی یافته و همگام با رشد کسب‌وکارتان، مقیاس‌پذیری
-                                                بهتری خواهید داشت.
-
+                                                یکی از ویژگی‌های بارز بیسیس پنل، یکپارچگی داده‌هاست. تیم‌های بازاریابی
+                                                می‌توانند تمامی اطلاعات مرتبط با کمپین‌های تبلیغاتی، ترافیک وب‌سایت،
+                                                تعاملات در شبکه‌های اجتماعی، ایمیل مارکتینگ و داده‌های فروش را در یک
+                                                پلتفرم واحد مشاهده کنند. این یکپارچگی موجب می‌شود که اطلاعات مختلف در
+                                                کنار هم قرار بگیرند و تحلیل‌های دقیق‌تری ارائه دهند که به بازاریابان کمک
+                                                می‌کند تا تصمیمات آگاهانه‌تری اتخاذ کرده و استراتژی‌های خود را بر اساس
+                                                داده‌های واقعی و به‌روز شکل دهند. یکی از ویژگی‌های بارز بیسیس پنل،
+                                                توانایی پیش‌بینی روندها است. این سیستم با تحلیل داده‌های تاریخی و
+                                                شبیه‌سازی سناریوهای مختلف، قادر به پیش‌بینی روندهای آینده بازار و تقاضا
+                                                می‌باشد.
                                             </p>
                                         </div>
-                                        <a href=""
-                                        class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                          duration-[1s] px-[2em] 
                                          py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
-                                        <button type="button "
-                                            class="w-auto flex justify-center
+                                            <button type="button "
+                                                class="w-auto flex justify-center
                                text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
-                                            مطالعه بیشتر
-                                        </button>
-                                        <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                fill="white" />
-                                        </svg>
+                                                مطالعه بیشتر
+                                            </button>
+                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
+                                                    fill="white" />
+                                            </svg>
 
-                                    </a>
+                                        </a> -->
                                     </div>
                                 </div>
                             </div>
@@ -579,13 +596,25 @@ flex flex-col gap-1">
                 </div>
             </div>
         </section>
-        
-   <basis core="call" file="logo.inc" pageindex="[##cms.cms.pageindex##]"  />
+
+        <basis core="call" file="logo.inc" pageindex="[##cms.cms.pageindex##]" />
         <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
         <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
     </main>
     <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
-   <script src="[##cms.cms.cdn##]/asset/js/home-v3.js"></script>
+    <script src="[##cms.cms.cdn##]/asset/js/home-v3.js"></script>
+    <script>
+        function setDmnToken(args) {
+            const thisdmntoken = document.getElementById("dmntoken").value;
+            dmntoken = thisdmntoken;
+            $bc.setSource("db.runTokenCommand", {
+                value: true,
+                dmntoken: thisdmntoken,
+            });
+
+        }
+
+    </script>
 </body>
 
 </html>

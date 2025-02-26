@@ -366,8 +366,8 @@ async function makeList(args){
             
             question += `  
                     <li class="menu-item py-[.5em] leading-[22px] pr-5
-        font-IRANSansWeb500 font-medium text-xs text-text" data-val=" ${q}" onclick="selectItem(this,event)">
-      ${q}
+        font-IRANSansWeb500 font-medium text-xs text-text" data-val=" ${q.message}"  data-value="${q.token}" onclick="selectItem(this,event)">
+      ${q.message}
         </li>`
         })
         
@@ -379,7 +379,7 @@ async function makeList(args){
                     group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
                 group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
                         <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                             ${e.title}
+                            ${e.title}
                         </span>
                         <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
                             <img src="/images/arrowicon-v3.svg" alt="">

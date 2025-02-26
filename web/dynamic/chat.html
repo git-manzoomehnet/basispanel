@@ -48,6 +48,11 @@
       run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat">
     </basis>
 
+    <basis core="api" name="db.chat" url="/service/ai/sending_question?token={##db.sendwithToken.token##}" method="post"   triggers="db.sendwithToken"
+    body='{"message":"{##db.sendwithToken.val##}"}' if="{##db.sendwithToken.run|(false)##}"
+      run="atclient" onprocessed="setChatFirst" onprocessing="loadingchat">
+    </basis>
+
     <basis core="api" name="db.chat" url="/service/ai/addreaction" method="post"   triggers="db.like"
     body='{##db.like.val##}' if="{##db.like.run|(false)##}"
       run="atclient" onprocessed="likeMethod" content-type="application/json" >
@@ -62,7 +67,7 @@
       run="atclient" onprocessed="makeList" content-type="application/json" >
     </basis>
 
-
+    
     
     
 
@@ -74,7 +79,7 @@
             grid grid-cols-[1fr,3fr] gap-9 ">
                 <div class="chatBoxesSection
                  w-full flex flex-col border-[1px]
-                  bg-White border-[#E8ECEF] rounded-5 ">
+                  bg-White border-[#E8ECEF] rounded-5 h-[80vh] ">
                   <div class="topSec w-90p mx-auto py-[1em] border-b-[1px] border-[#E8ECEF]">
                     <div class="Searchbox  relative w-full h-[44px]">
                         <input type="text" id="conversationSearch"
@@ -618,7 +623,7 @@ const sendMessageOne = ()=>{
 }
 const chatvalue = document?.querySelector("#chat2")
 opacityIcon(chatvalue)
-function sendMessage(value){
+function sendMessage(value,token){
       document.querySelector('.loadChatSection ').style.overflowY='auto'
    
 //       if( document.querySelector('#chat')){
@@ -634,7 +639,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
@@ -649,10 +654,20 @@ function sendMessage(value){
         </span>
         `
         document.querySelector("#chatbox").appendChild(newDiv)
-        $bc.setSource("db.send" ,{
+        if(token){
+            $bc.setSource("db.sendwithToken" ,{
+            "run" : true,
+            "val" : chatvalue2.value,
+            "token" : token
+        })
+        }
+        else{
+            $bc.setSource("db.send" ,{
             "run" : true,
             "val" : chatvalue2.value
         })
+        }
+        
         chatvalue2.value=""
         document.querySelector("#current_section")?.removeAttribute("id")
     }
@@ -662,7 +677,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
@@ -677,10 +692,20 @@ function sendMessage(value){
         </span>
         `
         document.querySelector("#chatbox").appendChild(newDiv)
-        $bc.setSource("db.send" ,{
+        if(token){
+            $bc.setSource("db.sendwithToken" ,{
+            "run" : true,
+            "val" :value,
+            "token" : token
+        })
+        }
+        else{
+            $bc.setSource("db.send" ,{
             "run" : true,
             "val" :value
         })
+        }
+      
         value=""
         document.querySelector("#current_section")?.removeAttribute("id")
     }
@@ -736,15 +761,15 @@ document.execCommand("copy");
 AlertMessage('Success', 'متن در clipboard کپی شد.')
 }
 }
-function selectItem(el , event){
+function selectItem(el , event,token){
     scrollToBottom()
     if(!firstinput?.classList.contains('hideChat')){
         let chatsecNodata = document?.querySelector('div.sec1')
         let chatsec = document.querySelector('div.sec2')
           chatsecNodata?.classList.add('hideChat')
           chatsec.classList.add('showChat')
-          document.querySelector("#chat2").value = el.getAttribute("data-val")
-          sendMessage(el.getAttribute("data-val"))
+          //document.querySelector("#chat2").value = el.getAttribute("data-val")
+          sendMessage(el.getAttribute("data-val"),token)
     }
     else{
         document.querySelector("#chat2").value = el.getAttribute("data-val")
@@ -810,11 +835,11 @@ async function makeList(args){
     responseJson.forEach(e => {
         const newDrop = document.createElement("div") 
         let question = ""
-        e.questions	.forEach(q => {
+        e.questions.forEach(q => {
             
             question += `  <li class="menu-item py-[.5em] leading-[22px] pr-5
-                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="${q}" onclick="selectItem(this,event)">
-                                  ${q}
+                                 font-IRANSansWeb500 font-medium text-xs text-text" data-val="${q.message}" data-value="${q.token}" onclick="selectItem(this,event,'${q.token}')">
+                                  ${q.message}
                                 </li>`
         })
         

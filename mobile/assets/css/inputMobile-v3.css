@@ -1496,17 +1496,13 @@ padding-right: 1em;
     transform: translateY(0em);
     opacity: 1;
   }
-  .Landing-Basispanel-mobile header li a,
-  .Landing-Basispanel-mobile header .langC .langText,
-  .Landing-Basispanel-mobile header svg path{
- color: white;
- fill:  white;
- stroke: white;
-  }
+
   .Landing-Basispanel-mobile header .bar {
 background-color: white;
   }
-
+  .Landing-Basispanel-mobile header .burger-container.menu-opened .bar{
+    background-color: rgb(73 73 73 / var(--tw-bg-opacity, 1)) !important;
+  }
   .Landing-Basispanel-mobile header.bgWhite .bar {
     background-color: #494949 !important;
      }
