@@ -15,7 +15,7 @@
     <main class="priceList" dir="rtl">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
 
-        <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center mt-[208px] mb-[73px]">
+        <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center  mb-[73px]" style="padding-top: 208px;">
             جدول قیمت محصولات
         </h1>
         <div
@@ -148,9 +148,10 @@
 
 
             <div class=" w-80p mx-auto">
-                <div
-                    class="accordion plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-tl-[10px] rounded-tr-[10px]">
+                <div class="accordion plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-tl-[10px] rounded-tr-[10px]">
                     <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                        <div class="flex gap-x-8 items-center">
+
                         <div class="flex gap-x-4 items-center">
                             <input type="checkbox"
                                 class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
@@ -160,6 +161,19 @@
                                 انتخاب پنل 
                             </h4>
 
+                        </div>
+                        <div class="totalP1 hidden bg-White/[0.5] rounded-5 py-2 px-3">
+                            <p class="font-IRANSansWeb600 text-sm text-primary">
+                                مبلغ کل :
+
+                                <span class="totalPriceC1">
+
+                                    250,000,000 
+                                </span>
+                                 
+                                 تومان
+                            </p>
+                        </div>
                         </div>
                         <div class="arrowList">
                             <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
@@ -1547,9 +1561,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="accordion bg-White group/accordion overflow-hidden  shadow-[0px_4px_50px_0px_#8a8a8a30]">
-                    <div
-                        class="accordion__intro rounded-bl-5 rounded-br-5 relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                <div class="accordion endPoints bg-White group/accordion overflow-hidden  shadow-[0px_4px_50px_0px_#8a8a8a30]">
+                    <div class="accordion__intro rounded-bl-5 rounded-br-5 relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
                         <div class="flex gap-x-4 items-center">
                             <input type="checkbox"
                                 class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
@@ -1571,9 +1584,98 @@
                         </div>
                     </div>
                     <div class="accordion__content px-[75px]">
-                        <div class="inner w-full !pt-[74px] pb-3 ">
+                        <div class="inner mx-auto !pt-[74px] pb-3 w-90p ">
+
+                            <div class="grid grid-cols-3">
+                                <div class="serverBox py-3 px-4 rounded-[10px] border border-mainGray">
+                                    <div class="title flex justify-between mb-3 gap-x-4">
+                                        <h3 class="font-IRANSansWeb400 endpoint-title-web text-[21px]">
+                                            Web Server
+                                        </h3>
+
+                                        <div class="logos flex">
+                                            <img src="../assets/images/network-logo(endpoints).png" alt="basiscore">
+                                            <img src="../assets/images/iranLogo.png" alt="iran">
+                                        </div>
+                                    </div>
+                                    <ul>
+                                        <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                موقعیت مکانی : 
+                                                
+                                            </p>
+
+                                            <span class="font-IRANSansWeb400 endpoint-title text-xs text-[#1E1E1E]">
+
+                                                ایران - پونک
+                                            </span>
+                                        </li>
+                                        <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                ترافیک : 
+                                                
+                                            </p>
+
+                                            <span class="font-IRANSansWeb400 text-xs text-[#1E1E1E]">
+
+                                               نامحدود
+                                            </span>
+                                        </li>
+                                        <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                قیمت سالانه : 
+                                                
+                                            </p>
+
+                                            <span class="font-IRANSansWeb400 endpoint-yearly-price text-xs text-[#1E1E1E]">
+
+                                                 35,000,000 
+                                                
+                                            </span>
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                ریال
+                                            </p>
+                                        </li>
+                                        <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                تمدید سالانه : 
+                                                
+                                            </p>
+
+                                            <span class="font-IRANSansWeb400 endpoint-newr-price text-xs text-[#1E1E1E]">
+
+                                                 35,000,000 
+                                                
+                                            </span>
+                                            <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                                ریال
+                                            </p>
+                                        </li>
+                                    </ul>
+
+                                        <div class="flex gap-x-2.5">
+                                            <span class="font-IRANSansWeb400 text-xs">
+                                                تعداد
+                                            </span>
 
 
+                                            <input type="number" class="endpoint-number font-IRANSansWeb400 text-xs text-textGray" min="1">
+
+                                            <button class=" rounded-5 w-[98px] h-[33px] bg-primary flex items-center justify-center">
+                                                <span class="font-IRANSansWeb400 text-xs text-White endpoint-addtoFactor">
+
+                                                    افزودن به فاکتور
+                                                </span>
+                                                <span class="font-IRANSansWeb400 text-xs text-White endpoint-seeFactor hidden">
+
+                                                    افزودن به فاکتور
+                                                </span>
+
+
+                                            </button>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1581,7 +1683,7 @@
             </div>
 
         </section>
-        <section class=" pb-[217px]">
+        <section class="productFactorContainer pb-[217px]">
 
             <section
                 class="mt-16  flex w-80p mx-auto gap-x-14 rounded-[10px] shadow-[0px_4px_50px_0px_#8a8a8a30] pb-16">
@@ -1653,7 +1755,7 @@
                         </span>
                         <p class="inline-block font-interBold text-base">
 
-                            تومان
+                            ریال
                         </p>
                     </div>
                 </div>
