@@ -124,7 +124,7 @@
                         
                 </span>
                 <span class="User-Image w-[47px] h-[47px] rounded-full flex justify-center items-center">
-                    <img src="http://a4tech.webisaz.ir/images/m-avatar.png" alt="" class="rounded-full w-full h-full object-cover">
+                    <img src="[##cms.cms.cdn##]/images/m-avatar.png" alt="" class="rounded-full w-full h-full object-cover">
                 </span>
         
               </div>
@@ -137,7 +137,7 @@
                     </div>
                     <span class="Username pb-[.5em] leading-[20.35px] border-b-[1px] border-mainGray
                     text-black font-IRANSansWeb400 font-normal text-[13px]">
-                        غدیره مرادی
+
                     </span>
                     <a href="/panel" class=" hover:cursor-pointer w-full flex justify-between items-center">
                         <div class="text leading-[21.91px]
@@ -218,7 +218,7 @@
                 document.querySelector(".UserDropdown .Username").innerText = `${nameusr} ${lastname}`
                 // document.querySelector(".phoneuser").innerHTML = phonenumber[0].answer
                 if (avatar == undefined || avatar == null || avatar.length == 0) {
-                    document.querySelector(".UserProfile-box .User-Image img").src = "http://a4tech.webisaz.ir/images/m-avatar.png"
+                    document.querySelector(".UserProfile-box .User-Image img").src = "/images/m-avatar.png"
                 } else {
                     console.log("sss" , avatar)
                     console.log("sss" , avatar[1].answer)

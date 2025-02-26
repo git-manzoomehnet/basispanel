@@ -142,21 +142,27 @@ const detectLanguage = (text) =>{
 }
 let firstinput =document?.querySelector('textarea.chatNodata')
 let chaticons = document.querySelectorAll('.SendMessage')
-const opacityIcon =(input)=>{
-   let typer = input;
-    function handleKeyPress(e) {
-        chaticons.forEach(c=>{
-            c.style.opacity = '.5'
-        })
+chaticons.forEach(c => {
+    c.style.opacity = .3;
+    c.style.pointerEvents = 'none';
+});
+const opacityIcon = (input) => {
+    let typer = input;
+
+    function updateOpacity() {
+        let length = typer.value.length;
+        let opacity = length >= 4 ? 1 : length / 4;         
+        let pointer = length >= 4 ? 'auto' : 'none';         
+        chaticons.forEach(c => {
+            c.style.opacity = opacity;
+            c.style.pointerEvents = pointer;
+        });
     }
-    function handleKeyUp(e) {
-        chaticons.forEach(c=>{
-            c.style.opacity = '1'
-        })
-    }
-    typer.addEventListener("keypress", handleKeyPress)
-    typer.addEventListener("keyup", handleKeyUp)
-}
+
+    typer.addEventListener("input", updateOpacity);
+};
+
+
 if(firstinput){
     opacityIcon(firstinput)
 }
@@ -188,7 +194,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
@@ -216,7 +222,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
@@ -366,8 +372,8 @@ async function makeList(args){
             
             question += `  
                     <li class="menu-item py-[.5em] leading-[22px] pr-5
-        font-IRANSansWeb500 font-medium text-xs text-text" data-val=" ${q}" onclick="selectItem(this,event)">
-      ${q}
+        font-IRANSansWeb500 font-medium text-xs text-text" data-val=" ${q.message}"  data-value="${q.token}" onclick="selectItem(this,event)">
+      ${q.message}
         </li>`
         })
         
@@ -379,7 +385,7 @@ async function makeList(args){
                     group-hover/drop:border-r-[#004B85]   group-hover/drop:border-l-[#004B85]    
                 group-[&.open]/drop:border-r-[#004B85] group-[&.open]/drop:border-l-[#004B85]  w-full flex justify-between">
                         <span class="title py-[1em] font-IRANSansWeb500 font-medium text-sm text-text">
-                             ${e.title}
+                            ${e.title}
                         </span>
                         <span class="icon w-auto flex group-[&.open]/drop:rotate-[-90deg] duration-300">
                             <img src="/images/arrowicon-v3.svg" alt="">

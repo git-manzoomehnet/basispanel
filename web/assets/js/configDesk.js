@@ -130,7 +130,9 @@ if(document.querySelector('.Popup-container')){
              </span>
          </div>`
     function refreshAndFetch() {
-        let url = "http://nljpdiw.undertest.ir/dmntoken-v3.inc?nocache=" + new Date().getTime(); // جلوگیری از کش شدن
+     
+      
+        let url = `${window.location.origin}/dmntoken-v3.inc?nocache=` + new Date().getTime(); // جلوگیری از کش شدن
     
         fetch(url) 
             .then(response => response.text())
