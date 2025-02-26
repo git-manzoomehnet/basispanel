@@ -1384,13 +1384,12 @@ video {
   height: 32px;
 }
 
-<<<<<<< HEAD
 .h-\[33px\] {
   height: 33px;
-=======
+}
+
 .h-\[348px\] {
   height: 348px;
->>>>>>> f21cdf1b8730c1e99bebdc6bfce00076064738d9
 }
 
 .h-\[34px\] {
@@ -1520,6 +1519,14 @@ video {
 
 .h-svh {
   height: 100svh;
+}
+
+.h-\[33\[x\]\] {
+  height: 33[x];
+}
+
+.h-\[33\] {
+  height: 33;
 }
 
 .max-h-\[299px\] {
@@ -1820,6 +1827,10 @@ video {
   width: 100svw;
 }
 
+.w-\[51\%\] {
+  width: 51%;
+}
+
 .min-w-\[140px\] {
   min-width: 140px;
 }
@@ -1914,6 +1925,10 @@ video {
 
 .shrink {
   flex-shrink: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
 }
 
 .flex-grow {
@@ -6613,13 +6628,8 @@ input#conversationSearch::placeholder {
   box-shadow: 0px 0px 8px 8px #00000008;
 }
 
-<<<<<<< HEAD
 footer .Right .text p {
   font-size: 16px;
-=======
-footer .Right .text p{
-  font-size: 14px;
->>>>>>> f21cdf1b8730c1e99bebdc6bfce00076064738d9
   font-weight: 400;
   line-height: 26.43px;
   color: white;
@@ -7126,17 +7136,47 @@ footer .Right .text p{
   stroke: #494949 !important;
 }
 
-<<<<<<< HEAD
 .font-interBold {
-  font-weight: 600;
-=======
-.font-interBold{
   font-weight: 600;
 }
 
 .MethodsSec .Tcontent .Text {
   width: 90%;
->>>>>>> f21cdf1b8730c1e99bebdc6bfce00076064738d9
+}
+
+.fadeUP {
+  transform: translateY(6em);
+  opacity: 0;
+  transition: all 0.9s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.fadeUP.appear {
+  transform: translateY(0em);
+  opacity: 1;
+}
+
+.Landing-Basispanel header li a,
+.Landing-Basispanel header .langC .langText,
+.Landing-Basispanel header svg path {
+  color: white;
+  fill: white;
+  stroke: white;
+}
+
+.Landing-Basispanel header .langs-content .langText {
+  color: white !important;
+}
+
+.Landing-Basispanel header.bgWhite li a,
+.Landing-Basispanel header.bgWhite .langC .langText,
+.Landing-Basispanel header.bgWhite svg path {
+  color: #494949 !important;
+  fill: #494949 !important;
+  stroke: #494949 !important;
+}
+
+.font-interBold {
+  font-weight: 600;
 }
 
 @media (min-width: 480px) {
