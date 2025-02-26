@@ -1537,3 +1537,7 @@ stroke: #494949 !important;
 .font-interBold{
   font-weight: 600;
 }
+
+.MethodsSec .Tcontent .Text {
+  width: 90%;
+}
