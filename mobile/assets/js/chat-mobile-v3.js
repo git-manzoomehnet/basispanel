@@ -142,21 +142,27 @@ const detectLanguage = (text) =>{
 }
 let firstinput =document?.querySelector('textarea.chatNodata')
 let chaticons = document.querySelectorAll('.SendMessage')
-const opacityIcon =(input)=>{
-   let typer = input;
-    function handleKeyPress(e) {
-        chaticons.forEach(c=>{
-            c.style.opacity = '.5'
-        })
+chaticons.forEach(c => {
+    c.style.opacity = .3;
+    c.style.pointerEvents = 'none';
+});
+const opacityIcon = (input) => {
+    let typer = input;
+
+    function updateOpacity() {
+        let length = typer.value.length;
+        let opacity = length >= 4 ? 1 : length / 4;         
+        let pointer = length >= 4 ? 'auto' : 'none';         
+        chaticons.forEach(c => {
+            c.style.opacity = opacity;
+            c.style.pointerEvents = pointer;
+        });
     }
-    function handleKeyUp(e) {
-        chaticons.forEach(c=>{
-            c.style.opacity = '1'
-        })
-    }
-    typer.addEventListener("keypress", handleKeyPress)
-    typer.addEventListener("keyup", handleKeyUp)
-}
+
+    typer.addEventListener("input", updateOpacity);
+};
+
+
 if(firstinput){
     opacityIcon(firstinput)
 }
@@ -188,7 +194,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
@@ -216,7 +222,7 @@ function sendMessage(value){
         newDiv.setAttribute("class" , "ME w-full flex gap-6 justify-start items-start")
         newDiv.innerHTML = `
         <span class="userIcon w-[30px] h-[30px] flex justify-center items-center rounded-full bg-primary">
-        <img src="http://cdn.basiscore.net/nljpdiw.undertest.ir/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
+        <img src="/images/usericon-v3.svg" alt="basis" title="basis" class="w-[16px] h-[16px] object-contain">
         </span> 
         <span class="userDetail w-auto flex flex-col justify-start items-start">
         <div class="userName w-auto flex justify-start font-IRANSansWeb500 font-medium text-xs
