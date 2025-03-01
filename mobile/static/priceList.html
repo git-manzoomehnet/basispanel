@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/css/outputMobile-v3.css">
+    <title>لیست قیمت ها</title>
+    <meta name="description" content="لیست قیمت های بیسیس پنل">
+    <basis core="call" file="styles-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
 
 </head>
 
 
 <body>
     <main class="priceList" dir="rtl">
+        <basis core="call" file="checkheaderLogin-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+
         <h1 class="font-IRANSansWeb600 text-base w-90p mx-auto text-center mt-[93px] mb-5">
             جدول قیمت محصولات
         </h1>
@@ -172,12 +175,12 @@
                              
                                 <tbody>
                                     <tr class="border-b border-b-borderP/[0.3]">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 حجم
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 500 GB
 
@@ -187,13 +190,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تعداد کاربران
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 5
 
@@ -205,16 +208,16 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت کاربران
 
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -228,7 +231,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت محتوا
 
@@ -236,9 +239,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -252,7 +255,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تقویم سازمانی
 
@@ -261,9 +264,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan deactivePlan relative flex justify items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -277,7 +280,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 پوشه اشتراکی
 
@@ -287,9 +290,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan deactivePlan relative flex justify items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -303,7 +306,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 چت سازمانی
 
@@ -313,9 +316,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan deactivePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -329,13 +332,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Annual fee
+                                                مبلغ سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -344,7 +347,7 @@
 
                                                      
                                                 </span>
-                                                تومان
+                                                ریال
                                                 </p>
                                         </td>
                                    
@@ -352,20 +355,20 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Secound ywars subsciption fee
+                                                تمدید سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
                                                 3,500,000 
                                                  
                                             </span>
-                                            تومان
+                                            ریال
                                             </p>
                                         </td>
                                    
@@ -373,13 +376,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Support (optional)
+                                                هزینه پشتیبانی
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
@@ -433,12 +436,12 @@
                              
                                 <tbody>
                                     <tr class="border-b border-b-borderP/[0.3]">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 حجم
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 1T
 
@@ -449,13 +452,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تعداد کاربران
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 10
 
@@ -467,16 +470,16 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت کاربران
 
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -490,7 +493,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت محتوا
 
@@ -498,9 +501,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -514,7 +517,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تقویم سازمانی
 
@@ -523,9 +526,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -539,7 +542,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 پوشه اشتراکی
 
@@ -549,9 +552,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan deactivePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -565,7 +568,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 چت سازمانی
 
@@ -575,9 +578,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan deactivePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan deactivePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -591,13 +594,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 Annual fee
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -607,7 +610,7 @@
 
                                                      
                                                 </span>
-                                                تومان
+                                                ریال
                                                 </p>
                                         </td>
                                    
@@ -615,13 +618,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Secound ywars subsciption fee
+                                                تمدید سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
@@ -629,7 +632,7 @@
 
                                                  
                                             </span>
-                                            تومان
+                                            ریال
                                             </p>
                                         </td>
                                    
@@ -637,13 +640,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Support (optional)
+                                                هزینه پشتیبانی
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
@@ -698,12 +701,12 @@
                              
                                 <tbody>
                                     <tr class="border-b border-b-borderP/[0.3]">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 حجم
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 3T
 
@@ -714,13 +717,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تعداد کاربران
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 20
 
@@ -732,16 +735,16 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت کاربران
 
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -755,7 +758,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت محتوا
 
@@ -763,9 +766,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -779,7 +782,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تقویم سازمانی
 
@@ -788,9 +791,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -804,7 +807,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 پوشه اشتراکی
 
@@ -814,9 +817,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -830,7 +833,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 چت سازمانی
 
@@ -840,9 +843,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -856,13 +859,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 Annual fee
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -872,7 +875,7 @@
 
                                                      
                                                 </span>
-                                                تومان
+                                                ریال
                                                 </p>
                                         </td>
                                    
@@ -880,13 +883,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Secound ywars subsciption fee
+                                                تمدید سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
@@ -895,7 +898,7 @@
 
                                                  
                                             </span>
-                                            تومان
+                                            ریال
                                             </p>
                                         </td>
                                    
@@ -903,13 +906,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Support (optional)
+                                                هزینه پشتیبانی
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
@@ -964,12 +967,12 @@
                              
                                 <tbody>
                                     <tr class="border-b border-b-borderP/[0.3]">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 حجم
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 5T
 
@@ -980,13 +983,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تعداد کاربران
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 45
 
@@ -998,16 +1001,16 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت کاربران
 
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1021,7 +1024,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت محتوا
 
@@ -1029,9 +1032,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1045,7 +1048,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تقویم سازمانی
 
@@ -1054,9 +1057,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1070,7 +1073,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 پوشه اشتراکی
 
@@ -1080,9 +1083,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1096,7 +1099,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 چت سازمانی
 
@@ -1106,9 +1109,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1122,13 +1125,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 Annual fee
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1139,7 +1142,7 @@
 
                                                      
                                                 </span>
-                                                تومان
+                                                ریال
                                                 </p>
                                         </td>
                                    
@@ -1147,13 +1150,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Secound ywars subsciption fee
+                                                تمدید سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
@@ -1163,7 +1166,7 @@
 
                                                  
                                             </span>
-                                            تومان
+                                            ریال
                                             </p>
                                         </td>
                                    
@@ -1171,13 +1174,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Support (optional)
+                                                هزینه پشتیبانی
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
@@ -1232,12 +1235,12 @@
                              
                                 <tbody>
                                     <tr class="border-b border-b-borderP/[0.3]">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 حجم
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 10T
 
@@ -1248,13 +1251,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تعداد کاربران
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 75
 
@@ -1266,16 +1269,16 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت کاربران
 
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1289,7 +1292,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 مدیریت محتوا
 
@@ -1297,9 +1300,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1313,7 +1316,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تقویم سازمانی
 
@@ -1322,9 +1325,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1338,7 +1341,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 پوشه اشتراکی
 
@@ -1348,9 +1351,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex  items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1364,7 +1367,7 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 چت سازمانی
 
@@ -1374,9 +1377,9 @@
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <div
-                                                class="imgS group/activePlan activePlan relative flex justify-center items-center">
+                                                class="imgS group/activePlan activePlan relative flex items-center">
                                                 <img class="group-[&.activePlan]/activePlan:block hidden"
                                                     src="[##cms.cms.cdn##]/asset/images/activePricePlan.svg"
                                                     alt="activePricePlan">
@@ -1390,13 +1393,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 Annual fee
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1408,7 +1411,7 @@
 
                                                      
                                                 </span>
-                                                تومان
+                                                ریال
                                                 </p>
                                         </td>
                                    
@@ -1416,13 +1419,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Secound ywars subsciption fee
+                                                تمدید سالانه
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-yearly text-sm text-placeholder">
@@ -1433,7 +1436,7 @@
 
                                                  
                                             </span>
-                                            تومان
+                                            ریال
                                             </p>
                                         </td>
                                    
@@ -1441,13 +1444,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
-                                                Support (optional)
+                                                هزینه پشتیبانی
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 panel-price-support text-sm text-placeholder">
@@ -1507,12 +1510,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1529,14 +1532,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1551,13 +1554,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1615,12 +1618,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1637,14 +1640,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1659,13 +1662,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1723,12 +1726,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1744,14 +1747,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1766,13 +1769,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1831,12 +1834,12 @@
                                     
 
                                         <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                     قیمت 
                                                 </span>
                                             </td>
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 
                                                 <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                                 
@@ -1852,14 +1855,14 @@
 
                                         </tr>
                                         <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                     تمدید سالانه
 
     
                                                 </span>
                                             </td>
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                                 
                                                 <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1874,13 +1877,13 @@
 
                                         </tr>
                                         <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                     هزینه پشتیبانی
 
                                                 </span>
                                             </td>
-                                            <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                                 <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                                 
                                                 <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1940,12 +1943,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -1961,14 +1964,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -1983,13 +1986,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2049,12 +2052,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -2069,14 +2072,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2091,13 +2094,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2157,12 +2160,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -2177,14 +2180,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2199,13 +2202,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2264,12 +2267,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -2284,14 +2287,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2306,13 +2309,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2371,12 +2374,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -2391,14 +2394,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2413,13 +2416,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2479,12 +2482,12 @@
                                   
 
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 قیمت 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
@@ -2499,14 +2502,14 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 تمدید سالانه
 
  
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2521,13 +2524,13 @@
 
                                     </tr>
                                     <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <span class="font-IRANSansWeb400 text-sm text-placeholder">
                                                 هزینه پشتیبانی
 
                                             </span>
                                         </td>
-                                        <td class="text-center py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
                                             <p class="font-IRANSansWeb400  text-sm text-placeholder">
                                             
                                             <span class="font-IRANSansWeb400 product-price-renew text-sm text-placeholder">
@@ -2544,6 +2547,358 @@
                                     </tr>
                                 </tbody>
                             </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="accordion productaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <!-- <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    > -->
+
+                                <h4 class="font-IRANSansWeb600 product-name text-sm text-primary">
+                                    BasisFly
+
+
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                  
+                                  
+
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                تمدید سالانه
+
+ 
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                            
+                                            </p>
+                                        </td>
+                                       
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                هزینه پشتیبانی
+
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                            
+                                            </p>
+                                        </td>
+                                      
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion productaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <!-- <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    > -->
+
+                                <h4 class="font-IRANSansWeb600 product-name text-sm text-primary">
+                                    Creative Desgin
+
+
+
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]">
+                        <div class="inner w-full ">
+
+
+                            <table class="w-full">
+                             
+                                <tbody>
+                                  
+                                  
+
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                قیمت 
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                                </p>
+                                        </td>
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                تمدید سالانه
+
+ 
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                            
+                                            </p>
+                                        </td>
+                                       
+                                   
+                                      
+
+                                    </tr>
+                                    <tr class="border-b border-b-borderP/[0.3] last:border-b-0">
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <span class="font-IRANSansWeb400 text-sm text-placeholder">
+                                                هزینه پشتیبانی
+
+                                            </span>
+                                        </td>
+                                        <td class=" px-3 py-4 border-r border-r-borderP/[0.3] first:border-none">
+                                            <p class="font-IRANSansWeb400  text-sm text-placeholder">
+                                            
+                                                <a href="https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86" target="_blank" class="font-Inter400 priceP text-base text-placeholder" style="text-decoration:underline">
+                                                    Call Us
+     
+     
+                                                 </a>
+                                            
+                                            </p>
+                                        </td>
+                                      
+                                   
+                                      
+
+                                    </tr>
+                                </tbody>
+                            </table>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="accordion endpointaccordion mb-5 plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-[10px]">
+                    <div class="accordion__intro border-b border-b-primary relative cursor-pointer py-7 px-4 bg-lightBlue flex justify-between items-center">
+                            <div class="flex gap-x-4 items-center">
+                                <!-- <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    > -->
+
+                                <h4 class="font-IRANSansWeb600 product-name text-sm text-primary">
+                                    End points
+
+
+
+                                </h4>
+
+                            </div>
+                          
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="12"
+                                height="8" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]" style="padding: 0;">
+                        <div class="inner w-full ">
+
+
+                            <div class="serverBox py-3 px-4 ">
+                                <div class="title flex justify-between mb-3 gap-x-4">
+                                    <h3 class="font-IRANSansWeb400 endpoint-title-web text-sm text-black">
+                                        Web Server
+                                    </h3>
+
+                                    <div class="logos flex items-baseline">
+                                        <img src="[##cms.cms.cdn##]/asset/images/network-logo(endpoints).png" alt="basiscore">
+                                        <img src="[##cms.cms.cdn##]/asset/images/iranLogo.png" alt="iran">
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            موقعیت مکانی : 
+                                            
+                                        </p>
+
+                                        <span class="font-IRANSansWeb400 endpoint-title text-xs text-[#1E1E1E]">
+
+                                            ایران - پونک
+                                        </span>
+                                    </li>
+                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            ترافیک : 
+                                            
+                                        </p>
+
+                                        <span class="font-IRANSansWeb400 text-xs text-[#1E1E1E]">
+
+                                           نامحدود
+                                        </span>
+                                    </li>
+                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            قیمت سالانه : 
+                                            
+                                        </p>
+
+                                        <span class="font-IRANSansWeb400 endpoint-yearly-price text-xs text-[#1E1E1E]">
+
+                                             35,000,000 
+                                            
+                                        </span>
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            ریال
+                                        </p>
+                                    </li>
+                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            تمدید سالانه : 
+                                            
+                                        </p>
+
+                                        <span class="font-IRANSansWeb400 endpoint-newr-price text-xs text-[#1E1E1E]">
+
+                                             35,000,000 
+                                            
+                                        </span>
+                                        <p class="font-IRANSansWeb600 text-xs text-[#1E1E1E]">
+                                            ریال
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                    <div class="flex gap-x-2.5 mt-10 items-center">
+                                        <span class="font-IRANSansWeb400 text-xs text-black">
+                                            تعداد
+                                        </span>
+
+
+                                        <input type="number" class="endpoint-number h-[33px] w-[51%] font-IRANSansWeb400 text-right rounded-[3px] border border-lightBlue text-xs text-textGray" value="1" min="1">
+
+                                        <button class="shrink-0 rounded-5 w-[98px] h-[33px] bg-primary flex items-center justify-center">
+                                            <span class="font-IRANSansWeb400 text-xs text-White endpoint-addtoFactor">
+
+                                                افزودن به فاکتور
+                                            </span>
+                                            <span class="font-IRANSansWeb400 text-xs text-White endpoint-seeFactor hidden">
+
+                                                افزودن به فاکتور
+                                            </span>
+
+
+                                        </button>
+                                    </div>
+                            </div>
 
 
 
@@ -2574,7 +2929,7 @@
                             <span class=" font-IRANSansWeb400">
 
                                 150000000
-                                تومان
+                                ریال
                             </span>
                             </p>
                     </li>
@@ -2585,7 +2940,7 @@
                             <span class=" font-IRANSansWeb400">
 
                                 150000000
-                                تومان
+                                ریال
                             </span>
                             </p>
                     </li>
@@ -2596,7 +2951,7 @@
                             <span class=" font-IRANSansWeb400">
 
                                 150000000
-                                تومان
+                                ریال
                             </span>
                             </p>
                     </li>
@@ -2607,30 +2962,32 @@
                             <span class=" font-IRANSansWeb400">
 
                                 150000000
-                                تومان
+                                ریال
                             </span>
                             </p>
                     </li>
                   </ul> -->
                   <div class="emptyFactor w-90p mx-auto pt-5 font-IRANSansWeb400 text-sm ">
-                    <p>
+                    <p class="text-center">
+                        <img  src="/images/empty_factor.png" alt="محصولات بیسیس پنل" class="mx-auto" style="margin-bottom:10px" width="95"/>
+
                         فاکتور خالی میباشد.
                     </p>
                   </div>
             </div>
             <div class="lSide text-center bg-bgGray/[0.19] flex justify-center items-baseline gap-x-2 mt-7 py-4 w-90p mx-auto rounded-bl-[10px] rounded-br-[10px]">
-                <span class="font-interBold block text-xl text-black">
+                <span class="font-IRANSansWeb600 block text-sm text-black">
                     قیمت کل :
                 </span>
 
                 <div class="price font-interBold text-sm">
-                    <span class="totalPrice inline-block">
+                    <span class="totalPrice inline-block text-sm font-IRANSansWeb400">
                         350,000,000
 
                     </span>
-                    <p class="inline-block">
+                    <p class="inline-block text-sm font-IRANSansWeb400">
 
-                        تومان
+                        ریال
                     </p>
                 </div>
             </div>
@@ -2653,10 +3010,15 @@
             </div>
         </div>
 
+        <basis core="call" file="cta-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+
+        <basis core="call" file="footer-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+
     </main>
 
+    <basis core="call" file="script-mobile-v3.inc" pageindex="[##cms.cms.pageindex##]" />
 
-    <script src="../assets/js/priceListPage-mobile.js"></script>
+    <script src="[##cms.cms.cdn##]/asset/js/priceListPage-mobile.js"></script>
 </body>
 
 </html>

@@ -2,12 +2,14 @@ const accordions = document.querySelectorAll(".accordion");
 let selectedPlan = [];
 let selectedProducts = [];
 let sumPrice = 0;
+let endpointProducts = []; // آرایه‌ای برای ذخیره محصولات انتخاب‌شده
+
 
 
 let invoiceTable = document.querySelector(".factorSection .rSide"); // جدول فاکتور
 let emptyFactor = document.querySelector(".emptyFactor"); // پیام "فاکتور خالی است"
 let totalPriceSpan = document.querySelector(".totalPrice"); // پیام "فاکتور خالی است"
-totalPriceSpan.innerHTML=sumPrice
+totalPriceSpan.innerHTML = sumPrice
 
 let totalPriceSpanIn = 0
 totalPriceSpan.innerHTML = totalPriceSpanIn
@@ -34,7 +36,10 @@ function deleteRowFn(event) {
     // **بررسی اینکه آیا selectedPlan خالی شده؟**
     if (Object.keys(selectedPlan).length === 0) {
         // **اگر selectedPlan خالی شد، کل فاکتور رو پاک کن**
+        selectedPlan = {};  // خالی کردن selectedPlan
+
         selectedProducts = []; // پاک کردن تمام محصولات
+        endpointProducts = [];
         clearInvoice();
         emptyFactor.style.display = "block"; // نمایش پیام "فاکتور خالی است"
         return; // خروج از تابع
@@ -49,7 +54,9 @@ function deleteRowFn(event) {
     if (selectedPlan.productName) {
         addToInvoice(selectedPlan.productName, selectedPlan.price, selectedPlan.pricerenew, selectedPlan.supportprice);
     }
-
+    endpointProducts.forEach(product => {
+        addToInvoice(product.title, product.yearlyPrice, product.renewPrice, product.supportPrice);
+    });
     // بررسی مجدد برای نمایش پیام "فاکتور خالی است"
     if (invoiceTable.querySelectorAll(".invoice-item").length === 0) {
         emptyFactor.style.display = "block";
@@ -99,8 +106,7 @@ function addToInvoice(name, price, pricerenew, supportprice) {
                             قیمت سالانه :
                             <span class=" font-IRANSansWeb400">
 
-                              ${
-                               price==0?"رایگان":price.toLocaleString()+" ریال"} 
+                              ${price == 0 ? "رایگان" : price.toLocaleString() + " ریال"} 
                             </span>
                             </p>
                     </li>
@@ -110,7 +116,7 @@ function addToInvoice(name, price, pricerenew, supportprice) {
                             تمدید سالانه :
                             <span class=" font-IRANSansWeb400">
 
-                             ${pricerenew==0?"رایگان": pricerenew.toLocaleString()+" ریال"} 
+                             ${pricerenew == 0 ? "رایگان" : pricerenew.toLocaleString() + " ریال"} 
                             </span>
                             </p>
                     </li>
@@ -120,7 +126,7 @@ function addToInvoice(name, price, pricerenew, supportprice) {
                             پشتیبانی :
                             <span class=" font-IRANSansWeb400">
 
-                              ${supportprice==0?"رایگان":supportprice.toLocaleString()+" ریال"} 
+                              ${supportprice == 0 ? "رایگان" : supportprice.toLocaleString() + " ریال"} 
                             </span>
                             </p>
                     </li>
@@ -129,6 +135,30 @@ function addToInvoice(name, price, pricerenew, supportprice) {
         `;
 
         factorList.appendChild(item);
+
+        
+        let selectedPrice = 0
+
+        selectedProducts.forEach(product => {
+            selectedPrice += product.price
+        });
+        let proPrice = 0
+        endpointProducts.forEach(product => {
+            proPrice += product.yearlyPrice
+        });
+
+        let newwtotal = selectedPlan.price + proPrice + selectedPrice
+
+        console.log("selectedPlan.price", selectedPlan.price);
+        console.log("selectedPrice", selectedPrice);
+        console.log("proPrice", proPrice);
+        console.log("newwtotal", newwtotal);
+
+        document.querySelector(".totalPrice").innerHTML = newwtotal.toLocaleString()
+
+
+
+
 
         emptyFactor.style.display = "none"; // پنهان کردن پیام فاکتور خالی
     }
@@ -282,7 +312,7 @@ document.querySelectorAll(".panelaccordion .accordion-checkbox").forEach((checkb
         }
 
 
-      
+
     });
 });
 
@@ -310,7 +340,7 @@ document.querySelectorAll(".panelaccordion .accordion__intro input[type=checkbox
 
         if (this.checked) {
             selectedPlan = { productName: panelName, price, pricerenew, supportprice };
-        } 
+        }
 
         // **افزودن فقط مقدارهای جدید از آرایه‌ها**
         selectedProducts.forEach(product => {
@@ -348,7 +378,7 @@ document.querySelectorAll(".panelaccordion .accordion__intro input[type=checkbox
             // اگر چک‌باکس غیرفعال شد، قیمت محصول از جمع کل کم می‌شود
             sumPrice -= price;
         }
-        totalPriceSpan.innerHTML=sumPrice
+        totalPriceSpan.innerHTML = sumPrice
     });
 });
 
@@ -366,45 +396,45 @@ document.querySelectorAll(".productaccordion .accordion__intro input[type=checkb
         let pricerenew = pricerenewElement ? parseInt(pricerenewElement.innerText.replace(/,/g, '').trim(), 10) : 0;
         let supportprice = supportpriceElement ? parseInt(supportpriceElement.innerText.replace(/,/g, '').trim(), 10) : 0;
         let panelCheckbox = parentAccordion.querySelector(".accordion__intro input[type=checkbox]");
-        let panelCheckFlage=false
+        let panelCheckFlage = false
         let plansInput = document.querySelectorAll(".panelaccordion .accordion__intro input[type=checkbox]");
         plansInput.forEach(element => {
             if (element.checked) {
-                panelCheckFlage=true
+                panelCheckFlage = true
             }
-        }); 
-console.log(panelCheckFlage);
-if (!panelCheckFlage) {
-        errorPriceList.classList.add("activeErrorPriceList2");
-    
-        setTimeout(() => {
-            errorPriceList.classList.add("activeErrorPriceList");
-    
-            // غیرفعال کردن چک‌باکس محصول
-            checkbox.checked = false;
-        }, 400);
-    
-        setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList"), 5000);
-        setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList2"), 5080);
-        return; // ادامه تابع را متوقف کن
-    
-}
+        });
+        console.log(panelCheckFlage);
+        if (!panelCheckFlage) {
+            errorPriceList.classList.add("activeErrorPriceList2");
 
-      
-        
+            setTimeout(() => {
+                errorPriceList.classList.add("activeErrorPriceList");
+
+                // غیرفعال کردن چک‌باکس محصول
+                checkbox.checked = false;
+            }, 400);
+
+            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList"), 5000);
+            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList2"), 5080);
+            return; // ادامه تابع را متوقف کن
+
+        }
+
+
+
         if (this.checked) {
             selectedProducts.push({ productName, price, pricerenew, supportprice });
-        } 
+        }
 
-          // اگر چک‌باکس uncheck شده، محصول باید از selectedProducts حذف شود
-          if (!this.checked) {
+        // اگر چک‌باکس uncheck شده، محصول باید از selectedProducts حذف شود
+        if (!this.checked) {
             selectedProducts = selectedProducts.filter(product => product.productName !== productName);
         } else {
             selectedProducts.push({ productName, price, pricerenew, supportprice });
         }
-        
+
         // **پاک کردن فاکتور قبلی و اضافه کردن مقدارهای جدید**
-        
+
         clearInvoice();
 
         selectedProducts.forEach(product => {
@@ -423,9 +453,76 @@ if (!panelCheckFlage) {
             // اگر چک‌باکس غیرفعال شد، قیمت محصول از جمع کل کم می‌شود
             sumPrice -= price;
         }
-        totalPriceSpan.innerHTML=sumPrice
+        totalPriceSpan.innerHTML = sumPrice
     });
 });
 
 
 
+
+let endpointAddtoFactor = document.querySelectorAll(".endpoint-addtoFactor");
+
+endpointAddtoFactor.forEach(element => {
+    element.addEventListener("click", function () {
+        if (!selectedPlan || Object.keys(selectedPlan).length === 0) {
+            errorPriceList.classList.add("activeErrorPriceList2");
+
+            setTimeout(() => {
+                errorPriceList.classList.add("activeErrorPriceList");
+
+            }, 400);
+
+            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList"), 5000);
+            setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList2"), 5080);
+
+            return; // خروج از تابع تا قیمت اضافه نشود
+        }
+
+
+        // پیدا کردن والد مربوط به این دکمه
+        let serverBox = element.closest(".serverBox");
+
+        // گرفتن اطلاعات مورد نظر
+        let title = serverBox.querySelector(".endpoint-title-web")?.innerText.trim() || "نامشخص";
+        let yearlyPrice = serverBox.querySelector(".endpoint-yearly-price")?.innerText.trim().replace(/,/g, '') || "0";
+        let endpointTitle = serverBox.querySelector(".endpoint-title")?.innerText.trim() || "نامشخص";
+        let renewPrice = serverBox.querySelector(".endpoint-newr-price")?.innerText.trim().replace(/,/g, '') || "0";
+        let supportPrice = serverBox.querySelector(".endpoint-support-price")?.innerText.trim().replace(/,/g, '') || "0";
+        let quantity = serverBox.querySelector(".endpoint-number")?.value || "1";
+
+        // تبدیل قیمت‌ها به عدد یا مقدار مناسب
+        yearlyPrice = yearlyPrice === "رایگان" ? "رایگان" : (parseFloat(yearlyPrice) || "0");
+        renewPrice = renewPrice === "رایگان" ? "رایگان" : (parseFloat(renewPrice) || "0");
+        supportPrice = supportPrice === "رایگان" ? "رایگان" : (parseFloat(supportPrice) || "0");
+        quantity = parseInt(quantity, 10) || 1;
+
+        let totalPrice = quantity * (isNaN(yearlyPrice) ? 0 : yearlyPrice);
+
+        // بررسی اینکه محصول قبلاً اضافه شده یا نه
+        let existingProduct = endpointProducts.find(p => p.title === title);
+        if (existingProduct) {
+            existingProduct.quantity += quantity;
+            existingProduct.totalPrice = existingProduct.quantity * (isNaN(existingProduct.yearlyPrice) ? 0 : existingProduct.yearlyPrice);
+        } else {
+            endpointProducts.push({
+                title: title + endpointTitle,
+                yearlyPrice: totalPrice,
+                renewPrice: renewPrice,
+                supportPrice: supportPrice,
+            });
+        }
+
+        clearInvoice();
+        selectedProducts.forEach(product => {
+            addToInvoice(product.productName, product.price, product.pricerenew, product.supportprice);
+        });
+
+        if (selectedPlan.productName) {
+            addToInvoice(selectedPlan.productName, selectedPlan.price, selectedPlan.pricerenew, selectedPlan.supportprice);
+        }
+        // افزودن محصول به فاکتور
+        endpointProducts.forEach(product => {
+            addToInvoice(product.title, product.yearlyPrice, product.renewPrice, product.supportPrice);
+        });
+    });
+});
