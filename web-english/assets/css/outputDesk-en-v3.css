@@ -735,6 +735,10 @@ video {
   right: 10px;
 }
 
+.right-\[1em\] {
+  right: 1em;
+}
+
 .right-\[7em\] {
   right: 7em;
 }
@@ -793,10 +797,6 @@ video {
 
 .top-\[50\%\] {
   top: 50%;
-}
-
-.right-\[1em\] {
-  right: 1em;
 }
 
 .isolate {
@@ -1201,6 +1201,10 @@ video {
   margin-top: auto;
 }
 
+.mr-3 {
+  margin-right: 0.75rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -1306,6 +1310,10 @@ video {
 
 .h-0 {
   height: 0px;
+}
+
+.h-1 {
+  height: 0.25rem;
 }
 
 .h-5 {
@@ -1519,10 +1527,6 @@ video {
 
 .h-svh {
   height: 100svh;
-}
-
-.h-1 {
-  height: 0.25rem;
 }
 
 .max-h-\[299px\] {
@@ -4110,6 +4114,9 @@ video {
 .pr-3 {
   padding-right: 0.75rem;
 }
+.pl-3 {
+  padding-left: 0.75rem;
+}
 
 .pr-4 {
   padding-right: 1rem;
@@ -4129,6 +4136,10 @@ video {
 
 .pr-\[40px\] {
   padding-right: 40px;
+}
+
+.pl-\[40px\] {
+  padding-left: 40px;
 }
 
 .pt-14 {
@@ -5710,7 +5721,7 @@ li{
   line-height: 14.8px;
   color: #222222;
   font-family: "IRANSansWeb400";
-  direction: rtl;
+  direction: ltr;
   padding: 0 .5em;
 }
 
@@ -6117,7 +6128,7 @@ main.ReleaseNote-C .section-3 {
 .mobileUser .optionalIcon{
   position: absolute;
   top: 0;
-  left: 0 ;
+  right: 0 ;
   width: 50px;
   height: 50px;
   background-color: #E6F7F5;
@@ -6138,7 +6149,7 @@ main.ReleaseNote-C .section-3 {
  .mobileUser .requireIcon{
   position: absolute;
   top: 0;
-  left: 0 ;
+  right: 0 ;
   width: 50px;
   height: 50px;
   background-color: #FFEDE9;
@@ -6301,7 +6312,7 @@ input.nonePadding{
 }
 
 .NewuserInput input{
-  padding-left: 60px;
+  padding-right: 60px;
 }
 
 .logoOut:hover{
@@ -6473,7 +6484,7 @@ input.imitatefocus::placeholder{
   font-family: "IRANSansWeb700";
   animation: blinkInput 1s infinite alternate;
   outline: none;
-  text-align: right;
+  text-align: left;
 }
 
 @keyframes blinkInput {
@@ -6495,7 +6506,7 @@ input#conversationSearch::-moz-placeholder{
   font-size: 14px;
   font-weight: 500;
   font-family: "IRANSansWeb500";
-  text-align: right;
+  text-align: left;
 }
 
 input#conversationSearch,
@@ -6504,7 +6515,7 @@ input#conversationSearch::placeholder{
   font-size: 14px;
   font-weight: 500;
   font-family: "IRANSansWeb500";
-  text-align: right;
+  text-align: left;
 }
 
 .chat-BasisPanel .ME .userName{
@@ -6512,7 +6523,7 @@ input#conversationSearch::placeholder{
   font-size: 12px;
   font-weight: 500;
   font-family: "IRANSansWeb500";
-  text-align: right;
+  text-align: left;
 }
 
 .chat-BasisPanel .ME .message,
@@ -6521,7 +6532,7 @@ input#conversationSearch::placeholder{
   font-size: 12px;
   font-weight: 400;
   font-family: "IRANSansWeb400";
-  text-align: right;
+  text-align: left;
 }
 
 .chat-BasisPanel textarea::-moz-placeholder, .chatNodata-BasisPanel textarea::-moz-placeholder{
@@ -6530,8 +6541,8 @@ input#conversationSearch::placeholder{
   line-height: 21.91px;
   font-weight: 500;
   font-family: "IRANSansWeb500";
-  text-align: right;
-  direction: rtl;
+  text-align: left;
+  direction: ltr;
   padding-bottom: 3em;
   padding-top: 5px;
   height: auto;
@@ -6561,8 +6572,8 @@ input#conversationSearch::placeholder{
   line-height: 21.91px;
   font-weight: 500;
   font-family: "IRANSansWeb500";
-  text-align: right;
-  direction: rtl;
+  text-align: left;
+  direction: ltr;
   padding-bottom: 3em;
   padding-top: 5px;
   height: auto;
@@ -6580,7 +6591,7 @@ input#conversationSearch::placeholder{
   word-wrap: break-word;
   /* انتقال متن به خط بعدی در صورت نیاز */
   overflow: hidden;
-  padding-left: 2.3em;
+  
 }
 
 .BPMS-BasisPanel .Chart-container .box{
@@ -6614,7 +6625,7 @@ footer .Right .text p{
   line-height: 26.43px;
   color: white;
   font-family: "IRANSansWeb400";
-  text-align: right;
+  text-align: left;
 }
 
 .UserDropdown{
@@ -6622,13 +6633,13 @@ footer .Right .text p{
 }
 
 .passwordBox-email input[type="password"]{
-  direction: rtl !important;
+  direction: ltr !important;
 }
 
 .chat-BasisPanel .css-typing {
   white-space: nowrap;
   overflow: hidden;
-  direction: rtl;
+  direction: ltr;
 }
 
 .chat-BasisPanel .typewriter{
@@ -6826,6 +6837,7 @@ footer .Right .text p{
 
 .SendMessage{
   transition:all .4s ease ;
+transform: rotate(90deg);
 }
 
 .chat-BasisPanel .Drop {
@@ -8022,3 +8034,4 @@ footer .Right .text p{
 .\[\&\.showChat\]\:opacity-\[1\].showChat {
   opacity: 1;
 }
+

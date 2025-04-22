@@ -4,6 +4,7 @@
   },
   "scripts": {
     "watch:web": "npx tailwindcss -c tailwind.config.web.js -i ./web/assets/css/inputDesk.css -o ./web/assets/css/outputDesk-v3.css --watch",
-    "watch:mobile":"npx tailwindcss -c tailwind.config.mobile.js -i ./mobile/assets/css/inputMobile-v3.css -o ./mobile/assets/css/outputMobile-v3.css --watch"
+    "watch:mobile":"npx tailwindcss -c tailwind.config.mobile.js -i ./mobile/assets/css/inputMobile-v3.css -o ./mobile/assets/css/outputMobile-v3.css --watch",
+    "watch:web-en": "npx tailwindcss -c tailwind.config.web.js -i ./web-english/assets/css/inputDesk-en.css -o ./web-english/assets/css/outputDesk-en.css --watch"
   }
 }

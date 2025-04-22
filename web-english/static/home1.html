@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BasisPanel | The Architect of Your Business Integration</title>
+  <meta name="description" content="BasisPanel is a comprehensive system that seamlessly manages all your key business processes." />
+  <meta name="description" content="home">
+  <link rel="stylesheet" href="https://cdn.basiscore.net/basispanel.ir/asset/css/swiper-bundle.min.css">
+  <link rel="stylesheet" href="https://cdn.basiscore.net/basispanel.ir/asset/css/chart-v3.css">
+  <link rel="stylesheet" href="/web-english/assets/css/outputDesk-en.css">
+
+  <script src="/asset/js/basiscore-2.38.5.min.js?ver=1"></script>
+  <script src="https://cdn.basiscore.net/basispanel.ir/_js/alasql.min.js"></script>
+</head>
+
+<!-- Calls the feature file only if dmntoken is present -->
+<basis
+  core='call'
+  if='{##get.dmntoken.value|(false)##}'
+  run='AtClient'
+  file='features/dmntoken.inc'
+  triggers='get.dmntoken'
+  onrendered='setDmnToken'>
+</basis>
+
+<body class="gray">
+  <main class="Home-BasisPanel w-full overflow-hidden" dir="ltr">
+
+    <!-- API calls for user info / logout (unchanged) -->
+    <basis 
+      core='api' 
+      name='db.userinfo'
+      run='AtClient'
+      url='https://api.trust-login.com/schema/70E5810D-5CC5-4FDF-B9B9-C01E0286B19C/fa'
+      method='get'
+      onprocessed='onProcessedInfoFn'>
+    </basis>
+
+    <basis
+      core='api'
+      name='api.logout'
+      if='{##query.flag.value|(false)##}'
+      run='AtClient'
+      url='https://api.trust-login.com/logout/70E5810D-5CC5-4FDF-B9B9-C01E0286B19C'
+      method='post'
+      onprocessed='onprocessedlogoutfn'
+      body='{"dmntoken":"zurypzpoiyqouqztiiiuirzpqrzio"}'
+      triggers='db.logout query.flag'>
+    </basis>
+
+    <!-- Header -->
+    <header class="DesktopHeader [&.lightHeader] inLogin fixed top-0 left-0 z-50 w-full py-[2em] flex justify-center items-center">
+      <div class="InnerHeader w-80p grid grid-cols-[2fr,1fr]">
+        
+        <!-- Left part of the header (logo + menu) -->
+        <div class="RightSec w-full flex justify-start gap-9">
+          <!-- Logo -->
+          <div class="Logo w-auto flex justify-center items-center">
+            <a href="/" alt="basis" title="basis">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/logo-v3.png"
+                alt="basis"
+                title="basis">
+            </a>
+          </div>
+          
+          <!-- Main navigation -->
+          <nav class="Menu-header w-auto flex justify-start items-center gap-6">
+            <ul class="w-auto flex gap-6 justify-start items-center">
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/"
+                  alt="Home"
+                  title="Home"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  Home
+                </a>
+              </li>
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/solutions"
+                  alt="Solutions"
+                  title="Solutions"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  Solutions
+                </a>
+              </li>
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/pricelist"
+                  alt="Pricing"
+                  title="Pricing"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  Pricing
+                </a>
+              </li>
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/about"
+                  alt="About Us"
+                  title="About Us"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  About Us
+                </a>
+              </li>
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/contact"
+                  alt="Contact Us"
+                  title="Contact Us"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  Contact Us
+                </a>
+              </li>
+              <li class="menu-item w-auto flex justify-center items-center group/itemMenu">
+                <a
+                  href="/versions"
+                  alt="Latest Updates"
+                  title="Latest Updates"
+                  class="menu-link font-IRANSansWeb400 group-hover/itemMenu:text-primary duration-200
+                         font-normal group-[&.lightHeader]/header:text-White text-sm text-textGray">
+                  Latest Updates
+                </a>
+              </li>
+            </ul>
+            
+            <!-- Language switch -->
+            <div class="lang w-auto flex justify-start items-center relative z-2">
+              <div class="langC w-auto flex justify-center items-center">
+                <span class="langs hover:cursor-pointer w-auto flex gap-1 justify-center items-center">
+                  <span class="langIcon">
+                    <img
+                      src="https://cdn.basiscore.net/basispanel.ir/images/Group 35649.png"
+                      alt="basis"
+                      title="basis">
+                  </span>
+                  <span
+                    class="langText group-[&.lightHeader]/header:text-White font-IRANSansWeb400
+                           font-normal text-[13px] text-textGray">
+                    English
+                  </span>
+                </span>
+                <span class="icon w-auto flex justify-center items-center mr-2 translate-y-[3px]">
+                  <svg
+                    class="[&.rotate]:rotate-[180deg] duration-200"
+                    width="9"
+                    height="5"
+                    viewBox="0 0 9 5"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 1H3H2L4.5 4L7 1Z" fill="#494949" stroke="#494949" />
+                  </svg>
+                </span>
+              </div>
+              
+              <!-- Language dropdown content -->
+              <div
+                class="langs-content absolute top-[2em] bg-primary left-[10%] flex flex-col w-[70px]
+                       bg-white opacity-0 duration-[.3s]
+                       [&.openLang]:opacity-[1]
+                       [&.openLang]:pointer-events-auto
+                       pointer-events-none">
+                <ul class="w-full flex flex-col">
+                  <li
+                    class="w-auto flex justify-center group/langs duration-100 py-[.5em]
+                           hover:text-textGray hover:bg-White">
+                    <a href="/en" alt="basis" title="basis" class="w-auto flex">
+                      <span class="langText font-IRANSansWeb400 font-normal duration-100 text-[13px]
+                                     group-hover/langs:text-textGray text-White">
+                        English
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="w-auto flex justify-center group/langs duration-100 py-[.5em]
+                           hover:text-textGray hover:bg-White">
+                    <a href="/" alt="BasisPanel" title="BasisPanel" class="w-auto flex">
+                      <span class="langText font-IRANSansWeb400 font-normal duration-100
+                                     group-hover/langs:text-textGray text-[13px] text-White">
+                        Farsi
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <!-- end .langs-content -->
+            </div>
+            <!-- end .lang -->
+          </nav>
+        </div>
+
+        <!-- Right part of header: buttons and user profile -->
+        <div class="LeftSec w-full flex justify-end">
+          <div class="Btns w-auto flex gap-5">
+            <a
+              href="/chat?q=درخواست دمو"
+              alt="basis"
+              title="basis"
+              class="button w-max px-[1.7em] hover:bg-hoverBtnDprimary duration-200
+                     py-[.8em] bg-primary flex justify-center items-center rounded-5">
+              <button
+                type="button"
+                class="w-auto flex justify-center text-White items-center
+                       font-IRANSansWeb400 font-normal text-sm rounded-5">
+                Request Demo
+              </button>
+            </a>
+            
+            <!-- User profile box -->
+            <div class="UserProfile-box relative w-auto flex gap-4 flex-col">
+              <div class="User w-auto flex gap-4 hover:cursor-pointer">
+                <span class="Icon [&.openProf]:rotate-180 duration-150 w-auto flex justify-center items-center my-auto">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 7.4L0 1.4L1.4 0L6 4.6L10.6 0L12 1.4L6 7.4Z" fill="#5F6368"/>
+                  </svg>
+                </span>
+                <span class="User-Image w-[47px] h-[47px] rounded-full flex justify-center items-center">
+                  <img
+                    src="https://cdn.basiscore.net/basispanel.ir/images/m-avatar.png"
+                    alt=""
+                    class="rounded-full w-full h-full object-cover">
+                </span>
+              </div>
+
+              <!-- Dropdown for user profile -->
+              <div
+                class="UserDropdown border-[1px] rounded-5 border-lightBlue bg-White absolute top-[4em]
+                       opacity-0 translate-y-[-2em] duration-500
+                       [&.openProf]:opacity-[1]
+                       [&.openProf]:translate-y-[0]
+                       min-w-[140px] left-0 right-0 mx-auto w-auto flex">
+                <div class="Box w-auto px-[.7em] py-[.7em] flex flex-col gap-2 min-w-[140px]">
+                  <div class="title w-full flex justify-start items-start leading-[15.65px]
+                              text-dark3 font-IRANSansWeb400 font-normal text-[10px]">
+                    Username
+                  </div>
+                  <span
+                    class="Username pb-[.5em] leading-[20.35px] border-b-[1px] border-mainGray
+                           text-black font-IRANSansWeb400 font-normal text-[13px]">
+                    <!-- This will be filled dynamically -->
+                  </span>
+                  <a href="/panel" class="hover:cursor-pointer w-full flex justify-between items-center">
+                    <div class="text leading-[21.91px]
+                                text-black font-IRANSansWeb400 font-normal text-xs">
+                      User Panel
+                    </div>
+                    <div class="w-auto my-auto">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="20px"
+                        viewBox="0 -960 960 960"
+                        width="20px"
+                        fill="#5F6368">
+                        <path d="M520-600v-240h320v240H520ZM120-440v-400h320v400H120Zm400 320v-400h320v400H520Zm-400 0v-240h320v240H120Zm80-400h160v-240H200v240Zm400 320h160v-240H600v240Zm0-480h160v-80H600v80ZM200-200h160v-80H200v80Zm160-320Zm240-160Zm0 240ZM360-280Z"/>
+                      </svg>
+                    </div>
+                  </a>
+                  <span class="logoOut hover:cursor-pointer w-full flex justify-between items-center">
+                    <div class="text leading-[21.91px]
+                                text-black font-IRANSansWeb400 font-normal text-xs">
+                      Log Out
+                    </div>
+                    <div class="w-auto my-auto">
+                      <svg
+                        width="13"
+                        height="13"
+                        viewBox="0 0 13 13"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M1.54167 12.875C1.15208 12.875 0.818576 12.7363 0.541146 12.4589C0.263715 12.1814 0.125 11.8479 0.125 11.4583V1.54167C0.125 1.15208 0.263715 0.818576 0.541146 0.541146C0.818576 0.263715 1.15208 0.125 1.54167 0.125H6.5V1.54167H1.54167V11.4583H6.5V12.875H1.54167ZM9.33333 10.0417L8.35938 9.01458L10.1656 7.20833H4.375V5.79167H10.1656L8.35938 3.98542L9.33333 2.95833L12.875 6.5L9.33333 10.0417Z"
+                          fill="#5F6368"/>
+                      </svg>
+                    </div>
+                  </span>
+                </div>
+              </div>
+              <!-- end user dropdown -->
+            </div>
+            <!-- end user profile box -->
+
+          </div>
+        </div>
+        <!-- end .LeftSec -->
+
+      </div>
+      <!-- end .InnerHeader -->
+    </header>
+
+    <!-- Alert Container -->
+    <div
+      class="Alert-container group/Alert fixed top-[3em] left-0 opacity-0 translate-y-[-100%]
+             [&.Show]:opacity-[1] [&.Show]:translate-y-[0]
+             right-0 mx-auto z-[999] flex justify-center items-center">
+      <div
+        class="Message relative w-max px-[2em] py-[1.6em]
+               rounded-5 flex gap-3 group-[&.Error]/Alert:bg-redBG group-[&.Success]/Alert:bg-secondaryBG">
+        
+        <span class="icon ml-3 relative w-auto flex justify-center items-center">
+          <svg
+            class="suc absolute opacity-0 duration-150 group-[&.Error]/Alert:opacity-0
+                   group-[&.Success]/Alert:opacity-[1]"
+            width="18"
+            height="13"
+            viewBox="0 0 18 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              class="group-[&.Error]/Alert:fill-red"
+              d="M6.55 13L0.85 7.3L2.275 5.875L6.55 10.15L15.725 0.974999L17.15 2.4L6.55 13Z"
+              fill="#00A693"/>
+          </svg>
+          <svg
+            class="er absolute opacity-0 duration-150
+                   group-[&.Error]/Alert:opacity-[1]
+                   group-[&.Success]/Alert:opacity-0"
+            width="25"
+            height="25"
+            viewBox="0 0 25 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M12.5 17.5C12.7833 17.5 13.0167 17.4083 13.2 17.225C13.4 17.025 13.5 16.7833 13.5 16.5C13.5 16.2167 13.4 15.9833 13.2 15.8C13.0167 15.6 12.7833 15.5 12.5 15.5C12.2167 15.5 11.975 15.6 11.775 15.8C11.5917 15.9833 11.5 16.2167 11.5 16.5C11.5 16.7833 11.5917 17.025 11.775 17.225C11.975 17.4083 12.2167 17.5 12.5 17.5ZM11.5 13.5H13.5V7.5H11.5V13.5ZM12.5 22.5C11.1167 22.5 9.81667 22.2417 8.6 21.725C7.38333 21.1917 6.325 20.475 5.425 19.575C4.525 18.675 3.80833 17.6167 3.275 16.4C2.75833 15.1833 2.5 13.8833 2.5 12.5C2.5 11.1167 2.75833 9.81667 3.275 8.6C3.80833 7.38333 4.525 6.325 5.425 5.425C6.325 4.525 7.38333 3.81667 8.6 3.3C9.81667 2.76667 11.1167 2.5 12.5 2.5C13.8833 2.5 15.1833 2.76667 16.4 3.3C17.6167 3.81667 18.675 4.525 19.575 5.425C20.475 6.325 21.1833 7.38333 21.7 8.6C22.2333 9.81667 22.5 11.1167 22.5 12.5C22.5 13.8833 22.2333 15.1833 21.7 16.4C21.1833 17.6167 20.475 18.675 19.575 19.575C18.675 20.475 17.6167 21.1917 16.4 21.725C15.1833 22.2417 13.8833 22.5 12.5 22.5ZM12.5 20.5C14.7333 20.5 16.625 19.725 18.175 18.175C19.725 16.625 20.5 14.7333 20.5 12.5C20.5 10.2667 19.725 8.375 18.175 6.825C16.625 5.275 14.7333 4.5 12.5 4.5C10.2667 4.5 8.375 5.275 6.825 6.825C5.275 8.375 4.5 10.2667 4.5 12.5C4.5 13.8833 5.275 16.625 6.825 18.175C8.375 19.725 10.2667 20.5 12.5 20.5Z"
+              fill="#F9461C"/>
+          </svg>
+        </span>
+        <p
+          class="error font-IRANSansWeb700 font-bold leading-25.04
+                 group-[&.Success]/Alert:text-secondary
+                 group-[&.Error]/Alert:text-red
+                 text-center">
+          You have successfully logged in. You will be redirected to the user panel in a few seconds
+        </p>
+        <span
+          class="Line absolute bottom-0 right-0 h-[4px] w-0
+                 group-[&.Success]/Alert:bg-secondary group-[&.Error]/Alert:bg-red
+                 rounded-5">
+        </span>
+      </div>
+    </div>
+
+    <!-- JS Scripts (unchanged) -->
+    <script>
+      const host = {
+        settings: {
+          'connection.web.callcommand': '/',
+          'connection.web.basiscore': 'https://basispanel.ir/apicms',
+          'connection.web.accounting': 'https://basispanel.ir/apicms',
+          'connection.web.trust_login': 'https://basispanel.ir/apicms',
+          'connection.web.media': 'https://basispanel.ir/apicms',
+          'default.dbsource.verb': 'post',
+          'default.call.verb': 'get',
+          "connection.web.callcommand": "/",
+          'default.viewCommand.groupColumn': 'prpid',
+          'default.dmnid': '35',
+          'default.binding.regex': '\\{##([^#]*)##\\}'
+        }
+      };
+
+      let Errorcontainer = document.querySelector('.Alert-container');
+      let ErrorText = Errorcontainer.querySelector('p.error');
+
+      const AlertMessage = (className, errorText) => {
+        Errorcontainer.classList.add(className);
+        Errorcontainer.classList.add('Show');
+        ErrorText.innerHTML = errorText;
+        setTimeout(() => {
+          Errorcontainer.classList.remove('Show');
+          setTimeout(() => {
+            Errorcontainer.classList.remove(className);
+          }, 2200);
+        }, 2000);
+      };
+
+      const logoutBtnn = document.querySelector(".logoOut ");
+
+      async function onProcessedInfoFn(args) {
+        const response = args.response;
+        if (response.status == 200) {
+          const responseJson = await response.json();
+          if (responseJson.sources) {
+            responseJson.sources[0].data[0].properties.forEach((e) => {});
+            
+            // get name
+            const findName = responseJson.sources[0].data[0].properties.find((e) => {
+              return e.prpId == 1;
+            });
+            const nameusr = findName ? findName.answers[0].parts[0].values[0].value : null;
+
+            // get lastname
+            const findLastname = responseJson.sources[0].data[0].properties.find((e) => {
+              return e.prpId == 2;
+            });
+            const lastname = findLastname ? findLastname.answers[0].parts[0].values[0].value : null;
+
+            // get avatar
+            const findAvatar = responseJson.sources[0].data[0].properties.find((e) => {
+              return e.prpId == 94;
+            });
+            const avatar = findAvatar ? findAvatar.answers[0].parts[2].values[0].value : null;
+
+            document.querySelector(".UserDropdown .Username").innerText = `${nameusr} ${lastname}`;
+
+            if (!avatar || avatar.length === 0) {
+              document.querySelector(".UserProfile-box .User-Image img").src = "/images/m-avatar.png";
+            } else {
+              document.querySelector(".UserProfile-box .User-Image img").src =
+                `https://basiserp.ir/panel/70E5810D-5CC5-4FDF-B9B9-C01E0286B19C/users/${avatar}`;
+            }
+          }
+        }
+      }
+
+      async function onprocessedlogoutfn(args) {
+        const response = args.response;
+        const json = await response.json();
+        if (json.errorid == 20) {
+          // incorrect inputs
+        }
+        else if (json.errorid == 30 || json.errorid == 20) {
+          // successful
+          window.location.href = window.location.href;
+
+          function getAndDeleteCookie(name) {
+            let cookieArr = document.cookie.split(";");
+            for (let i = 0; i < cookieArr.length; i++) {
+              let cookiePair = cookieArr[i].split("=");
+              if (name === cookiePair[0].trim()) {
+                let cookieValue = decodeURIComponent(cookiePair[1]);
+                document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                return cookieValue;
+              }
+            }
+            return null;
+          }
+          let myCookie = getAndDeleteCookie("rkey");
+        }
+        else {
+          // handle other error
+        }
+      }
+    </script>
+
+    <!-- Call Input area -->
+    <div
+      class="callInput flex mt-[10em] relative z-2 w-[975px] h-[80px] mx-auto
+             flex-col justify-center items-center gap-3">
+      <input
+        type="text"
+        class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray"
+        id="myInput"
+        placeholder="I am a sales manager">
+      <div
+        class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0
+               bottom-0 my-auto left-[1em] z-1">
+        <img src="https://cdn.basiscore.net/basispanel.ir/images/input-v3.png" alt="">
+      </div>
+    </div>
+
+    <!-- Section 1: Banner -->
+    <section class="section-1 mt-8 pb-[2em] z-1 relative w-full flex flex-col bg-White">
+      <div class="Banner w-full flex justify-center relative z-3 items-center">
+        <img src="https://cdn.basiscore.net/basispanel.ir/images/bg-home-v3.png" alt="">
+      </div>
+      <div class="Titles w-full flex relative z-3 flex-col justify-center items-center">
+        <h1
+          class="font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px] text-blue">
+          Integrated Software Solutions for
+          <span
+            class="color text-blue2 font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px]">
+            Business Management
+          </span>
+        </h1>
+        <h2
+          class="font-IRANSansWeb600 font-semibold text-[21px] leading-[50px] text-center text-textGray">
+          BasisPanel is a suite of integrated cloud-based tools covering all your organizational needs.
+        </h2>
+      </div>
+    </section>
+
+    <!-- Section 2: Purpose or features -->
+    <section class="section-2 relative z-[5] w-full flex flex-col py-[3em]">
+      <div class="Purpose-sec w-80p flex mx-auto flex-col mb-[2em]">
+        <div class="purpose-boxes w-full grid grid-cols-7 gap-y-20">
+          <!-- (Blocks repeated for each solution icon) -->
+          <a
+            href="/solutions/users"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/user-group-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
+              User Management
+            </span>
+          </a>
+          <a
+            href="solutions/sharedfolder"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/folderShare-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Shared Folder
+            </span>
+          </a>
+          <a
+            href="solutions/reports"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/reports-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Reports
+            </span>
+          </a>
+          <a
+            href="solutions/ticketing"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/ticket-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Ticketing System
+            </span>
+          </a>
+          <a
+            href="/solutions/gallery"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/gallery-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Image Gallery
+            </span>
+          </a>
+          <a
+            href="solutions/bpms"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/processMaker-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Process Maker
+            </span>
+          </a>
+          <a
+            href="/solutions/content"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/uploadContent-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Content Upload
+            </span>
+          </a>
+          <a
+            href="/solutions/dashboard"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/work-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Workspace
+            </span>
+          </a>
+          <a
+            href="solutions/automation"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/message-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Secretariat
+            </span>
+          </a>
+          <a
+            href="solutions/taskmanager"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/managementProj-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Project Management
+            </span>
+          </a>
+          <a
+            href="/solutions/sale"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/financialSystem-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Sales and Marketing
+            </span>
+          </a>
+          <a
+            href="/solutions/crm"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/crm-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              CRM
+            </span>
+          </a>
+          <a
+            href="/solutions/domains"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/domailManage-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Domain Management
+            </span>
+          </a>
+          <a
+            href="/solutions"
+            class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
+                   flex flex-col gap-1">
+            <span
+              class="IMG bg-White flex w-[60px] group-hover/purpose:shadow-xl duration-[1s]
+                     h-[60px] py-[.3em] px-[.3em] rounded-5">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/more-icon-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </span>
+            <span
+              class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
+              Other Solutions
+            </span>
+          </a>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: BasisPanel Benefits -->
+    <section class="section-3 w-full flex flex-col mt-[2em]">
+      <div class="title w-full flex flex-col gap-3 fadeIN">
+        <h4
+          class="font-IRANSansWeb600 font-semibold text-base text-blue3 text-center duration-500 translate-x-100 opacity-0">
+          BasisPanel Benefits
+        </h4>
+        <h3
+          class="font-IRANSansWeb700 font-extrabold text-[28px] text-textGray text-center duration-500 translate-x-100 opacity-0">
+          How does BasisPanel help my business?
+        </h3>
+      </div>
+      <div class="help-Boxes w-80p mx-auto flex flex-col">
+        
+        <!-- Row 1 -->
+        <div class="helpBox w-full gap-[8em] grid grid-cols-2 mt-7 py-[4em] fadeIN">
+          <div class="leftSec w-full flex flex-col justify-start items-start">
+            <div class="title w-full flex justify-start flex-col items-start gap-1">
+              <span
+                class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
+                       text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400
+                       text-text leading-[14px]">
+                First Benefit
+              </span>
+              <h4
+                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
+                Sales Analysis at a Glance; Success in One Step!
+              </h4>
+            </div>
+            <div class="text w-full flex flex-col mt-7">
+              <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
+                BasisPanel’s CRM system, with its modules, perfectly meets this need. By using
+                this system, we have structured our sales pipelines comprehensively and can
+                evaluate the sales flow at any moment. The system allows us to identify the
+                strengths and weaknesses of the sales team transparently and in real-time, and
+                make timely decisions accordingly. The high speed of data analysis lets us make
+                decisions based on valid, up-to-date data. One of the key advantages of using
+                BasisPanel is its high level of information transparency. It allows easy access
+                to all data concerning the sales team’s performance, including progress and
+                challenges, for further analysis. Ultimately, BasisPanel not only helps us manage
+                our sales team optimally but also guides us toward more strategic decisions at
+                higher levels.
+              </p>
+            </div>
+          </div>
+          <div class="rightSec w-full flex">
+            <div
+              class="SalesSec relative before:content-[''] before:absolute before:w-[100px] before:h-full
+                     before:bg-White before:right-0 before:top-0 before:z-0
+                     w-full flex flex-col"
+              style="background-image: url(/images/CRM_ContactProfile_Customer_Natural-v3.png);">
+              <div class="PopSale relative z-1 w-auto flex flex-col">
+                <div
+                  class="title w-max flex justify-start items-start gap-2 border-b-[1px] berder-blue
+                         pb-[.5em] mb-[.5em]">
+                  <!-- optional placeholders -->
+                </div>
+              </div>
+              <div id="chart" class="relative z-1" dir="ltr">
+                <div id="animations-example-1">
+                  <table
+                    class="charts-css column hide-data show-labels show-primary-axis data-spacing-6">
+                    <caption> Animation Example #1 </caption>
+                    <thead>
+                      <tr>
+                        <th scope="col"> Year </th>
+                        <th scope="col"> Progress </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"> Failed </th>
+                        <td style="--size: 0.2;">
+                          <span class="data">20</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row"> Under Negotiation </th>
+                        <td style="--size: 0.4;">
+                          <span class="data">40</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row"> Foreign Sales </th>
+                        <td style="--size: 0.6;">
+                          <span class="data">60</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row"> Domestic Sales </th>
+                        <td style="--size: 0.8;">
+                          <span class="data">80</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row"> Bahman Sales </th>
+                        <td style="--size: 1.0;">
+                          <span class="data">100</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="helpBox fadeIN group/help item-2 w-full gap-[8em] grid grid-cols-2">
+          <div class="rightSec group-even/help:order-2 w-full flex flex-col justify-center items-center">
+            <div class="title w-full flex justify-start flex-col items-start gap-1">
+              <span
+                class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
+                       text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400
+                       text-text leading-[14px]">
+                Second Benefit
+              </span>
+              <h4
+                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px]
+                       text-textGray text-right">
+                Predicting Business Challenges; Seizing Opportunities for Growth
+              </h4>
+            </div>
+            <div class="text w-full flex flex-col mt-7">
+              <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
+                In today’s complex and fast-paced world, forecasting and managing business
+                challenges is crucial for every organization's success. As the CEO of a growing
+                company, recognizing these challenges and opportunities in time enables us to
+                implement effective strategies and avoid potential crises. In this regard,
+                leveraging smart management tools—like the BasisPanel management dashboard—
+                serves as a practical solution for analyzing and predicting various business trends.
+              </p>
+            </div>
+          </div>
+          <div
+            class="leftSec group-odd/help:justify-end group-odd/help:order-1 w-full relative flex justify-start items-center">
+            <div class="IMG w-auto flex">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/psd_blank_smartphone_template 1-v3.png"
+                alt=""
+                class="object-cover w-80p">
+            </div>
+            <div
+              class="IMG-ov absolute right-0 z-1 max-w-[445px] max-h-[299px]
+                     translate-y-[50%] translate-x-[-30%]"
+              style="top: -20px;">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/ov-v3.png"
+                class="w-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="helpBox fadeIN group/help item-2 w-full gap-[8em] grid grid-cols-2 pb-[4em]">
+          <div class="leftSec group-even/help:order-2 w-full flex flex-col justify-center items-center">
+            <div class="title w-full flex justify-start flex-col items-start gap-1">
+              <span
+                class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
+                       text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400
+                       text-text leading-[14px]">
+                Third Benefit
+              </span>
+              <h4
+                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
+                BasisPanel: A Bridge for Businesses Entering the AI Realm
+              </h4>
+            </div>
+            <div class="text w-full flex flex-col mt-7">
+              <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
+                Thanks to its unique features, BasisPanel not only streamlines data integration
+                but also helps organizations prepare for future transitions. This tool is
+                especially efficient in the field of artificial intelligence (AI) and machine
+                learning. By continuously processing and analyzing diverse datasets, it
+                establishes an environment conducive to effectively implementing AI algorithms
+                and more advanced analytics that improve organizational performance. Moreover,
+                the system updates in real time, providing on-demand access to accurate data
+                at any moment.
+              </p>
+            </div>
+          </div>
+          <div
+            class="rightSec group-even/help:order-1 group-odd/help:justify-end w-full relative flex justify-start items-center">
+            <div class="IMG w-auto flex max-h-[600px]">
+              <img
+                src="https://cdn.basiscore.net/basispanel.ir/images/Untitled-v3.png"
+                alt=""
+                class="w-full object-cover">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Additional Solutions / Use Cases -->
+    <section class="section-5 w-full flex flex-col">
+      <div class="MethodsSec w-80p mx-auto flex flex-col">
+        <div class="title w-full flex justify-center items-center py-[2em]">
+          <h5 class="font-IRANSansWeb800 font-extrabold text-[28px] leading-[50px] text-textGray text-center">
+            BasisPanel Solutions
+          </h5>
+        </div>
+        <div class="Methods w-full flex flex-col">
+          <div
+            class="tabs mb-[2em] w-full flex justify-between relative before:content-['']
+                   before:w-full before:h-[1px] before:border-t-[2px] before:z-0
+                   before:border-mainGray before:absolute before:left-0
+                   before:top-[50%] before:border-dashed">
+            <div
+              data-position="left"
+              class="Tab relative z-1 hover:cursor-pointer [&.active]:bg-primary
+                     hover:bg-primary group/tab duration-[1s] bg-White py-[.8em] rounded-5
+                     w-max px-[3em] flex justify-center items-center border-text border-[1px]">
+              <p
+                class="font-IRANSansWeb700 group-hover/tab:text-white1
+                       group-[&.active]/tab:text-white1 duration-[1s]
+                       font-semibold text-base leading-[27px] text-center text-text">
+                For Small Businesses
+              </p>
+            </div>
+            <div
+              data-position="center"
+              class="Tab relative z-1 hover:cursor-pointer [&.active]:bg-primary
+                     hover:bg-primary group/tab duration-[1s] bg-White py-[.8em]
+                     rounded-5 w-max px-[3em] flex justify-center items-center
+                     border-text border-[1px]">
+              <p
+                class="font-IRANSansWeb700 group-hover/tab:text-white1
+                       group-[&.active]/tab:text-white1 duration-[1s]
+                       font-semibold text-base leading-[27px] text-center text-text">
+                For E-commerce
+              </p>
+            </div>
+            <div
+              data-position="right"
+              class="Tab relative z-1 hover:cursor-pointer [&.active]:bg-primary
+                     hover:bg-primary group/tab duration-[1s] bg-White py-[.8em]
+                     rounded-5 w-max px-[3em] flex justify-center items-center
+                     border-text border-[1px]">
+              <p
+                class="font-IRANSansWeb700 group-hover/tab:text-white1
+                       group-[&.active]/tab:text-white1 duration-[1s]
+                       font-semibold text-base leading-[27px] text-center text-text">
+                For Marketing Teams
+              </p>
+            </div>
+          </div>
+
+          <div class="Tab-Contents relative w-full flex flex-col">
+            <div class="Signs w-full flex justify-between">
+              <span
+                class="sign opacity-0 relative right-0 activeSign [&.activeSign]:opacity-[1]
+                       duration-300 w-[21%] flex flex-col justify-center items-center z-0">
+                <span class="circle w-[23px] h-[23px] bg-primary rounded-full"></span>
+                <span class="line w-[2px] h-[45px] bg-primary"></span>
+              </span>
+            </div>
+            
+            <div class="tabContents relative w-full flex rounded-5 h-[421px] mb-[4.5em]">
+              <!-- Slide 1 -->
+              <div
+                class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300
+                       [&.activeSlide]:opacity-[1] [&.activeSlide]:pointer-events-auto
+                       bottom-0 left-0 w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                <div
+                  class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex">
+                  <div
+                    class="RightSec h-full w-full flex justify-start items-center"
+                    style="width: 560px;">
+                    <div class="IMG max-w-[560px] min-h-[349px]">
+                      <img
+                        src="https://cdn.basiscore.net/basispanel.ir/images/small_business_image.jpg"
+                        class="rounded-lg"
+                        alt=""
+                        class="w-full h-full object-cover">
+                    </div>
+                  </div>
+                  <div
+                    class="LeftSec h-full flex-col flex justify-center items-center"
+                    style="width: calc(100% - 560px);">
+                    <div
+                      class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
+                      <p class="font-normal font-NotoSans400 text-[15px]
+                                 leading-[22px] text-gray text-justify">
+                        In the modern world, small businesses seek solutions to maximize
+                        productivity using minimal resources while sustaining growth. One of
+                        their biggest hurdles is effective data and process management.
+                        BasisPanel provides integrated management tools that help these
+                        businesses tackle challenges. With precise data analysis and
+                        comprehensive reporting, BasisPanel helps small businesses gain a
+                        transparent understanding of organizational performance, enabling them
+                        to compete effectively and continue growing.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div
+                class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300
+                       [&.activeSlide]:opacity-[1] [&.activeSlide]:pointer-events-auto
+                       bottom-0 left-0 w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                <div
+                  class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
+                  <div class="RightSec h-full flex justify-start items-center" style="width: 560px">
+                    <div class="IMG max-w-[560px] min-h-[349px]">
+                      <img
+                        src="https://cdn.basiscore.net/basispanel.ir/images/e-bussines-picture.jpg"
+                        alt=""
+                        class="w-full h-full object-cover rounded-lg">
+                    </div>
+                  </div>
+                  <div
+                    class="LeftSec h-full flex-col flex justify-center items-center"
+                    style="width: calc(100% - 560px);">
+                    <div
+                      class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
+                      <p class="font-normal font-NotoSans400 text-[15px]
+                                 leading-[22px] text-gray text-justify">
+                        One standout feature for e-commerce businesses using BasisPanel is data
+                        integration. Online businesses can analyze all data—sales, customers,
+                        inventory, marketing, and finances—on one unified platform. This
+                        enables owners to view an accurate picture of their online store’s
+                        performance and make decisions using real, up-to-date data. BasisPanel
+                        not only optimizes current processes in e-commerce but also prepares
+                        businesses to handle future challenges and evolutions.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div
+                class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300
+                       [&.activeSlide]:opacity-[1] [&.activeSlide]:pointer-events-auto
+                       bottom-0 left-0 w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                <div
+                  class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
+                  <div class="RightSec h-full w-full flex justify-start items-center" style="width:560px">
+                    <div class="IMG max-w-[560px] min-h-[349px]">
+                      <img
+                        src="https://cdn.basiscore.net/basispanel.ir/images/sale_picture.jpg"
+                        alt=""
+                        class="w-full h-full object-cover rounded-lg">
+                    </div>
+                  </div>
+                  <div
+                    class="LeftSec h-full flex-col flex justify-center items-center"
+                    style="width: calc(100% - 560px);">
+                    <div
+                      class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
+                      <p class="font-normal font-NotoSans400 text-[15px]
+                                 leading-[22px] text-gray text-justify">
+                        A notable trait of BasisPanel is data integration. Marketing teams can
+                        see all information regarding ad campaigns, website traffic, social
+                        media engagement, email marketing, and sales data in a single
+                        environment. This unification allows more precise analysis, helping
+                        marketers make informed decisions and shape strategies based on
+                        real-time data. Another important capability is trend forecasting:
+                        By analyzing historical data and modeling various scenarios, the
+                        system can predict future market directions and demands.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- end .Tcontent slides -->
+            </div>
+          </div>
+          <!-- end Tab-Contents -->
+        </div>
+        <!-- end Methods -->
+      </div>
+    </section>
+
+    <!-- Logos of clients/trusted by -->
+    <section id="logos" class="w-full flex flex-col pb-[3em] mt-[2em]">
+      <div class="title w-full flex justify-center items-center py-[3em]">
+        <h5 class="font-IRANSansWeb700 font-bold text-lg leading-28.17 text-textGray text-center">
+          Companies that trust us
+        </h5>
+      </div>
+      <div class="Customers w-80p mx-auto flex flex-col">
+        <div class="customer w-full flex justify-center items-center">
+          <div class="IMG w-full">
+            <img
+              src="https://cdn.basiscore.net/basispanel.ir/images/customer-logo-v3.png"
+              alt="@name"
+              title="@name"
+              class="w-full object-cover">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 8: CTA -->
+    <section class="section-8 w-full flex flex-col pb-[3em] bg-lightBG">
+      <div class="Box w-auto flex mt-[5em] flex-col gap-3 justify-center items-center">
+        <h5 class="font-IRANSansWeb700 font-bold text-[40px] leading-[67.3px] text-textGray text-center">
+          Ready to get started?
+        </h5>
+        <p class="font-IRANSansWeb700 font-bold text-lg leading-[30.52px] text-textGray text-center">
+          Don’t waste time — send your request now!
+        </p>
+        <a
+          href="/chat?q=درخواست دمو"
+          class="button w-max mt-4 hover:bg-hoverBtnDprimary duration-[1s]
+                 px-[6em] py-[1.5em] bg-primary flex justify-center items-center rounded-5">
+          <button
+            type="button"
+            class="w-auto flex justify-center text-White items-center
+                   font-IRANSansWeb700 font-normal text-lg leading-[28.17px] rounded-5">
+            Request Demo
+          </button>
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="DesktopFooter w-full flex flex-col bg-dark pt-[2em]">
+      <div class="Top-footer w-full flex justify-center items-center">
+        <div class="logo">
+          <a href="/" alt="basis" title="basis">
+            <img
+              src="https://cdn.basiscore.net/basispanel.ir/images/logoWhite-v3.png"
+              alt="basis"
+              title="basis">
+          </a>
+        </div>
+      </div>
+      <div class="InnerFooter w-80p mx-auto grid grid-cols-3 mt-[3em] py-[1em] gap-5">
+        
+        <!-- Right column -->
+        <div class="Right w-full flex flex-col justify-start items-center">
+          <div class="Box w-full flex flex-col">
+            
+            <!-- Language -->
+            <div
+              class="lang w-full border-b-[1px] border-[#FFFFFF80]
+                         pb-[.5em] flex justify-start items-center relative z-2">
+              <div class="langC w-auto flex justify-center items-center">
+                <span class="langs hover:cursor-pointer w-auto flex gap-1 justify-center items-center">
+                  <span class="langIcon">
+                    <img
+                      src="https://cdn.basiscore.net/basispanel.ir/images/en-v3.png"
+                      alt="basis"
+                      title="basis">
+                  </span>
+                  <span class="langText font-IRANSansWeb400 font-normal text-[13px] text-White">
+                    English
+                  </span>
+                </span>
+                <span class="icon w-auto flex justify-center items-center mr-2 translate-y-[3px]">
+                  <svg
+                    class="[&.rotate]:rotate-[180deg] duration-200"
+                    width="9"
+                    height="5"
+                    viewBox="0 0 9 5"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 1H3H2L4.5 4L7 1Z" fill="#fff" stroke="#fff"/>
+                  </svg>
+                </span>
+              </div>
+              <div
+                class="langs-content absolute top-[2em] bg-dark right-0 flex flex-col w-[70px]
+                       bg-white opacity-0 duration-[.3s]
+                       [&.openLang]:opacity-[1]
+                       [&.openLang]:pointer-events-auto
+                       pointer-events-none">
+                <ul class="w-full flex flex-col">
+                  <li
+                    class="w-auto flex justify-center group/langs duration-100 py-[.5em]
+                           hover:text-textGray hover:bg-White">
+                    <a href="/en" alt="basis" title="basis" class="w-auto flex">
+                      <span
+                        class="langText font-IRANSansWeb400 font-normal duration-100 text-[13px]
+                                   group-hover/langs:text-textGray text-White">
+                        English
+                      </span>
+                    </a>
+                  </li>
+                  <li
+                    class="w-auto flex justify-center group/langs duration-100 py-[.5em]
+                           hover:text-textGray hover:bg-White">
+                    <a href="/" alt="BasisPanel" title="BasisPanel" class="w-auto flex">
+                      <span
+                        class="langText font-IRANSansWeb400 font-normal duration-100
+                                   group-hover/langs:text-textGray text-[13px] text-White">
+                        Farsi
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Footer text area -->
+            <div class="text w-full flex flex-col flex-wrap mt-[1.5em]">
+              <p class="px-14 font-IRANSansWeb400 font-normal text-sm leading-[23.48px] text-White">
+                <p>BasisPanel — Architecture of Business Integration</p>
+                <p>
+                  A unified, accessible software based on SaaS for conveniently managing
+                  personal, corporate, and e-commerce needs. BasisPanel is developed and
+                  produced by the Manzoomeh Negaran group.
+                </p>
+              </p>
+            </div>
+            
+            <!-- Social icons placeholder -->
+            <div class="Socials w-auto flex justify-start items-start gap-3 mt-3">
+              <!-- Social media icons if any -->
+            </div>
+          </div>
+        </div>
+        
+        <!-- Middle column -->
+        <div class="Middle w-[280px] mx-auto flex flex-col gap-4 justify-start items-start">
+          <div class="title w-[72%] flex justify-start items-start">
+            <p class="font-IRANSansWeb700 font-bold text-18 leading-37.57 text-White text-right">
+              Services
+            </p>
+          </div>
+          <ul class="footerMenu w-max max-w-[100%] flex flex-wrap flex-col gap-x-24">
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/crm"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Customer Management
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/bpms"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Process Maker
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/ticketing"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Ticketing System
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/domains"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Domain Management
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/taskmanager"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Project Management
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/content"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Content Upload
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/gallery"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Image Gallery
+              </a>
+            </li>
+            <li class="menu-item w-max max-w-[100%] basis-1/5">
+              <a
+                href="/solutions/automation"
+                class="menu-link font-IRANSansWeb400 font-normal text-sm leading-[23.74px] text-White">
+                Secretariat
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Left column -->
+        <div class="Left w-max mr-auto flex flex-col gap-4 justify-start items-star">
+          <div class="title w-[72%] flex justify-start items-start">
+            <p class="font-IRANSansWeb700 font-bold text-[18px] leading-37.57 text-White text-right">
+              Contact Information
+            </p>
+          </div>
+          <div class="Contact-box w-full flex flex-col max-w-[270px] gap-4">
+            <div class="row w-full flex justify-start items-start">
+              <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                Phone
+              </span>
+              <span class="Answer font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                : 86044425 to 30
+              </span>
+            </div>
+            <div class="row w-full flex justify-start items-start">
+              <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                Email:
+              </span>
+              <a
+                href="mailto: info[at]manzoomeh.ir "
+                title="email"
+                class="email Answer font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                : info[at]manzoomeh.ir
+              </a>
+            </div>
+            <div class="row w-full flex justify-start items-start">
+              <span class="Question font-IRANSansWeb400 font-normal text-sm leading-[23.47px] text-White">
+                <p>Beheshti St. - No. 193 - 7th Floor - Unit 25</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer-manzoomeh-negaran -->
+      <div id="footer-manzoomeh-negaran">
+        <style>
+          #footer-manzoomeh-negaran {
+            width: 100%;
+            height: 70px; 
+            font-size: 12px;
+            font-family: Arial, Helvetica, sans-serif;
+          }
+          #footer-manzoomeh-negaran span {
+            margin: 0 5px;
+            margin-top: -10px;
+          }
+          #footer-manzoomeh-negaran a {
+            display: flex;
+            text-decoration: none;
+            align-items: center;
+            direction: ltr;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-light {
+            color: #FFFFFF;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-light a {
+            color: #FFFFFF;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-dark #manzoomeh_footer_logo {
+            width: 60px;
+            height: 35px;
+            background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_dark.png);
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-light #manzoomeh_footer_logo {
+            width: 60px;
+            height: 35px;
+            background-image: url(https://cdn.basiscore.net/basispanel.ir/_images/manzoomeh_logo_light.png);
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-dark {
+            color: #000;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-dark a {
+            color: #000;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-black {
+            background-color: #000;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-blue {
+            background-color: #004B85;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-red {
+            background-color: #B40020;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-green {
+            background-color: #00A693;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-gray {
+            background-color: #D0D0D0;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-white {
+            background-color: #FFFFFF;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-palegreen {
+            background-color: #CDFFCD;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          #footer-manzoomeh-negaran .footer-manzoomeh-negaran-paleblue {
+            background-color: #BAE1FF;
+            width: 100%;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        </style>
+        <div class="footer-manzoomeh-negaran-black footer-manzoomeh-light">
+          <a href="https://manzoomeh.ir/" target="_blank">
+            Powered By
+            <span id="manzoomeh_footer_logo"></span>
+            MANZOOMEH NEGARAN
+          </a>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Additional scripts -->
+    <script src="https://cdn.basiscore.net/basispanel.ir/_js/lenisScroll.js"></script>
+    <script src="https://cdn.basiscore.net/basispanel.ir/asset/js/configDesk-v3.js"></script>
+  </main>
+
+  <script src="https://cdn.basiscore.net/basispanel.ir/_js/swiper.js"></script>
+  <script src="https://cdn.basiscore.net/basispanel.ir/asset/js/home-v3.js"></script>
+  <script>
+    function setDmnToken(args) {
+      const dmntokenParent = document.getElementById("dmntoken");
+      if(dmntokenParent) {
+        const thisdmntoken = document.getElementById("dmntoken").value;
+        dmntoken = thisdmntoken;
+        $bc.setSource("db.runTokenCommand", {
+          value: true,
+          dmntoken: thisdmntoken,
+        });
+      }
+    }
+  </script>
+</body>
+</html>

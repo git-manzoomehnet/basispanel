@@ -1,0 +1,176 @@
+<basis core="dbsource" source="media" name="db" lid="2" catid="2305">
+    <member type="list" name="customers" perpage="100" pageno="1" /> 
+</basis>
+<basis core="dbsource" source="basiscore" name="db" lid="2" mid="1" usedforid="2375018">
+    <member type="view" name="qa" preview="" />
+</basis>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Shared Folder | Basis Panel </title>
+    <meta name="description" content="CRM">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/videoJS.css">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<basis core="call" if="{##get.dmntoken.value|(false)##}" run="AtClient" file="features/dmntoken.inc"
+    triggers="get.dmntoken" onrendered="setDmnToken"></basis>
+
+<body class="white">
+    <main class="CrmServices w-full overflow-hidden" dir="ltr">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <div class="Title-C mt-[10em] gap-3 relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-textGray text-center
+            flex gap-1">
+            Seamless and Consistent Collaboration with
+           <span class="color font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-primary">
+            Shared Folder
+                </span>  
+            </h1>
+            <div class="text w-full flex flex-col justify-center items-center max-w-[1140px]">
+                <p class="font-IRANSansWeb600 font-semibold text-lg leading-[40px] text-text text-center">
+                    By using the Shared Folder module, you will have access to a centralized environment for storing, organizing, and securely sharing files with your team. This ensures that inter-organizational interactions are conducted in the most efficient way.
+                </p>
+            </div>
+        </div>
+        <section class="section-1 mt-8 pb-[10em] z-1 relative w-full flex flex-col bg-White">
+            <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute 
+            before:left-0 before:bottom-0-
+            before:w-full  pointer-events-none before:bg-White before:z-0 ">
+            </div>
+            <div class="Vidoe-vontainer  relative z-2 w-[76%] max-w-[1300px] mx-auto flex" >
+                <img src="[##cms.cms.cdn##]/images/gallery_hero.png" alt="Shared Folder" class="rounded-lg mx-auto my-0" />
+            </div>
+            <div class="w-[76%] max-w-[1300px] mx-auto my-0 relative grid font-IRANSansWeb400" style="z-index: 99;grid-template-columns:1fr 1fr;gap:40px">
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff;height: 100px;">
+                    
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z" fill="#004B85"/>
+                    </svg>    
+                    Centralized file storage
+                </div>
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff;height: 100px;">
+                    
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z" fill="#004B85"/>
+                    </svg>
+                    The ability to track and assign access levels based on role
+                </div>
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff;height: 100px;">
+                    
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z" fill="#004B85"/>
+                    </svg>
+                    Synchronizing with other Basis Panel modules and accelerating workflows
+                </div>
+
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff;height: 100px;">
+                    
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z" fill="#004B85"/>
+                    </svg>
+                    Ability to share files with team members
+                </div>
+            </div>
+       </section>
+    
+       <section class="section-3  z-1 w-full flex flex-col" style="margin-top: 80px;padding-bottom: 50px;">
+        <div class="Purpose-conrainer gap-[3em] w-80p mx-auto flex flex-col justify-center items-center">
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px] bg-lightBlue rounded-5 flex justify-center items-center ">
+                        <img src="[##cms.cms.cdn##]/images/folder-site-icon.png" alt="basis" title="basis" class="rounded-5">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
+                        Centralized file storage
+                    </span>
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
+                        By leveraging centralized file storage in the Shared Folder module, all organizational files and information are stored in one secure and unified environment. This not only simplifies file access but also significantly reduces the time needed to search for them.
+                    </p>
+                </div>
+            </div>
+            <div class="Purpose w-full flex flex-col gap-7">
+                <span class="title w-full flex gap-2 justify-start items-center">
+                    <span class="icon w-[56px] h-[56px]  rounded-5 bg-lightBlue flex justify-center items-center">
+                        <img src="[##cms.cms.cdn##]/images/share-site-icon.png" alt="basis" title="basis" class="rounded-5">
+                    </span>
+                    <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
+                        Monitoring the file-sharing process
+                    </span>
+                
+                </span>
+                <div class="Text-c w-full flex flex-col justify-start">
+                    <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-right">
+                        In this module, because of the ability to track and assign role-based access levels, you can precisely determine who is authorized to access, send, or receive shared files. This feature allows you to maintain full control over the file-sharing process in your organization and ensures security and transparency in file management.
+                    </p>
+                </div>
+            </div>
+        </div>
+       </section>
+     
+       <section class="section-6 pb-6 z-1 w-full flex flex-col bg-[#E5E5E530]" >
+        <div class="Questions-container flex mx-auto flex-col" style="width: 1100px;">
+           <div class="title pt-[3em] w-full flex justify-center">
+            <h4 class="font-IRANSansWeb700 font-semibold text-[28px] leading-[32px] text-textGray text-center">
+                Frequently Asked Questions
+            </h4>
+           </div>
+           <div class="Questions-boxes mt-[3em] pb-[4em] w-full flex gap-[1em] flex-col my-0 mx-auto">
+                
+                <basis core="print" datamembername="db.qa">
+                    <face filter="typeid <> 150">
+                        <div class="Question group/question bg-White w-full rounded-lg flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
+                            <div class="title-question py-[1.4em] group-[&.active]/question:pb-[.5em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
+                             px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
+                            border-l-mainGray border-r-mainGray
+                             rounded-5 w-full mx-auto flex justify-start items-center gap-2">
+                                <span class="icon relative w-[20px] h-[20px]">
+                                    <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
+                                    </svg>  
+                                    <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
+                                        <line x1="8" y1="16" x2="8" y2="0" stroke="#494949" stroke-width="2"/>
+                                    </svg>
+                                </span>
+                                <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
+                                group-[&.active]/question:font-IRANSansWeb800 
+                                group-[&.active]/question:font-extrabold group-[&.active]/question:text-[18px]
+                                group-[&.active]/question:leading-[24px]
+                                font-normal text-base leading-[24px] text-textGray">
+                                    @text
+                                </p>
+                            </div>
+                            <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
+                            mx-auto group-[&.active]/question:flex justify-start items-center gap-2
+                            flex-col">
+                                <p class="font-IRANSansWeb400 duration-500 font-normal
+                                group-[&.active]/question:text-White text-[15px]
+                                leading-[28px] answer">
+                                    @largetext
+                                </p>
+                            </div>
+                        </div>
+                    </face>
+                </basis>
+
+           </div>
+        </div>
+       </section>
+       
+       <basis core="call" file="logo.inc" />
+    
+       <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+       <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+       <script src="[##cms.cms.cdn##]/asset/js/videoJS.js"></script>
+       <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
+       <script src="[##cms.cms.cdn##]/asset/js/crm-v3.js"></script>
+    </main> 
+</body>
+</html>

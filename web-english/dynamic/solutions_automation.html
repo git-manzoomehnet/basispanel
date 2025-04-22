@@ -1,0 +1,127 @@
+<basis core="dbsource" source="media" name="db" lid="2" catid="2305">
+    <member type="list" name="customers" perpage="100" pageno="1" /> 
+</basis>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Secretariat Module | Basis Panel </title>
+    <meta name="description" content="CRM">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/videoJS.css">
+    <basis core="call" file="style-en-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+
+
+<body class="white">
+    <main class="CrmServices w-full overflow-hidden" dir="ltr">
+        <basis core="call" file="checkLogin-header-en-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+        <div class="Title-C mt-[10em] gap-3 relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-textGray text-center
+                flex gap-1">
+                Manage Organizational Communications with
+                <span class="color font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-primary">
+                    the Secretariat Module
+                </span>  
+            </h1>
+            <div class="text w-full flex flex-col justify-center items-center max-w-[1140px]">
+                <p class="font-IRANSansWeb600 font-semibold text-lg leading-[40px] text-text text-center">
+                    Designed as a hub for organizational communications, the Secretariat Module provides the ability to manage and monitor incoming and outgoing messages and tickets. With this module, organizations can optimize their communication processes and engage in structured internal interactions.
+                </p>
+            </div>
+        </div>
+
+        <section class="section-1 mt-8 pb-[10em] z-1 relative w-full flex flex-col bg-White">
+            <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute 
+                before:left-0 before:bottom-0- before:w-full pointer-events-none before:bg-White before:z-0">
+            </div>
+            <div class="Vidoe-vontainer relative z-2 w-[76%] max-w-[1300px] mx-auto flex">
+                <img src="[##cms.cms.cdn##]/images/ticketing_hero.png" alt="Secretariat Module" class="rounded-lg mx-auto my-0" />
+                <!-- 
+                <video 
+                    id="my-video"
+                    controls
+                    preload="auto"
+                    width="640"
+                    height="264"
+                    poster="[##cms.cms.cdn##]/images/crm_section1-1 1.png"
+                    data-setup="{}"
+                    class="w-full h-[809px] bg-[transparent] object-cover video-js">
+                    <source src="" type="video/mp4" />
+                </video>
+                -->
+            </div>
+            <div class="w-[76%] max-w-[1300px] mx-auto my-0 relative grid font-IRANSansWeb400" style="z-index: 99; grid-template-columns:1fr 1fr; gap:40px">
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff; height: 100px;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" class="mr-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z"
+                            fill="#004B85" />
+                    </svg>    
+                    Advanced Ticketing System
+                </div>
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff; height: 100px;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" class="mr-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z"
+                            fill="#004B85" />
+                    </svg>
+                    Streamlined Ticket Management & Simplified Internal Communications
+                </div>
+                <div class="w-full p-4 bg-white gshadow rounded-lg flex items-center" style="background: #fff; height: 100px;">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                        xmlns="http://www.w3.org/2000/svg" class="mr-3">
+                        <path d="M19.9997 9.93207C19.9985 9.67609 19.9175 9.42695 19.7681 9.21976C19.6187 9.01256 19.4085 8.85777 19.167 8.77718L16.1511 7.75817C15.2224 7.45274 14.3761 6.93647 13.6775 6.24931C12.9789 5.56215 12.4468 4.72251 12.1223 3.79534L11.1095 0.760952C11.0183 0.535978 10.8625 0.343444 10.6621 0.207914C10.4617 0.0723828 10.2257 0 9.98416 0C9.74267 0 9.50665 0.0723828 9.30622 0.207914C9.10578 0.343444 8.95003 0.535978 8.85881 0.760952L7.80099 3.79534C7.4883 4.73927 6.96146 5.59698 6.26219 6.30053C5.56292 7.00409 4.71043 7.53415 3.77225 7.84875L0.756322 8.86776C0.532717 8.95953 0.341353 9.11625 0.206647 9.31791C0.0719413 9.51956 0 9.75703 0 10C0 10.243 0.0719413 10.4804 0.206647 10.6821C0.341353 10.8838 0.532717 11.0405 0.756322 11.1322L3.77225 12.1512C4.71043 12.4658 5.56292 12.9959 6.26219 13.6995C6.96146 14.403 7.4883 15.2607 7.80099 16.2047L8.8138 19.239C8.90501 19.464 9.06077 19.6566 9.2612 19.7921C9.46163 19.9276 9.69765 20 9.93915 20C10.1806 20 10.4167 19.9276 10.6171 19.7921C10.8175 19.6566 10.9733 19.464 11.0645 19.239L12.0773 16.2047C12.39 15.2607 12.9168 14.403 13.6161 13.6995C14.3154 12.9959 15.1679 12.4658 16.106 12.1512L19.122 11.1322C19.3793 11.0574 19.6048 10.8992 19.7635 10.6822C19.9223 10.4652 20.0053 10.2015 19.9997 9.93207Z"
+                            fill="#004B85" />
+                    </svg>
+                    Improved Team Coordination & Effective Message Tracking
+                </div>
+            </div>
+        </section>
+
+        <section class="section-3 z-1 w-full flex flex-col" style="margin-top: 80px; padding-bottom: 50px;">
+            <div class="Purpose-conrainer gap-[3em] w-80p mx-auto flex flex-col justify-center items-center">
+                <div class="Purpose w-full flex flex-col gap-7">
+                    <span class="title w-full flex gap-2 justify-start items-center">
+                        <span class="icon w-[56px] h-[56px] bg-lightBlue rounded-5 flex justify-center items-center">
+                            <img src="[##cms.cms.cdn##]/images/mail-site-icon.png" alt="basis" title="basis" class="rounded-5">
+                        </span>
+                        <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
+                            Complete Oversight of Tickets and Effective Communication
+                        </span>
+                    </span>
+                    <div class="Text-c w-full flex flex-col justify-start">
+                        <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-left">
+                            This module provides the ability to view and manage all sent and received tickets. Additionally, you can send tickets simultaneously to other team members by using features like BCC and CC.
+                        </p>
+                    </div>
+                </div>
+                <div class="Purpose w-full flex flex-col gap-7">
+                    <span class="title w-full flex gap-2 justify-start items-center">
+                        <span class="icon w-[56px] h-[56px] rounded-5 bg-lightBlue flex justify-center items-center">
+                            <img src="[##cms.cms.cdn##]/images/monitoring-site-icon.png" alt="basis" title="basis" class="rounded-5">
+                        </span>
+                        <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[33.6px] text-textGray">
+                            Structured Management for Accurate Monitoring and Follow-up
+                        </span>
+                    </span>
+                    <div class="Text-c w-full flex flex-col justify-start">
+                        <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-sm text-left">
+                            With the help of the Secretariat Module, messages and tickets can be precisely and centrally tracked. As a result, managers and users can efficiently handle all interactions without losing key information, and the process of responding to and following up on messages is also expedited.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <basis core="call" file="logo-en-v3.inc" />
+        <basis core="call" file="footer-en-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+        <basis core="call" file="script-en-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+        <script src="[##cms.cms.cdn##]/asset/js/videoJS.js"></script>
+        <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
+        <script src="[##cms.cms.cdn##]/asset/js/crm-v3.js"></script>
+    </main> 
+</body>
+</html>

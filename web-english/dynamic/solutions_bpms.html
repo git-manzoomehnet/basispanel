@@ -1,0 +1,321 @@
+<basis core="dbsource" source="basiscore" name="db" lid="1" mid="1" usedforid="2374079">
+    <member type="view" name="qa" preview="" />
+</basis>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BPMS</title>
+    <meta name="description" content="BPMS">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/videoJS.css">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+</head>
+<basis core="call" if="{##get.dmntoken.value|(false)##}" run="AtClient" file="features/dmntoken.inc"
+    triggers="get.dmntoken" onrendered="setDmnToken"></basis>
+
+<body>
+    <main class="BPMS-BasisPanel flex flex-col w-full min-h-svh justify-between overflow-hidden" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]"/>
+        <div class="Title-C mt-[10em] relative z-2 w-80p mx-auto flex flex-col justify-center items-center gap-3">
+            <h1 class="font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-textGray text-center
+            flex gap-1">
+            Simplify Complex Organizational Processes with the 
+            <span class="color font-IRANSansWeb800 font-extrabold text-[30px] leading-[75px] text-primary">
+                Process Management
+            </span>
+            Module
+            </h1>
+            <div class="text w-full flex flex-col justify-center items-center max-w-[1140px]">
+                <p class="font-IRANSansWeb600 font-semibold text-lg leading-[40px] text-text text-center">
+                    By using the Process Management module in a SaaS-based solution, businesses can take advantage of a professional and efficient process management system without needing to invest in technical infrastructure or system maintenance. The Process Management module, by establishing systematic and standard frameworks for carrying out activities, plays a key role in ensuring organizational security. Through precisely defined workflows, access controls, and orderly record-keeping of activities, it reduces the chances of human error and unauthorized access.
+                </p>
+            </div>
+        </div>
+        <section class="section-1 mt-8 pb-[10em] z-1 relative w-full flex flex-col bg-White">
+            <div class="Bg-gray-sec w-screen z-2 absolute h-full bg-bgGray before:content-[''] before:absolute
+            before:left-0 before:bottom-0-
+            before:w-full pointer-events-none before:bg-White before:z-0">
+            </div>
+            <div class="Vidoe-vontainer relative z-2 w-[76%] max-w-[1300px] mx-auto flex">
+                <img src="[##cms.cms.cdn##]/images/crm_section1-1 1.png" class="rounded-lg gshadow">
+                <!--
+                <video 
+                    id="my-video"
+                    controls
+                    preload="auto"
+                    width="640"
+                    height="264"
+                    poster="[##cms.cms.cdn##]/images/crm_section1-1 1.png"
+                    data-setup="{}"
+                    class="w-full h-[809px] bg-[transparent] object-cover video-js">
+                    <source src="images/ssstwitter.com_1707122752489.mp4" type="video/mp4" />
+                </video>
+                -->
+            </div>
+        </section>
+        <section class="section-2 mt-8 z-1 relative w-full flex flex-col">
+            <div class="Chart-container w-80p mx-auto flex justify-center flex-col">
+                <div class="topChart relative w-auto mx-auto flex flex-col">
+                    <span class="highlight mr-[1em] translate-y-[2px] w-max px-[1em] py-[.8em] bg-orange rounded-5 
+                    font-IRANSansWeb700 font-bold text-sm text-White">
+                        Sales Department
+                    </span>
+                    <div class="chart relative w-max flex gap-[6em] rounded-5 bg-light3 py-[2em] px-[2em]">
+                        <svg class="line-container x-line w-80p mx-auto right-0 left-0 absolute top-[100%] z-0 bottom-0 my-auto" width="100%" height="100%">
+                            <line x1="100%" y1="0" x2="0" y2="0" class="dashed-line"></line>                
+                        </svg>
+                        <span class="box relative z-1 w-max flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                            items-center py-[.1em] px-[2em] bg-White rounded-5">
+                            Initial Negotiation
+                        </span>
+                        <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                            items-center py-[.1em] px-[2em] bg-White rounded-5">
+                            Needs Assessment Meeting
+                        </span>
+                        <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                            items-center py-[.1em] px-[2em] bg-White rounded-5">
+                            Recording Minutes
+                        </span>
+                    </div>
+                    <svg class="line-container y-line w-80p mx-auto right-0 left-0 absolute z-0 bottom-[-119px] my-auto" width="100%" height="100%">
+                        <line x1="50%" y1="35%" x2="50%" y2="70%" class="dashed-line"></line>           
+                    </svg>
+                </div>
+                <div class="middleChart mt-[6em] w-[27%] flex justify-between items-center mx-auto relative">
+                    <p class="font-IRANSansWeb700 font-bold max-xxl:translate-x-[-25px]
+                        text-sm leading-[50px] text-purple translate-y-[-16px] translate-x-[-50px]">
+                        Yes
+                    </p>
+                    <div class="Square relative z-2 w-[85px] h-[85px] rotate-45 rounded-5 bg-purple flex justify-center items-center">
+                        <p class="font-IRANSansWeb700 font-bold text-[10px] text-center text-White rotate-[-45deg]">
+                            Will the customer purchase?
+                        </p>
+                    </div>
+                    <p class="font-IRANSansWeb700 translate-x-[50px] font-bold max-xxl:translate-x-[25px]
+                        text-sm leading-[50px] text-purple translate-y-[-16px]">
+                        No
+                    </p>
+                    <svg class="line-container x-line w-80p mx-auto right-0 left-0 absolute top-[100%] z-0 bottom-0 my-auto" width="100%" height="100%">
+                        <line x1="100%" y1="0" x2="0" y2="0" class="dashed-line"></line>                
+                    </svg>
+                </div>
+                <div class="lineBottom w-[42%] mx-auto relative flex justify-between">
+                    <span class="linee w-full h-[3em]"></span>
+                    <svg class="line-container w-[50%] y-line absolute z-0 left-0 h-[126px] bottom-0 my-auto" width="100%" height="100%">
+                        <line x1="50%" y1="35%" x2="50%" y2="100%" class="dashed-line"></line>           
+                    </svg>
+                    <svg class="line-container w-[50%] y-line absolute z-0 right-0 h-[126px] bottom-0 my-auto" width="100%" height="100%">
+                        <line x1="50%" y1="35%" x2="50%" y2="100%" class="dashed-line"></line>           
+                    </svg>
+                </div>
+                <div class="bottomChart translate-y-[-51px] max-xxl:gap-[5em] w-90p mx-auto flex justify-between items-center">
+                    <div class="right w-[50%] flex flex-col">
+                        <div class="topsec relative w-[80%] flex justify-between ml-auto">
+                            <span class="highlight mr-[1em] translate-y-[2px] w-max px-[1em] py-[.8em] bg-orange rounded-5 
+                            font-IRANSansWeb700 font-bold text-sm text-White">
+                                Finance Department
+                            </span>
+                        </div>
+                        <div class="chart relative justify-center rounded-5 items-center
+                            max-xxl:w-full w-[82%] min-w-[435px] h-[171px] flex gap-[6em] bg-light3 py-[2em]">
+                            <svg width="100%" height="100%" class="w-[75%] line-container
+                                x-line ml-auto right-0 absolute top-0 z-0 bottom-0 my-auto">
+                                <!-- Dashed line from center to top-left -->
+                                <line x1="50%" y1="50%" x2="20%" y2="30%" stroke="black" stroke-dasharray="5,5" stroke-width="2" class="dashed-line"/>
+                                <!-- Dashed line from center to bottom-left -->
+                                <line x1="50%" y1="50%" x2="20%" y2="71%" stroke="black" stroke-dasharray="5,5" stroke-width="2" class="dashed-line"/>
+                            </svg>
+                            <span class="box relative h-fit z-1 w-max flex justify-center
+                                font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                                items-center py-[.1em] px-[2em] bg-White rounded-5">
+                                Issuing Initial Contract
+                            </span>
+                            <div class="groupBox gap-5 w-auto flex flex-col justify-between">
+                                <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                                    items-center py-[.1em] px-[2em] bg-White rounded-5">
+                                    Send to Customer
+                                </span>
+                                <span class="box w-max relative z-1 flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                                    items-center py-[.1em] px-[2em] bg-White rounded-5">
+                                    Send to Production Department
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left w-[50%] flex flex-col justify-end items-end">
+                        <div class="topsec relative max-xxl:w-full w-[80%] flex justify-start mr-auto">
+                            <span class="highlight mr-[2em] translate-y-[2px] w-max px-[1em] py-[.8em] bg-orange rounded-5 
+                            font-IRANSansWeb700 font-bold text-sm text-White">
+                                Support Department
+                            </span>
+                        </div>
+                        <div class="chart max-xxl:w-full h-[171px] rounded-5 relative justify-center items-center w-[82%] min-w-[435px] flex gap-[6em] bg-light3">
+                            <span class="box relative h-fit z-1 w-max flex justify-center font-IRANSansWeb700 font-bold text-sm leading-[50px] text-black
+                                items-center py-[.1em] px-[2em] bg-White rounded-5">
+                                Follow-up with Customer
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-3 mt-[3em] pb-6 z-1 w-full flex flex-col">
+            <div class="Purpose-conrainer gap-[3em] w-80p mx-auto flex flex-col justify-center items-center">
+                <div class="Purpose w-full flex flex-col gap-7">
+                    <span class="title w-full flex gap-2 justify-start items-center">
+                        <span class="icon w-[56px] h-[56px] bg-lightBlue rounded-5 flex justify-center items-center">
+                            <img src="[##cms.cms.cdn##]/images/npms-1.png" alt="">
+                        </span>
+                        <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.2px] text-textGray">
+                            Improved Efficiency and Productivity
+                        </span>
+                    </span>
+                    <div class="Text-c w-full flex flex-col justify-start">
+                        <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                            Through automation tools and ready-to-use templates, the time it takes to execute organizational processes is dramatically reduced. By eliminating repetitive tasks and automating routine duties, users can focus more on key activities.
+                        </p>
+                    </div>
+                </div>
+                <div class="Purpose w-full flex flex-col gap-7">
+                    <span class="title w-full flex gap-2 justify-start items-center">
+                        <span class="icon w-[56px] h-[56px] bg-lightBlue rounded-5 flex justify-center items-center">
+                            <img src="[##cms.cms.cdn##]/images/npms-2.png" alt="">
+                        </span>
+                        <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.2px] text-textGray">
+                            Transparency and Traceability
+                        </span>
+                    </span>
+                    <div class="Text-c w-full flex flex-col justify-start">
+                        <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                            Managers and employees can track the progress of processes at any time and place. This transparency and rapid review capability lead to faster decision-making, identification of operational bottlenecks, and continuous improvement of organizational processes.
+                        </p>
+                    </div>
+                </div>
+                <div class="Purpose w-full flex flex-col gap-7">
+                    <span class="title w-full flex gap-2 justify-start items-center">
+                        <span class="icon w-[56px] h-[56px] bg-lightBlue rounded-5 flex justify-center items-center">
+                            <img src="[##cms.cms.cdn##]/images/npms-3.png" alt="">
+                        </span>
+                        <span class="text font-IRANSansWeb700 font-semibold text-lg leading-[25.2px] text-textGray">
+                            Standardization and Integration
+                        </span>
+                    </span>
+                    <div class="Text-c w-full flex flex-col justify-start">
+                        <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[30px] text-text text-right">
+                            When organizations implement standardized and repeatable processes, it ensures that all organizational activities are carried out according to best practices. This standardization reduces human error, increases efficiency, and creates a predictable, measurable system. Moreover, by integrating processes, all parts of the organization adopt a cohesive and unified approach, enhancing the quality of services and products.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-4 mt-[3em] z-1 w-full flex flex-col">
+            <div class="Feature-C mt-[5em] w-80p mx-auto flex-col flex justify-center items-center">
+                <div class="title mx-auto w-full justify-center items-center flex">
+                    <h3 class="font-IRANSansWeb700 font-bold text-lg leading-[28.17px] text-textGray">
+                        Other Features
+                    </h3>
+                </div>
+                <div class="featureBox w-full flex flex-col bg-gray3 rounded-5 mt-6">
+                    <div class="topChart relative w-80p mx-auto justify-center items-center flex flex-col">
+                        <div class="chart relative w-max flex justify-between rounded-5 py-[2em] px-[2em]">
+                            <svg class="line-container x-line w-80p mx-auto right-0 left-0 absolute top-[100%] z-0 bottom-0 my-auto" width="100%" height="100%">
+                                <line x1="100%" y1="0" x2="0" y2="0" class="dashed-line"></line>
+                            </svg>
+                            <span class="box relative z-1 w-[24%] text-center flex justify-center font-IRANSansWeb400 font-normal text-sm leading-[21.91px] text-black
+                                items-center py-[1.3em] px-[3em] bg-White rounded-5">
+                                Graphical Process Design via a Simple UI
+                            </span>
+                            <span class="box relative z-1 w-[24%] text-center flex justify-center font-IRANSansWeb400 font-normal text-sm leading-[21.91px] text-black
+                                items-center py-[1.3em] px-[3em] bg-White rounded-5">
+                                Use of Pre-Built, Customizable Processes
+                            </span>
+                            <span class="box relative z-1 w-[24%] text-center flex justify-center font-IRANSansWeb400 font-normal text-sm leading-[21.91px] text-black
+                                items-center py-[1.3em] px-[3em] bg-White rounded-5">
+                                Categorizing Processes into Dedicated and Public Groups
+                            </span>
+                        </div>
+                    </div>
+                    <div class="bottomChart relative w-80p mx-auto flex justify-around items-center flex-col">
+                        <div class="chart relative w-full flex justify-around rounded-5 py-[2em] px-[2em]">
+                            <svg class="line-container x-line w-80p mx-auto right-0 left-0 absolute top-[100%] z-0 bottom-0 my-auto" width="100%" height="100%">
+                                <line x1="100%" y1="0" x2="0" y2="0" class="dashed-line"></line>
+                            </svg>
+                            <span class="box relative z-1 w-[24%] text-center flex justify-center font-IRANSansWeb400 font-normal text-sm leading-[21.91px] text-black
+                                items-center py-[1.3em] px-[3em] bg-White rounded-5">
+                                Advanced Reporting on Process Status
+                            </span>
+                            <span class="box relative z-1 w-[24%] text-center flex justify-center font-IRANSansWeb400 font-normal text-sm leading-[21.91px] text-black
+                                items-center py-[1.3em] px-[3em] bg-White rounded-5">
+                                Continuous Editing and Improvement of Processes
+                            </span>
+                        </div>
+                        <div class="line w-full translate-y-[-7em] flex justify-between">
+                            <span class="linee w-full flex h-[2em]"></span>
+                            <svg class="line-container w-[21%] y-line absolute z-0 left-0 h-[150px] bottom-0 my-auto" width="100%" height="100%">
+                                <line x1="50%" y1="35%" x2="50%" y2="100%" class="dashed-line"></line>
+                            </svg>
+                            <svg class="line-container w-[21%] y-line absolute z-0 right-0 h-[150px] bottom-0 my-auto" width="100%" height="100%">
+                                <line x1="50%" y1="35%" x2="50%" y2="100%" class="dashed-line"></line>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-5 mt-[8em] pb-6 z-1 w-full flex flex-col bg-[#E5E5E530]">
+            <div class="Questions-container flex w-80p mx-auto flex-col">
+                <div class="title pt-[3em] w-full flex justify-center">
+                    <h4 class="font-IRANSansWeb700 font-semibold text-[28px] leading-[32px] text-textGray text-center">
+                        Frequently Asked Questions
+                    </h4>
+                </div>
+                <div class="Questions-boxes mt-[3em] pb-[4em] w-full flex gap-[1em] flex-col my-0 mx-auto">
+                    <basis core="print" datamembername="db.qa">
+                        <face filter="typeid <> 150">
+                            <div class="Question group/question bg-White w-full rounded-lg flex-col [&.active]:pb-4 flex [&.active]:bg-secondary duration-500">
+                                <div class="title-question py-[1.4em] group-[&.active]/question:pb-[.5em] group-hover/question:cursor-pointer group-[&.active]/question:border-[unset]
+                                    px-[1em] border-[1px] border-t-mainGray border-b-mainGray group-[&.active]/question:border-0
+                                    border-l-mainGray border-r-mainGray
+                                    rounded-5 w-full mx-auto flex justify-start items-center gap-2">
+                                    <span class="icon relative w-[20px] h-[20px]">
+                                        <svg class="mines duration-500 group-[&.active]/question:opacity-[1] group-[&.active]/question:top-[10px] top-0 absolute opacity-0" width="16" height="2" viewBox="0 0 16 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line y1="1" x2="16" y2="1" stroke="white" stroke-width="2"/>
+                                        </svg>
+                                        <svg class="plus duration-500 group-[&.active]/question:opacity-[0] top-0 absolute" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <line y1="8" x2="16" y2="8" stroke="#494949" stroke-width="2"/>
+                                            <line x1="8" y1="16" x2="8" y2="0" stroke="#494949" stroke-width="2"/>
+                                        </svg>
+                                    </span>
+                                    <p class="font-IRANSansWeb400 duration-500 group-[&.active]/question:text-White
+                                        group-[&.active]/question:font-IRANSansWeb800 
+                                        group-[&.active]/question:font-extrabold group-[&.active]/question:text-[18px]
+                                        group-[&.active]/question:leading-[24px]
+                                        font-normal text-base leading-[24px] text-textGray">
+                                        @text
+                                    </p>
+                                </div>
+                                <div class="text-question hidden overflow-hidden px-[3em] py-[.5em] w-full 
+                                    mx-auto group-[&.active]/question:flex justify-start items-center gap-2
+                                    flex-col">
+                                    <p class="font-IRANSansWeb400 duration-500 font-normal
+                                        group-[&.active]/question:text-White text-[15px]
+                                        leading-[28px] answer">
+                                        @largetext
+                                    </p>
+                                </div>
+                            </div>
+                        </face>
+                    </basis>
+                </div>
+            </div>
+        </section>
+        <basis core="call" file="logo.inc" />
+        <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    </main>
+    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script src="[##cms.cms.cdn##]/asset/js/videoJS.js"></script>
+    <script src="[##cms.cms.cdn##]/asset/js/bpms-v3.js"></script>
+</body>
+</html>

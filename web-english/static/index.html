@@ -1,29 +1,30 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بیسیس پنل | BasisPanel | معمار یکپارچگی کسب و کار شما</title>
+    <title>BasisPanel | The Architect of Your Business Integration</title>
     <meta name="description"
-        content="BasisPanel یک سیستم جامع است که تمامی فرآیندهای کلیدی کسب و کار شما را به صورت یکپارچه مدیریت می‌کند. " />
+        content="BasisPanel is a comprehensive system that manages all your key business processes in an integrated manner." />
     <meta name="description" content="home">
-    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
-    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link rel="stylesheet" href="/web-english/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/chart-v3.css">
+    <link rel="stylesheet" href="/web-english/assets/css/outputDesk-en.css">
 
 </head>
 <basis core="call" if="{##get.dmntoken.value|(false)##}" run="AtClient" file="features/dmntoken.inc"
     triggers="get.dmntoken" onrendered="setDmnToken"></basis>
 
 <body class="gray">
-    <main class="Home-BasisPanel w-full overflow-hidden" dir="rtl">
+    <main class="Home-BasisPanel w-full overflow-hidden" dir="ltr">
         <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
         <div class="callInput flex mt-[10em] relative z-2 w-[975px] h-[80px] mx-auto 
         flex-col justify-center items-center gap-3">
             <input type="text" class="callback px-[1em] w-full h-full rounded-lg border-[1px] border-mainGray"
-                id="myInput" placeholder="مدیرفروش هستم">
+                id="myInput" placeholder="I am a sales manager">
             <div
-                class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto left-[1em] z-1">
+                class="Overlay-input hover:cursor-pointer flex justify-center items-center absolute top-0 bottom-0 my-auto right-[1em] z-1">
                 <img src="[##cms.cms.cdn##]/images/input-v3.png" alt="">
             </div>
         </div>
@@ -33,13 +34,13 @@
             </div>
             <div class="Titles w-full flex relative z-3  flex-col justify-center items-center">
                 <h1 class="font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px] text-blue">
-                    راهکارهای یکپارچه نرم افزاری برای <span
+                    Integrated software solutions for <span
                         class="color text-blue2 font-IRANSansWeb800 font-extrabold text-[40px] text-center leading-[75px]">
-                        مدیریت
-                    </span> کسب و کار
+                        business
+                    </span> management
                 </h1>
                 <h2 class="font-IRANSansWeb600 font-semibold text-[21px] leading-[50px] text-center text-textGray">
-                    بیسیس پنل مجموعه‌ای از ابزارهای یکپارچه ابری است که تمام نیازهای سازمانی شما را پوشش می‌دهد.
+                    BasisPanel is a collection of integrated cloud tools that cover all your organizational needs.
                 </h2>
             </div>
         </section>
@@ -55,7 +56,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base mt-2">
-                            مدیریت اعضا
+                            Member Management
                         </span>
                     </a>
                     <a href="solutions/sharedfolder" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -66,7 +67,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            پوشه اشتراکی
+                            Shared Folder
                         </span>
                     </a>
                     <a href="solutions/reports" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -77,7 +78,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            گزارشات
+                            Reports
                         </span>
                     </a>
                     <a href="solutions/ticketing" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -88,7 +89,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            سیستم تیکتینگ
+                            Ticketing System
                         </span>
                     </a>
                     <a href="/solutions/gallery" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -99,7 +100,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            گالری تصاویر
+                            Image Gallery
                         </span>
                     </a>
                     <a href="solutions/bpms" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -110,7 +111,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            فرآیندساز
+                            Process Maker
                         </span>
                     </a>
                     <a href="/solutions/content" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -121,7 +122,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            بارگزاری محتوا
+                            Content Upload
                         </span>
                     </a>
                     <a href="/solutions/dashboard" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -132,7 +133,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            میزکار
+                            Dashboard
                         </span>
                     </a>
                     <a href="solutions/automation" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -143,7 +144,7 @@
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            دبیرخانه
+                            Secretariat
                         </span>
                     </a>
                     <a href="solutions/taskmanager" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -155,7 +156,7 @@ flex flex-col gap-1">
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            مدیریت پروژه
+                            Project Management
                         </span>
                     </a>
 
@@ -168,7 +169,7 @@ flex flex-col gap-1">
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            فروش و بازاریابی
+                            Sales & Marketing
                         </span>
                     </a>
                     <a href="/solutions/crm" class="PurposeBox w-full justify-center items-center group/purpose hover:cursor-pointer
@@ -190,7 +191,7 @@ flex flex-col gap-1">
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            مدیریت دامنه
+                            Domain Management
                         </span>
                     </a>
 
@@ -202,7 +203,7 @@ flex flex-col gap-1">
                         </span>
                         <span
                             class="Title flex justify-center font-IRANSansWeb700 font-bold text-center text-black text-base">
-                            سایر راهکارها
+                            Other Solutions
                         </span>
                     </a>
                 </div>
@@ -214,11 +215,11 @@ flex flex-col gap-1">
 
                 <h4
                     class="font-IRANSansWeb600 font-semibold text-base text-blue3 text-center duration-500 translate-x-100 opacity-0">
-                    مزایای بیسیس پنل
+                    BasisPanel Advantages
                 </h4>
                 <h3
                     class="font-IRANSansWeb700 font-extrabold text-[28px]  text-textGray text-center duration-500 translate-x-100 opacity-0">
-                    بیسیس پنل چطور به کسب و کار من کمک می‌کند؟
+                    How can BasisPanel help my business?
                 </h3>
             </div>
             <div class="help-Boxes w-80p mx-auto flex flex-col">
@@ -228,33 +229,23 @@ flex flex-col gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
                      text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
                      text-text leading-[14px]">
-                                مزیت اول
+                                First Advantage
                             </span>
                             <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                تحلیل فروش در یک نگاه؛ موفقیت در یک قدم!
+                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-left">
+                                Sales Analysis at a Glance; Success in One Step!
                             </h4>
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                سیستم CRM بیسیس پنل با ماژول‌های خود به بهترین نحو این نیاز را برآورده کرده است. با
-                                استفاده از این سیستم، توانسته‌ایم خطوط فروش خود را به‌طور کاملاً ساختاریافته تعریف کنیم
-                                و روند فروش را در هر لحظه به دقت ارزیابی نماییم. این ابزار به ما این امکان را می‌دهد که
-                                نقاط قوت و ضعف تیم فروش را به‌طور شفاف و در زمان واقعی شناسایی کرده و بر اساس آن،
-                                تصمیمات به‌موقع اتخاذ کنیم. سرعت بالای تحلیل داده‌ها در این سیستم به ما اجازه می‌دهد که
-                                هر تصمیمی را بر اساس داده‌های معتبر و به‌روز اتخاذ کنیم. یکی از مزایای کلیدی استفاده از
-                                بیسیس پنل، شفافیت بالای اطلاعات است. این سیستم به ما این امکان را می‌دهد که به‌راحتی به
-                                تمامی اطلاعات مربوط به عملکرد تیم فروش، از جمله پیشرفت‌ها و چالش‌ها، دسترسی پیدا کنیم و
-                                آن‌ها را تحلیل کنیم. در نهایت، بیسیس پنل نه تنها به ما کمک می‌کند که تیم فروش خود را به
-                                بهترین شکل ممکن مدیریت کنیم، بلکه باعث می‌شود که تصمیمات استراتژیک‌تری در سطح کلان اتخاذ
-                                کنیم.
+                                BasisPanel's CRM system with its modules perfectly meets this need. Using this system, we've been able to define our sales pipelines in a completely structured way and evaluate the sales process precisely at any moment. This tool allows us to clearly identify the strengths and weaknesses of the sales team in real-time and make timely decisions based on it. The high speed of data analysis in this system allows us to make every decision based on valid and up-to-date data. One of the key advantages of using BasisPanel is the high transparency of information. This system enables us to easily access all information related to the sales team's performance, including progress and challenges, and analyze them. Ultimately, BasisPanel not only helps us manage our sales team in the best possible way but also enables us to make more strategic decisions at the macro level.
                             </p>
                         </div>
                     </div>
                     <div class="rightSec  w-full flex">
 
                         <div class="SalesSec relative before:content-[''] before:absolute before:w-[100px] before:h-full before:bg-White
-                  before:right-0 before:top-0 before:z-0
+                  before:left-0 before:top-0 before:z-0
                    w-full flex flex-col"
                             style="background-image: url(/images/CRM_ContactProfile_Customer_Natural-v3.png);">
                             <div class="PopSale relative z-1 w-auto flex flex-col">
@@ -266,11 +257,11 @@ flex flex-col gap-1">
                                     </span> -->
                                     <!-- <span
                                         class="text font-IRANSansWeb900 font-black text-[35px] leading-[45px] text-blue">
-                                        رشد فروش
+                                        Sales Growth
                                     </span> -->
                                 </div>
                                 <!-- <p class="font-IRANSansWeb500 text-lg text-gray1 leading-[25.2px]">
-                                    در مقایسه با هفته گذشته
+                                    Compared to last week
                                 </p> -->
                             </div>
                             <div id="chart" class="relative z-1" dir="ltr">
@@ -286,31 +277,31 @@ flex flex-col gap-1">
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <th scope="row"> شکست خورده </th>
+                                                <th scope="row"> Failed </th>
                                                 <td style="--size: 0.2;">
                                                     <span class="data"> 20 </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"> در حال مذاکره </th>
+                                                <th scope="row"> In Negotiation </th>
                                                 <td style="--size: 0.4;">
                                                     <span class="data"> 40 </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"> فروش خارجی </th>
+                                                <th scope="row"> External Sales </th>
                                                 <td style="--size: 0.6;">
                                                     <span class="data"> 60 </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"> فروش داخلی </th>
+                                                <th scope="row"> Internal Sales </th>
                                                 <td style="--size: 0.8;">
                                                     <span class="data"> 80 </span>
                                                 </td>
                                             </tr>
                                             <tr>
-                                                <th scope="row"> فروش بهمن </th>
+                                                <th scope="row"> Bahman Sales </th>
                                                 <td style="--size: 1.0;">
                                                     <span class="data"> 100 </span>
                                                 </td>
@@ -328,21 +319,16 @@ flex flex-col gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
                         text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
                         text-text leading-[14px]">
-                                مزیت دوم
+                                Second Advantage
                             </span>
                             <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                پیش‌بینی چالش‌های کسب‌وکار؛ فتح فرصت‌ها برای رشد سازمان
+                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-left">
+                                Predicting Business Challenges; Seizing Opportunities for Organizational Growth
                             </h4>
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                در دنیای پیچیده و پرسرعت امروزی، پیش‌بینی و مدیریت چالش‌های کسب‌وکار به یکی از عوامل
-                                کلیدی موفقیت هر سازمان تبدیل شده است. به‌عنوان مدیرعامل یک شرکت در حال رشد، شناسایی
-                                به‌موقع چالش‌ها و فرصت‌های موجود به ما این امکان را می‌دهد که استراتژی‌های مؤثری را
-                                پیاده‌سازی کرده و از بروز بحران‌ها جلوگیری کنیم. در این زمینه، استفاده از ابزارهای
-                                مدیریتی هوشمند، نظیر داشبورد مدیریتی بیسیس پنل، به‌عنوان یک راهکار عملی برای تحلیل و
-                                پیش‌بینی روندهای مختلف کسب‌وکار، نقش بسزایی ایفا کرده است.
+                                In today's complex and fast-paced world, predicting and managing business challenges has become one of the key factors in the success of any organization. As the CEO of a growing company, timely identification of existing challenges and opportunities allows us to implement effective strategies and prevent crises. In this regard, using smart management tools, such as BasisPanel's management dashboard, has played a significant role as a practical solution for analyzing and predicting various business trends.
                             </p>
                         </div>
                     </div>
@@ -353,8 +339,8 @@ flex flex-col gap-1">
                                 class=" object-cover w-80p" >
                         </div>
 
-                        <div class="IMG-ov  absolute right-0  z-1 max-w-[445px]
-                max-h-[299px] translate-y-[50%] translate-x-[-30%]" style="top: -20px;">
+                        <div class="IMG-ov  absolute left-0  z-1 max-w-[445px]
+                max-h-[299px] translate-y-[50%] translate-x-[30%]" style="top: -20px;">
                             <img src="[##cms.cms.cdn##]/images/ov-v3.png" class=" w-full object-cover">
                         </div>
                     </div>
@@ -366,22 +352,16 @@ flex flex-col gap-1">
                             <span class="spd w-max flex px-[.5em] py-[.4em] bg-lightBlue
                      text-center justify-center items-center rounded-5 text-sm font-IRANSansWeb400 
                      text-text leading-[14px]">
-                                مزیت سوم
+                                Third Advantage
                             </span>
                             <h4
-                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-right">
-                                بیسیس پنل؛ واسطی برای ورود کسب‌وار به جهان هوش مصنوعی
+                                class="font-IRANSansWeb600 font-semibold text-2xl leading-[33.6px] text-textGray text-left">
+                                BasisPanel; A Gateway for Businesses to Enter the World of Artificial Intelligence
                             </h4>
                         </div>
                         <div class="text w-full flex flex-col mt-7">
                             <p class="font-IRANSansWeb400 font-normal text-[15px] leading-[22.5px] text-gray">
-                                پنل بیسیس با ویژگی‌های منحصر به فرد خود، نه تنها به یکپارچگی داده‌ها کمک می‌کند، بلکه به
-                                سازمان‌ها این امکان را می‌دهد که برای تغییرات آینده آماده شوند. این ابزار به‌ویژه در
-                                حوزه هوش مصنوعی و یادگیری ماشین بسیار کارآمد است. با پردازش و تحلیل مداوم داده‌های
-                                مختلف، این سیستم شرایطی را فراهم می‌آورد که بتوانیم الگوریتم‌های هوش مصنوعی را به‌طور
-                                مؤثری در آینده پیاده‌سازی کنیم و تحلیل‌های پیشرفته‌تری انجام دهیم که به بهبود عملکرد
-                                سازمان کمک می‌کند.علاوه بر این، سیستم بیسیس پنل به‌طور لحظه‌ای به‌روزرسانی می‌شود و این
-                                امکان را برای ما فراهم می‌آورد که در هر زمان به اطلاعات دقیق دسترسی داشته باشیم.
+                                BasisPanel with its unique features not only helps in data integration but also enables organizations to prepare for future changes. This tool is particularly effective in the field of artificial intelligence and machine learning. By continuously processing and analyzing various data, this system creates conditions where we can effectively implement AI algorithms in the future and perform more advanced analyses that help improve organizational performance. Additionally, the BasisPanel system is updated in real-time, providing us with access to accurate information at any time.
                             </p>
                         </div>
                     </div>
@@ -400,13 +380,13 @@ flex flex-col gap-1">
             <div class="MethodsSec w-80p mx-auto flex flex-col">
                 <div class="title w-full flex justify-center items-center py-[2em]">
                     <h5 class="font-IRANSansWeb800 font-extrabold text-[28px] leading-[50px] text-textGray text-center">
-                        راهکارهای بیسیس پنل
+                        BasisPanel Solutions
                     </h5>
                 </div>
                 <div class="Methods w-full flex flex-col">
                     <div
                         class="tabs mb-[2em] w-full flex justify-between relative before:content-[''] before:w-full before:h-[1px]
-            before:border-t-[2px] before:z-0 before:border-mainGray before:absolute before:left-0 before:top-[50%] before:border-dashed">
+            before:border-t-[2px] before:z-0 before:border-mainGray before:absolute before:right-0 before:top-[50%] before:border-dashed">
                         <div data-position="left"
                             class="Tab relative z-1 hover:cursor-pointer
                 [&.active]:bg-primary
@@ -414,7 +394,7 @@ flex flex-col gap-1">
                  bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
                             <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-[1s]
                     font-semibold text-base leading-[27px] text-center text-text">
-                                برای کسب‌وکارهای کوچک
+                                For Small Businesses
                             </p>
                         </div>
                         <div data-position="center"
@@ -424,7 +404,7 @@ flex flex-col gap-1">
                  bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
                             <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-[1s]
                     font-semibold text-base leading-[27px] text-center text-text">
-                                برای تجارت الکترونیک
+                                For E-commerce
                             </p>
                         </div>
                         <div data-position="right"
@@ -434,7 +414,7 @@ flex flex-col gap-1">
                  bg-White py-[.8em] rounded-5 w-max px-[3em] flex justify-center items-center border-text border-[1px]">
                             <p class="font-IRANSansWeb700 group-hover/tab:text-white1 group-[&.active]/tab:text-white1 duration-[1s]
                     font-semibold text-base leading-[27px] text-center text-text">
-                                برای تیم‌های بازاریابی
+                                For Marketing Teams
                             </p>
                         </div>
 
@@ -442,7 +422,7 @@ flex flex-col gap-1">
                     <div class="Tab-Contents relative w-full flex flex-col">
                         <div class="Signs w-full flex justify-between">
                             <span
-                                class="sign opacity-0 relative right-0 activeSign [&.activeSign]:opacity-[1] duration-300 w-[21%] flex flex-col justify-center items-center z-0">
+                                class="sign opacity-0 relative left-0 activeSign [&.activeSign]:opacity-[1] duration-300 w-[21%] flex flex-col justify-center items-center z-0">
                                 <span class="circle w-[23px] h-[23px] bg-primary rounded-full"></span>
                                 <span class="line w-[2px] h-[45px] bg-primary"></span>
                             </span>
@@ -450,7 +430,7 @@ flex flex-col gap-1">
                         <div class="tabContents relative w-full flex rounded-5 h-[421px] mb-[4.5em]">
                             <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                     [&.activeSlide]:pointer-events-auto
-                     bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                     bottom-0 right-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
                                     class="Container  h-[95%] my-auto justify-center items-center w-95p mx-auto flex ">
 
@@ -465,24 +445,16 @@ flex flex-col gap-1">
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                   leading-[22px] text-gray text-justify">
-                                                در دنیای کنونی، کسب‌وکارهای کوچک به دنبال راهکارهایی هستند که به آن‌ها
-                                                کمک کند تا با حداقل منابع، بهره‌وری بیشتری داشته و به رشد و توسعه پایدار
-                                                دست یابند. یکی از بزرگ‌ترین چالش‌های این کسب‌وکارها، مدیریت مؤثر داده‌ها
-                                                و فرآیندهای داخلی است. بیسیس پنل با ارائه مجموعه‌ای از ابزارهای مدیریتی
-                                                یکپارچه، راه‌حل‌های مناسبی برای مواجهه با این چالش‌ها در اختیار
-                                                کسب‌وکارهای کوچک قرار داده است. ، بیسیس پنل با تحلیل دقیق داده‌ها و
-                                                ارائه گزارش‌های جامع، به کسب‌وکارهای کوچک کمک می‌کند تا با داشتن دیدی
-                                                شفاف از عملکرد سازمان، به‌طور مؤثری با رقبا رقابت کرده و به رشد خود
-                                                ادامه دهند.
+                                                In today's world, small businesses are looking for solutions that help them achieve more productivity with minimal resources and achieve sustainable growth and development. One of the biggest challenges for these businesses is effective management of internal data and processes. BasisPanel, by providing a set of integrated management tools, offers appropriate solutions to face these challenges for small businesses. BasisPanel, with precise data analysis and comprehensive reports, helps small businesses to effectively compete with competitors and continue their growth by having a clear view of the organization's performance.
                                             </p>
                                         </div>
-                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] ml-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                              duration-[1s] px-[2em] 
                                              py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
                                                 class="w-auto flex justify-center
                                    text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
-                                                مطالعه بیشتر
+                                                Read More
                                             </button>
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -497,7 +469,7 @@ flex flex-col gap-1">
                             </div>
                             <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                       [&.activeSlide]:pointer-events-auto
-                       bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                       bottom-0 right-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
                                     class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
 
@@ -512,24 +484,16 @@ flex flex-col gap-1">
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                     leading-[22px] text-gray text-justify">
-                                                یکی از ویژگی‌های برجسته بیسیس پنل برای کسب‌وکارهای تجارت الکترونیک،
-                                                یکپارچگی داده‌ها است. این سیستم به کسب‌وکارهای آنلاین این امکان را
-                                                می‌دهد که تمامی اطلاعات مرتبط با فروش، مشتریان، موجودی کالا، بازاریابی و
-                                                امور مالی را در یک بستر واحد تجزیه و تحلیل کنند. این یکپارچگی به صاحبان
-                                                کسب‌وکار کمک می‌کند تا تصویری دقیق از عملکرد فروشگاه آنلاین خود داشته
-                                                باشند و بتوانند تصمیمات مبتنی بر داده‌های واقعی و به‌روز اتخاذ کنند.
-                                                بیسیس پنل نه تنها به بهینه‌سازی فرآیندهای جاری کسب‌وکارهای تجارت
-                                                الکترونیک کمک می‌کند، بلکه آن‌ها را برای مواجهه با چالش‌ها و تحولات
-                                                آینده نیز آماده می‌سازد.
+                                                One of the outstanding features of BasisPanel for e-commerce businesses is data integration. This system enables online businesses to analyze all information related to sales, customers, inventory, marketing, and financial affairs in a single platform. This integration helps business owners to have an accurate picture of their online store's performance and make decisions based on real and up-to-date data. BasisPanel not only helps in optimizing current processes of e-commerce businesses but also prepares them to face future challenges and transformations.
                                             </p>
                                         </div>
-                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] ml-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                          duration-[1s] px-[2em] 
                                          py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
                                                 class="w-auto flex justify-center
                                text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
-                                                مطالعه بیشتر
+                                                Read More
                                             </button>
                                             <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -544,7 +508,7 @@ flex flex-col gap-1">
                             </div>
                             <div class="Tcontent bg-White absolute pointer-events-none opacity-0 duration-300 [&.activeSlide]:opacity-[1]
                         [&.activeSlide]:pointer-events-auto
-                         bottom-0 left-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
+                         bottom-0 right-0  w-full flex rounded-5 h-[421px] border-[2px] border-bgGray">
                                 <div
                                     class="Container h-[95%] my-auto justify-center items-center w-95p mx-auto flex grid-cols-2">
 
@@ -559,67 +523,15 @@ flex flex-col gap-1">
                                             class="Text w-auto my-auto flex justify-start items-start flex-col max-w-[600px] mx-auto">
                                             <p class="font-normal font-NotoSans400 text-[15px] 
                                       leading-[22px] text-gray text-justify">
-                                                یکی از ویژگی‌های بارز بیسیس پنل، یکپارچگی داده‌هاست. تیم‌های بازاریابی
-                                                می‌توانند تمامی اطلاعات مرتبط با کمپین‌های تبلیغاتی، ترافیک وب‌سایت،
-                                                تعاملات در شبکه‌های اجتماعی، ایمیل مارکتینگ و داده‌های فروش را در یک
-                                                پلتفرم واحد مشاهده کنند. این یکپارچگی موجب می‌شود که اطلاعات مختلف در
-                                                کنار هم قرار بگیرند و تحلیل‌های دقیق‌تری ارائه دهند که به بازاریابان کمک
-                                                می‌کند تا تصمیمات آگاهانه‌تری اتخاذ کرده و استراتژی‌های خود را بر اساس
-                                                داده‌های واقعی و به‌روز شکل دهند. یکی از ویژگی‌های بارز بیسیس پنل،
-                                                توانایی پیش‌بینی روندها است. این سیستم با تحلیل داده‌های تاریخی و
-                                                شبیه‌سازی سناریوهای مختلف، قادر به پیش‌بینی روندهای آینده بازار و تقاضا
-                                                می‌باشد.
+                                                One of the prominent features of BasisPanel is data integration. Marketing teams can view all information related to advertising campaigns, website traffic, social media interactions, email marketing, and sales data on a single platform. This integration ensures that different information comes together and provides more accurate analyses that help marketers make more informed decisions and shape their strategies based on real and up-to-date data. One of the prominent features of BasisPanel is the ability to predict trends. This system, by analyzing historical data and simulating various scenarios, is able to predict future market trends and demand.
                                             </p>
                                         </div>
-                                        <!-- <a href="" class="button mb-[1em] mr-auto mt-auto w-max hover:bg-hoverBtnDprimary
+                                        <!-- <a href="" class="button mb-[1em] ml-auto mt-auto w-max hover:bg-hoverBtnDprimary
                                          duration-[1s] px-[2em] 
                                          py-[.8em] bg-primary flex justify-between gap-3 items-center rounded-5">
                                             <button type="button "
                                                 class="w-auto flex justify-center
                                text-White items-center font-IRANSansWeb600 font-semibold text-sm leading-[30px] rounded-5">
-                                                مطالعه بیشتر
+                                                Read More
                                             </button>
-                                            <svg width="21" height="16" viewBox="0 0 21 16" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M0.432812 7.3842C0.0422879 7.77472 0.0422878 8.40789 0.432812 8.79841L6.79677 15.1624C7.1873 15.5529 7.82046 15.5529 8.21099 15.1624C8.60151 14.7719 8.60151 14.1387 8.21099 13.7482L2.55413 8.09131L8.21099 2.43445C8.60151 2.04393 8.60151 1.41076 8.21099 1.02024C7.82046 0.629715 7.1873 0.629715 6.79677 1.02024L0.432812 7.3842ZM20.7203 7.09131L1.13992 7.09131L1.13992 9.09131L20.7203 9.09131L20.7203 7.09131Z"
-                                                    fill="white" />
-                                            </svg>
-
-                                        </a> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <basis core="call" file="logo.inc" pageindex="[##cms.cms.pageindex##]" />
-        <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
-        <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
-    </main>
-    <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
-    <script src="[##cms.cms.cdn##]/asset/js/home-v3.js"></script>
-    <script>
-        function setDmnToken(args) {
-            const dmntokenParent = document.getElementById("dmntoken")
-           
-            if(dmntokenParent){
-                const thisdmntoken = document.getElementById("dmntoken").value;
-                dmntoken = thisdmntoken;
-            $bc.setSource("db.runTokenCommand", {
-                value: true,
-                dmntoken: thisdmntoken,
-            });
-
-            }
-           
-        }
-
-    </script>
-</body>
-
-</html>
+                                            <svg width="21" height="16" viewBox="0 
