@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <title>Checkbox Test</title>
+</head>
+<body>
+
+  <input type="checkbox" class="accordionCheckbox" />
+  <input type="checkbox" class="accordionCheckbox" />
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const accordionCheckboxes = document.querySelectorAll(".accordionCheckbox[type=checkbox], .accordionCheckbox:not([type])");
+
+      console.log("تعداد چک‌باکس‌ها:", accordionCheckboxes.length);
+
+      accordionCheckboxes.forEach((element, i) => {
+        element.addEventListener("change", function () {
+          console.log("تغییر انجام شد روی چک‌باکس شماره", i);
+        });
+      });
+      
+      setTimeout(() => {
+        // تغییر مقدار چک‌باکس دوم
+        accordionCheckboxes[1].checked = true;
+        
+        // ایجاد و ارسال رویداد change به صورت دستی
+        const changeEvent = new Event('change');
+        accordionCheckboxes[1].dispatchEvent(changeEvent);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

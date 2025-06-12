@@ -1650,3 +1650,6 @@ footer .Right .text p {
 .font-interBold {
   font-weight: 600;
 }
+ .e-stepper .e-step-disabled{
+      pointer-events: unset !important;
+ }

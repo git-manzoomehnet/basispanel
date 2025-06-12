@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Essential JS 2 - Stepper</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+  <link href="../assets/css/material.css" rel="stylesheet">
+  <link href="../assets/css/material2.css" rel="stylesheet">
+  <link href="../assets/css/material3.css" rel="stylesheet">
+ 
+     
+</head>
+
+<body>
+  <div id="container">
+    <nav id="stepper"></nav>
+  </div>
+
+     <script src="../assets/js/ej2.min.js" type="text/javascript"></script>
+        <script src="../assets/js/syncfusion-helper.js" type="text/javascript"></script>
+
+  <script>
+    var animationStepper = new ej.navigations.Stepper({
+    steps: [{}, {}, {}, {} ],
+    animation: {enable: true, duration: 2000, delay: 500},
+    stepChanged: (args) =>{
+    alert("Step changed from "+args.previousStep + " to " + args.activeStep)
+  },
+  stepClick: (args) =>{
+    //Your required action here
+    console.log("click")
+  }
+  });
+  animationStepper.appendTo("#stepper");
+  </script>
+</body>
+</html>
