@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لیست قیمت ها</title>
+    <meta name="description" content="لیست قیمت های بیسیس پنل">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link href="[##cms.cms.cdn##]/asset/css/material.css" rel="stylesheet">
+    <link href="[##cms.cms.cdn##]/asset/css/material2.css" rel="stylesheet">
+    <link href="[##cms.cms.cdn##]/asset/css/material3.css" rel="stylesheet">
+    <!-- <link href="https://cdn.syncfusion.com/ej2/24.1.41/material.css" rel="stylesheet" /> -->
+
+    <style>
+        .level1,
+        .level2,
+        .level3,
+        .level4 {
+            position: relative;
+        }
+
+        .level1:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level1.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level2:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level2.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level3:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level3.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level4:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level4.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .e-stepper .e-stepper-steps .e-step-label-container {
+            display: block !important;
+        }
+
+        .e-stepper.e-horizontal.e-label-after:has(.e-step-item.e-step-label:not(.e-step-text)) .e-stepper-progressbar {
+            width: 100% !important;
+        }
+
+        .e-step-inprogress .e-step {
+            background-color: #004b85 !important;
+        }
+    </style>
+</head>
+<basis core="call" if="{##get.dmntoken.value|(false)##}" run="AtClient" file="features/dmntoken.inc"
+    triggers="get.dmntoken" onrendered="setDmnToken"></basis>
+
+<body>
+    <main class="priceList" dir="rtl">
+        <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
+
+        <h1 class="font-IRANSansWeb700 text-3xl w-80p mx-auto text-center  mb-[73px]" style="padding-top: 208px;">
+            جدول قیمت محصولات
+        </h1>
+
+        <div class="f0lex justify-between w-80p mx-auto mb-14 gap-x-10 items-end">
+            <!-- <div class="para font-IRANSansWeb700 text-textGray text-base leading-[50px] max-w-[948px] w-[67%] my-0 mx-auto text-center">
+                                <p>
+                                    این جدول قیمت‌ها بر اساس آخرین به‌روزرسانی‌های بازار تنظیم شده است. برای محاسبه قیمت نهایی،
+                                    می‌توانید از کلید محاسبه قیمت استفاده کنید. لطفاً قبل از هرگونه تصمیم‌گیری، اطلاعات را به دقت بررسی
+                                    کنید. در صورت نیاز به اطلاعات بیشتر، با بخش پشتیبانی تماس بگیرید.
+                                </p>
+                            </div> -->
+
+
+
+            <div id="container" class="w-full">
+                <nav id="stepper"></nav>
+            </div>
+        </div>
+
+
+        <section class="accordionSection relative">
+            <div class="imgBack absolute left-0 right-0 top-[276px] -z-1">
+                <img class="w-full" src="[##cms.cms.cdn##]/asset/images/midBg.png" alt="midbg">
+            </div>
+
+
+            <div class=" w-80p mx-auto">
+                <div style="scroll-margin-top: 110px;"
+                    class="accordion scrollSection plans bg-White group/accordion shadow-[0px_4px_50px_0px_#8a8a8a30] overflow-hidden rounded-tl-[10px] rounded-tr-[10px]">
+                    <div
+                        class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                        <div class="flex gap-x-8 items-center">
+
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                    disabled>
+
+                                <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                    انتخاب پنل
+                                </h4>
+
+                            </div>
+                            <div class="totalP1 hidden bg-White/[0.5] rounded-5 py-2 px-3">
+                                <p class="font-IRANSansWeb600 text-sm text-primary">
+                                    مبلغ کل :
+
+                                    <span class="totalPriceC1">
+
+                                        250,000,000
+                                    </span>
+
+                                    ریال
+                                </p>
+                            </div>
+                        </div>
+                        <div class="arrowList flex gap-x-8 items-center">
+                            <button id="toggleMore"
+                                class="font-IRANSansWeb400 duration-500 text-base text-placeholder mx-auto block text-center">
+                                اطلاعات بیشتر
+                            </button>
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
+                                height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content relative !overflow-x-auto px-[75px]" id="panels_section">
+                        <div class="inner w-full !pt-[74px] pb-3 ">
+
+
+                            <table class="w-full" id="panels">
+                                <thead>
+                                    <tr id="products_head">
+
+                                    </tr>
+                                </thead>
+                                <tbody id="products_body"></tbody>
+
+                            </table>
+
+
+
+
+                        </div>
+                        <div style="    height: 60px;
+            background: linear-gradient(0deg, #fff, transparent);"
+                            class="toggleShadow absolute left-0 right-0 duration-500">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="scroll-margin-top: 110px;"
+                    class="accordion scrollSection bg-White group/accordion overflow-hidden  shadow-[0px_4px_50px_0px_#8a8a8a30]">
+                    <div
+                        class="accordion__intro border-b border-b-primary relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                        <div class="flex gap-x-8 items-center">
+
+                            <div class="flex gap-x-4 items-center">
+                                <input type="checkbox"
+                                    class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative products-checkbox"
+                                    disabled>
+
+                                <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                    انتخاب محصولات
+                                </h4>
+
+                            </div>
+                            <div class="totalP hidden bg-White/[0.5] rounded-5 py-2 px-3">
+                                <p class="font-IRANSansWeb600 text-sm text-primary">
+                                    مبلغ کل :
+
+                                    <span class="totalPriceC">
+
+                                        250,000,000
+                                    </span>
+
+                                    ریال
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
+                                height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content px-[75px]" id="products_section">
+                        <div class="inner w-full !pt-[74px] pb-3 " id="products">
+
+
+
+                            <basis core="print" datamembername="db.products" run="atclient"
+                                onRendered="setProductHeight">
+                                <layout>
+                                    <script type="text/template">
+                                                            <table class="w-full">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th class="first:w-[14%] px-7 first:border-none pb-10">
+                                
+                                                                        </th>
+                                                                        <th class="px-7 border-r border-borderP/[0.3] pb-7">
+                                                                            <p class="font-interBold text-sm text-black">
+                                                                                نام محصول
+                                                                            </p>
+                                
+                                                                        </th>
+                                                                        <th class="px-7 border-r border-borderP/[0.3] pb-7">
+                                                                            <p class="font-interBold text-sm text-black">
+                                                                                مبلغ سالانه
+                                                                            </p>
+                                
+                                                                        </th>
+                                                                        <th class="px-7 border-r border-borderP/[0.3] pb-7">
+                                                                            <p class="font-interBold text-sm text-black">
+                                                                                تمدید سالانه
+                                                                            </p>
+                                
+                                                                        </th>
+                                                                        <th class="px-7 border-r border-borderP/[0.3] pb-7">
+                                                                            <p class="font-interBold text-sm text-black">
+                                                                                هزینه پشتیبانی
+                                                                            </p>
+                                
+                                                                        </th>
+                                
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    @child
+
+
+                                                                </tbody>
+                                                            </table>
+                                                        </script>
+                                </layout>
+                                <face filter="id not in (17,18)">
+                                    <script type="text/template">
+                                                            <tr class="border-t border-t-borderP/[0.3]">
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <input type="checkbox" data-id="@id@"
+                                                                    onchange="addProduct(this,event,'@title@','@price@','@id@','@renew@' , '@support@');checkElement(this)"
+                                                                        class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative" />
+                                                                </td>
+                                                                <td class="product-name text-center py-6 border-r border-r-borderP/[0.3] first:border-none flex justify-start">
+                                                                    <div class="flex items-center pr-10 gap-x-2.5">
+                                                                        <img src="[##cms.cms.cdn##]/@icon@"
+                                                                            alt="calculatorProList" />
+                                                                        <a href="@productlink@" class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                            @title@
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400 priceP text-base text-placeholder">
+                                                                    
+                                                                    @priceFn(price)
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                    
+                                                                        
+                                                                        @renewFn(renew)
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                    @support@
+                                                                    </span>
+                                                                </td>
+                        
+                                                            </tr>
+                                                        </script>
+                                </face>
+                                <face>
+                                    <script type="text/template">
+                                                            <tr class="border-t border-t-borderP/[0.3]">
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <input type="checkbox" data-id="@id@" 
+                                                                    onchange="showSpecialProduct(this,event,'@renew.link@')"
+                                                                        class="w-5 h-5 proListCheckBox cursor-pointer appearance-none border-2 border-primary rounded-[3px] relative" />
+                                                                </td>
+                                                                <td class="product-name text-center py-6 border-r border-r-borderP/[0.3] first:border-none flex justify-start">
+                                                                    <div class="flex items-center pr-10 gap-x-2.5">
+                                                                        <img src="[##cms.cms.cdn##]/@icon@"
+                                                                            alt="calculatorProList" />
+                                                                        <a href="@productlink@" class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                            @title@
+                                                                        </a>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400 priceP text-base text-placeholder">
+                                                                    
+                                                                    @priceFn(price)
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                    
+                                                                        
+                                                                        @renewFn(renew)
+                                                                    </span>
+                                                                </td>
+                                                                <td class="text-center py-6 border-r border-r-borderP/[0.3] first:border-none">
+                                                                    <span class="font-IRANSansWeb400  text-base text-placeholder">
+                                                                    @support@
+                                                                    </span>
+                                                                </td>
+                        
+                                                            </tr>
+                                                        </script>
+                                </face>
+                            </basis>
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div style="scroll-margin-top: 110px;"
+                    class="accordion scrollSection endPoints bg-White group/accordion overflow-hidden  shadow-[0px_4px_50px_0px_#8a8a8a30]">
+                    <div
+                        class="accordion__intro rounded-bl-5 rounded-br-5 relative cursor-pointer py-[30px] px-8 bg-lightBlue flex justify-between items-center">
+                        <div class="flex gap-x-4 items-center">
+                            <input type="checkbox"
+                                class="accordion-checkbox w-5 h-5 appearance-none border-2 border-primary rounded-5 relative"
+                                disabled>
+
+                            <h4 class="font-IRANSansWeb600 text-[21px] text-primary">
+                                End points
+                            </h4>
+
+                        </div>
+                        <div class="arrowList">
+                            <svg class="duration-500 group-[&.accordion__active]/accordion:rotate-180" width="20"
+                                height="13" viewBox="0 0 20 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10 12.6666L0 2.66659L2.33333 0.333252L10 7.99992L17.6667 0.333252L20 2.66659L10 12.6666Z"
+                                    fill="#004B85" />
+                            </svg>
+
+                        </div>
+                    </div>
+                    <div class="accordion__content " id="endpoint_section">
+                        <div class="inner mx-auto  pb-3 w-full " id="endpoints"
+                            style="padding-top: 15px; padding-right: 15px;">
+
+                            <div class="grid grid-cols-3">
+                                <basis core="print" datamembername="db.endpoints" run="atclient" onRendered="setHeight">
+                                    <face>
+                                        <script type="text/template">
+                                                            <div class="serverBox py-3 px-4 rounded-[10px] border border-mainGray">
+                                                                <div class="title flex justify-between mb-3 gap-x-4">
+                                                                    <h3 class="font-IRANSansWeb400 endpoint-title-web text-[21px] text-textGray">
+                                                                    @title@
+                                                                    </h3>
+                                                            
+                                                                    <div class="logos flex items-baseline">
+                                                                        <img src="[##cms.cms.cdn##]/asset/images/network-logo(endpoints).png" alt="basiscore" style="margin-left: 5px;" />
+                                                                        <img src="[##cms.cms.cdn##]/asset/images/iranLogo.png" alt="@location@" />
+                                                                    </div>
+                                                                </div>
+                                                                <ul>
+                                                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            موقعیت مکانی : 
+                                                                            
+                                                                        </p>
+                                                            
+                                                                        <span class="font-IRANSansWeb400 endpoint-title text-xs text-textGray">
+                                                            
+                                                                        @location@
+                                                                        </span>
+                                                                    </li>
+                                                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            ترافیک : 
+                                                                            
+                                                                        </p>
+                                                            
+                                                                        <span class="font-IRANSansWeb400 text-xs text-textGray">
+                                                            
+                                                                        @traffic@
+                                                                        </span>
+                                                                    </li>
+                                                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            قیمت سالانه : 
+                                                                            
+                                                                        </p>
+                                                            
+                                                                        <span class="font-IRANSansWeb400 endpoint-yearly-price text-xs text-textGray">
+                                                            
+                                                                            35,000,000 
+                                                                            
+                                                                        </span>
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            ریال
+                                                                        </p>
+                                                                    </li>
+                                                                    <li class="flex items-center gap-x-2 mb-4 last:mb-0">
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            تمدید سالانه : 
+                                                                            
+                                                                        </p>
+                                                            
+                                                                        <span class="font-IRANSansWeb400 endpoint-newr-price text-xs text-textGray">
+                                                            
+                                                                            35,000,000 
+                                                                            
+                                                                        </span>
+                                                                        <p class="font-IRANSansWeb600 text-xs text-textGray">
+                                                                            ریال
+                                                                        </p>
+                                                                    </li>
+                                                                </ul>
+                                                            
+                                                                    <div class="flex gap-x-2.5 mt-10 items-center">
+                                                                        <span class="font-IRANSansWeb400 text-xs text-black">
+                                                                            تعداد
+                                                                        </span>
+                                                            
+                                                            
+                                                                        <input type="number" class="endpoint-number h-[33px] w-[51%] font-IRANSansWeb400 text-right rounded-[3px] border border-lightBlue text-xs text-textGray" value="1" min="1" />
+                                                            
+                                                                        <button class="shrink-0 rounded-5 w-[98px] h-[33px] bg-primary flex items-center justify-center">
+                                                                            <span class="font-IRANSansWeb400 text-xs text-White endpoint-addtoFactor">
+                                                            
+                                                                                افزودن به فاکتور
+                                                                            </span>
+                                                                            <span class="font-IRANSansWeb400 text-xs text-White endpoint-seeFactor hidden">
+                                                            
+                                                                                افزودن به فاکتور
+                                                                            </span>
+                                                            
+                                                            
+                                                                        </button>
+                                                                    </div>
+                                                            </div>
+                                                    </script>
+                                    </face>
+                                </basis>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+        <section style="scroll-margin-top: 110px;" class="productFactorContainer scrollSection ">
+
+            <section class="mt-16  flex w-80p mx-auto gap-x-14 rounded-5  pb-16">
+                <div
+                    class="rSide shadow-[0px_4px_50px_0px_#8a8a8a30] w-[65%] border border-bgGray rounded-5 overflow-hidden">
+                    <table class="w-full">
+                        <thead class="py-6 px-3 bg-lightBlue">
+                            <tr>
+                                <th class="font-IRANSansWeb700 py-6 px-3 text-[14px] text-primary">
+                                    نام محصول
+                                </th>
+                                <th class="font-IRANSansWeb700 py-6 px-3 text-[14px] text-primary">
+                                    قیمت سالانه
+                                </th>
+                                <th class="font-IRANSansWeb700 py-6 px-3 text-[14px] text-primary">
+                                    قیمت تمدید سالانه
+                                </th>
+                                <th class="font-IRANSansWeb700 py-6 px-3 text-[14px] text-primary">
+                                    هزینه پشتیبانی
+                                </th>
+
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                            <tr class="pt-9 pb-7 even:bg-gray/[0.19] hidden">
+                                <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                                    پنل پایه : A 1
+                                </td>
+                                <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                                    15,000,000 ریال
+                                </td>
+                                <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                                    15,000,000 ریال
+                                </td>
+                                <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                                    رایگان
+                                </td>
+                                <td class="deleteRow cursor-pointer px-6">
+                                    <img src="../assets/images/deleteRow.svg" alt="deleteRow">
+
+                                </td>
+                            </tr>
+
+
+                            <tr class="text-center emptyFactor">
+                                <td colspan="5" class="text-center">
+                                    <p class="font-IRANSansWeb400 text-base text-textGray py-6 justify-center flex font-bold items-center"
+                                        style="flex-direction: column;">
+                                        <img src="/images/empty_factor.png" alt="محصولات بیسیس پنل"
+                                            class="margin-bottom:10px" width="95" />
+                                        فاکتور خالی است.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="lSide w-[35%]  rounded-[10px] text-center  flex flex-col items-center">
+                    <div class="w-full bg-bgGray/[0.19]  rounded-5 py-6">
+                        <span class="font-interBold block mb-5 text-xl text-black">
+                            قیمت کل :
+                        </span>
+
+                        <div class="price">
+                            <span class="totalPrice inline-block font-IRANSansWeb700 text-base">
+                                350,000,000
+
+                            </span>
+                            <p class="inline-block font-interBold text-base">
+
+                                ریال
+                            </p>
+                        </div>
+                    </div>
+                    <div class="w-full mt-4">
+                        <button class="shrink-0 rounded-5 w-full  bg-primary flex items-center justify-center"
+                            style="height: 40px;">
+                            <span class="font-IRANSansWeb400 text-base text-White endpoint-addtoFactor">مرحله بعد</span>
+
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <!-- <div></div> -->
+        <div
+            class="errorPriceList  [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
+            <div
+                class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit flex items-center gap-x-2">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 15.5C10.2833 15.5 10.5167 15.4083 10.7 15.225C10.9 15.025 11 14.7833 11 14.5C11 14.2167 10.9 13.9833 10.7 13.8C10.5167 13.6 10.2833 13.5 10 13.5C9.71667 13.5 9.475 13.6 9.275 13.8C9.09167 13.9833 9 14.2167 9 14.5C9 14.7833 9.09167 15.025 9.275 15.225C9.475 15.4083 9.71667 15.5 10 15.5ZM9 11.5H11V5.5H9V11.5ZM10 20.5C8.61667 20.5 7.31667 20.2417 6.1 19.725C4.88333 19.1917 3.825 18.475 2.925 17.575C2.025 16.675 1.30833 15.6167 0.775 14.4C0.258333 13.1833 5.96046e-08 11.8833 5.96046e-08 10.5C5.96046e-08 9.11667 0.258333 7.81667 0.775 6.6C1.30833 5.38333 2.025 4.325 2.925 3.425C3.825 2.525 4.88333 1.81667 6.1 1.3C7.31667 0.766666 8.61667 0.5 10 0.5C11.3833 0.5 12.6833 0.766666 13.9 1.3C15.1167 1.81667 16.175 2.525 17.075 3.425C17.975 4.325 18.6833 5.38333 19.2 6.6C19.7333 7.81667 20 9.11667 20 10.5C20 11.8833 19.7333 13.1833 19.2 14.4C18.6833 15.6167 17.975 16.675 17.075 17.575C16.175 18.475 15.1167 19.1917 13.9 19.725C12.6833 20.2417 11.3833 20.5 10 20.5ZM10 18.5C12.2333 18.5 14.125 17.725 15.675 16.175C17.225 14.625 18 12.7333 18 10.5C18 8.26667 17.225 6.375 15.675 4.825C14.125 3.275 12.2333 2.5 10 2.5C7.76667 2.5 5.875 3.275 4.325 4.825C2.775 6.375 2 8.26667 2 10.5C2 12.7333 2.775 14.625 4.325 16.175C5.875 17.725 7.76667 18.5 10 18.5Z"
+                        fill="#F9461C" />
+                </svg>
+
+                <p class="text-base text-red font-IRANSansWeb400 ">
+                    برای اضافه کردن محصول، ابتدا یکی از سرویس های پنل پایه را به فاکتور اضافه کنید
+                </p>
+
+            </div>
+        </div>
+
+        <div
+            class="specialProduct  [&.activeErrorPriceList2]:z-[1000000000] [&.activeErrorPriceList2]:bg-black/[0.3] group/errorPriceList duration-1000  fixed w-svw h-svh inset-0 -z-1">
+            <div
+                class="innerError mt-[130px] overflow-hidden mx-auto rounded-[4px] relative after:duration-[5000ms] after:origin-right after:w-0 group-[&.activeErrorPriceList]/errorPriceList:after:w-full group-[&.activeErrorPriceList]/errorPriceList:opacity-100 opacity-0 group-[&.activeErrorPriceList]/errorPriceList:translate-y-[0] duration-500 translate-y-100 after:h-1 after:bg-red after:absolute after:left-0 after:right-0 after:bottom-0 py-6 px-7 bg-redBG w-fit flex items-center gap-x-2">
+                <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M10 15.5C10.2833 15.5 10.5167 15.4083 10.7 15.225C10.9 15.025 11 14.7833 11 14.5C11 14.2167 10.9 13.9833 10.7 13.8C10.5167 13.6 10.2833 13.5 10 13.5C9.71667 13.5 9.475 13.6 9.275 13.8C9.09167 13.9833 9 14.2167 9 14.5C9 14.7833 9.09167 15.025 9.275 15.225C9.475 15.4083 9.71667 15.5 10 15.5ZM9 11.5H11V5.5H9V11.5ZM10 20.5C8.61667 20.5 7.31667 20.2417 6.1 19.725C4.88333 19.1917 3.825 18.475 2.925 17.575C2.025 16.675 1.30833 15.6167 0.775 14.4C0.258333 13.1833 5.96046e-08 11.8833 5.96046e-08 10.5C5.96046e-08 9.11667 0.258333 7.81667 0.775 6.6C1.30833 5.38333 2.025 4.325 2.925 3.425C3.825 2.525 4.88333 1.81667 6.1 1.3C7.31667 0.766666 8.61667 0.5 10 0.5C11.3833 0.5 12.6833 0.766666 13.9 1.3C15.1167 1.81667 16.175 2.525 17.075 3.425C17.975 4.325 18.6833 5.38333 19.2 6.6C19.7333 7.81667 20 9.11667 20 10.5C20 11.8833 19.7333 13.1833 19.2 14.4C18.6833 15.6167 17.975 16.675 17.075 17.575C16.175 18.475 15.1167 19.1917 13.9 19.725C12.6833 20.2417 11.3833 20.5 10 20.5ZM10 18.5C12.2333 18.5 14.125 17.725 15.675 16.175C17.225 14.625 18 12.7333 18 10.5C18 8.26667 17.225 6.375 15.675 4.825C14.125 3.275 12.2333 2.5 10 2.5C7.76667 2.5 5.875 3.275 4.325 4.825C2.775 6.375 2 8.26667 2 10.5C2 12.7333 2.775 14.625 4.325 16.175C5.875 17.725 7.76667 18.5 10 18.5Z"
+                        fill="#F9461C" />
+                </svg>
+
+                <p class="text-base text-red font-IRANSansWeb400 specialProducttext">
+                    برای مشاهده خدمات، لطفا <a href="" target="">اینجا</a> را کلیک کنید
+                </p>
+
+            </div>
+        </div>
+
+
+
+        <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    </main>
+
+    <basis core="callback" triggers="db.prices" method="setValue" run="AtClient"></basis>
+    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <script src="[##cms.cms.cdn##]/asset/js/priceListPage.js"></script>
+    <script>
+        let isStepperReady = false;
+        let allowFlag = false;
+        function rtlIndex(index) {
+            return animationStepper && animationStepper.steps
+                ? animationStepper.steps.length - 1 - index
+                : index;
+        }
+        // ▶ تابع فعال کردن چک‌باکس و رویداد
+        function triggerChange(index) {
+            accordionCheckbox[index].checked = true;
+            const changeEvent = new Event('change');
+            accordionCheckbox[index].dispatchEvent(changeEvent);
+
+            // فقط ظاهر مرحله بعدی فعال می‌شود، نه دسترسی
+            if (index < animationStepper.steps.length - 1) {
+                // animationStepper.steps[index + 1].disabled = false;
+                animationStepper.dataBind();
+            }
+            setTimeout(() => {
+
+                allowFlag = false
+
+            }, 10);
+
+
+            setTimeout(() => {
+                const steps = document.querySelectorAll("#stepper .e-step");
+                if (steps[index]) {
+                    // animationStepper.selectedIndex = index;
+
+                    steps[index].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                }
+            }, 50);
+
+            setTimeout(() => {
+                allowFlag = true
+            }, 700);
+        }
+
+        function setValue(args) {
+
+            const panels = args.source.rows[0].panels
+            const products = args.source.rows[0].products
+            const endpoints = args.source.rows[0].endpoints
+            const rowsCount = args.source.rows[0].panels[0].features
+            $bc.setSource("db.products", products)
+            $bc.setSource("db.endpoints", endpoints)
+            panels.forEach((e, index) => {
+                if (index == 0) {
+                    const newTh = document.createElement("th")
+                    newTh.setAttribute("class", "first:w-[14%] px-7 first:border-none pb-10")
+
+                    document.getElementById("products_head").appendChild(newTh)
+                }
+                const newTh = document.createElement("th")
+                newTh.setAttribute("class", "first:w-[14%] px-7  pb-10 border-r border-borderP/[0.3]")
+                newTh.innerHTML = `
+                                                            <div class="flex flex-col justify-center items-center">
+
+                                                                <button data-title="${e.title}"  data-price="${e.price}"
+                                                                    class="flex addToBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-primary rounded-5 " 
+                                                                    onclick="addToBasket(this,event,'${e.title}','${e.price}','${e.id}','${e.renew}','${e.support}');checkElement(this)">
+
+                                                                    <img src="[##cms.cms.cdn##]/asset/images/addtoFactor.svg"
+                                                                        alt="addtoFactor">
+                                                                    <span class="font-interBold text-sm text-White">
+                                                                        افزودن به فاکتور
+                                                                    </span>
+                                                                </button>
+                                                                <button data-active-title="${e.title}"
+                                                                    class="hidden seeBasketBtn items-center mb-7 py-3 px-7 gap-x-3 bg-lightBlue rounded-5 relative">
+
+                                                                    <img src="[##cms.cms.cdn##]/asset/images/seeBasket.svg"
+                                                                        alt="addtoFactor">
+                                                                    <span class="font-interBold text-sm text-primary">
+                                                                        مشاهده فاکتور
+                                                                    </span>
+                                                                </button>
+                                                                <span class="panel-name product-price font-interBold text-xl text-placeholder">
+
+                                                                    ${e.title}
+                                                                </span>
+                                                            </div>
+
+                                                    `
+                document.getElementById("products_head").appendChild(newTh)
+            })
+            for (var i = 0; i < rowsCount.length; i++) {
+
+                const newtr = document.createElement("tr")
+                newtr.setAttribute("class", "border-t border-t-borderP/[0.3]")
+
+                panels.forEach((e, index) => {
+                    if (index == 0) {
+
+                        const newtd = document.createElement("td")
+                        const newSpan = document.createElement("span")
+                        newSpan.setAttribute("class", "font-IRANSansWeb400  text-base text-placeholder")
+                        newtd.setAttribute("class", "text-center py-6 border-r border-r-borderP/[0.3] first:border-none")
+                        newSpan.textContent = e.features[i].title
+                        newtd.appendChild(newSpan)
+                        newtr.appendChild(newtd)
+                    }
+
+                    const newtd = document.createElement("td")
+                    const newSpan = document.createElement("span")
+                    newSpan.setAttribute("class", "font-IRANSansWeb400  text-base text-placeholder w-full flex justify-center")
+                    newtd.setAttribute("class", "text-center py-6 border-r border-r-borderP/[0.3] first:border-none")
+                    if (e.features[i].datatype == "bit" && e.features[i].value == false) {
+                        newSpan.innerHTML = `<img class="group-[&.activePlan]/activePlan:block " src="https://cdn.basiscore.net/basispanel.ir/asset/images/deactivePricePlan.svg" alt="deactivePricePlan" />`
+                    }
+                    else if (e.features[i].datatype == "bit" && e.features[i].value == true) {
+                        newSpan.innerHTML = `<img class="group-[&.activePlan]/activePlan:block" src="https://cdn.basiscore.net/basispanel.ir/asset/images/activePricePlan.svg" alt="activePricePlan" />`
+                    }
+                    else if (e.features[i].datatype == "int") {
+                        newSpan.innerHTML = Number(e.features[i].value).toLocaleString() + " ریال ";
+                    }
+                    else if (e.features[i].datatype == "text") {
+                        newSpan.textContent = e.features[i].value
+                    }
+
+                    newtd.appendChild(newSpan)
+                    newtr.appendChild(newtd)
+
+
+
+                })
+                document.getElementById("products_body").appendChild(newtr)
+            }
+
+            const panelsSection = document.getElementById("panels")
+            document.getElementById("panels_section").style.maxHeight = (panelsSection.clientHeight + 300) + "px"
+
+        }
+
+
+        function addToBasket(e, event, title, inputprice, id, renew, support) {
+            // let addToBasketBtn = document.querySelectorAll(".addToBasketBtn")
+
+
+            let column = e.closest("th");
+            let table = column.closest("table");
+            let colIndex = [...column.parentElement.children].indexOf(column); // شماره ستون کلیک‌شده
+            let rows = table.querySelectorAll("tbody tr");
+            let productName = "";
+            let pricerenew = 0;
+            let price = 0
+            let supportprice = 0;
+            const activeBancle = document.querySelectorAll(".seeBasketBtn")
+            activeBancle.forEach(e => {
+                e.classList.remove("flex")
+                e.classList.add("hidden")
+            })
+
+
+            let addToBasketBtns = document.querySelectorAll(".addToBasketBtn")
+            addToBasketBtns.forEach(btn => {
+
+                btn.style.display = "flex"
+
+                accordionCheckbox[0].checked = true
+                triggerChange(0)
+
+            })
+
+
+            // enableNextSteps()
+
+            e.style.display = "none"
+            e.nextElementSibling.classList.remove("hidden")
+            e.nextElementSibling.classList.add("flex")
+
+            rows.forEach(row => {
+
+                let cells = row.children;
+                if (cells[colIndex]) {
+                    productName = `پنل پایه : ${title}`;
+                    if (cells[colIndex].classList.contains("panel-price-yearly")) {
+                        let priceValue = cells[colIndex].querySelector("span").innerText.trim();
+
+                        if (priceValue.includes("رایگان")) {
+                            price = "رایگان";
+                        } else {
+                            price = isNaN(priceValue.replace(/,/g, '')) ? "Call us" : parseInt(priceValue.replace(/,/g, ''), 10);
+                        }
+                    }
+
+                    if (cells[colIndex].classList.contains("panel-price-renew")) {
+                        pricerenew = parseInt(cells[colIndex].querySelector("span").innerHTML.replace(/,/g, '').trim(), 10);
+                    }
+                }
+            });
+
+            if (inputprice > 0) {
+                totalP1.classList.add("block");
+                totalP1.classList.remove("hidden");
+            } else {
+                totalP1.classList.remove("block");
+                totalP1.classList.add("hidden");
+            }
+
+            document.querySelector(".totalP1 .totalPriceC1").innerHTML = parseInt(inputprice).toLocaleString()
+
+
+            const panelCount = basketService.getBasketPanelCount()
+            // اگر selectedPlan خالی بود، پیام خطا نمایش داده شود و چک‌باکس غیرفعال شود
+            if (panelCount) {
+
+                basketService.removeItem(panelCount.id)
+
+            }
+
+            basketService.saveItem({
+                "id": id, "title": title, "type": "panel", "price": inputprice, "renew": renew, "support": support
+            });
+
+
+
+            const basketCount = basketService.getBasketCount()
+            if (document.getElementById("basket_count")) {
+
+                document.getElementById("basket_count").textContent = basketCount
+            }
+            updatePrice()
+            addToInvoice(id, title, inputprice, renew, support);
+        }
+
+
+        $bc.setSource("db.prices", {
+            "panels": [
+                {
+                    "id": 1,
+                    "title": "B1",
+                    "price": "35000000",
+                    "features": [
+                        {
+                            "fid": 106,
+                            "title": " مبلغ سالانه ",
+                            "value": 35000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 100,
+                            "title": "حجم",
+                            "value": " 500 GB ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 109,
+                            "title": "تعداد کاربران",
+                            "value": "2 ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 101,
+                            "title": " مدیریت کاربران ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 102,
+                            "title": " مدیریت محتوا ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 103,
+                            "title": " چت سازمانی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 104,
+                            "title": " تقویم سازمانی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 105,
+                            "title": "  پوشه اشتراکی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+
+                        {
+                            "fid": 107,
+                            "title": " تمدید سالانه ",
+                            "value": 35000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 108,
+                            "title": " هزینه پشتیبانی ",
+                            "value": "رایگان ",
+                            "datatype": "text"
+                        }
+                    ]
+
+                },
+                {
+                    "id": 2,
+                    "title": "B2",
+                    "price": "70000000",
+                    "renew": "70000000",
+                    "support": "رایگان",
+                    "features": [
+                        {
+                            "fid": 106,
+                            "title": " مبلغ سالانه ",
+                            "value": 70000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 100,
+                            "title": "حجم",
+                            "value": " 1 T ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 109,
+                            "title": "تعداد کاربران",
+                            "value": "2 ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 101,
+                            "title": " مدیریت کاربران ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 102,
+                            "title": " مدیریت محتوا ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 103,
+                            "title": " چت سازمانی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 104,
+                            "title": " تقویم سازمانی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 105,
+                            "title": "  پوشه اشتراکی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+
+                        {
+                            "fid": 107,
+                            "title": " تمدید سالانه ",
+                            "value": 70000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 108,
+                            "title": " هزینه پشتیبانی ",
+                            "value": "رایگان ",
+                            "datatype": "text"
+                        }
+                    ]
+
+                },
+                {
+                    "id": 3,
+                    "title": "A1",
+                    "price": "175000000",
+                    "renew": "175000000",
+                    "support": "رایگان",
+                    "features": [
+                        {
+                            "fid": 106,
+                            "title": " مبلغ سالانه ",
+                            "value": 17500000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 100,
+                            "title": "حجم",
+                            "value": " 3 T ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 109,
+                            "title": "تعداد کاربران",
+                            "value": "2 ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 101,
+                            "title": " مدیریت کاربران ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 102,
+                            "title": " مدیریت محتوا ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 103,
+                            "title": " چت سازمانی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 104,
+                            "title": " تقویم سازمانی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 105,
+                            "title": "  پوشه اشتراکی ",
+                            "value": false,
+                            "datatype": "bit"
+                        },
+
+                        {
+                            "fid": 107,
+                            "title": " تمدید سالانه ",
+                            "value": 175000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 108,
+                            "title": " هزینه پشتیبانی ",
+                            "value": "رایگان ",
+                            "datatype": "text"
+                        }
+                    ]
+
+                },
+                {
+                    "id": 4,
+                    "title": "A2",
+                    "price": "250000000",
+                    "renew": "250000000",
+                    "support": "رایگان",
+                    "features": [
+                        {
+                            "fid": 106,
+                            "title": " مبلغ سالانه ",
+                            "value": 250000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 100,
+                            "title": "حجم",
+                            "value": " 5 T ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 109,
+                            "title": "تعداد کاربران",
+                            "value": "2 ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 101,
+                            "title": " مدیریت کاربران ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 102,
+                            "title": " مدیریت محتوا ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 103,
+                            "title": " چت سازمانی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 104,
+                            "title": " تقویم سازمانی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 105,
+                            "title": "  پوشه اشتراکی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+
+                        {
+                            "fid": 107,
+                            "title": " تمدید سالانه ",
+                            "value": 250000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 108,
+                            "title": " هزینه پشتیبانی ",
+                            "value": "رایگان ",
+                            "datatype": "text"
+                        }
+                    ]
+
+                },
+                {
+                    "id": 5,
+                    "title": " A3 ",
+                    "price": "450000000",
+                    "renew": "450000000",
+                    "support": "رایگان",
+                    "features": [
+                        {
+                            "fid": 106,
+                            "title": " مبلغ سالانه ",
+                            "value": 450000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 100,
+                            "title": "حجم",
+                            "value": " 10 T ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 109,
+                            "title": "تعداد کاربران",
+                            "value": "2 ",
+                            "datatype": "text"
+                        },
+                        {
+                            "fid": 101,
+                            "title": " مدیریت کاربران ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 102,
+                            "title": " مدیریت محتوا ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 103,
+                            "title": " چت سازمانی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 104,
+                            "title": " تقویم سازمانی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+                        {
+                            "fid": 105,
+                            "title": "  پوشه اشتراکی ",
+                            "value": true,
+                            "datatype": "bit"
+                        },
+
+                        {
+                            "fid": 107,
+                            "title": " تمدید سالانه ",
+                            "value": 450000000,
+                            "datatype": "int"
+                        },
+                        {
+                            "fid": 108,
+                            "title": " هزینه پشتیبانی ",
+                            "value": "رایگان ",
+                            "datatype": "text"
+                        }
+                    ]
+
+                }
+            ],
+            "products": [
+                {
+                    "id": 6,
+                    "icon": "asset/images/calculatorProList.svg",
+                    "title": "Ticketing",
+                    "productlink": "/solutions/ticketing",
+                    "price": 95000000,
+                    "renew": "رایگان",
+                    "support": "15%"
+                },
+                {
+                    "id": 7,
+                    "icon": "asset/images/crmIcon.svg",
+                    "title": "CRM",
+                    "productlink": "/solutions/crm",
+                    "price": 395000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 8,
+                    "icon": "asset/images/calculatorProList.svg",
+                    "title": " مدیریت پروژه ",
+                    "productlink": "/solutions/taskmanager",
+                    "price": 495000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 9,
+                    "icon": "asset/images/bpmsIcon.svg",
+                    "title": "BPMS",
+                    "productlink": "/solutions/bpms",
+                    "price": 1495000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 10,
+                    "icon": "asset/images/postIcon.svg",
+                    "title": "Post Office",
+                    "productlink": "",
+                    "price": 195000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 11,
+                    "icon": "asset/images/calculatorProList.svg",
+                    "title": "Accounting",
+                    "productlink": "",
+                    "price": 2495000000,
+                    "renew": "رایگان",
+                    "support": "15%"
+                },
+                {
+                    "id": 12,
+                    "icon": "asset/images/momotoIcon.svg",
+                    "title": "Matomo",
+                    "productlink": "",
+                    "price": 95000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+
+                {
+                    "id": 14,
+                    "icon": "asset/images/crmIcon.svg",
+                    "title": " E-CRM ",
+                    "productlink": "",
+                    "price": 995000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 15,
+                    "icon": "asset/images/chatbotIcon.svg",
+                    "title": "ChatBot",
+                    "productlink": "",
+                    "price": 295000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 16,
+                    "icon": "asset/images/chatbotplusIcon.svg",
+                    "title": " ChatBot Plus ",
+                    "productlink": "",
+                    "price": 995000000,
+                    "renew": "رایگان",
+                    "support": "25%"
+                },
+                {
+                    "id": 17,
+                    "icon": "asset/images/basisflyIcon.svg",
+                    "title": "BasisFly",
+                    "productlink": "https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86",
+                    "price": 0,
+                    "renew": {
+                        "type": "call us",
+                        "link": "https://www.basisfly.com/%D8%AF%D9%85%D9%88-%D8%B1%D8%B2%D8%B1%D9%88%D8%A7%D8%B3%DB%8C%D9%88%D9%86-%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86"
+                    },
+                    "support": "-"
+                },
+                {
+                    "id": 18,
+                    "icon": "asset/images/namasiteIcon.svg",
+                    "title": "Creative Desgin",
+                    "productlink": "https://www.namasite.ir/",
+                    "price": 0,
+                    "renew": {
+                        "type": "call us",
+                        "link": "https://www.namasite.ir/"
+                    },
+                    "support": "-"
+                }
+            ],
+            "endpoints": [
+                {
+                    "id": 200,
+                    "title": "Web Server",
+                    "location": "موقعیت مکانی ",
+                    "locatinFlag": "asset/images/iranLogo.png",
+                    "traffic": "نامحدود ",
+                    "annuallyprice": 35000000,
+                    "annuallyRenew": 35000000,
+                    "langs": [
+                        {
+                            "title": "BasisCore",
+                            "icon": "asset/images/network-logo(endpoints).png"
+                        }
+                    ]
+                }
+            ]
+        }
+        )
+
+
+
+
+        function renewFn(data) {
+            if (typeof data === 'object') {
+                return `<a href="${data.link}" class="font-IRANSansWeb400 priceP text-base text-placeholder" style="text-decoration: underline;" target="_blank" >Call Us</a>`
+
+            }
+            else {
+                return "رایگان"
+            }
+
+        }
+        function priceFn(data) {
+            const num = Number(data).toLocaleString();
+            return num + " ریال"
+        }
+        function setHeight() {
+            const endpoint = document.getElementById("endpoints")
+            document.getElementById("endpoint_section").style.maxHeight = endpoint.clientHeight + "px"
+
+
+        }
+        function setProductHeight() {
+            const products = document.getElementById("products")
+            document.getElementById("products_section").style.maxHeight = products.clientHeight + "px"
+            let proListCheckBox = document.querySelectorAll(".proListCheckBox[type=checkbox]")
+
+            if (proListCheckBox.length > 0) {
+                proListCheckBox.forEach(element => {
+                    element.checked = false;
+                });
+            }
+
+
+        }
+        function addProduct(el, event, title, inputprice, id, renew, support) {
+
+            const basketCount = basketService.getBasketPanelCount()
+
+            // اگر selectedPlan خالی بود، پیام خطا نمایش داده شود و چک‌باکس غیرفعال شود
+            if (!basketCount || basketCount.length == 0) {
+                let errorPriceList = document.querySelector(".errorPriceList")
+                if (errorPriceList) {
+
+                    errorPriceList.classList.add("activeErrorPriceList2");
+                    setTimeout(() => {
+                        errorPriceList.classList.add("activeErrorPriceList");
+                        document.querySelector(".products-checkbox").checked = false
+                        // غیرفعال کردن چک‌باکس محصول
+                        el.checked = false;
+                    }, 400);
+                    setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList"), 5000);
+                    setTimeout(() => errorPriceList.classList.remove("activeErrorPriceList2"), 5080);
+
+                }
+                return; // خروج از تابع تا قیمت اضافه نشود
+            }
+            totalPriceSpan.innerHTML = 1
+            if (selectedProducts.length > 0) {
+                totalP.classList.add("block");
+                totalP.classList.remove("hidden");
+            } else {
+                totalP.classList.remove("block");
+                totalP.classList.add("hidden");
+            }
+            let totalPriceTitle = 0
+            totalPriceTitle = selectedProducts.reduce((sum, product) => {
+                return sum + (typeof product.price === "number" && !isNaN(product.price) ? product.price : 0);
+            }, 0);
+            if (totalPriceTitle == 0) {
+                totalP.classList.remove("block");
+                totalP.classList.add("hidden");
+            }
+            document.querySelector(".totalP span").innerHTML = totalPriceTitle.toLocaleString()
+            basketService.saveItem({
+                "id": id, "title": title, "type": "product", "price": inputprice, "renew": renew, "support": support
+            });
+
+
+            addToInvoice(id, title, inputprice, renew, support);
+
+            const basketAllCount = basketService.getBasketCount()
+            if (document.getElementById("basket_count")) {
+
+                document.getElementById("basket_count").textContent = basketAllCount
+            }
+            const basketDef = basketService.getAllItems()
+
+
+
+
+        }
+
+    </script>
+    <script>
+        const basketService = (() => {
+            // Private helper functions
+            const getBasket = () => {
+                const basket = localStorage.getItem('basket');
+                return basket ? JSON.parse(basket) : [];
+            };
+
+            const saveBasket = (basket) => {
+                localStorage.setItem('basket', JSON.stringify(basket));
+            };
+
+            // Public API
+            return {
+                // Add new item or update existing item
+                saveItem(item) {
+                    const basket = getBasket();
+                    const existingIndex = basket.findIndex(i => i.id === item.id);
+
+                    if (existingIndex > -1) {
+                        basket[existingIndex] = item; // Update existing item
+                    } else {
+                        basket.push(item); // Add new item
+                    }
+
+
+                    saveBasket(basket);
+                    return item;
+                },
+
+                // Get item by ID
+                getItem(itemId) {
+                    const basket = getBasket();
+                    return basket.find(item => item.title === itemId);
+                },
+
+                // Get all items
+                getAllItems() {
+                    return getBasket();
+                },
+
+                getBasketCount() {
+                    return getBasket().length;
+                },
+                getBasketPanelCount() {
+                    const basket = getBasket();
+                    return basket.find(item => item.type === "panel");
+                },
+
+
+                // Remove item by ID
+                removeItem(itemId) {
+                    const basket = getBasket();
+                    const newBasket = basket.filter(item => parseInt(item.id) !== parseInt(itemId));
+                    saveBasket(newBasket);
+                    return newBasket;
+                },
+
+                // Clear entire basket
+                // clearBasket() {
+                //   saveBasket([]);
+                // }
+            };
+        })();
+
+        // Usage Examples:
+
+        // Add new item
+        // basketService.saveItem({
+        //   id: 'prod-001',
+        //   name: 'Wireless Mouse',
+        //   price: 29.99,
+        //   quantity: 2
+        // });
+
+        // Update existing item
+        // const existingItem = basketService.getItem('prod-001');
+        // if (existingItem) {
+        //   existingItem.quantity = 3;
+        //   basketService.saveItem(existingItem);
+        // }
+
+        // Remove item
+        // basketService.removeItem('prod-001');
+
+        // Get all items
+        // const allItems = basketService.getAllItems();
+
+        // Clear basket
+        // basketService.clearBasket();
+        const basketCountOnLoad = basketService.getBasketCount()
+        const activeItems = basketService.getBasketPanelCount()
+        if (document.getElementById("basket_count")) {
+
+            document.getElementById("basket_count").textContent = basketCountOnLoad
+        }
+        if (activeItems) {
+            const activeButton = document.querySelector(`[data-active-title="${activeItems.title}"]`)
+            activeButton.classList.add("flex")
+            activeButton.classList.remove("hidden")
+
+            const activeButtonAddToBasket = document.querySelector(`[data-title="${activeItems.title}"]`)
+            activeButtonAddToBasket.classList.add("hidden")
+            activeButtonAddToBasket.classList.remove("flex")
+        }
+        const basketDef = basketService.getAllItems()
+
+
+
+    </script>
+    <script src="[##cms.cms.cdn##]/ej2.min.js" type="text/javascript"></script>
+    <!-- <script src="https://cdn.syncfusion.com/ej2/24.1.41/dist/ej2.min.js"></script> -->
+
+    <script src="[##cms.cms.cdn##]/syncfusion-helper.js" type="text/javascript"></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const accordionCheckbox = document.querySelectorAll(".accordion-checkbox");
+            const errorPriceList = document.getElementById("errorPriceList");
+
+
+
+            document.querySelectorAll('.proListCheckBox').forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const accordion = this.closest('.accordion');
+                    const allProListCheckboxes = accordion.querySelectorAll('.proListCheckBox');
+                    const accordionCheckbox = accordion.querySelector('.accordion-checkbox');
+
+                    // اگر حداقل یکی از proListCheckBox ها تیک خورده بود
+                    const atLeastOneChecked = Array.from(allProListCheckboxes).some(cb => cb.checked);
+
+                    // تنظیم وضعیت accordion-checkbox
+                    accordionCheckbox.checked = atLeastOneChecked;
+                    if (atLeastOneChecked) {
+                        setTimeout(() => {
+
+                            allowFlag = false
+
+                        }, 10);
+                        setTimeout(() => {
+                            const steps = document.querySelectorAll("#stepper .e-step");
+                            if (steps[2]) {
+                                steps[2].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                                // animationStepper.selectedIndex = 1;
+
+                            }
+                        }, 50);
+
+                        setTimeout(() => {
+                            allowFlag = true
+                        }, 700);
+                    }
+                });
+            });
+
+
+
+
+
+
+            // مرحله‌ها و دسترسی آن‌ها
+            const stepsConfig = [
+                { disabled: false, label: 'خرید پنل پایه', iconCss: 'level1' }, // مرحله 0
+                { disabled: true, label: 'خرید محصول', iconCss: 'level2' },  // مرحله 1
+                { disabled: true, label: 'خرید اندپوینت', iconCss: 'level3' },  // مرحله 2
+                { disabled: true, label: 'پرداخت', iconCss: 'level4' }   // مرحله 3
+            ];
+            const stepAccess = [true, false, false, false]; // فقط مرحله 0 مجاز است
+
+            // تعریف استپر
+            animationStepper = new ej.navigations.Stepper({
+                steps: stepsConfig,
+                stepType: 'default',
+                enableRtl: true,
+                animation: { enable: true, duration: 1000, delay: 300 },
+
+                stepChanging: (args) => {
+                    const targetIndex = args.nextIndex;
+
+                    console.log("allowFlag", allowFlag);
+
+                    if (allowFlag) {
+                        args.cancel = true;
+                        console.log("truuuuuueuueue");
+
+
+                    }
+                    else {
+
+                        args.cancel = false;
+                        console.log("falseeeee");
+
+                    }
+                },
+
+                created: () => {
+
+                    // رویدادهای change چک‌باکس‌ها
+                    accordionCheckbox.forEach((checkbox, i) => {
+                        checkbox.addEventListener("change", () => {
+                            const nextStepIndex = i + 1;
+
+                            // اگر مرحله بعدی وجود دارد
+                            if (nextStepIndex < animationStepper.steps.length) {
+                                // ۱. علامت‌گذاری فعلی به Completed
+                                animationStepper.steps[i].status = "Completed";
+
+                                // ۲. فعال کردن مرحله بعد
+                                animationStepper.steps[nextStepIndex].disabled = false;
+
+                                // ۳. آپدیت وضعیت
+                                animationStepper.dataBind();
+
+                                // ۴. کلیک مصنوعی روی مرحله بعدی برای فعال شدن (selected)
+                                setTimeout(() => {
+                                    const steps = document.querySelectorAll("#stepper .e-step");
+                                    if (steps[nextStepIndex]) {
+                                        // animationStepper.selectedIndex = nextStepIndex;
+
+                                        steps[nextStepIndex].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                                    }
+                                }, 300); // اگه با 100 نشد، با 300 یا 500 تست کن
+                            }
+
+                            // اگر چک‌باکس دوم یا سوم بود، مرحله اول رو هم sync کن
+                            if (i > 0) {
+                                animationStepper.steps[0].disabled = false;
+                                animationStepper.dataBind();
+                                isStepperReady = true; // این خط را حتماً اضافه کنید
+
+                                setTimeout(() => {
+                                    const steps = document.querySelectorAll("#stepper .e-step");
+                                    if (steps[0]) {
+                                        // animationStepper.selectedIndex = 0;
+
+                                        steps[0].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                                    }
+                                }, 200);
+                            }
+                        });
+                    });
+
+
+                    // اجرای تغییرات سبد خرید (مثال)
+                    basketDef.forEach(item => {
+                        addToInvoice(item.id, item.title, item.price);
+                        if (item.id > 0 && item.id < 4) triggerChange(0);
+                        else if (item.id > 3 && item.id < 19) triggerChange(1);
+                        else if (item.id > 18) triggerChange(2);
+
+
+                        let proListCheckBox = document.querySelectorAll(".proListCheckBox")
+                        proListCheckBox.forEach(element => {
+
+                            if (item.id == element.getAttribute("data-id")) {
+                                element.checked = true
+
+                            }
+                        });
+                    });
+
+                    // بررسی چک‌باکس‌های تیک‌خورده بعد از بارگذاری
+                    setTimeout(() => {
+                        initializeStepsFromCheckboxes();
+                        accordionCheckbox.forEach((element, i) => {
+                            setTimeout(() => {
+
+                                const steps = document.querySelectorAll("#stepper .e-step");
+
+                                if (steps.length > 1) {
+                                    steps[i].click(); // کلیک مصنوعی
+
+                                    // animationStepper.selectedIndex = i;
+                                    const scroll = { top: window.scrollY, left: window.scrollX };
+                                    setTimeout(() => {
+                                        window.scrollTo({ top: scroll.top, left: scroll.left, behavior: "auto" });
+                                    }, 10);
+                                }
+                            }, 200);
+
+                        });
+
+                    }, 200);
+
+
+
+                    setTimeout(() => {
+
+                        allowFlag = true
+
+                    }, 700);
+
+
+                    let endpointAddtoFactor = document.querySelectorAll(".endpoint-addtoFactor");
+                    endpointAddtoFactor.forEach(element => {
+                        element.addEventListener("click", function (params) {
+                            element.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").checked = true
+                            const changeEvent = new Event('change');
+                            element.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").dispatchEvent(changeEvent);
+                            triggerChange(2)
+                            setTimeout(() => {
+
+                                allowFlag = false
+
+                            }, 10);
+                            setTimeout(() => {
+                                const steps = document.querySelectorAll("#stepper .e-step");
+                                if (steps[3]) {
+                                    steps[3].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                                    // animationStepper.selectedIndex = 1;
+
+                                }
+                            }, 50);
+
+                            setTimeout(() => {
+                                allowFlag = true
+                            }, 700);
+
+                            // گرفتن اطلاعات اندپوینت
+                            const endpointBox = element.closest(".serverBox");
+                            const title = endpointBox.querySelector(".endpoint-title-web").textContent.trim();
+                            const id = endpointBox.getAttribute("data-id") || Math.floor(Math.random() * 1000000); // اگه id نداره، یه id بساز
+                            const priceEl = endpointBox.querySelector(".endpoint-yearly-price");
+                            const unitPrice = parseInt(priceEl.textContent.replace(/,/g, "").trim(), 10);
+                            const quantity = parseInt(endpointBox.querySelector(".endpoint-number").value, 10);
+                            const totalPrice = unitPrice * quantity;
+
+                            // افزودن به localStorage
+                            basketService.saveItem({
+                                id,
+                                title: title + ` x${quantity}`,
+                                type: "endpoint",
+                                price: totalPrice,
+                                quantity,
+                                unitPrice
+                            });
+
+                            updatePrice(); // اگر متدی برای آپدیت فاکتور داری
+
+                            console.log("📦 Endpoint added to basket:", {
+                                id,
+                                title,
+                                quantity,
+                                unitPrice,
+                                totalPrice
+                            });
+
+                            // به فاکتور هم اضافه کن اگه addToInvoice داری
+                            if (typeof addToInvoice === "function") {
+                                addToInvoice(id, title, totalPrice, "-", "-");
+                            }
+                        })
+
+                    });
+
+
+
+
+
+
+
+
+                    let scrollSection = document.querySelectorAll(".scrollSection")
+                    document.querySelectorAll(".e-step-container").forEach((element, i) => {
+                        element.addEventListener("click", function (params) {
+                            if (!accordionCheckbox[0].checked) {
+                                showError()
+                            }
+                            // بعدش اسکرول کن به سکشن
+                            scrollSection[i].scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+                            setTimeout(() => {
+                                // ساخت کلیک مصنوعی
+                                const fakeClick = new MouseEvent("click", {
+                                    bubbles: true,
+                                    cancelable: true,
+                                    view: window
+                                });
+
+                                // اجرای کلیک روی یه عنصر بی‌ربط (مثلاً body)
+                                document.body.dispatchEvent(fakeClick);
+                            }, 500); // زمان کافی برای اتمام اسکرول (بسته به سرعت اسکرول شاید بیشتر یا کمتر نیاز باشه)
+                        })
+                    });
+
+
+
+                    isStepperReady = true;
+
+                }
+
+            });
+
+
+            animationStepper.appendTo("#stepper");
+
+            // ▶ تابع اجازه دادن به ورود به مرحله خاص
+            function allowStep(index) {
+                stepAccess[index] = true;
+            }
+
+            // ▶ نمایش ارور زمانی که اجازه ورود نداریم
+            function showError() {
+
+            }
+
+            // ▶ تابع بررسی و فعال‌سازی ظاهر مراحل از چک‌باکس‌ها (در شروع)
+            function initializeStepsFromCheckboxes() {
+                accordionCheckbox.forEach((checkbox, i) => {
+                    if (checkbox.checked && i < animationStepper.steps.length - 1) {
+                        animationStepper.dataBind();
+
+
+                    }
+                });
+            }
+
+
+
+
+
+
+        });
+
+
+
+    </script>
+    <script>
+        window.addEventListener("load", function () {
+            const table = document.getElementById("panels");
+            const tableWrapper = document.getElementById("panels_section");
+            const toggleBtn = document.getElementById("toggleMore");
+            const toggleShadow = document.querySelector(".toggleShadow")
+
+            const thead = table.querySelector("thead");
+            const rows = table.querySelectorAll("tbody tr");
+
+            // محاسبه ارتفاع اولیه فقط برای thead + دو ردیف اول
+            const initialHeight = thead.offsetHeight + rows[0].offsetHeight + rows[1].offsetHeight;
+
+            // ست‌کردن حالت اولیه
+            tableWrapper.style.maxHeight = initialHeight + 150 + "px";
+            let expanded = false;
+            toggleShadow.style.top = initialHeight + 90 + "px"
+            toggleBtn.addEventListener("click", (event) => {
+                event.stopPropagation();
+                if (!tableWrapper.parentElement.classList.contains("accordion__active")) {
+                    openAccordion(tableWrapper.parentElement); // این تابع باید maxHeight رو تنظیم کنه
+                }
+                if (!expanded) {
+                    // باز کردن اطلاعات کامل
+                    tableWrapper.style.maxHeight = table.scrollHeight + 100 + "px"; // یکم اضافه برای پدینگ
+                    toggleBtn.textContent = "بستن اطلاعات";
+
+                    expanded = true;
+                    toggleShadow.style.opacity = "0"
+                } else {
+                    // برگشت به حالت اولیه
+                    tableWrapper.style.maxHeight = initialHeight + 90 + "px";
+                    toggleBtn.textContent = "اطلاعات بیشتر";
+                    expanded = false;
+                    toggleShadow.style.top = initialHeight + 40 + "px";
+                    toggleShadow.style.opacity = "1"
+
+                }
+            });
+        });
+
+
+
+
+        function checkElement(args) {
+            let proListCheckBox = document.querySelectorAll(".proListCheckBox")
+            let checkFlag = false
+            let filterPro = Array.from(proListCheckBox).filter(pro => pro.checked);
+
+
+
+
+
+            if (filterPro) {
+                args.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").checked = true
+                const changeEvent = new Event('change');
+                args.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").dispatchEvent(changeEvent);
+
+
+
+            }
+
+            else {
+                args.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").checked = false
+                const changeEvent = new Event('change');
+                args.closest(".accordion__content").parentElement.querySelector(".accordion-checkbox").dispatchEvent(changeEvent);
+
+
+
+            }
+
+
+
+        }
+
+        function addToInvoice(id, name, price, pricerenew, supportprice) {
+            if (!invoiceTable.querySelector(`[data-name="${CSS.escape(name)}"]`)) {
+                let row = document.createElement("tr");
+                row.setAttribute("data-name", name);
+                row.classList.add("invoice-item");
+
+                // بررسی مقدار price
+                let priceText = (price === "رایگان" || price === 0 || price === "0") ? "رایگان" :
+                    (!isNaN(price) && price !== null && price !== undefined) ? price.toLocaleString() : "Call us";
+                // **اصلاح شده: بررسی مقدار رایگان در pricerenew**
+                let pricerenewText;
+                if (pricerenew === undefined || pricerenew === null || pricerenew === "") {
+                    pricerenewText = "Call us"; // مقدار پیش‌فرض برای مقدار نامعتبر
+                } else if (pricerenew === "رایگان" || pricerenew === 0 || pricerenew === "0") {
+                    pricerenewText = "رایگان";
+                } else if (typeof pricerenew === "string" && pricerenew.includes("%")) {
+                    pricerenewText = pricerenew; // اگر مقدار شامل % بود، دست‌نخورده نمایش بده
+                } else if (!isNaN(parseFloat(pricerenew))) {
+                    pricerenewText = parseFloat(pricerenew).toLocaleString() + " ریال ";
+                } else {
+                    pricerenewText = pricerenew.toLocaleString() // مقدار دست‌نخورده برگردان
+                }
+
+                // بررسی مقدار supportprice
+                let supportpriceText;
+                if (supportprice === "رایگان" || supportprice === 0 || supportprice === "0") {
+                    supportpriceText = "رایگان";
+                } else if (typeof supportprice === "string" && supportprice.includes("%")) {
+                    supportpriceText = supportprice; // اگر مقدار شامل % بود، دست‌نخورده نمایش بده
+                } else if (supportprice !== undefined && supportprice !== null && supportprice !== "" && !isNaN(parseFloat(supportprice))) {
+                    supportpriceText = parseFloat(supportprice).toLocaleString();
+                } else {
+                    supportpriceText = "Call us";
+                }
+
+                row.innerHTML = `
+                        <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                            ${name}
+                        </td>
+                        <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                            ${priceText}
+                        </td>
+                        <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                            ${pricerenewText}
+                        </td>
+                        <td class="font-IRANSansWeb400 pt-9 pb-7 text-sm text-center">
+                            ${supportpriceText}
+                        </td>
+                        <td class="deleteRow cursor-pointer px-6" onclick="deleteRowFn(this,event,${id})">
+                            <img src="/asset/images/deleteRow.svg" alt="deleteRow">
+                        </td>
+                    `;
+
+                invoiceTable.appendChild(row);
+
+
+
+
+
+                let selectedPrice = 0
+
+                selectedProducts.forEach(product => {
+                    selectedPrice += product.price
+                });
+                let proPrice = 0
+                endpointProducts.forEach(product => {
+                    proPrice += product.yearlyPrice
+                });
+
+                updatePrice()
+
+
+                emptyFactor.style.display = "none"; // پنهان کردن پیام فاکتور خالی
+            }
+        }
+        function deleteRowFn(el, event, id) {
+
+            basketService.removeItem(id)
+            el.closest(".invoice-item").remove()
+            updatePrice()
+            const rowCount = basketService.getBasketCount()
+            if (rowCount == 0) {
+                document.querySelector(".emptyFactor").style.display = "block"
+            }
+        }
+        function updatePrice() {
+            const LSProducts = basketService.getAllItems()
+            let newwtotal = LSProducts.reduce((n, { price }) => n + parseInt(price), 0)
+            document.querySelector(".totalPrice").innerHTML = newwtotal.toLocaleString()
+        }
+
+        function showSpecialProduct(el, event, link) {
+
+            let specialProduct = document.querySelector(".specialProduct")
+            let specialProducttext = document.querySelector(".specialProducttext")
+            specialProducttext.innerHTML = `   برای مشاهده خدمات، لطفا <a href="${link}"  target="_blank">اینجا</a> را کلیک کنید`
+
+            specialProduct.classList.add("activeErrorPriceList2");
+
+            setTimeout(() => {
+                specialProduct.classList.add("activeErrorPriceList");
+                el.checked = false
+            }, 400);
+            setTimeout(() => specialProduct.classList.remove("activeErrorPriceList"), 5000);
+            setTimeout(() => specialProduct.classList.remove("activeErrorPriceList2"), 5080);
+        }
+    </script>
+</body>
+
+</html>

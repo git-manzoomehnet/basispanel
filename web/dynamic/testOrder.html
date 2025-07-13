@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <title>سبد خرید</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/swiper-bundle.min.css">
+    <basis core="call" file="style-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <link rel="stylesheet" href="[##cms.cms.cdn##]/asset/css/basket.css">
+    <link href="[##cms.cms.cdn##]/asset/css/material.css" rel="stylesheet">
+    <link href="[##cms.cms.cdn##]/asset/css/material2.css" rel="stylesheet">
+    <link href="[##cms.cms.cdn##]/asset/css/material3.css" rel="stylesheet">
+    <style>
+        #iconContainer {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <style>
+        .level1,
+        .level2,
+        .level3,
+        .level4 {
+            position: relative;
+        }
+
+        .level1:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level1.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level2:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level2.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level3:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level3.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .level4:before {
+            position: absolute;
+            content: '';
+            background-image: url("../images/level4.svg");
+            width: 24px;
+            height: 24px;
+
+        }
+
+        .e-stepper .e-stepper-steps .e-step-label-container {
+            display: block !important;
+        }
+
+        .e-stepper.e-horizontal.e-label-after:has(.e-step-item.e-step-label:not(.e-step-text)) .e-stepper-progressbar {
+            width: 100% !important;
+        }
+
+        .e-step-inprogress .e-step {
+            background-color: #004b85 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <basis core="dbsource" source="trust_login" name="db" rkey="[##cms.cookie.rkey##]">
+        <member request="userid" type="scalar" name="user" preview="" />
+    </basis>
+    <input type="hidden" value="[##db.user.userid##]" id="userid" />
+
+
+    <basis core="call" file="checkLogin-header.inc" pageindex="[##cms.cms.pageindex##]" />
+    <!-- end of header -->
+    <div class="panel_wrapper">
+        <div class="basket-container">
+
+            <div id="container" class="w-full" style="padding: 100px 0 50px 0;">
+                <nav id="stepper"></nav>
+            </div>
+
+
+
+            <div class="basket-table-items">
+                <div class="basket-title">
+                    آیتم‌های سبد خرید / <span id="factoridShow">شماره فاکتور : ([##cms.cookie.factorid|(0)##])</span>
+                </div>
+                <div class="basket_error" id="basket_error"></div>
+                <div class="basket_loading" id="basket_loading">
+                    <div id="loading" class="loading-wrapper">
+                        <div class="loading-basispanel">
+                            <div class="loading-part1"></div>
+                            <div class="loading-part2"></div>
+                            <div class="loading-part3"></div>
+                            <div class="loading-part4"></div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!-- comment this -->
+                <!-- style="display: none;" -->
+                <div class="basket-table-wrapper" id="basket-table-wrapper">
+                    <div class="basket-table">
+                        <basis core="component.grid.grid" run="atclient" dataMemberName="db.basketlist"
+                            options="productSetting"></basis>
+                        <div class="clr"></div>
+                        <div class="buy_for_who">
+                            <p>خرید برای شخص <span>(برای تکمیل فرآیند ابتدا نوع خریدار را تعیین کنید .)</span></p>
+                            <div class="who_items" id="accountMethods">
+                                <!-- <face filter="typeid = 0 ">
+                                            <script type="text/template">
+                                                <div class="who-boxes">
+                                                    <div class="inside">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M7 9.75C6.31 9.75 5.75 10.31 5.75 11C5.75 11.69 6.31 12.25 7 12.25C7.69 12.25 8.25 11.69 8.25 11C8.25 10.31 7.69 9.75 7 9.75ZM13 9.75C12.31 9.75 11.75 10.31 11.75 11C11.75 11.69 12.31 12.25 13 12.25C13.69 12.25 14.25 11.69 14.25 11C14.25 10.31 13.69 9.75 13 9.75ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 9.71 2.02 9.42 2.05 9.14C4.41 8.09 6.28 6.16 7.26 3.77C9.07 6.33 12.05 8 15.42 8C16.2 8 16.95 7.91 17.67 7.74C17.88 8.45 18 9.21 18 10C18 14.41 14.41 18 10 18Z" fill="#323232"></path>
+                                                            </svg>
+                                                            
+                                                    <input type="radio" name="selectBank" id="select@typeid@" class="accountRadio"  />
+                                                    <label for="select@typeid@" >@title@</label>
+                                                    </div>
+                                                    <button class="schemaBtn" onclick="changeAccount(this,event,@typeid@)">انتخاب</button>
+                                                </div>
+                                            </script>
+                                        </face> -->
+
+                                <div class="who-boxes boxes who-boxes-active accountypeSelect" id="legal">
+                                    <div class="inside">
+                                        <svg width="19" height="21" viewBox="0 0 19 21" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M2 10.5V14.5C2 15.33 2.67 16 3.5 16C4.33 16 5 15.33 5 14.5V10.5C5 9.67001 4.33 9.00001 3.5 9.00001C2.67 9.00001 2 9.67001 2 10.5ZM8 10.5V14.5C8 15.33 8.67 16 9.5 16C10.33 16 11 15.33 11 14.5V10.5C11 9.67001 10.33 9.00001 9.5 9.00001C8.67 9.00001 8 9.67001 8 10.5ZM1.5 21H17.5C18.33 21 19 20.33 19 19.5C19 18.67 18.33 18 17.5 18H1.5C0.67 18 0 18.67 0 19.5C0 20.33 0.67 21 1.5 21ZM14 10.5V14.5C14 15.33 14.67 16 15.5 16C16.33 16 17 15.33 17 14.5V10.5C17 9.67001 16.33 9.00001 15.5 9.00001C14.67 9.00001 14 9.67001 14 10.5ZM8.57 0.490007L0.67 4.65001C0.26 4.86001 0 5.29001 0 5.75001C0 6.44001 0.56 7.00001 1.25 7.00001H17.76C18.44 7.00001 19 6.44001 19 5.75001C19 5.29001 18.74 4.86001 18.33 4.65001L10.43 0.490007C9.85 0.180007 9.15 0.180007 8.57 0.490007Z"
+                                                fill="#323232"></path>
+                                        </svg>
+
+
+
+                                        <input type="radio" name="selectBank" id="select1" class="accountRadio" />
+                                        <label for="select1">حقوقی</label>
+                                    </div>
+                                    <button class="schemaBtn schemaBtn-active"
+                                        onclick="changeAccount(this,event,0)">انتخاب شده </button>
+                                </div>
+                                <div class="who-boxes boxes accountypeSelect" id="person">
+                                    <div class="inside">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M7 9.75C6.31 9.75 5.75 10.31 5.75 11C5.75 11.69 6.31 12.25 7 12.25C7.69 12.25 8.25 11.69 8.25 11C8.25 10.31 7.69 9.75 7 9.75ZM13 9.75C12.31 9.75 11.75 10.31 11.75 11C11.75 11.69 12.31 12.25 13 12.25C13.69 12.25 14.25 11.69 14.25 11C14.25 10.31 13.69 9.75 13 9.75ZM10 0C4.48 0 0 4.48 0 10C0 15.52 4.48 20 10 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 10 0ZM10 18C5.59 18 2 14.41 2 10C2 9.71 2.02 9.42 2.05 9.14C4.41 8.09 6.28 6.16 7.26 3.77C9.07 6.33 12.05 8 15.42 8C16.2 8 16.95 7.91 17.67 7.74C17.88 8.45 18 9.21 18 10C18 14.41 14.41 18 10 18Z"
+                                                fill="#323232"></path>
+                                        </svg>
+
+
+                                        <input type="radio" name="selectBank" id="select0" class="accountRadio" />
+                                        <label for="select0">حقیقی</label>
+                                    </div>
+                                    <button class="schemaBtn " onclick="changeAccount(this,event,1)"
+                                        id="personButton">انتخاب</button>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="buy_for_who" id="modal-second-level">
+                            <p>نوع پرداخت <span style="color: var(--red);">(برای تکمیل فرآیند نوع پرداخت را تعیین
+                                    کنید .)</span></p>
+                            <div class="selec_agreement_wrapper">
+                                <div class="agreement" style="margin-top: 20px;margin-bottom: 20px;">
+
+                                    <label for="agreement">آیا این <a href="/agreement">توافق نامه</a> را قبول
+                                        دارید؟</label>
+                                </div>
+                                <div class="agree_option">
+                                    <div class="agree_option2">
+                                        <input type="radio" value="1" name="agree" id="agreeyes"
+                                            onchange="selectAgree(1)" />
+                                        <label for="agreeyes">بله</label>
+                                    </div>
+                                    <div class="agree_option2">
+                                        <input type="radio" value="0" name="agree" id="agreeno"
+                                            onchange="selectAgree(0)" />
+                                        <label for="agreeno">خیر</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="who_items" id="paymentsMethods">
+
+
+                                <div id="paybank" class="who-boxes inactive">
+                                    <div class="inside">
+                                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M18 4H15V2C15 0.89 14.11 0 13 0H7C5.89 0 5 0.89 5 2V4H2C0.89 4 0 4.89 0 6V17C0 18.11 0.89 19 2 19H18C19.11 19 20 18.11 20 17V6C20 4.89 19.11 4 18 4ZM7 2H13V4H7V2ZM18 17H2V15H18V17ZM18 12H2V7C2 6.45 2.45 6 3 6H5V7C5 7.55 5.45 8 6 8C6.55 8 7 7.55 7 7V6H13V7C13 7.55 13.45 8 14 8C14.55 8 15 7.55 15 7V6H17C17.55 6 18 6.45 18 7V12Z"
+                                                fill="#323232"></path>
+                                        </svg>
+                                        <input type="radio" name="selectBank" id="select@typeid@" />
+                                        <label for="select@typeid@">پرداخت آنلاین</label>
+                                    </div>
+                                    <button class="schemaBtn" onclick="gotobank()">پرداخت</button>
+                                </div>
+                                <div class="who-boxes paymentSelect inactive" id="credit">
+
+
+                                    <div class="inside " id="third_payment">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M9.99 0C4.47 0 0 4.48 0 10C0 15.52 4.47 20 9.99 20C15.52 20 20 15.52 20 10C20 4.48 15.52 0 9.99 0ZM16.92 6H13.97C13.65 4.75 13.19 3.55 12.59 2.44C14.43 3.07 15.96 4.35 16.92 6ZM10 2.04C10.83 3.24 11.48 4.57 11.91 6H8.09C8.52 4.57 9.17 3.24 10 2.04ZM2.26 12C2.1 11.36 2 10.69 2 10C2 9.31 2.1 8.64 2.26 8H5.64C5.56 8.66 5.5 9.32 5.5 10C5.5 10.68 5.56 11.34 5.64 12H2.26ZM3.08 14H6.03C6.35 15.25 6.81 16.45 7.41 17.56C5.57 16.93 4.04 15.66 3.08 14ZM6.03 6H3.08C4.04 4.34 5.57 3.07 7.41 2.44C6.81 3.55 6.35 4.75 6.03 6ZM10 17.96C9.17 16.76 8.52 15.43 8.09 14H11.91C11.48 15.43 10.83 16.76 10 17.96ZM12.34 12H7.66C7.57 11.34 7.5 10.68 7.5 10C7.5 9.32 7.57 8.65 7.66 8H12.34C12.43 8.65 12.5 9.32 12.5 10C12.5 10.68 12.43 11.34 12.34 12ZM12.59 17.56C13.19 16.45 13.65 15.25 13.97 14H16.92C15.96 15.65 14.43 16.93 12.59 17.56ZM14.36 12C14.44 11.34 14.5 10.68 14.5 10C14.5 9.32 14.44 8.66 14.36 8H17.74C17.9 8.64 18 9.31 18 10C18 10.69 17.9 11.36 17.74 12H14.36Z"
+                                                fill="#323232"></path>
+                                        </svg>
+                                        <input type="radio" name="selectBank" id="select@typeid@" />
+                                        <label for="select@typeid@">خرید از اعتبار</label>
+                                    </div>
+                                    <div>
+                                        <button class="schemaBtn save_payement" onclick="showChargeAccount()">افزایش
+                                            اعتبار</button>
+                                        <button class="schemaBtn save_payement"
+                                            onclick="openTab(this,event, 'tab4','4')">انتخاب</button>
+
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="factor-container">
+                        <div class="factor-box">
+                            <div class="discount-box">
+                                <div class="discount-title">
+                                    در صورت داشتن کد تخفیف، آن را در این قسمت وارد کنید
+                                </div>
+                                <div class="discount-form">
+                                    <input type="text" name="" id="discount" placeholder="کد تخفیف">
+                                    <button class="schemaBtn">ثبت</button>
+                                </div>
+                            </div>
+                            <basis core="print" datamembername="db.factorview" run="atclient"
+                                OnRendered="factorViewFace">
+                                <else-layout>
+                                    <script type="text/template">
+                                        <div class="counting-box">
+                                            <div class="price-titles">
+                                                <div class="priceTitle">مجموع قیمت خرید</div>
+                                                <div class="priceTitle">مالیات</div>
+                                                <div class="priceTitle">تخفیف</div>
+                                            </div>
+                                            <div class="prices">
+                                                <div class="price-num"><span class="price-num__number"> 0 </span> ریال</div>
+                                                <div class="price-num"><span class="price-num__number"> 0 </span> ریال</div>
+                                                <div class="price-num"> 0 </div>
+                                            </div>
+                                        </div>
+                                    </script>
+                                </else-layout>
+                                <face>
+                                    <script type="text/template">
+                                            <div class="counting-box">
+                                                <div class="price-titles">
+                                                    <div class="priceTitle">مجموع قیمت خرید</div>
+                                                    <div class="priceTitle">مالیات</div>
+                                                    <div class="priceTitle">تخفیف</div>
+                                                </div>
+                                                <div class="prices">
+                                                    <div class="price-num"><span class="price-num__number">@price@</span> ریال</div>
+                                                    <div class="price-num"><span class="price-num__number">@tax@</span> ریال</div>
+                                                    <div class="price-num">0</div>
+                                                </div>
+                                            </div>
+                                        </script>
+                                </face>
+                            </basis>
+
+                            <!--  -->
+                            <div class="final-price-box">
+                                <div class="final-price">
+                                    <div class="price-title">قیمت نهایی</div>
+                                    <div class="price-num"><span class="price-num__number1">@payprice@</span> ریال</div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="modal-box" id="modal-buy-extend">
+
+                                <div class="modal-content">
+                                    <div class="modalTitle">
+
+                                        <span class="closeIcon" onclick="closeModalThisModal('modal-buy-extend'); ">
+                                            <!-- × -->
+                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path data-sys-text="" opacity="0.8"
+                                                    d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                                    fill="black"></path>
+                                            </svg>
+                                        </span>
+                                        <span class="modal-title-text">
+                                            شارژ حساب <span id="service-name-new-extend"></span>
+                                        </span>
+                                    </div>
+                                    <div class="modal-body">
+
+                                        <div class="modal-info">
+                                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M6.75 10.5C6.75 10.0858 7.08579 9.75 7.5 9.75C7.91421 9.75 8.25 10.0858 8.25 10.5C8.25 10.9142 7.91421 11.25 7.5 11.25C7.08579 11.25 6.75 10.9142 6.75 10.5ZM6.75 4.49889C6.75 4.08468 7.08579 3.75 7.5 3.75C7.91421 3.75 8.25 4.08579 8.25 4.5V7.5C8.25 7.91421 7.91421 8.25 7.5 8.25C7.08579 8.25 6.75 7.91449 6.75 7.50028C6.75 6.44635 6.75 5.251 6.75 4.49889ZM7.4925 0C3.3525 0 0 3.36 0 7.5C0 11.64 3.3525 15 7.4925 15C11.64 15 15 11.64 15 7.5C15 3.36 11.64 0 7.4925 0ZM7.5 13.5C4.185 13.5 1.5 10.815 1.5 7.5C1.5 4.185 4.185 1.5 7.5 1.5C10.815 1.5 13.5 4.185 13.5 7.5C13.5 10.815 10.815 13.5 7.5 13.5Z"
+                                                    fill="#B40020" />
+                                            </svg>
+                                            برای شارژ حساب لطفا مبلغ مورد نظر خود را وارد کند و دکمه پرداخت را
+                                            بزنید.(حداقل قیمت 500,000 ریال است)
+                                        </div>
+                                        <input type="text" data-sys-input-text="" value="" placeholder="500000"
+                                            class="chargeInput  price-num__number2" id="chargeInput" min="500000"
+                                            onkeyup="chargeAccount(this,event)">
+                                        <div class="chargeModalFooter">
+                                            <button class="schemaBtn " onclick="minValue()" id="chargeButton"
+                                                disabled>پرداخت کنید</button>
+
+                                        </div>
+                                        <!-- <div class="modal-btn">
+                                                <button class="modal-btn_buy_business" onclick="buyForAnotherPerson(this, event ,1)" >ذخیره</button>
+                                                <div id="message " class="modal-btn_buy_business_msg">
+                                                    <span data-sys-message-success="" > نوع خریدار،  با موفقیت ثبت شد <i class="lni lni-checkmark"></i></span>
+                                                    <span data-sys-message-danger="" >نام کاربری وارد شده، عضو تراست‌لاگین نیست.  <i class="lni lni-checkmark"></i></span>
+                                                </div>
+                                                
+                                            </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clr">
+                                <div class="payment_desc">
+                                    <div id="tab2" class="paymenttabs">
+                                        <p>
+                                            در این روش شما میتوانید با پرداخت چک حساب خود را تسویه کنید.<br />
+                                            پس از پرداخت تصویری از چک را در این قسمت بارگزاری کنید.
+
+
+                                        </p>
+
+                                        <div class="objectFilesUploadContainer formContainer" data-sys-border-color="">
+                                            <div class="uploadFilesContainer">
+                                                <form action="#" method="POST" class="uploadForm">
+                                                    <input class="fileValue" type="text" value="" data-sys-input-text=""
+                                                        readonly="">
+                                                    <input type="file" id="uploadFiles"
+                                                        placeholder="برای بارگزاری فایل اینجا کلیک کنید"
+                                                        accept="video/avi, video/mpeg, video/x-mpeg, video/x-ms-asf, video/mp4, application/excel, application/vnd.ms-excel, application/x-excel, application/x-msexcel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/x-shockwave-flash, application/zip, application/x-zip-compressed, audio/mpeg3, audio/x-mpeg-3, audio/mp3, audio/mpeg"
+                                                        multiple="" onchange="chooseFile(this)" hidden="">
+                                                    <label class="uploadFilesLabel" for="uploadFiles" data-sys-plus="">
+                                                        <svg width="20" height="19" viewBox="0 0 28 19" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path data-sys-plus-icon=""
+                                                                d="M22.0164 7.40314C21.2497 3.43564 17.8335 0.457146 13.7296 0.457146C10.4713 0.457146 7.64137 2.34315 6.23206 5.10314C2.83843 5.47114 0.200195 8.40364 0.200195 11.9571C0.200195 15.7636 3.23304 18.8571 6.9649 18.8571H21.6218C24.7335 18.8571 27.259 16.2811 27.259 13.1071C27.259 10.0711 24.9477 7.61014 22.0164 7.40314ZM15.9845 10.8071V15.4071H11.4747V10.8071H8.09235L13.7296 5.05714L19.3669 10.8071H15.9845Z"
+                                                                fill="#004B85"></path>
+                                                        </svg>
+                                                    </label>
+                                                </form>
+                                                <div id="addFiles" class="schemaBtnContainer">
+                                                    <button type="button" class="schemaBtn accept inactive"
+                                                        onclick="addFiles('1435281')" data-sys-button=""
+                                                        data-sys-button-disable="">
+                                                        بارگزاری
+                                                    </button>
+                                                    <div class="message"></div>
+                                                    <div class="clr"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+
+                                        </div>
+                                    </div>
+                                    <div id="tab3" class="paymenttabs">
+                                        <p>
+                                            در این روش شما میتوانید با واریز مبلغ به شماره حساب ریز ، حساب خود را
+                                            تسوسه کرده و پس از پرداخت یک تصویر از فیش بانکی خود را بارگزاری کنید
+                                            <br />
+                                            شماره حساب : XXXXXX-XXX-XXXX
+
+                                        </p>
+                                        <div class="objectFilesUploadContainer formContainer" data-sys-border-color="">
+                                            <div class="uploadFilesContainer">
+                                                <form action="#" method="POST" class="uploadForm">
+                                                    <input class="fileValue" type="text" value="" data-sys-input-text=""
+                                                        readonly="">
+                                                    <input type="file" id="uploadFiles"
+                                                        placeholder="برای بارگزاری فایل اینجا کلیک کنید"
+                                                        accept="video/avi, video/mpeg, video/x-mpeg, video/x-ms-asf, video/mp4, application/excel, application/vnd.ms-excel, application/x-excel, application/x-msexcel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, application/x-shockwave-flash, application/zip, application/x-zip-compressed, audio/mpeg3, audio/x-mpeg-3, audio/mp3, audio/mpeg"
+                                                        multiple="" onchange="chooseFile(this)" hidden="">
+                                                    <label class="uploadFilesLabel" for="uploadFiles" data-sys-plus="">
+                                                        <svg width="20" height="19" viewBox="0 0 28 19" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path data-sys-plus-icon=""
+                                                                d="M22.0164 7.40314C21.2497 3.43564 17.8335 0.457146 13.7296 0.457146C10.4713 0.457146 7.64137 2.34315 6.23206 5.10314C2.83843 5.47114 0.200195 8.40364 0.200195 11.9571C0.200195 15.7636 3.23304 18.8571 6.9649 18.8571H21.6218C24.7335 18.8571 27.259 16.2811 27.259 13.1071C27.259 10.0711 24.9477 7.61014 22.0164 7.40314ZM15.9845 10.8071V15.4071H11.4747V10.8071H8.09235L13.7296 5.05714L19.3669 10.8071H15.9845Z"
+                                                                fill="#004B85"></path>
+                                                        </svg>
+                                                    </label>
+                                                </form>
+                                                <div id="addFiles" class="schemaBtnContainer">
+                                                    <button type="button" class="schemaBtn accept inactive"
+                                                        onclick="addFiles('1435281')" data-sys-button=""
+                                                        data-sys-button-disable="">
+                                                        بارگزاری
+                                                    </button>
+                                                    <div class="message"></div>
+                                                    <div class="clr"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clr"></div>
+
+                                        </div>
+                                    </div>
+                                    <div id="tab4" class="paymenttabs">
+                                        <p>
+                                            در این روش شما میتوانید از طریق اعتبار خود خرید را انجام دهید. <br />
+                                            برای افزایش اعتبار و یا نحوه پرداخت از طریق اعتبار ، لطفا با ما در تماس
+                                            باشید
+                                            <br />
+                                        <div class="call_to_us">
+                                            <button class="schemaBtn">تماس با ما </button>
+                                        </div>
+
+
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+
+                    </div>
+                    <div class="clr"></div>
+                </div>
+
+            </div>
+            <div class="clr"></div>
+
+
+
+        </div>
+        <div class="modal-box" id="success-modal">
+
+            <div class="modal-content ">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('success-modal'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="success-checkmark">
+
+                    <div class="message-modal-icon ">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M68.4001 43.0969C68.4001 46.9076 66.3406 49.9969 63.8001 49.9969C61.2595 49.9969 59.2001 46.9076 59.2001 43.0969C59.2001 39.2861 61.2595 36.1969 63.8001 36.1969C66.3406 36.1969 68.4001 39.2861 68.4001 43.0969Z"
+                                fill="#68972D"></path>
+                            <path
+                                d="M40.8001 43.0969C40.8001 46.9076 38.7406 49.9969 36.2001 49.9969C33.6595 49.9969 31.6 46.9076 31.6 43.0969C31.6 39.2861 33.6595 36.1969 36.2001 36.1969C38.7406 36.1969 40.8001 39.2861 40.8001 43.0969Z"
+                                fill="#68972D"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M49.7361 0.546876H50.264C60.8826 0.546817 69.2042 0.54677 75.697 1.41971C82.3428 2.31321 87.5869 4.17778 91.703 8.2939C95.8191 12.41 97.6837 17.6541 98.5772 24.2999C99.4501 30.7928 99.4501 39.1143 99.4501 49.733V50.2608C99.4501 60.8794 99.4501 69.201 98.5772 75.6938C97.6837 82.3396 95.8191 87.5837 91.703 91.6999C87.5869 95.816 82.3428 97.6805 75.697 98.574C69.2042 99.447 60.8826 99.4469 50.264 99.4469H49.7361C39.1175 99.4469 30.7959 99.447 24.3031 98.574C17.6573 97.6805 12.4132 95.816 8.29708 91.6999C4.18095 87.5837 2.31639 82.3396 1.42288 75.6938C0.549944 69.201 0.549991 60.8794 0.55005 50.2608V49.7329C0.549991 39.1143 0.549944 30.7928 1.42288 24.2999C2.31639 17.6541 4.18095 12.41 8.29708 8.2939C12.4132 4.17778 17.6573 2.31321 24.3031 1.41971C30.7959 0.54677 39.1175 0.546817 49.7361 0.546876ZM25.2225 8.25818C19.3418 9.04881 15.7965 10.5525 13.1761 13.1729C10.5557 15.7934 9.05199 19.3387 8.26135 25.2193C7.45738 31.1992 7.45005 39.057 7.45005 49.9969C7.45005 60.9367 7.45738 68.7945 8.26135 74.7744C9.05199 80.6551 10.5557 84.2004 13.1761 86.8208C15.7965 89.4412 19.3418 90.9449 25.2225 91.7356C31.2024 92.5396 39.0602 92.5469 50 92.5469C60.9399 92.5469 68.7977 92.5396 74.7776 91.7356C80.6583 90.9449 84.2036 89.4412 86.824 86.8208C89.4444 84.2004 90.9481 80.6551 91.7387 74.7744C92.5427 68.7945 92.55 60.9367 92.55 49.9969C92.55 39.057 92.5427 31.1992 91.7387 25.2193C90.9481 19.3387 89.4444 15.7934 86.824 13.1729C84.2036 10.5525 80.6583 9.04881 74.7776 8.25818C68.7977 7.4542 60.9399 7.44688 50 7.44688C39.0602 7.44688 31.2024 7.4542 25.2225 8.25818ZM33.4284 66.3425C34.5631 64.8117 36.7237 64.4906 38.2545 65.6253C41.6048 68.1087 45.6489 69.5469 50 69.5469C54.3512 69.5469 58.3953 68.1087 61.7456 65.6253C63.2764 64.4906 65.437 64.8117 66.5717 66.3425C67.7063 67.8732 67.3852 70.0339 65.8545 71.1685C61.3814 74.4841 55.9109 76.4469 50 76.4469C44.0892 76.4469 38.6187 74.4841 34.1456 71.1685C32.6149 70.0339 32.2938 67.8732 33.4284 66.3425Z"
+                                fill="#68972D"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="modal-text2">
+                    خرید شما با موفقیت انجام شد. برای ادامه فرآیند، با واحد مالی تماس بگیرید
+                </div>
+                <!-- <div class="modal-btn modal-btn-2">
+                        <button onclick="closeModalThisModal('success-modal'); ">متوجه شدم</button>
+                    </div> -->
+            </div>
+        </div>
+
+        <div class="modal-box" id="success-modal1">
+
+            <div class="modal-content " style="height: 300px !important;width:300px !important">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('success-modal1'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="success-checkmark">
+
+                    <div class="message-modal-icon ">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M68.4001 43.0969C68.4001 46.9076 66.3406 49.9969 63.8001 49.9969C61.2595 49.9969 59.2001 46.9076 59.2001 43.0969C59.2001 39.2861 61.2595 36.1969 63.8001 36.1969C66.3406 36.1969 68.4001 39.2861 68.4001 43.0969Z"
+                                fill="#68972D"></path>
+                            <path
+                                d="M40.8001 43.0969C40.8001 46.9076 38.7406 49.9969 36.2001 49.9969C33.6595 49.9969 31.6 46.9076 31.6 43.0969C31.6 39.2861 33.6595 36.1969 36.2001 36.1969C38.7406 36.1969 40.8001 39.2861 40.8001 43.0969Z"
+                                fill="#68972D"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M49.7361 0.546876H50.264C60.8826 0.546817 69.2042 0.54677 75.697 1.41971C82.3428 2.31321 87.5869 4.17778 91.703 8.2939C95.8191 12.41 97.6837 17.6541 98.5772 24.2999C99.4501 30.7928 99.4501 39.1143 99.4501 49.733V50.2608C99.4501 60.8794 99.4501 69.201 98.5772 75.6938C97.6837 82.3396 95.8191 87.5837 91.703 91.6999C87.5869 95.816 82.3428 97.6805 75.697 98.574C69.2042 99.447 60.8826 99.4469 50.264 99.4469H49.7361C39.1175 99.4469 30.7959 99.447 24.3031 98.574C17.6573 97.6805 12.4132 95.816 8.29708 91.6999C4.18095 87.5837 2.31639 82.3396 1.42288 75.6938C0.549944 69.201 0.549991 60.8794 0.55005 50.2608V49.7329C0.549991 39.1143 0.549944 30.7928 1.42288 24.2999C2.31639 17.6541 4.18095 12.41 8.29708 8.2939C12.4132 4.17778 17.6573 2.31321 24.3031 1.41971C30.7959 0.54677 39.1175 0.546817 49.7361 0.546876ZM25.2225 8.25818C19.3418 9.04881 15.7965 10.5525 13.1761 13.1729C10.5557 15.7934 9.05199 19.3387 8.26135 25.2193C7.45738 31.1992 7.45005 39.057 7.45005 49.9969C7.45005 60.9367 7.45738 68.7945 8.26135 74.7744C9.05199 80.6551 10.5557 84.2004 13.1761 86.8208C15.7965 89.4412 19.3418 90.9449 25.2225 91.7356C31.2024 92.5396 39.0602 92.5469 50 92.5469C60.9399 92.5469 68.7977 92.5396 74.7776 91.7356C80.6583 90.9449 84.2036 89.4412 86.824 86.8208C89.4444 84.2004 90.9481 80.6551 91.7387 74.7744C92.5427 68.7945 92.55 60.9367 92.55 49.9969C92.55 39.057 92.5427 31.1992 91.7387 25.2193C90.9481 19.3387 89.4444 15.7934 86.824 13.1729C84.2036 10.5525 80.6583 9.04881 74.7776 8.25818C68.7977 7.4542 60.9399 7.44688 50 7.44688C39.0602 7.44688 31.2024 7.4542 25.2225 8.25818ZM33.4284 66.3425C34.5631 64.8117 36.7237 64.4906 38.2545 65.6253C41.6048 68.1087 45.6489 69.5469 50 69.5469C54.3512 69.5469 58.3953 68.1087 61.7456 65.6253C63.2764 64.4906 65.437 64.8117 66.5717 66.3425C67.7063 67.8732 67.3852 70.0339 65.8545 71.1685C61.3814 74.4841 55.9109 76.4469 50 76.4469C44.0892 76.4469 38.6187 74.4841 34.1456 71.1685C32.6149 70.0339 32.2938 67.8732 33.4284 66.3425Z"
+                                fill="#68972D"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="modal-text2" style="text-align: center;">
+                    نوع خریدار، با موفقیت ثبت شد
+                </div>
+
+            </div>
+        </div>
+
+        <div class="modal-box" id="modal-box">
+
+            <div class="modal-content ">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('modal-box'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="f-modal-alert">
+                    <div class="f-modal-icon f-modal-warning scaleWarning">
+                        <span class="f-modal-body pulseWarningIns"></span>
+                        <span class="f-modal-dot pulseWarningIns"></span>
+                    </div>
+                </div>
+                <div class="modal-text2">
+                    ابتدا نوع خریدار را انتخاب کنید
+                </div>
+                <div class="modal-btn modal-btn-2">
+                    <button onclick="closeModalThisModal('modal-box'); ">متوجه شدم</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-box" id="modal-box1">
+            <div class="modal-content modal-content2">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('modal-box1'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="f-modal-alert">
+                    <div class="f-modal-icon f-modal-warning scaleWarning">
+                        <span class="f-modal-body pulseWarningIns"></span>
+                        <span class="f-modal-dot pulseWarningIns"></span>
+                    </div>
+                </div>
+                <div class="modal-text2">
+                    برای ادامه فرآیند خرید یک پلن شرکتی به سبد خرید خود اضافه کنید
+                </div>
+                <div class="modal-btn modal-btn-2">
+                    <button onclick="closeModalThisModal('modal-box1'); ">متوجه شدم</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-box" id="modal-box2">
+            <div class="modal-content modal-content_hostname">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('modal-box2'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="modal-text2">
+                    درخواست خرید برای
+                </div>
+                <div class="form_wrapper">
+
+                    <div id="form_wrapper_input">
+                        <select id="personSelect" onchange="selectRequestForWho(this)">
+                            <option value="1" selected>خودم</option>
+                            <option value="2">شخص دیگر</option>
+                        </select>
+                        <div id="form_wrapper_input_inputs"></div>
+                    </div>
+                    <div class="modal-btn">
+                        <button class="modal-btn_buy_business"
+                            onclick="buyForAnotherPerson(this, event ,1)">ذخیره</button>
+                        <div id="message " class="modal-btn_buy_business_msg">
+                            <span data-sys-message-success=""> نوع خریدار، با موفقیت ثبت شد <i
+                                    class="lni lni-checkmark"></i></span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clr"></div>
+        <div class="modal-box new-factor-modal" id="modal-error">
+            <div class="modal-content " style="height: 300px !important;">
+                <div class="modalTitle">
+
+                    <span class="closeIcon" onclick="closeModalThisModal('modal-error'); ">
+                        <!-- × -->
+                        <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path data-sys-text="" opacity="0.8"
+                                d="M8.05223 7.49989L13.3519 13.3409C13.6968 13.7208 13.6968 14.3351 13.3519 14.7151C13.0072 15.095 12.4498 15.095 12.1051 14.7151L6.80521 8.87405L1.50552 14.7151C1.16063 15.095 0.603404 15.095 0.258671 14.7151C-0.0862237 14.3351 -0.0862237 13.7208 0.258671 13.3409L5.55836 7.49989L0.258671 1.65889C-0.0862237 1.27896 -0.0862237 0.66466 0.258671 0.284728C0.430473 0.0952063 0.656366 0 0.882097 0C1.10783 0 1.33356 0.0952063 1.50552 0.284728L6.80521 6.12572L12.1051 0.284728C12.277 0.0952063 12.5028 0 12.7285 0C12.9542 0 13.18 0.0952063 13.3519 0.284728C13.6968 0.66466 13.6968 1.27896 13.3519 1.65889L8.05223 7.49989Z"
+                                fill="black"></path>
+                        </svg>
+                    </span>
+                </div>
+
+                <div>
+
+                    <div class="message-modal-icon ">
+                        <svg width="100" height="100" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M68.4001 43.0969C68.4001 46.9076 66.3406 49.9969 63.8001 49.9969C61.2595 49.9969 59.2001 46.9076 59.2001 43.0969C59.2001 39.2861 61.2595 36.1969 63.8001 36.1969C66.3406 36.1969 68.4001 39.2861 68.4001 43.0969Z"
+                                fill="#B40020"></path>
+                            <path
+                                d="M40.8001 43.0969C40.8001 46.9076 38.7406 49.9969 36.2001 49.9969C33.6595 49.9969 31.6 46.9076 31.6 43.0969C31.6 39.2861 33.6595 36.1969 36.2001 36.1969C38.7406 36.1969 40.8001 39.2861 40.8001 43.0969Z"
+                                fill="#B40020"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M49.7361 0.546876H50.264C60.8826 0.546817 69.2042 0.54677 75.697 1.41971C82.3428 2.31321 87.5869 4.17778 91.703 8.2939C95.8191 12.41 97.6837 17.6541 98.5772 24.2999C99.4501 30.7928 99.4501 39.1143 99.4501 49.733V50.2608C99.4501 60.8794 99.4501 69.201 98.5772 75.6938C97.6837 82.3396 95.8191 87.5837 91.703 91.6999C87.5869 95.816 82.3428 97.6805 75.697 98.574C69.2042 99.447 60.8826 99.4469 50.264 99.4469H49.7361C39.1175 99.4469 30.7959 99.447 24.3031 98.574C17.6573 97.6805 12.4132 95.816 8.29708 91.6999C4.18095 87.5837 2.31639 82.3396 1.42288 75.6938C0.549944 69.201 0.549991 60.8794 0.55005 50.2608V49.7329C0.549991 39.1143 0.549944 30.7928 1.42288 24.2999C2.31639 17.6541 4.18095 12.41 8.29708 8.2939C12.4132 4.17778 17.6573 2.31321 24.3031 1.41971C30.7959 0.54677 39.1175 0.546817 49.7361 0.546876ZM25.2225 8.25818C19.3418 9.04881 15.7965 10.5525 13.1761 13.1729C10.5557 15.7934 9.05199 19.3387 8.26135 25.2193C7.45738 31.1992 7.45005 39.057 7.45005 49.9969C7.45005 60.9367 7.45738 68.7945 8.26135 74.7744C9.05199 80.6551 10.5557 84.2004 13.1761 86.8208C15.7965 89.4412 19.3418 90.9449 25.2225 91.7356C31.2024 92.5396 39.0602 92.5469 50 92.5469C60.9399 92.5469 68.7977 92.5396 74.7776 91.7356C80.6583 90.9449 84.2036 89.4412 86.824 86.8208C89.4444 84.2004 90.9481 80.6551 91.7387 74.7744C92.5427 68.7945 92.55 60.9367 92.55 49.9969C92.55 39.057 92.5427 31.1992 91.7387 25.2193C90.9481 19.3387 89.4444 15.7934 86.824 13.1729C84.2036 10.5525 80.6583 9.04881 74.7776 8.25818C68.7977 7.4542 60.9399 7.44688 50 7.44688C39.0602 7.44688 31.2024 7.4542 25.2225 8.25818ZM34.1456 70.2253C38.6187 66.9096 44.0892 64.9469 50 64.9469C55.9109 64.9469 61.3814 66.9096 65.8545 70.2253C67.3852 71.3599 67.7063 73.5206 66.5717 75.0513C65.437 76.582 63.2764 76.9031 61.7456 75.7685C58.3953 73.2851 54.3512 71.8469 50 71.8469C45.6489 71.8469 41.6048 73.2851 38.2545 75.7685C36.7237 76.9031 34.5631 76.582 33.4284 75.0513C32.2938 73.5206 32.6149 71.3599 34.1456 70.2253Z"
+                                fill="#B40020"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="modal-title message-modal-text" id="message-modal-text">
+                    در حال حاضر شما یک فاکتور باز دارید
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <basis core="call" file="footer.inc" pageindex="[##cms.cms.pageindex##]" />
+    <basis core="call" file="script-v3.inc" pageindex="[##cms.cms.pageindex##]" />
+    <!-- section2 -->
+
+
+
+    <!-- modals -->
+    <script src="[##cms.cms.cdn##]/_js/swiper.js"></script>
+    <script>
+        var factor = {}
+
+
+        function openTab(el, evt, tabName, id) {
+
+
+
+
+        }
+
+        var coll = document.getElementsByClassName("collapsible-btn");
+        // var btnBox = document.getElementsByClassName("btnBox");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active-basket-info");
+                var content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+
+
+        var productSetting = {
+            // process: "server",
+            filter: "none",
+            columns: {
+
+                title: {
+                    title: "عنوان ",
+                    sort: false,
+                    filter: false,
+                    cssClass: "textCenter",
+                    sort: "false"
+
+                },
+                ver: {
+                    title: "نوع",
+
+                    sort: false,
+                    filter: false,
+                    cellMaker: (row, data, td) => {
+
+                        if (row.type == "panel") {
+                            return "پنل پایه"
+                        }
+                        else if (row.type == "product") {
+                            return "محصول"
+                        }
+                        else {
+                            return "اندپوینت"
+                        }
+
+                    },
+                },
+                price: {
+                    title: "قیمت",
+                    filter: false,
+                    sort: false,
+                    cellMaker: (row, data, td) => {
+                        var price = row.price > 0 ? row.price : 0
+                        var result = (price).toLocaleString() + "ریال"
+                        return result;
+                    },
+
+                }
+                ,
+                action: {
+                    title: "عملیات",
+                    // title: `<svg width="6" height="20" viewBox="0 0 6 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3.00717 7.80503C1.81669 7.80503 0.86431 8.78064 0.86431 10.0002C0.86431 11.2197 1.81669 12.1953 3.00717 12.1953C4.19764 12.1953 5.15002 11.2197 5.15002 10.0002C5.15002 8.78064 4.19764 7.80503 3.00717 7.80503ZM5.15002 2.19527C5.15002 3.41479 4.19764 4.3904 3.00717 4.3904C1.81669 4.3904 0.86431 3.41479 0.86431 2.19527C0.86431 0.975762 1.81669 0.000152588 3.00717 0.000152588C4.19764 0.000152588 5.15002 0.975762 5.15002 2.19527ZM5.15002 17.805C5.15002 19.0245 4.19764 20.0002 3.00717 20.0002C1.81669 20.0002 0.86431 19.0245 0.86431 17.805C0.86431 16.5855 1.81669 15.6099 3.00717 15.6099C4.19764 15.6099 5.15002 16.5855 5.15002 17.805Z" fill="#004B85"></path></svg>`,
+                    width: '10%',
+                    sort: false,
+                    filter: false,
+                    source: row => row,
+                    cellMaker: (row, data, td) => {
+                        let result = "";
+
+                        result = `
+                                        <div class="iconContainer iconsOperations" id="iconContainer">
+                                            <div class="icon" onclick="deletService(this,${row.id},'${row.type}')">
+                                              <img src="/asset/images/deleteRow.svg" alt="حذف محصول">
+                                        </div>
+                                            
+                                        </div>`;
+
+
+
+
+
+                        return result;
+                    },
+
+                }
+            },
+            defaultSort: {
+                name: "id",
+                sort: "desc"
+            },
+            direction: "rtl",
+            paging: 20,
+
+            noData: (td) => {
+                td.innerHTML = `<div class="noData">
+                                <div class="icon">
+                                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M45 70C45 67.2386 47.2386 65 50 65C52.7614 65 55 67.2386 55 70C55 72.7614 52.7614 75 50 75C47.2386 75 45 72.7614 45 70ZM45 30C45 27.2386 47.2386 25 50 25C52.7614 25 55 27.2386 55 30V50C55 52.7614 52.7614 55 50 55C47.2386 55 45 52.7614 45 50V30ZM49.95 0C22.35 0 0 22.4 0 50C0 77.6 22.35 100 49.95 100C77.6 100 100 77.6 100 50C100 22.4 77.6 0 49.95 0ZM50 90C27.9 90 10 72.1 10 50C10 27.9 27.9 10 50 10C72.1 10 90 27.9 90 50C90 72.1 72.1 90 50 90Z" fill="#D0D0D0" ></path>
+                                    </svg>
+                                </div>
+                                <div class="text">
+                                    سبد خرید خالی است
+                                </div>
+                            </div>`
+            },
+            // information: false,
+            firstAndLastBtn: false,
+            rownumber: true,
+            // loader: "http://user.efeh.com/images/loadinglist.gif",
+            pageCount: 5,
+            // refreshSourceId: "list.refresh"
+        };
+
+        async function onProcessedAccountType(args) {
+            const response = args.response;
+            const responseJson = await response.json();
+            $bc.setSource("db.accounttype", responseJson)
+
+        }
+        function changeAccount(el, event, id) {
+            if (id == 1) {
+                document.getElementById("modal-box2").style.display = "block"
+            }
+            else {
+                const availableActiveButton = document.getElementById("accountMethods").querySelectorAll(".schemaBtn-active")
+                const wrapperActive = document.getElementById("accountMethods").classList.remove("methods_alert")
+
+                availableActiveButton.forEach(e => {
+                    e.classList.remove("schemaBtn-active")
+                    e.textContent = "انتخاب "
+                    e.closest(".who-boxes").classList.remove("who-boxes-active")
+                })
+                el.classList.add("schemaBtn-active")
+                el.textContent = "انتخاب شده"
+                el.closest(".who-boxes").classList.add("who-boxes-active")
+                el.closest(".who-boxes").querySelector("input").setAttribute("checked", true)
+                $bc.setSource("db.selectaccount", {
+                    "run": true,
+                    "id": id
+                })
+            }
+
+
+        }
+        function factorViewFace() {
+            const numbers = document.querySelectorAll(".price-num__number")
+            numbers.forEach(e => {
+                var num = parseInt(e.textContent).toLocaleString()
+                e.textContent = num
+            })
+            document.querySelector(".factor-box").style.height = document.querySelector(".basket-table").clientHeight + "px"
+        }
+
+
+        var modalBox = document.getElementById("modal-box");
+        function openSelectBusiness() {
+            const success = document.getElementById("success-modal")
+            success.style.display = "block";
+        }
+
+        async function onProcessedSelectPaymentMethod(args) {
+            const buttons = document.getElementById("paymentsMethods").querySelectorAll(".button--loading")
+
+            buttons.forEach(e => {
+                e.textContent = "انتخاب شده"
+                e.classList.remove("button--loading")
+            })
+            document.getElementById("paymentsMethods").querySelector(".waitforpayment").classList.add("schemaBtn-active")
+            document.getElementById("paymentsMethods").querySelector(".waitforpayment").textContent = "انتخاب شده"
+            document.getElementById("paymentsMethods").querySelector(".waitforpayment").closest(".who-boxes").classList.add("who-boxes-active")
+            document.getElementById("paymentsMethods").querySelector(".waitforpayment").closest(".who-boxes").querySelector("input").setAttribute("checked", true)
+            const response = args.response;
+            const responseJson = await response.json();
+            if (responseJson.errorid == 5) {
+                document.getElementById("success-modal").style.display = "block"
+                //    const message =  document.querySelector(".modal-text2")
+                //    message.textContent = `
+                //     خرید شما با موفقیت انجام شد
+                //     برای ادامه فرآیند با واحد مالی تماس بگیرید
+                //     `
+                // openSelectBusiness()
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+        var p, l, v
+        function deletService(el, productid, type) {
+
+            basketService.removeItem(productid)
+            reloadData()
+        }
+        function deletBusiness(el, type, productid, ver, hostid) {
+            v = ver
+            p = productid
+            l = "business"
+
+
+            var result = `{"business":
+                  {
+                      "productid":${productid},
+                      "ver":${ver},
+                      "productType":"${type}",
+                      "hostid":${hostid}
+                  }
+              }`
+
+            $bc.setSource("db.remove", {
+                "value": result
+            })
+            $bc.setSource("db.removeFlag", true)
+        }
+        function deleteUser(el, productid, ver) {
+            var result = `{"user":
+                {
+                    "productid":${productid},
+                    "ver":${ver},
+                    "productType":"products"
+                }
+               
+            }`
+            $bc.setSource("db.remove", {
+                "value": result
+            })
+            $bc.setSource("db.removeFlag", true)
+        }
+        function onProcessedRemoveFeatures() {
+            $bc.setSource("db.refreshList", true)
+            p, l, v
+            if (l == "service") {
+                var lsService = localStorage.getItem("service");
+                if (lsService) {
+                    var lsServiceObject = JSON.parse(lsService)
+                    if (lsServiceObject?.service.products[0].productid == p && ownerid == lsServiceObject?.service.details.ownerid) {
+                        lsServiceObject.service = {}
+                        localStorage.removeItem("service");
+                    }
+                }
+            }
+            if (l == "business") {
+                var lsbusiness = localStorage.getItem("business");
+                if (lsbusiness) {
+                    var lsbusinessObject = JSON.parse(lsbusiness)
+                    lsbusinessObject.business.forEach((e, index) => {
+                        if (e.products[0].productid == p && hostid == e.details.hostID) {
+                            lsbusinessObject.business.splice(index, 1);
+                        }
+                    })
+                    localStorage.setItem("business", JSON.stringify(lsbusinessObject));
+                }
+            }
+            // var lsbusiness = localStorage.getItem("business");
+
+            // sss
+        }
+        function selectRequestForWho(el) {
+            if (el.value == 1) {
+                document.getElementById("form_wrapper_input_inputs").innerHTML = ""
+            }
+            if (el.value == 2) {
+                document.getElementById("form_wrapper_input_inputs").innerHTML = ""
+                const inp = document.createElement("input")
+                inp.setAttribute("id", "personName")
+                inp.setAttribute("type", "text")
+                inp.setAttribute("placeholder", "نام کاربری")
+                inp.classList.add("input")
+                placeholder = "نام هاست را وارد کنید"
+                document.getElementById("form_wrapper_input_inputs").appendChild(inp)
+            }
+        }
+
+
+
+        async function onProcessedFactorList(args) {
+            var sum = 0
+            var response = args.response;
+            var json = await response.json();
+            var fid = json[0].factoridtemp
+            $bc.setSource("db.fid", {
+                "fid": fid,
+                "run": true
+            })
+
+        }
+
+        function showChargeAccount() {
+            document.getElementById("modal-buy-extend").style.display = "block"
+
+        }
+        function chargeAccount(el, event) {
+
+            document.getElementById("chargeButton").disabled = false;
+            var priceValue = el.value
+            var priceChange = priceValue.replaceAll(',', '')
+
+
+            if (parseInt(priceChange).toLocaleString() != 'NaN') {
+                el.value = parseInt(priceChange).toLocaleString()
+            }
+            else if ((parseInt(priceChange).toLocaleString() == 'NaN')) {
+                el.value = ""
+            }
+
+
+        }
+        function minValue() {
+            const message = document.querySelector(".modal-btn_buycharge_business_msg")
+            const min = document.getElementById("chargeInput").value;
+            if (min < 500000) {
+                const modals = document.querySelectorAll(".modal-box")
+                modals.forEach(e => {
+                    e.style.display = "none"
+                })
+                document.querySelector("#message-modal-text").textContent = "حداقل مبلغ مجاز 500,000 ریال است"
+                document.getElementById("modal-error").style.display = "block"
+
+
+            }
+
+        }
+
+        function closeModalThisModal(el) {
+            document.querySelector(`#${el}`).style.display = "none"
+        }
+    </script>
+    <script>
+        const basketService = (() => {
+            // Private helper functions
+            const getBasket = () => {
+                const basket = localStorage.getItem('basket');
+                return basket ? JSON.parse(basket) : [];
+            };
+
+            const saveBasket = (basket) => {
+                localStorage.setItem('basket', JSON.stringify(basket));
+            };
+
+            // Public API
+            return {
+                // Add new item or update existing item
+                saveItem(item) {
+                    const basket = getBasket();
+                    const existingIndex = basket.findIndex(i => i.id === item.id);
+
+                    if (existingIndex > -1) {
+                        basket[existingIndex] = item; // Update existing item
+                    } else {
+                        basket.push(item); // Add new item
+                    }
+
+
+                    saveBasket(basket);
+                    return item;
+                },
+
+                // Get item by ID
+                getItem(itemId) {
+                    const basket = getBasket();
+                    return basket.find(item => item.title === itemId);
+                },
+
+                // Get all items
+                getAllItems() {
+                    return getBasket();
+                },
+
+                getBasketCount() {
+                    return getBasket().length;
+                },
+                getBasketPanelCount() {
+                    const basket = getBasket();
+                    return basket.find(item => item.type === "panel");
+                },
+
+
+                // Remove item by ID
+                removeItem(itemId) {
+                    const basket = getBasket();
+                    const newBasket = basket.filter(item => item.id !== parseInt(itemId));
+                    saveBasket(newBasket);
+                    return newBasket;
+                },
+                totalPrice(itemId) {
+                    const basket = getBasket();
+                    let total = 0
+                    basket.forEach(e => {
+                        total += parseInt(e.price)
+                    })
+                    return total;
+                },
+
+
+            };
+        })();
+
+
+
+        reloadData()
+        function reloadData() {
+            const basketCountOnLoad = basketService.getBasketCount()
+            document.getElementById("basket_count").textContent = basketCountOnLoad
+            const allItems = basketService.getAllItems()
+            const basketData = []
+            allItems.forEach(e => {
+                basketData.push({
+                    "id": e.id,
+                    "title": e.title,
+                    "type": e.type,
+                    "price": e.price
+                })
+            })
+            $bc.setSource("db.basketlist", allItems)
+            const totalPrice = basketService.totalPrice()
+            console.log("aaa", totalPrice)
+            document.querySelector(".price-num__number1").textContent = totalPrice.toLocaleString()
+        }
+        function buyForAnotherPerson(el, event, id) {
+            const availableActiveButton = document.getElementById("accountMethods").querySelectorAll(".schemaBtn-active")
+            const wrapperActive = document.getElementById("accountMethods").classList.remove("methods_alert")
+
+            availableActiveButton.forEach(e => {
+                e.classList.remove("schemaBtn-active")
+                e.textContent = "انتخاب "
+                e.closest(".who-boxes").classList.remove("who-boxes-active")
+            })
+            document.getElementById("personButton").classList.add("schemaBtn-active")
+            document.getElementById("personButton").textContent = "انتخاب شده"
+            document.getElementById("personButton").closest(".who-boxes").classList.add("who-boxes-active")
+            document.getElementById("personButton").closest(".who-boxes").querySelector("input").setAttribute("checked", true)
+            var select = document.getElementById("personSelect").value
+
+            if (select == 1) {
+                $bc.setSource("db.selectaccount", {
+                    "run": true,
+                    "id": id
+                })
+            }
+            else if (select == 2) {
+                const name = document.getElementById("personName").value
+
+                $bc.setSource("db.selectaccount", {
+                    "run": true,
+                    "id": id,
+                    "username": name
+                })
+            }
+
+
+        }
+        function gotobank() {
+            window.location = "/addfactor.bc"
+        }
+
+        function selectAgree(val) {
+            console.log("v", val)
+            if (val == 1) {
+
+                var btnWrapper1 = document.getElementById("paybank")
+                btnWrapper1.classList.remove("inactive")
+                var btnWrapper = document.getElementById("credit")
+                btnWrapper.classList.remove("inactive")
+            }
+            else {
+                var btnWrapper = document.getElementById("credit")
+                btnWrapper.classList.add("inactive")
+            }
+        }
+    </script>
+
+    <script src="[##cms.cms.cdn##]/ej2.min.js" type="text/javascript"></script>
+    <script src="[##cms.cms.cdn##]/syncfusion-helper.js" type="text/javascript"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let isStepperReady = false;
+            let allowFlag = false;
+            function triggerChange(index) {
+                // 1. فعال کردن مرحله مورد نظر
+                animationStepper.steps[index].disabled = false;
+                console.log( animationStepper.steps[index]);
+                
+                // 2. اگه مرحله قبلی وجود داره، اون رو Completed کن (اختیاری ولی مفید)
+                if (index > 0) {
+                    animationStepper.steps[index].status = "Completed";
+                }
+
+                // 3. اعمال تغییرات در استپر
+                animationStepper.dataBind();
+
+                // 4. جلوگیری موقت از حرکت
+                allowFlag = false;
+
+                // 5. کلیک مصنوعی برای فعال کردن مرحله
+                setTimeout(() => {
+                    const steps = document.querySelectorAll("#stepper .e-step");
+                    if (steps[index]) {
+                        steps[index].dispatchEvent(new MouseEvent("click", { bubbles: true }));
+                    }
+                }, 100);
+
+                // 6. دوباره اجازه حرکت بعد از تأخیر
+                setTimeout(() => {
+                    allowFlag = true;
+                }, 700);
+            }
+
+            // مرحله‌ها و دسترسی آن‌ها
+            const stepsConfig = [
+                { disabled: false, label: 'خرید پنل پایه', iconCss: 'level1' }, // مرحله 0
+                { disabled: true, label: 'خرید محصول', iconCss: 'level2' },  // مرحله 1
+                { disabled: true, label: 'خرید اندپوینت', iconCss: 'level3' },  // مرحله 2
+                { disabled: true, label: 'پرداخت', iconCss: 'level4' }   // مرحله 3
+            ];
+            const stepAccess = [true, false, false, false]; // فقط مرحله 0 مجاز است
+
+            // تعریف استپر
+            animationStepper = new ej.navigations.Stepper({
+                steps: stepsConfig,
+                stepType: 'default',
+                enableRtl: true,
+                animation: { enable: true, duration: 1000, delay: 300 },
+
+                stepChanging: (args) => {
+                    const targetIndex = args.nextIndex;
+
+
+                    if (allowFlag) {
+                        args.cancel = true;
+
+
+                    }
+                    else {
+
+                        args.cancel = false;
+
+                    }
+                },
+
+                created: () => {
+                    let basketRaw = localStorage.getItem("basket");
+                    let basketDef = [];
+
+                    try {
+                        const parsed = JSON.parse(basketRaw);
+                        if (Array.isArray(parsed)) {
+                            basketDef = parsed.map(item => ({
+                                ...item,
+                                id: parseInt(item.id) // مطمئن شو id عددیه
+                            }));
+                        }
+                    } catch (error) {
+                        console.error("❌ خطا در خواندن سبد خرید:", error);
+                    }
+
+                    // اجرای تغییرات سبد خرید
+                    basketDef.forEach(item => {
+                        if (item.id > 0 && item.id < 4) triggerChange(0);
+                        else if (item.id > 3 && item.id < 19) triggerChange(1);
+                        else if (item.id > 18) triggerChange(2);
+
+                        // تیک زدن چک‌باکس (در صورت وجود)
+                        document.querySelectorAll(".proListCheckBox").forEach(el => {
+                            if (parseInt(el.getAttribute("data-id")) === item.id) {
+                                el.checked = true;
+                            }
+                        });
+                    });
+
+
+
+                    triggerChange(3)
+                    // فعال کردن پرچم برای اجازه تغییر مراحل
+                    setTimeout(() => {
+                        allowFlag = true;
+                    }, 700);
+
+                    isStepperReady = true;
+                }
+
+
+            });
+
+
+            animationStepper.appendTo("#stepper");
+
+            // ▶ تابع اجازه دادن به ورود به مرحله خاص
+            function allowStep(index) {
+                stepAccess[index] = true;
+            }
+
+
+
+
+
+
+
+        });
+
+
+    </script>
+
+</body>
